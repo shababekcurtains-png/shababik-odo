@@ -3,94 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شبابيك | حلول أودو المحاسبية المتكاملة</title>
+    <title>OdoNex | حلول محاسبية متكاملة</title>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <a href="index.html" class="logo">شبابيك <span>ODOO</span></a>
-            <nav>
-                <a href="index.html">الرئيسية</a>
-                <a href="features.html">المميزات</a>
-                <a href="pricing.html">الأسعار</a>
-                <a href="gallery.html">معرض الأعمال</a>
-                <a href="contact.html">اتصل بنا</a>
-            </nav>
+            <a href="index.html" class="logo">
+                <img src="assets/images/odonex-symbol.svg" alt="OdoNex" class="logo-symbol">
+                <div>
+                    <div class="logo-text">Odo<span>Nex</span></div>
+                    <div class="tagline">حلول محاسبية متكاملة</div>
+                </div>
+            </a>
+            <div style="display: flex; align-items: center;">
+                <nav>
+                    <a href="index.html">الرئيسية</a>
+                    <a href="gallery.html">معرض الأعمال</a>
+                    <a href="#contact">اتصل بنا</a>
+                </nav>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="ar" onclick="switchLanguage('ar')">العربية</button>
+                    <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">English</button>
+                </div>
+            </div>
         </div>
     </header>
 
     <main>
-        <div class="container">
-            <div style="text-align: center; padding: 40px 0;">
-                <h1>نظام أودو المحاسبي المتكامل</h1>
-                <p style="font-size: 20px; color: #4a5568; max-width: 800px; margin: 20px auto;">
-                    الحل الأمثل لإدارة شركتك: محاسبة، مبيعات، مشتريات، مخزون، وموارد بشرية
-                </p>
-                <a href="contact.html" style="display: inline-block; background: #ffd700; color: #1A4E8B; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px; margin-top: 20px;">اطلب عرضاً تجريبياً مجاناً</a>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>OdoNex</h1>
+                <div class="subtitle-ar">حلول محاسبية متكاملة</div>
+                <div class="subtitle-en">Integrated ERP Solutions</div>
+                <div class="hero-tagline">
+                    تكامل. أمان. توسع.
+                </div>
             </div>
+        </section>
 
-            <h2 class="text-center">لماذا تختار أودو مع شبابيك؟</h2>
+        <!-- Features Grid (6 Cards) -->
+        <section class="container">
+            <h2 class="section-title">مميزات OdoNex</h2>
             <div class="features-grid">
+                <!-- Card 1: أمان البيانات -->
                 <div class="feature-card">
-                    <h3>تكامل كامل</h3>
-                    <p>جميع العمليات في نظام واحد: محاسبة، مبيعات، مشتريات، مخزون، موارد بشرية، وإنتاج.</p>
+                    <img src="assets/images/icon-security.svg" alt="أمان البيانات" class="feature-icon">
+                    <h3>أمان البيانات</h3>
+                    <p>حماية متقدمة للبيانات مع تشفير شامل وصلاحيات مستخدمين متعددة المستويات</p>
                 </div>
-                <div class="feature-card">
-                    <h3>مرونة عالية</h3>
-                    <p>يتكيف مع حجم عملك: شركة ناشئة أو مؤسسة كبرى، مع إمكانية إضافة التطبيقات حسب الحاجة.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>تقارير فورية</h3>
-                    <p>لوحات تحكم ذكية وتقارير دقيقة تساعدك في اتخاذ القرارات بثقة.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>دعم فني متميز</h3>
-                    <p>فريق متخصص جاهز لمساعدتك في التركيب والتدريب والدعم المستمر.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>سحابي أو محلي</h3>
-                    <p>اختر التشغيل على السحابة أو على سيرفراتك الخاصة حسب احتياجاتك.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>توافق مع السعودية</h3>
-                    <p>متوافق مع متطلبات الزكاة والدخل والفواتير الإلكترونية.</p>
-                </div>
-            </div>
 
-            <div style="background: linear-gradient(145deg, #eef2f9, #ffffff); padding: 60px; border-radius: 48px; margin: 60px 0; text-align: center;">
-                <h2 style="margin-top: 0;">جاهز لتطوير أعمالك؟</h2>
-                <p style="font-size: 18px; max-width: 600px; margin: 20px auto;">احصل على استشارة مجانية ونظام أودو مصمم خصيصاً لشركتك</p>
-                <a href="contact.html" style="display: inline-block; background: #1A4E8B; color: white; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px;">تواصل معنا الآن</a>
+                <!-- Card 2: التكامل -->
+                <div class="feature-card">
+                    <img src="assets/images/icon-integration.svg" alt="التكامل" class="feature-icon">
+                    <h3>التكامل الكامل</h3>
+                    <p>نظام موحد يربط جميع أقسام شركتك: محاسبة، مبيعات، مشتريات، مخزون</p>
+                </div>
+
+                <!-- Card 3: قابلية التوسع -->
+                <div class="feature-card">
+                    <img src="assets/images/icon-scalability.svg" alt="قابلية التوسع" class="feature-icon">
+                    <h3>قابلية التوسع</h3>
+                    <p>ينمو مع عملك من شركة ناشئة إلى مؤسسة كبرى مع إضافة التطبيقات حسب الحاجة</p>
+                </div>
+
+                <!-- Card 4: الدعم الفني -->
+                <div class="feature-card">
+                    <img src="assets/images/icon-support.svg" alt="الدعم الفني" class="feature-icon">
+                    <h3>الدعم الفني</h3>
+                    <p>فريق دعم متخصص على مدار الساعة لضمان استمرارية أعمالك</p>
+                </div>
+
+                <!-- Card 5: وصول عالمي -->
+                <div class="feature-card">
+                    <img src="assets/images/icon-global.svg" alt="وصول عالمي" class="feature-icon">
+                    <h3>وصول عالمي</h3>
+                    <p>حلول عالمية مع مراعاة المتطلبات المحلية والامتثال لهيئة الزكاة والضريبة</p>
+                </div>
+
+                <!-- Card 6: كفاءة عالية -->
+                <div class="feature-card">
+                    <img src="assets/images/icon-efficiency.svg" alt="كفاءة عالية" class="feature-icon">
+                    <h3>كفاءة عالية</h3>
+                    <p>رفع كفاءة العمليات وتقليل التكاليف بنسبة تصل إلى 30%</p>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="container">
+            <h2 class="section-title">معرض الأعمال</h2>
+            <div class="gallery-grid">
+                <!-- Project 1: Axiomify -->
+                <div class="gallery-card">
+                    <div class="gallery-header">
+                        <h3>Axiomify</h3>
+                        <div class="project-code">OdoNex ERP الموحد</div>
+                    </div>
+                    <div class="gallery-content">
+                        <p><strong>عبر: مولد Axiomify</strong></p>
+                        <p>ملخص تصميم القطاعات وموارديات إنتاجها في صناعة المنتجات وحدات تجميع النفط والغاز</p>
+                        <a href="#" class="btn-case-study">Read Case Study</a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Unloaded -->
+                <div class="gallery-card">
+                    <div class="gallery-header">
+                        <h3>مشروع "Unloaded"</h3>
+                        <div class="project-code">أستنتج الإطار الموجود</div>
+                    </div>
+                    <div class="gallery-content">
+                        <p><strong>عبر: مولد Unloaded</strong></p>
+                        <p>ملخص تصميم القطاعات وموارديات إنتاجها في صناعة المنتجات وحدات تجميع النفط والغاز</p>
+                        <a href="#" class="btn-case-study">Read Case Study</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="container" id="contact">
+            <div class="contact-section">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>تواصل معنا</h3>
+                        <div class="contact-person">
+                            <h4>د. أحمد الفارسي</h4>
+                            <div class="title">كبير مسؤولي التكنولوجيا</div>
+                            <div class="contact-detail">
+                                <img src="assets/images/icon-phone.svg" alt="phone" class="mini-icon">
+                                <span dir="ltr">+55 00 800 0505</span>
+                            </div>
+                            <div class="contact-detail">
+                                <img src="assets/images/icon-email.svg" alt="email" class="mini-icon">
+                                <span>info@odonex.com</span>
+                            </div>
+                            <div class="contact-detail">
+                                <img src="assets/images/icon-linkedin.svg" alt="linkedin" class="mini-icon">
+                                <span>/in/ahmed-alfarsi</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>أرسل رسالة</h3>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" placeholder="الاسم">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="البريد الإلكتروني">
+                            </div>
+                            <div class="form-group">
+                                <textarea rows="5" placeholder="الرسالة"></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">إرسال</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Address Section -->
+        <section class="container">
+            <div style="background: white; padding: 40px; border-radius: 32px; text-align: center; margin: 40px 0;">
+                <h3 style="color: var(--primary-blue); margin-bottom: 20px;">العنوان</h3>
+                <p style="font-size: 18px;">الرياض - المملكة العربية السعودية</p>
+                <p style="color: var(--text-light);">ص.ب 12345، الرياض 11564</p>
+            </div>
+        </section>
     </main>
 
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h4>شبابيك لأنظمة ERP</h4>
-                    <p>نقدم حلولاً متكاملة لإدارة موارد المؤسسات منذ 2020، بخبرة تمتد لأكثر من 50 مشروعاً ناجحاً.</p>
+                    <h4>OdoNex</h4>
+                    <p>حلول محاسبية متكاملة لإدارة موارد المؤسسات</p>
                 </div>
                 <div>
                     <h4>روابط سريعة</h4>
-                    <a href="features.html">المميزات</a>
-                    <a href="pricing.html">الأسعار</a>
+                    <a href="index.html">الرئيسية</a>
                     <a href="gallery.html">معرض الأعمال</a>
-                    <a href="contact.html">اتصل بنا</a>
+                    <a href="#contact">اتصل بنا</a>
                 </div>
                 <div>
-                    <h4>تواصل معنا</h4>
-                    <p>هاتف: +966 50 000 0000</p>
-                    <p>بريد: info@shababik.com</p>
-                    <p>الرياض - المملكة العربية السعودية</p>
+                    <h4>تابعنا</h4>
+                    <p>لينكد إن | تويتر | إنستغرام</p>
                 </div>
             </div>
             <div class="copyright">
-                جميع الحقوق محفوظة © 2026 شبابيك لأنظمة ERP
+                © 2026 OdoNex. جميع الحقوق محفوظة
             </div>
         </div>
     </footer>
+
+    <script src="js/language.js"></script>
 </body>
 </html>
