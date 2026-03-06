@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شبابيك | مميزات نظام أودو Odoo</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        .feature-section {
+            margin: 60px 0;
+        }
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .module-card {
+            background: white;
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f6;
+            transition: all 0.3s;
+        }
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(26,78,139,0.1);
+            border-color: #1A4E8B;
+        }
+        .module-card h3 {
+            color: #1A4E8B;
+            font-size: 22px;
+            margin: 15px 0 10px;
+        }
+        .badge {
+            background: #ffd700;
+            color: #1A4E8B;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eef2f6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .feature-list li:before {
+            content: "✓";
+            color: #27AE60;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            margin: 40px 0;
+        }
+        .comparison-table th {
+            background: #1A4E8B;
+            color: white;
+            padding: 20px;
+            font-size: 18px;
+        }
+        .comparison-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eef2f6;
+        }
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        .comparison-table td:first-child {
+            font-weight: 600;
+            background: #f8faff;
+        }
+        .check-yes {
+            color: #27AE60;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .check-no {
+            color: #E74C3C;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">شبابيك <span>ODOO</span></a>
+            <nav>
+                <a href="index.html">الرئيسية</a>
+                <a href="features.html" style="color: #ffd700;">المميزات</a>
+                <a href="pricing.html">الأسعار</a>
+                <a href="gallery.html">معرض الأعمال</a>
+                <a href="contact.html">اتصل بنا</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- عنوان الصفحة -->
+            <div style="text-align: center; padding: 40px 0 20px;">
+                <h1>مميزات نظام أودو Odoo</h1>
+                <p style="font-size: 20px; color: #4a5568; max-width: 800px; margin: 20px auto;">
+                    أكثر من 30 تطبيق متكامل يغطي جميع احتياجات شركتك في منصة واحدة
+                </p>
+            </div>
+
+            <!-- لماذا أودو متفوق -->
+            <div class="feature-section">
+                <h2>لماذا تتفوق أودو على الأنظمة التقليدية؟</h2>
+                <div style="background: #f8faff; padding: 40px; border-radius: 32px; margin: 30px 0;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                        <div>
+                            <h3 style="color: #1A4E8B; margin-bottom: 20px;">التكامل هو السر</h3>
+                            <p style="font-size: 18px; line-height: 1.8; margin-bottom: 20px;">في الأنظمة التقليدية، كل قسم له برنامج مستقل: برنامج للمحاسبة، برنامج للمبيعات، برنامج للمخزون. وهذا يسبب:</p>
+                            <ul class="feature-list">
+                                <li>ازدواجية في إدخال البيانات</li>
+                                <li>أخطاء في التنسيق بين الأقسام</li>
+                                <li>صعوبة في الحصول على تقارير موحدة</li>
+                                <li>تكاليف صيانة متعددة</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 style="color: #27AE60; margin-bottom: 20px;">أودو يغير المعادلة</h3>
+                            <p style="font-size: 18px; line-height: 1.8; margin-bottom: 20px;">نظام واحد متكامل يغطي جميع العمليات:</p>
+                            <ul class="feature-list">
+                                <li>بيانات موحدة ومتسقة</li>
+                                <li>تدفق سلس بين الأقسام</li>
+                                <li>تقارير شاملة لحظية</li>
+                                <li>واجهة استخدام موحدة</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- التطبيقات الأساسية -->
+            <div class="feature-section">
+                <h2>التطبيقات الأساسية لنظام أودو</h2>
+                <div class="module-grid">
+                    <div class="module-card">
+                        <div class="feature-icon">📊</div>
+                        <span class="badge">الأكثر استخداماً</span>
+                        <h3>المحاسبة والمالية</h3>
+                        <ul class="feature-list">
+                            <li>دفاتر الأستاذ العامة والمساعدين</li>
+                            <li>إدارة حسابات العملاء والموردين</li>
+                            <li>الفوترة الإلكترونية (متوافقة مع ZATCA)</li>
+                            <li>إدارة المصروفات والإيرادات</li>
+                            <li>التسويات البنكية الآلية</li>
+                            <li>إعداد الميزانيات والتقارير المالية</li>
+                            <li>الضريبة والقيمة المضافة</li>
+                            <li>إدارة الأصول الثابتة</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="feature-icon">📦</div>
+                        <h3>المخزون والمستودعات</h3>
+                        <ul class="feature-list">
+                            <li>إدارة المخزون المتعدد المستودعات</li>
+                            <li>تتبع المنتجات بالأرقام التسلسلية والدفعات</li>
+                            <li>نظام الجرد الدوري والمستمر</li>
+                            <li>إدارة حركات المخزون (وارد/منصرف)</li>
+                            <li>نقاط إعادة الطلب التلقائية</li>
+                            <li>تكامل مع نقاط البيع</li>
+                            <li>تقارير حركة المخزون والقيمة</li>
+                            <li>إدارة الشحن والتوصيل</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="feature-icon">🛒</div>
+                        <h3>المبيعات ونقاط البيع</h3>
+                        <ul class="feature-list">
+                            <li>إدارة عروض الأسعار والأوامر</li>
+                            <li>نظام نقاط بيع متكامل (POS)</li>
+                            <li>إدارة العملاء وفرص البيع</li>
+                            <li>إعدادات أسعار متعددة (جملة/قطاعي)</li>
+                            <li>عقود المبيعات والاشتراكات</li>
+                            <li>الخصومات والعروض الترويجية</li>
+                            <li>تقارير أداء المبيعات</li>
+                            <li>التكامل مع المتاجر الإلكترونية</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="feature-icon">🤝</div>
+                        <h3>المشتريات والموردين</h3>
+                        <ul class="feature-list">
+                            <li>طلبات الشراء وعروض الأسعار</li>
+                            <li>إدارة الموردين وتقييمهم</li>
+                            <li>الاتفاقيات الإطارية</li>
+                            <li>الاستلام والجرد الوارد</li>
+                            <li>إعادة الطلب التلقائي</li>
+                            <li>تكامل مع المخزون والمحاسبة</li>
+                            <li>تقارير أداء المشتريات</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>الموارد البشرية</h3>
+                        <ul class="feature-list">
+                            <li>إدارة ملفات الموظفين</li>
+                            <li>الحضور والانصراف والإجازات</li>
+                            <li>حساب الرواتب والأجور</li>
+                            <li>تقييم الأداء</li>
+                            <li>طلبات التوظيف</li>
+                            <li>نظام المهام والمشاريع</li>
+                            <li>لوحات إعلانات داخلية</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="feature-icon">🏭</div>
+                        <h3>التصنيع والإنتاج</h3>
+                        <ul class="feature-list">
+                            <li>إدارة قوائم المواد (BOM)</li>
+                            <li>أوامر الإنتاج والتجميع</li>
+                            <li>تخطيط الاحتياجات من المواد (MRP)</li>
+                            <li>مراقبة الجودة</li>
+                            <li>تتبع أوامر العمل</li>
+                            <li>إدارة الآلات والمعدات</li>
+                            <li>حساب تكاليف الإنتاج</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>التجارة الإلكترونية</h3>
+                        <ul class="feature-list">
+                            <li>متجر إلكتروني متكامل</li>
+                            <li>إدارة المنتجات والفئات</li>
+                            <li>سلة مشتريات وخيارات دفع متعددة</li>
+                            <li>تكامل مع المبيعات والمخزون</li>
+                            <li>إدارة الشحن والتوصيل</li>
+                            <li>عروض وخصومات تلقائية</li>
+                            <li>تقارير المبيعات أونلاين</li>
+                        </ul>
+                    </div>
+
+                    <div class="module-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>التقارير والذكاء المالي</h3>
+                        <ul class="feature-list">
+                            <li>لوحات تحكم تفاعلية</li>
+                            <li>تقارير مالية وإدارية</li>
+                            <li>تحليل الأداء (KPIs)</li>
+                            <li>توقعات ومخططات بيانية</li>
+                            <li>تصدير التقارير بصيغ متعددة</li>
+                            <li>إشعارات وتنبيهات ذكية</li>
+                            <li>دمج مع Excel و Power BI</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- مميزات إضافية -->
+            <div class="feature-section">
+                <h2>مميزات تقنية متقدمة</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0;">
+                    <div style="background: white; padding: 30px; border-radius: 24px;">
+                        <h3 style="color: #1A4E8B;">🔐 الأمان والحماية</h3>
+                        <ul class="feature-list">
+                            <li>صلاحيات مستخدمين متعددة المستويات</li>
+                            <li>تسجيل جميع العمليات (Audit Trail)</li>
+                            <li>نسخ احتياطي تلقائي</li>
+                            <li>التوافق مع معايير الأمان العالمية</li>
+                            <li>تشفير البيانات</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 30px; border-radius: 24px;">
+                        <h3 style="color: #1A4E8B;">☁️ مرونة التشغيل</h3>
+                        <ul class="feature-list">
+                            <li>سحابي (Cloud) - اشتراك شهري</li>
+                            <li>محلي (On-Premise) - رخصة دائمة</li>
+                            <li>هجين (Hybrid) - حسب احتياجك</li>
+                            <li>تطبيق جوّال للأعمال</li>
+                            <li>واجهة ويب متجاوبة</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 30px; border-radius: 24px;">
+                        <h3 style="color: #1A4E8B;">🔧 التخصيص والتطوير</h3>
+                        <ul class="feature-list">
+                            <li>إضافات وتطبيقات مخصصة</li>
+                            <li>تعديل الحقول والتقارير</li>
+                            <li>دمج مع أنظمة خارجية (API)</li>
+                            <li>مجتمع مفتوح المصدر كبير</li>
+                            <li>آلاف التطبيقات الجاهزة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- مقارنة مع الأنظمة الأخرى -->
+            <div class="feature-section">
+                <h2 class="text-center">مقارنة: أودو مقابل الأنظمة التقليدية</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>الميزة</th>
+                            <th>أودو Odoo</th>
+                            <th>الأنظمة التقليدية</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>التكامل بين الأقسام</td>
+                            <td class="check-yes">متكامل بالكامل</td>
+                            <td class="check-no">منفصل</td>
+                        </tr>
+                        <tr>
+                            <td>واجهة استخدام موحدة</td>
+                            <td class="check-yes">✓</td>
+                            <td class="check-no">✗</td>
+                        </tr>
+                        <tr>
+                            <td>تحديثات دورية</td>
+                            <td class="check-yes">مجانية مستمرة</td>
+                            <td class="check-no">مدفوعة ومحدودة</td>
+                        </tr>
+                        <tr>
+                            <td>تكلفة التملك</td>
+                            <td class="check-yes">اقتصادية</td>
+                            <td class="check-no">مرتفعة</td>
+                        </tr>
+                        <tr>
+                            <td>المرونة والتخصيص</td>
+                            <td class="check-yes">عالية جداً</td>
+                            <td class="check-no">محدودة</td>
+                        </tr>
+                        <tr>
+                            <td>الدعم العربي والفني</td>
+                            <td class="check-yes">متوفر عبر شبابيك</td>
+                            <td class="check-yes">متفاوت</td>
+                        </tr>
+                        <tr>
+                            <td>مجتمع مستخدمين</td>
+                            <td class="check-yes">أكثر من 7 ملايين</td>
+                            <td class="check-no">محدود</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- دعوة للاتصال -->
+            <div style="background: linear-gradient(145deg, #1A4E8B, #0f3a66); color: white; padding: 60px; border-radius: 48px; margin: 60px 0; text-align: center;">
+                <h2 style="color: white; margin-top: 0;">هل تريد رؤية أودو على أرض الواقع؟</h2>
+                <p style="font-size: 18px; max-width: 600px; margin: 20px auto; opacity: 0.9;">نقدم لك عرضاً حياً (Demo) مجاناً مع شرح للتطبيقات التي تحتاجها</p>
+                <a href="contact.html" style="display: inline-block; background: #ffd700; color: #1A4E8B; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px; margin-top: 20px;">تواصل معنا الآن</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>شبابيك لأنظمة ERP</h4>
+                    <p>نقدم حلولاً متكاملة لإدارة موارد المؤسسات بخبرة تزيد عن 50 مشروعاً ناجحاً في المملكة.</p>
+                </div>
+                <div>
+                    <h4>روابط سريعة</h4>
+                    <a href="index.html">الرئيسية</a>
+                    <a href="features.html">المميزات</a>
+                    <a href="pricing.html">الأسعار</a>
+                    <a href="gallery.html">معرض الأعمال</a>
+                    <a href="contact.html">اتصل بنا</a>
+                </div>
+                <div>
+                    <h4>تواصل معنا</h4>
+                    <p>هاتف: +966 50 000 0000</p>
+                    <p>بريد: info@shababik.com</p>
+                    <p>الرياض - المملكة العربية السعودية</p>
+                </div>
+            </div>
+            <div class="copyright">
+                جميع الحقوق محفوظة © 2026 شبابيك لأنظمة ERP
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
