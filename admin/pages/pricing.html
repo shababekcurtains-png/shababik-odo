@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OdoNex | إدارة الأسعار</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        }
+        
+        :root {
+            --odo-purple: #9C27B0;
+            --next-blue: #29B6F6;
+            --primary-dark: #1A4E8B;
+            --accent-gold: #FFD700;
+            --bg-light: #F8F9FA;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+        
+        body {
+            background: var(--bg-light);
+            display: flex;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, var(--primary-dark), var(--odo-purple));
+            color: white;
+            min-height: 100vh;
+            position: fixed;
+            right: 0;
+            top: 0;
+            overflow-y: auto;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-header {
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-header img {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+        }
+        
+        .sidebar-header h2 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-header span {
+            color: var(--accent-gold);
+        }
+        
+        .sidebar-menu {
+            padding: 20px;
+        }
+        
+        .menu-item {
+            padding: 15px 20px;
+            margin: 5px 0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .menu-item:hover,
+        .menu-item.active {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-right: 280px;
+            padding: 30px;
+        }
+        
+        .top-bar {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .page-title h1 {
+            color: var(--text-dark);
+            font-size: 24px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .logout-btn {
+            background: none;
+            border: 2px solid #ff4444;
+            color: #ff4444;
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .edit-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+        
+        .card-header h2 {
+            color: var(--primary-dark);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .pricing-card {
+            background: linear-gradient(145deg, #ffffff, var(--bg-light));
+            border-radius: 24px;
+            padding: 30px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .pricing-card.popular {
+            border-color: var(--odo-purple);
+            transform: scale(1.02);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-primary);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .pricing-header h3 {
+            color: var(--primary-dark);
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .price-input {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--odo-purple);
+            border: none;
+            width: 100%;
+            text-align: center;
+            background: transparent;
+        }
+        
+        .feature-list-edit {
+            margin: 25px 0;
+        }
+        
+        .feature-item-edit {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .feature-item-edit input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .btn-add-feature {
+            background: var(--bg-light);
+            border: 2px dashed var(--odo-purple);
+            color: var(--odo-purple);
+            padding: 10px;
+            border-radius: 50px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .btn-save-plan {
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 50px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        
+        @media (max-width: 1200px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 80px;
+            }
+            
+            .sidebar .menu-item span {
+                display: none;
+            }
+            
+            .main-content {
+                margin-right: 80px;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="../../assets/images/odonex-symbol.svg" alt="OdoNex">
+            <h2>Odo<span>Nex</span></h2>
+            <p>لوحة التحكم</p>
+        </div>
+        
+        <div class="sidebar-menu">
+            <div class="menu-item" onclick="window.location.href='../index.html'">
+                <i>📊</i>
+                <span>الرئيسية</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='features.html'">
+                <i>✨</i>
+                <span>المميزات</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='gallery.html'">
+                <i>🖼️</i>
+                <span>معرض الأعمال</span>
+            </div>
+            <div class="menu-item active">
+                <i>💰</i>
+                <span>الأسعار</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='contact.html'">
+                <i>📞</i>
+                <span>جهات الاتصال</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='../login.html'">
+                <i>🚪</i>
+                <span>تسجيل الخروج</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="page-title">
+                <h1>إدارة الأسعار والباقات</h1>
+                <p>تعديل خطط الأسعار والمميزات</p>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar">A</div>
+                <button class="logout-btn" onclick="window.location.href='../login.html'">تسجيل خروج</button>
+            </div>
+        </div>
+        
+        <div class="pricing-grid">
+            <!-- الباقة الأساسية -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 contenteditable="true">الباقة الأساسية</h3>
+                    <input type="text" class="price-input" value="999" placeholder="السعر">
+                    <small>ريال/شهرياً</small>
+                </div>
+                
+                <div class="feature-list-edit" id="basic-features">
+                    <div class="feature-item-edit">
+                        <input type="text" value="المحاسبة الأساسية">
+                        <span class="btn-delete" onclick="this.parentElement.remove()">🗑️</span>
+                    </div>
+                    <div class="feature-item-edit">
+                        <input type="text" value="إدارة الفواتير">
+                        <span class="btn-delete" onclick="this.parentElement.remove()">🗑️</span>
+                    </div>
+                    <div class="feature-item-edit">
+                        <input type="text" value="تتبع المصروفات">
+                        <span class="btn-delete" onclick="this.parentElement.remove()">🗑️</span>
+                    </div>
+                    <div class="feature-item-edit">
+                        <input type="text" value="3 مستخدمين">
+                        <span class="btn-delete" onclick="this.parentElement.remove()">🗑️</span>
+                    </div>
+                </div>
+                
+                <button class="btn-add-feature" onclick="addFeature('basic-features')">+ إضافة ميزة</button>
+                <button class="btn-save-plan" onclick="savePlan('basic')">حفظ التغييرات</button>
+            </div>
+            
+            <!-- الباقة المتقدمة -->
+            <div class="pricing-card popular">
+                <div class="popular-badge">الأكثر طلباً</div>
+                <div class="pricing-header">
+                    <h3 contenteditable="true">الباقة المتقدمة</h3>
+                    <input type="text" class="price-input" value="1999" placeholder="السعر">
+                    <small>ريال/شهرياً</small>
+                </div>
+                
+                <div class="feature-list-edit" id="advanced-features">
+                    <div class="feature-item-edit">
+                        <input type="text" value="جميع مميزات الأساسية">
+                        <span class="btn-delete" onclick="this.parentElement.remove()">🗑️</span>
+                    </div>
+                    <div class="feature-item-edit">
+                        <input type="text" value="إدارة المخزون">
+                        <span class="btn-delete" onclick="this.parentElement.remove()">🗑️</span>
+                    </div>
+                    <div class="feature-item-edit">
+                        <input type="text" value="المبيعات والمشتريات">
+                        <span class="btn-delete" onclick="this.parentElement.remove()">🗑️</span>
+                    </div>
+                    <div class="feature-item-edit">
+                        <input type="text" value="10 مستخدمين">
+                        <span class="btn-delete" onclick="this.parentElement.remove()">🗑️</span>
+                    </div>
+                </div>
+                
+                <button class="btn-add-feature" onclick="addFeature('advanced-features')">+ إضافة ميزة</button>
+                <button class="btn-save-plan" onclick="savePlan('advanced')">حفظ التغييرات</button>
+            </div>
+            
+            <!-- الباقة الشاملة -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3 contenteditable="true">الباقة الشاملة</h3>
+                    <input type="text" class="price-input" value="2999" placeholder="السعر">
+                    <small>ريال/شهرياً</small>
+                </div>
+                
+                <div class="feature-list-edit" id="enterprise-features">
+                    <div class="feature-item-edit">
+                        <input type="text" value="جميع مميزات المتقدمة">
+                        <span class="btn-delete" onclick="this.parentElement.remove()">🗑️</span>
+                    </div>
+                    <div class="feature-item-edit">
+                        <input type="text" value="الموارد البشرية">
+                        <span class="btn-delete" onclick="this.parentElement.remove()">🗑️</span>
+                    </div>
+                    <div class="feature-item-edit">
+                        <input type="text" value="مستخدمين غير محدود">
+                        <span class="btn-delete" onclick="this.parentElement.remove()">🗑️</span>
+                    </div>
+                    <div class="feature-item-edit">
+                        <input type="text" value="دعم فني فوري">
+                        <span class="btn-delete" onclick="this.parentElement.remove()">🗑️</span>
+                    </div>
+                </div>
+                
+                <button class="btn-add-feature" onclick="addFeature('enterprise-features')">+ إضافة ميزة</button>
+                <button class="btn-save-plan" onclick="savePlan('enterprise')">حفظ التغييرات</button>
+            </div>
+        </div>
+        
+        <!-- إعدادات إضافية -->
+        <div class="edit-card">
+            <h3 style="margin-bottom: 20px;">إعدادات إضافية</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
+                <div>
+                    <label style="display: block; margin-bottom: 10px; font-weight: 600;">خصم الاشتراك السنوي</label>
+                    <input type="number" value="15" style="padding: 10px; border: 2px solid #ddd; border-radius: 8px; width: 100px;"> %
+                </div>
+                
+                <div>
+                    <label style="display: block; margin-bottom: 10px; font-weight: 600;">فترة التجربة المجانية</label>
+                    <input type="number" value="14" style="padding: 10px; border: 2px solid #ddd; border-radius: 8px; width: 100px;"> يوم
+                </div>
+            </div>
+            
+            <button class="btn-save-plan" style="margin-top: 20px; width: auto; padding: 12px 40px;">حفظ الإعدادات</button>
+        </div>
+    </div>
+    
+    <script>
+        function addFeature(listId) {
+            const list = document.getElementById(listId);
+            const newFeature = document.createElement('div');
+            newFeature.className = 'feature-item-edit';
+            newFeature.innerHTML = `
+                <input type="text" placeholder="ميزة جديدة">
+                <span class="btn-delete" onclick="this.parentElement.remove()">🗑️</span>
+            `;
+            list.appendChild(newFeature);
+        }
+        
+        function savePlan(plan) {
+            const planData = {
+                name: document.querySelector(`#${plan}-features`).previousElementSibling.previousElementSibling.querySelector('h3').textContent,
+                price: document.querySelector(`#${plan}-features`).previousElementSibling.previousElementSibling.querySelector('.price-input').value,
+                features: []
+            };
+            
+            document.querySelectorAll(`#${plan}-features .feature-item-edit input`).forEach(input => {
+                planData.features.push(input.value);
+            });
+            
+            console.log('تم حفظ الباقة:', planData);
+            alert('تم حفظ التغييرات بنجاح');
+        }
+    </script>
+</body>
+</html>
