@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OdoNex | الإعدادات</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        }
+        
+        :root {
+            --odo-purple: #9C27B0;
+            --next-blue: #29B6F6;
+            --primary-dark: #1A4E8B;
+            --accent-gold: #FFD700;
+            --bg-light: #F8F9FA;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+        
+        body {
+            background: var(--bg-light);
+            display: flex;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, var(--primary-dark), var(--odo-purple));
+            color: white;
+            min-height: 100vh;
+            position: fixed;
+            right: 0;
+            top: 0;
+            overflow-y: auto;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-header {
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-header img {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+        }
+        
+        .sidebar-header h2 {
+            font-size: 28px;
+        }
+        
+        .sidebar-header span {
+            color: var(--accent-gold);
+        }
+        
+        .sidebar-menu {
+            padding: 20px;
+        }
+        
+        .menu-item {
+            padding: 15px 20px;
+            margin: 5px 0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+        
+        .menu-item:hover,
+        .menu-item.active {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-right: 280px;
+            padding: 30px;
+        }
+        
+        .top-bar {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .page-title h1 {
+            color: var(--text-dark);
+            font-size: 24px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .logout-btn {
+            background: none;
+            border: 2px solid #ff4444;
+            color: #ff4444;
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .settings-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .settings-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .settings-card h2 {
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+        
+        .settings-group {
+            margin-bottom: 25px;
+        }
+        
+        .settings-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .settings-group input,
+        .settings-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--bg-light);
+            border-radius: 12px;
+            font-size: 16px;
+        }
+        
+        .settings-group input:focus,
+        .settings-group select:focus {
+            outline: none;
+            border-color: var(--odo-purple);
+        }
+        
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+        
+        .toggle-label {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .toggle {
+            width: 60px;
+            height: 30px;
+            background: #ddd;
+            border-radius: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .toggle.active {
+            background: var(--odo-purple);
+        }
+        
+        .toggle:after {
+            content: '';
+            width: 26px;
+            height: 26px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            transition: all 0.3s;
+        }
+        
+        .toggle.active:after {
+            right: 32px;
+        }
+        
+        .btn-save {
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 80px;
+            }
+            
+            .sidebar .menu-item span {
+                display: none;
+            }
+            
+            .main-content {
+                margin-right: 80px;
+            }
+            
+            .settings-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="../../assets/images/odonex-symbol.svg" alt="OdoNex">
+            <h2>Odo<span>Nex</span></h2>
+            <p>لوحة التحكم</p>
+        </div>
+        
+        <div class="sidebar-menu">
+            <div class="menu-item" onclick="window.location.href='../index.html'">
+                <i>📊</i>
+                <span>الرئيسية</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='features.html'">
+                <i>✨</i>
+                <span>المميزات</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='gallery.html'">
+                <i>🖼️</i>
+                <span>معرض الأعمال</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='pricing.html'">
+                <i>💰</i>
+                <span>الأسعار</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='contact.html'">
+                <i>📞</i>
+                <span>جهات الاتصال</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='messages.html'">
+                <i>✉️</i>
+                <span>الرسائل</span>
+            </div>
+            <div class="menu-item active">
+                <i>⚙️</i>
+                <span>الإعدادات</span>
+            </div>
+            
+            <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+                <div class="menu-item" onclick="window.location.href='../login.html'">
+                    <i>🚪</i>
+                    <span>تسجيل الخروج</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="page-title">
+                <h1>الإعدادات</h1>
+                <p>تخصيص إعدادات الموقع والنظام</p>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar">A</div>
+                <button class="logout-btn" onclick="window.location.href='../login.html'">تسجيل خروج</button>
+            </div>
+        </div>
+        
+        <div class="settings-container">
+            <!-- الإعدادات العامة -->
+            <div class="settings-card">
+                <h2>الإعدادات العامة</h2>
+                
+                <div class="settings-group">
+                    <label>اسم الموقع (عربي)</label>
+                    <input type="text" value="أودونكس - حلول محاسبية متكاملة">
+                </div>
+                
+                <div class="settings-group">
+                    <label>اسم الموقع (إنجليزي)</label>
+                    <input type="text" value="OdoNex - Integrated ERP Solutions">
+                </div>
+                
+                <div class="settings-group">
+                    <label>الوصف المختصر (عربي)</label>
+                    <input type="text" value="نظام ERP متكامل يجمع بين القوة والمرونة">
+                </div>
+                
+                <div class="settings-group">
+                    <label>الوصف المختصر (إنجليزي)</label>
+                    <input type="text" value="Complete ERP system combining power and flexibility">
+                </div>
+                
+                <div class="settings-group">
+                    <label>الكلمات المفتاحية (SEO)</label>
+                    <input type="text" value="ERP, محاسبة, مخزون, مبيعات, Odoo, Next">
+                </div>
+                
+                <button class="btn-save">حفظ الإعدادات العامة</button>
+            </div>
+            
+            <!-- إعدادات الظهور -->
+            <div class="settings-card">
+                <h2>إعدادات الظهور</h2>
+                
+                <div class="toggle-switch">
+                    <span class="toggle-label">إظهار الشريط العلوي</span>
+                    <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                
+                <div class="toggle-switch">
+                    <span class="toggle-label">إظهار معرض الأعمال</span>
+                    <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                
+                <div class="toggle-switch">
+                    <span class="toggle-label">إظهار قسم الأسعار</span>
+                    <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                
+                <div class="toggle-switch">
+                    <span class="toggle-label">تفعيل نموذج الاتصال</span>
+                    <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                
+                <div class="toggle-switch">
+                    <span class="toggle-label">إظهار أيقونات التواصل الاجتماعي</span>
+                    <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                
+                <div class="settings-group" style="margin-top: 20px;">
+                    <label>عدد المشاريع في الصفحة الرئيسية</label>
+                    <select>
+                        <option>3</option>
+                        <option selected>4</option>
+                        <option>6</option>
+                        <option>8</option>
+                    </select>
+                </div>
+                
+                <button class="btn-save">حفظ إعدادات الظهور</button>
+            </div>
+            
+            <!-- إعدادات البريد الإلكتروني -->
+            <div class="settings-card">
+                <h2>إعدادات البريد الإلكتروني</h2>
+                
+                <div class="settings-group">
+                    <label>خادم البريد (SMTP)</label>
+                    <input type="text" value="smtp.gmail.com">
+                </div>
+                
+                <div class="settings-group">
+                    <label>المنفذ (Port)</label>
+                    <input type="text" value="587">
+                </div>
+                
+                <div class="settings-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" value="noreply@odonex.com">
+                </div>
+                
+                <div class="settings-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" value="********">
+                </div>
+                
+                <div class="toggle-switch">
+                    <span class="toggle-label">استخدام SSL</span>
+                    <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+                </div>
+                
+                <button class="btn-save">حفظ إعدادات البريد</button>
+            </div>
+            
+            <!-- إعدادات المستخدمين -->
+            <div class="settings-card">
+                <h2>إعدادات المستخدمين</h2>
+                
+                <div class="settings-group">
+                    <label>اسم المستخدم الحالي</label>
+                    <input type="text" value="admin">
+                </div>
+                
+                <div class="settings-group">
+                    <label>كلمة المرور الحالية</label>
+                    <input type="password" placeholder="أدخل كلمة المرور الحالية">
+                </div>
+                
+                <div class="settings-group">
+                    <label>كلمة المرور الجديدة</label>
+                    <input type="password" placeholder="أدخل كلمة المرور الجديدة">
+                </div>
+                
+                <div class="settings-group">
+                    <label>تأكيد كلمة المرور</label>
+                    <input type="password" placeholder="أعد إدخال كلمة المرور">
+                </div>
+                
+                <div class="settings-group">
+                    <label>البريد الإلكتروني للمسؤول</label>
+                    <input type="email" value="admin@odonex.com">
+                </div>
+                
+                <button class="btn-save">تحديث بيانات المستخدم</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
