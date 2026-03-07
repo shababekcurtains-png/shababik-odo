@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OdoNex | إدارة الرسائل</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        }
+        
+        :root {
+            --odo-purple: #9C27B0;
+            --next-blue: #29B6F6;
+            --primary-dark: #1A4E8B;
+            --accent-gold: #FFD700;
+            --bg-light: #F8F9FA;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+        
+        body {
+            background: var(--bg-light);
+            display: flex;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, var(--primary-dark), var(--odo-purple));
+            color: white;
+            min-height: 100vh;
+            position: fixed;
+            right: 0;
+            top: 0;
+            overflow-y: auto;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-header {
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-header img {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+        }
+        
+        .sidebar-header h2 {
+            font-size: 28px;
+        }
+        
+        .sidebar-header span {
+            color: var(--accent-gold);
+        }
+        
+        .sidebar-menu {
+            padding: 20px;
+        }
+        
+        .menu-item {
+            padding: 15px 20px;
+            margin: 5px 0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .menu-item:hover,
+        .menu-item.active {
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-right: 280px;
+            padding: 30px;
+        }
+        
+        .top-bar {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .page-title h1 {
+            color: var(--text-dark);
+            font-size: 24px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .messages-container {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .messages-filter {
+            padding: 20px;
+            border-bottom: 2px solid var(--bg-light);
+            display: flex;
+            gap: 15px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: none;
+            background: var(--bg-light);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            color: white;
+        }
+        
+        .messages-list {
+            padding: 20px;
+        }
+        
+        .message-item {
+            display: grid;
+            grid-template-columns: 30px 2fr 2fr 3fr 1fr 1fr;
+            gap: 15px;
+            padding: 20px;
+            border-bottom: 1px solid var(--bg-light);
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .message-item:hover {
+            background: var(--bg-light);
+        }
+        
+        .message-item.unread {
+            background: #f0f0ff;
+        }
+        
+        .message-status {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4CAF50;
+        }
+        
+        .message-status.unread {
+            background: #ff4444;
+            box-shadow: 0 0 0 2px rgba(255,68,68,0.2);
+        }
+        
+        .message-sender {
+            font-weight: 600;
+        }
+        
+        .message-preview {
+            color: var(--text-light);
+            white-space: nowrap;
+            overflow: hidden;
+            text-over
