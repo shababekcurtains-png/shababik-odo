@@ -1,1 +1,332 @@
-هههههههههه
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OdoNex | Pricing</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        .pricing-hero {
+            text-align: center;
+            padding: 60px 0 30px;
+            background: linear-gradient(145deg, #ffffff, #f8faff);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+            border: 1px solid #eef2f6;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(156,39,176,0.15);
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid #9C27B0;
+            transform: scale(1.05);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #9C27B0, #673AB7);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #1A4E8B;
+            margin: 20px 0;
+        }
+        
+        .price small {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eef2f6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            color: #9C27B0;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .btn-pricing {
+            display: inline-block;
+            background: linear-gradient(135deg, #1A4E8B, #0f3a66);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-pricing:hover {
+            background: linear-gradient(135deg, #0f3a66, #1A4E8B);
+            transform: translateY(-2px);
+        }
+        
+        .faq-section {
+            background: white;
+            padding: 50px;
+            border-radius: 32px;
+            margin: 60px 0;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .faq-item h4 {
+            color: #1A4E8B;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .faq-item p {
+            color: #666;
+        }
+        
+        @media (max-width: 992px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index-en.html" class="logo">
+                <img src="assets/images/odonex-symbol.svg" alt="OdoNex" class="logo-symbol">
+                <div>
+                    <div class="logo-text">Odo<span>Nex</span></div>
+                    <div class="tagline">Integrated ERP Solutions</div>
+                </div>
+            </a>
+            <div style="display: flex; align-items: center;">
+                <nav>
+                    <a href="index-en.html">Home</a>
+                    <a href="features-en.html">Features</a>
+                    <a href="gallery-en.html">Gallery</a>
+                    <a href="pricing-en.html" class="active">Pricing</a>
+                    <a href="contact-en.html">Contact</a>
+                </nav>
+                <div class="lang-switcher">
+                    <button class="lang-btn" data-lang="ar" onclick="switchLanguage('ar')">العربية</button>
+                    <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">English</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="pricing-hero">
+            <div class="container">
+                <h1>OdoNex Pricing</h1>
+                <p style="font-size: 18px; color: #666; max-width: 700px; margin: 20px auto;">
+                    Choose the perfect plan for your business with the ability to upgrade at any time
+                </p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="pricing-grid">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <h3>Basic Plan</h3>
+                    <div class="price">
+                        999 <small>SAR/month</small>
+                    </div>
+                    <p style="color: #666; margin-bottom: 20px;">For startups and small businesses</p>
+                    
+                    <ul class="feature-list">
+                        <li>Basic Accounting</li>
+                        <li>Invoice Management</li>
+                        <li>Expense Tracking</li>
+                        <li>3 Users</li>
+                        <li>48h Support</li>
+                        <li>Monthly Reports</li>
+                    </ul>
+                    
+                    <a href="contact-en.html" class="btn-pricing">Choose Plan</a>
+                </div>
+
+                <!-- Advanced Plan (Most Popular) -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Advanced Plan</h3>
+                    <div class="price">
+                        1,999 <small>SAR/month</small>
+                    </div>
+                    <p style="color: #666; margin-bottom: 20px;">For medium businesses</p>
+                    
+                    <ul class="feature-list">
+                        <li>All Basic Features</li>
+                        <li>Inventory Management</li>
+                        <li>Sales & Purchases</li>
+                        <li>10 Users</li>
+                        <li>24h Support</li>
+                        <li>Advanced Reports</li>
+                        <li>Interactive Dashboards</li>
+                    </ul>
+                    
+                    <a href="contact-en.html" class="btn-pricing">Choose Plan</a>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="pricing-card">
+                    <h3>Enterprise Plan</h3>
+                    <div class="price">
+                        2,999 <small>SAR/month</small>
+                    </div>
+                    <p style="color: #666; margin-bottom: 20px;">For large enterprises</p>
+                    
+                    <ul class="feature-list">
+                        <li>All Advanced Features</li>
+                        <li>Human Resources</li>
+                        <li>Manufacturing</li>
+                        <li>Unlimited Users</li>
+                        <li>Priority Support</li>
+                        <li>Monthly Consultation</li>
+                        <li>Employee Training</li>
+                        <li>Custom Integration</li>
+                    </ul>
+                    
+                    <a href="contact-en.html" class="btn-pricing">Choose Plan</a>
+                </div>
+            </div>
+
+            <!-- Annual Discount -->
+            <div style="background: linear-gradient(135deg, #f8faff, #ffffff); padding: 40px; border-radius: 32px; margin: 40px 0; text-align: center;">
+                <h3 style="color: #1A4E8B;">Special Annual Discount</h3>
+                <p style="font-size: 18px; margin: 20px 0;">Get 15% off when you subscribe annually</p>
+                <a href="contact-en.html" style="display: inline-block; background: linear-gradient(135deg, #9C27B0, #29B6F6); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none;">Contact Us</a>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2 style="text-align: center; color: #1A4E8B;">Frequently Asked Questions</h2>
+                
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>Can I try the system for free?</h4>
+                        <p>Yes, we offer a 14-day free trial without requiring a credit card.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Can I upgrade between plans?</h4>
+                        <p>Yes, you can upgrade at any time and the difference is applied immediately.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Is there an annual contract?</h4>
+                        <p>Yes, we offer a 15% discount on annual subscriptions.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>What payment methods are accepted?</h4>
+                        <p>Visa, Mastercard, Bank Transfer, and Mada.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Can I add additional users?</h4>
+                        <p>Yes, additional users can be added for a nominal fee.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>Is English support available?</h4>
+                        <p>Yes, our support team speaks both Arabic and English.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>OdoNex</h4>
+                    <p>Integrated ERP Solutions for Enterprise Resource Planning</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="index-en.html">Home</a>
+                    <a href="features-en.html">Features</a>
+                    <a href="gallery-en.html">Gallery</a>
+                    <a href="pricing-en.html">Pricing</a>
+                    <a href="contact-en.html">Contact</a>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <p>Phone: +966 50 000 0000</p>
+                    <p>Email: info@odonex.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2026 OdoNex. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/language.js"></script>
+</body>
+</html>
