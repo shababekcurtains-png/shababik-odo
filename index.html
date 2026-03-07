@@ -10,6 +10,7 @@
     <header>
         <div class="container">
             <a href="index.html" class="logo">
+                <!-- Primary Logo Symbol -->
                 <img src="assets/images/odonex-symbol.svg" alt="OdoNex" class="logo-symbol">
                 <div>
                     <div class="logo-text">Odo<span>Nex</span></div>
@@ -18,7 +19,7 @@
             </a>
             <div style="display: flex; align-items: center;">
                 <nav>
-                    <a href="index.html">الرئيسية</a>
+                    <a href="index.html" class="active">الرئيسية</a>
                     <a href="gallery.html">معرض الأعمال</a>
                     <a href="#contact">اتصل بنا</a>
                 </nav>
@@ -31,21 +32,24 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
+        <!-- Hero Section with Primary Symbol -->
         <section class="hero">
             <div class="container">
+                <div class="hero-main-logo">
+                    <img src="assets/images/odonex-symbol.svg" alt="OdoNex Primary Symbol" class="hero-primary-symbol">
+                </div>
                 <h1>OdoNex</h1>
                 <div class="subtitle-ar">حلول محاسبية متكاملة</div>
                 <div class="subtitle-en">Integrated ERP Solutions</div>
                 <div class="hero-tagline">
-                    تكامل. أمان. توسع.
+                    أودونكس ERP | حلول OdoNex • تكامل. أمان. توسع.
                 </div>
             </div>
         </section>
 
-        <!-- Features Grid (6 Cards) -->
+        <!-- Core Features Grid (6 Cards) -->
         <section class="container">
-            <h2 class="section-title">مميزات OdoNex</h2>
+            <h2 class="section-title">مميزات OdoNex الأساسية</h2>
             <div class="features-grid">
                 <!-- Card 1: أمان البيانات -->
                 <div class="feature-card">
@@ -61,10 +65,10 @@
                     <p>نظام موحد يربط جميع أقسام شركتك: محاسبة، مبيعات، مشتريات، مخزون</p>
                 </div>
 
-                <!-- Card 3: قابلية التوسع -->
+                <!-- Card 3: قابلة التوسع -->
                 <div class="feature-card">
-                    <img src="assets/images/icon-scalability.svg" alt="قابلية التوسع" class="feature-icon">
-                    <h3>قابلية التوسع</h3>
+                    <img src="assets/images/icon-scalability.svg" alt="قابلة التوسع" class="feature-icon">
+                    <h3>قابلة التوسع</h3>
                     <p>ينمو مع عملك من شركة ناشئة إلى مؤسسة كبرى مع إضافة التطبيقات حسب الحاجة</p>
                 </div>
 
@@ -91,7 +95,7 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
+        <!-- Work Gallery Section -->
         <section class="container">
             <h2 class="section-title">معرض الأعمال</h2>
             <div class="gallery-grid">
@@ -99,11 +103,11 @@
                 <div class="gallery-card">
                     <div class="gallery-header">
                         <h3>Axiomify</h3>
-                        <div class="project-code">OdoNex ERP الموحد</div>
+                        <div class="project-subtitle">OdoNex ERP الموحد</div>
+                        <div class="project-code">عبر: مولد Axiomify</div>
                     </div>
                     <div class="gallery-content">
-                        <p><strong>عبر: مولد Axiomify</strong></p>
-                        <p>ملخص تصميم القطاعات وموارديات إنتاجها في صناعة المنتجات وحدات تجميع النفط والغاز</p>
+                        <p>ملخص تصميم القطاعات وموارديات إنتاجها في صناعة المنتجات وحدات تجميع النفط والغاز. تم تنفيذ المشروع باستخدام أحدث تقنيات OdoNex.</p>
                         <a href="#" class="btn-case-study">Read Case Study</a>
                     </div>
                 </div>
@@ -112,26 +116,28 @@
                 <div class="gallery-card">
                     <div class="gallery-header">
                         <h3>مشروع "Unloaded"</h3>
-                        <div class="project-code">أستنتج الإطار الموجود</div>
+                        <div class="project-subtitle">أستنتج الإطار الموجود</div>
+                        <div class="project-code">عبر: مولد Unloaded</div>
                     </div>
                     <div class="gallery-content">
-                        <p><strong>عبر: مولد Unloaded</strong></p>
-                        <p>ملخص تصميم القطاعات وموارديات إنتاجها في صناعة المنتجات وحدات تجميع النفط والغاز</p>
+                        <p>ملخص تصميم القطاعات وموارديات إنتاجها في صناعة المنتجات وحدات تجميع النفط والغاز. تطبيق شامل لأنظمة ERP متكاملة.</p>
                         <a href="#" class="btn-case-study">Read Case Study</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Contact Section with Mini Icons -->
         <section class="container" id="contact">
+            <h2 class="section-title">اتصل بنا</h2>
             <div class="contact-section">
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>تواصل معنا</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
+                    <div>
                         <div class="contact-person">
                             <h4>د. أحمد الفارسي</h4>
                             <div class="title">كبير مسؤولي التكنولوجيا</div>
+                            
+                            <!-- Contact details with mini icons -->
                             <div class="contact-detail">
                                 <img src="assets/images/icon-phone.svg" alt="phone" class="mini-icon">
                                 <span dir="ltr">+55 00 800 0505</span>
@@ -144,31 +150,40 @@
                                 <img src="assets/images/icon-linkedin.svg" alt="linkedin" class="mini-icon">
                                 <span>/in/ahmed-alfarsi</span>
                             </div>
+                            <div class="contact-detail">
+                                <img src="assets/images/icon-whatsapp.svg" alt="whatsapp" class="mini-icon">
+                                <span dir="ltr">+55 20 003 0600</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-form">
-                        <h3>أرسل رسالة</h3>
+                    
+                    <!-- Quick Contact Form -->
+                    <div>
+                        <h3 style="color: var(--primary-blue); margin-bottom: 20px;">أرسل رسالة</h3>
                         <form>
-                            <div class="form-group">
-                                <input type="text" placeholder="الاسم">
+                            <div style="margin-bottom: 15px;">
+                                <input type="text" placeholder="الاسم" style="width: 100%; padding: 15px; border-radius: 12px; border: 2px solid var(--border-light);">
                             </div>
-                            <div class="form-group">
-                                <input type="email" placeholder="البريد الإلكتروني">
+                            <div style="margin-bottom: 15px;">
+                                <input type="email" placeholder="البريد الإلكتروني" style="width: 100%; padding: 15px; border-radius: 12px; border: 2px solid var(--border-light);">
                             </div>
-                            <div class="form-group">
-                                <textarea rows="5" placeholder="الرسالة"></textarea>
+                            <div style="margin-bottom: 15px;">
+                                <textarea rows="4" placeholder="الرسالة" style="width: 100%; padding: 15px; border-radius: 12px; border: 2px solid var(--border-light);"></textarea>
                             </div>
-                            <button type="submit" class="btn-submit">إرسال</button>
+                            <button type="submit" style="background: var(--primary-blue); color: white; border: none; padding: 15px; border-radius: 50px; width: 100%; font-size: 16px; font-weight: bold; cursor: pointer;">إرسال</button>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Address Section -->
+        <!-- Address with Mini Icon -->
         <section class="container">
-            <div style="background: white; padding: 40px; border-radius: 32px; text-align: center; margin: 40px 0;">
-                <h3 style="color: var(--primary-blue); margin-bottom: 20px;">العنوان</h3>
+            <div style="background: white; padding: 30px; border-radius: 32px; text-align: center; margin: 40px 0;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px;">
+                    <img src="assets/images/icon-location.svg" alt="location" class="mini-icon" style="width: 24px; height: 24px;">
+                    <h3 style="color: var(--primary-blue);">العنوان</h3>
+                </div>
                 <p style="font-size: 18px;">الرياض - المملكة العربية السعودية</p>
                 <p style="color: var(--text-light);">ص.ب 12345، الرياض 11564</p>
             </div>
@@ -189,8 +204,12 @@
                     <a href="#contact">اتصل بنا</a>
                 </div>
                 <div>
-                    <h4>تابعنا</h4>
-                    <p>لينكد إن | تويتر | إنستغرام</p>
+                    <h4>تواصل معنا</h4>
+                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                        <img src="assets/images/icon-linkedin.svg" alt="linkedin" style="width: 24px; height: 24px;">
+                        <img src="assets/images/icon-twitter.svg" alt="twitter" style="width: 24px; height: 24px;">
+                        <img src="assets/images/icon-instagram.svg" alt="instagram" style="width: 24px; height: 24px;">
+                    </div>
                 </div>
             </div>
             <div class="copyright">
