@@ -1,1 +1,332 @@
-ههه
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OdoNex | الأسعار</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        .pricing-hero {
+            text-align: center;
+            padding: 60px 0 30px;
+            background: linear-gradient(145deg, #ffffff, #f8faff);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+            border: 1px solid #eef2f6;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(156,39,176,0.15);
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid #9C27B0;
+            transform: scale(1.05);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #9C27B0, #673AB7);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #1A4E8B;
+            margin: 20px 0;
+        }
+        
+        .price small {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+            text-align: right;
+        }
+        
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eef2f6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            color: #9C27B0;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .btn-pricing {
+            display: inline-block;
+            background: linear-gradient(135deg, #1A4E8B, #0f3a66);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-pricing:hover {
+            background: linear-gradient(135deg, #0f3a66, #1A4E8B);
+            transform: translateY(-2px);
+        }
+        
+        .faq-section {
+            background: white;
+            padding: 50px;
+            border-radius: 32px;
+            margin: 60px 0;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .faq-item h4 {
+            color: #1A4E8B;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .faq-item p {
+            color: #666;
+        }
+        
+        @media (max-width: 992px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/odonex-symbol.svg" alt="OdoNex" class="logo-symbol">
+                <div>
+                    <div class="logo-text">Odo<span>Nex</span></div>
+                    <div class="tagline">حلول محاسبية متكاملة</div>
+                </div>
+            </a>
+            <div style="display: flex; align-items: center;">
+                <nav>
+                    <a href="index.html">الرئيسية</a>
+                    <a href="features.html">المميزات</a>
+                    <a href="gallery.html">معرض الأعمال</a>
+                    <a href="pricing.html" class="active">الأسعار</a>
+                    <a href="contact.html">اتصل بنا</a>
+                </nav>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="ar" onclick="switchLanguage('ar')">العربية</button>
+                    <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">English</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="pricing-hero">
+            <div class="container">
+                <h1>باقات OdoNex</h1>
+                <p style="font-size: 18px; color: #666; max-width: 700px; margin: 20px auto;">
+                    اختر الباقة المناسبة لشركتك مع إمكانية الترقية في أي وقت
+                </p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="pricing-grid">
+                <!-- الباقة الأساسية -->
+                <div class="pricing-card">
+                    <h3>الباقة الأساسية</h3>
+                    <div class="price">
+                        999 <small>ريال/شهرياً</small>
+                    </div>
+                    <p style="color: #666; margin-bottom: 20px;">للشركات الناشئة والصغيرة</p>
+                    
+                    <ul class="feature-list">
+                        <li>المحاسبة الأساسية</li>
+                        <li>إدارة الفواتير</li>
+                        <li>تتبع المصروفات</li>
+                        <li>3 مستخدمين</li>
+                        <li>دعم فني خلال 48 ساعة</li>
+                        <li>تقرير شهري</li>
+                    </ul>
+                    
+                    <a href="contact.html" class="btn-pricing">اختر الباقة</a>
+                </div>
+
+                <!-- الباقة المتقدمة (الأكثر طلباً) -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">الأكثر طلباً</div>
+                    <h3>الباقة المتقدمة</h3>
+                    <div class="price">
+                        1,999 <small>ريال/شهرياً</small>
+                    </div>
+                    <p style="color: #666; margin-bottom: 20px;">للشركات المتوسطة</p>
+                    
+                    <ul class="feature-list">
+                        <li>جميع مميزات الأساسية</li>
+                        <li>إدارة المخزون</li>
+                        <li>المبيعات والمشتريات</li>
+                        <li>10 مستخدمين</li>
+                        <li>دعم فني خلال 24 ساعة</li>
+                        <li>تقارير متقدمة</li>
+                        <li>لوحات معلومات تفاعلية</li>
+                    </ul>
+                    
+                    <a href="contact.html" class="btn-pricing">اختر الباقة</a>
+                </div>
+
+                <!-- الباقة الشاملة -->
+                <div class="pricing-card">
+                    <h3>الباقة الشاملة</h3>
+                    <div class="price">
+                        2,999 <small>ريال/شهرياً</small>
+                    </div>
+                    <p style="color: #666; margin-bottom: 20px;">للشركات الكبرى</p>
+                    
+                    <ul class="feature-list">
+                        <li>جميع مميزات المتقدمة</li>
+                        <li>الموارد البشرية</li>
+                        <li>التصنيع والإنتاج</li>
+                        <li>مستخدمين غير محدود</li>
+                        <li>دعم فني فوري</li>
+                        <li>استشارات شهرية</li>
+                        <li>تدريب الموظفين</li>
+                        <li>تكامل مخصص</li>
+                    </ul>
+                    
+                    <a href="contact.html" class="btn-pricing">اختر الباقة</a>
+                </div>
+            </div>
+
+            <!-- خصم سنوي -->
+            <div style="background: linear-gradient(135deg, #f8faff, #ffffff); padding: 40px; border-radius: 32px; margin: 40px 0; text-align: center;">
+                <h3 style="color: #1A4E8B;">خصم خاص على الاشتراك السنوي</h3>
+                <p style="font-size: 18px; margin: 20px 0;">احصل على خصم 15% عند الاشتراك سنوياً</p>
+                <a href="contact.html" style="display: inline-block; background: linear-gradient(135deg, #9C27B0, #29B6F6); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none;">تواصل معنا</a>
+            </div>
+
+            <!-- الأسئلة الشائعة -->
+            <div class="faq-section">
+                <h2 style="text-align: center; color: #1A4E8B;">الأسئلة الشائعة</h2>
+                
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>هل يمكن تجربة النظام مجاناً؟</h4>
+                        <p>نعم، نوفر فترة تجريبية مجانية لمدة 14 يوماً دون الحاجة لبطاقة ائتمان.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>هل يمكن الترقية بين الباقات؟</h4>
+                        <p>نعم، يمكنك الترقية في أي وقت ويتم تطبيق الفرق بشكل فوري.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>هل يوجد عقد سنوي؟</h4>
+                        <p>نعم، نوفر خصم 15% على الاشتراك السنوي.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>ما هي طرق الدفع المتاحة؟</h4>
+                        <p>فيزا، ماستركارد، تحويل بنكي، ومدى.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>هل يمكن إضافة مستخدمين إضافيين؟</h4>
+                        <p>نعم، يمكن إضافة مستخدمين إضافيين مقابل رسوم رمزية.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h4>هل يوجد دعم فني بالعربية؟</h4>
+                        <p>نعم، فريق الدعم الفني يتحدث العربية والإنجليزية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>OdoNex</h4>
+                    <p>حلول محاسبية متكاملة لإدارة موارد المؤسسات</p>
+                </div>
+                <div>
+                    <h4>روابط سريعة</h4>
+                    <a href="index.html">الرئيسية</a>
+                    <a href="features.html">المميزات</a>
+                    <a href="gallery.html">معرض الأعمال</a>
+                    <a href="pricing.html">الأسعار</a>
+                    <a href="contact.html">اتصل بنا</a>
+                </div>
+                <div>
+                    <h4>تواصل معنا</h4>
+                    <p>هاتف: +966 50 000 0000</p>
+                    <p>بريد: info@odonex.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2026 OdoNex. جميع الحقوق محفوظة
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/language.js"></script>
+</body>
+</html>
