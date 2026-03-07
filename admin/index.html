@@ -1,1 +1,827 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OdoNex | لوحة التحكم</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        }
+        
+        :root {
+            --odo-purple: #9C27B0;
+            --next-blue: #29B6F6;
+            --primary-dark: #1A4E8B;
+            --accent-gold: #FFD700;
+            --bg-light: #F8F9FA;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+        
+        body {
+            background: var(--bg-light);
+            display: flex;
+        }
+        
+        /* ===== الشريط الجانبي ===== */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, var(--primary-dark), var(--odo-purple));
+            color: white;
+            min-height: 100vh;
+            position: fixed;
+            right: 0;
+            top: 0;
+            overflow-y: auto;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .sidebar-header {
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-header img {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+        
+        .sidebar-header h2 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-header span {
+            color: var(--accent-gold);
+        }
+        
+        .sidebar-header p {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .sidebar-menu {
+            padding: 20px;
+        }
+        
+        .menu-item {
+            padding: 15px 20px;
+            margin: 5px 0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .menu-item:hover,
+        .menu-item.active {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .menu-item i {
+            width: 24px;
+            font-size: 20px;
+        }
+        
+        .menu-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+            margin: 20px 0;
+        }
+        
+        /* ===== المحتوى الرئيسي ===== */
+        .main-content {
+            flex: 1;
+            margin-right: 280px;
+            padding: 30px;
+        }
+        
+        /* ===== الشريط العلوي ===== */
+        .top-bar {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .page-title h1 {
+            color: var(--text-dark);
+            font-size: 24px;
+        }
+        
+        .page-title p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .user-details {
+            text-align: right;
+        }
+        
+        .user-name {
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+        
+        .user-role {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+        
+        .logout-btn {
+            background: none;
+            border: 2px solid #ff4444;
+            color: #ff4444;
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: #ff4444;
+            color: white;
+        }
+        
+        /* ===== بطاقات الإحصائيات ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(156,39,176,0.15);
+        }
+        
+        .stat-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--odo-purple), var(--next-blue));
+        }
+        
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .stat-title {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+        
+        .stat-change {
+            font-size: 14px;
+            color: #4CAF50;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .stat-change.negative {
+            color: #ff4444;
+        }
+        
+        /* ===== الشبكة الرئيسية ===== */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .dashboard-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+        
+        .card-header h3 {
+            color: var(--text-dark);
+            font-size: 18px;
+        }
+        
+        .view-all {
+            color: var(--odo-purple);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        /* ===== جدول الرسائل ===== */
+        .messages-table {
+            width: 100%;
+        }
+        
+        .message-row {
+            display: grid;
+            grid-template-columns: 30px 1.5fr 1.5fr 1fr 100px 80px;
+            gap: 10px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--bg-light);
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .message-row.header {
+            color: var(--text-light);
+            font-weight: bold;
+            font-size: 13px;
+            background: var(--bg-light);
+            padding: 12px 0;
+            border-radius: 8px;
+        }
+        
+        .message-status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #4CAF50;
+        }
+        
+        .message-status.unread {
+            background: #ff4444;
+            box-shadow: 0 0 0 2px rgba(255,68,68,0.2);
+        }
+        
+        .message-sender {
+            font-weight: 600;
+        }
+        
+        .message-preview {
+            color: var(--text-light);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .message-date {
+            color: var(--text-light);
+            font-size: 12px;
+        }
+        
+        .badge {
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .badge.new {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .badge.replied {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+        
+        .action-btn {
+            color: var(--odo-purple);
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        
+        /* ===== قائمة المهام ===== */
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--bg-light);
+        }
+        
+        .task-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .task-checkbox.checked {
+            background: var(--odo-purple);
+            border-color: var(--odo-purple);
+        }
+        
+        .task-checkbox.checked:after {
+            content: '✓';
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+        }
+        
+        .task-content {
+            flex: 1;
+        }
+        
+        .task-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .task-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+        
+        .task-priority {
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .priority-high {
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        .priority-medium {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+        
+        .priority-low {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        /* ===== روابط سريعة ===== */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .quick-link {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s;
+        }
+        
+        .quick-link:hover {
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .quick-link i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        /* ===== تحليلات سريعة ===== */
+        .analytics-item {
+            margin-bottom: 20px;
+        }
+        
+        .analytics-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: var(--bg-light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--odo-purple), var(--next-blue));
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        
+        /* ===== التجاوب مع الشاشات ===== */
+        @media (max-width: 1200px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 80px;
+            }
+            
+            .sidebar .menu-item span {
+                display: none;
+            }
+            
+            .sidebar-header h2,
+            .sidebar-header p {
+                display: none;
+            }
+            
+            .main-content {
+                margin-right: 80px;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .message-row {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+            
+            .message-row.header {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط الجانبي -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="../assets/images/odonex-symbol.svg" alt="OdoNex">
+            <h2>Odo<span>Nex</span></h2>
+            <p>لوحة التحكم</p>
+        </div>
+        
+        <div class="sidebar-menu">
+            <div class="menu-item active">
+                <i>📊</i>
+                <span>الرئيسية</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='pages/features.html'">
+                <i>✨</i>
+                <span>المميزات</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='pages/gallery.html'">
+                <i>🖼️</i>
+                <span>معرض الأعمال</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='pages/pricing.html'">
+                <i>💰</i>
+                <span>الأسعار</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='pages/contact.html'">
+                <i>📞</i>
+                <span>جهات الاتصال</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='pages/messages.html'">
+                <i>✉️</i>
+                <span>الرسائل</span>
+            </div>
+            
+            <div class="menu-divider"></div>
+            
+            <div class="menu-item" onclick="window.location.href='pages/settings.html'">
+                <i>⚙️</i>
+                <span>الإعدادات</span>
+            </div>
+            <div class="menu-item" id="logoutBtn">
+                <i>🚪</i>
+                <span>تسجيل الخروج</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="page-title">
+                <h1>مرحباً بك في لوحة التحكم</h1>
+                <p id="currentDateTime"></p>
+            </div>
+            <div class="user-info">
+                <div>
+                    <div class="user-name" id="displayName">Admin</div>
+                    <div class="user-role">مدير النظام</div>
+                </div>
+                <div class="user-avatar" id="userAvatar">A</div>
+                <button class="logout-btn" onclick="logout()">تسجيل خروج</button>
+            </div>
+        </div>
+        
+        <!-- بطاقات الإحصائيات -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">إجمالي الزوار</span>
+                    <span class="stat-icon">👥</span>
+                </div>
+                <div class="stat-number">15,284</div>
+                <div class="stat-change">
+                    <span>↑</span> 12% عن الأسبوع الماضي
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">الرسائل الواردة</span>
+                    <span class="stat-icon">✉️</span>
+                </div>
+                <div class="stat-number">48</div>
+                <div class="stat-change">
+                    <span>12</span> غير مقروءة
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">المشاريع</span>
+                    <span class="stat-icon">📁</span>
+                </div>
+                <div class="stat-number">24</div>
+                <div class="stat-change">
+                    <span>↑</span> 3 مشاريع جديدة
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-title">طلبات الأسعار</span>
+                    <span class="stat-icon">💰</span>
+                </div>
+                <div class="stat-number">156</div>
+                <div class="stat-change">
+                    <span>↑</span> 8% عن الشهر الماضي
+                </div>
+            </div>
+        </div>
+        
+        <!-- الشبكة الرئيسية -->
+        <div class="dashboard-grid">
+            <!-- آخر الرسائل -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>آخر الرسائل</h3>
+                    <span class="view-all" onclick="window.location.href='pages/messages.html'">عرض الكل →</span>
+                </div>
+                
+                <div class="messages-table">
+                    <div class="message-row header">
+                        <div></div>
+                        <div>المرسل</div>
+                        <div>البريد</div>
+                        <div>الرسالة</div>
+                        <div>التاريخ</div>
+                        <div></div>
+                    </div>
+                    
+                    <div class="message-row">
+                        <div class="message-status unread"></div>
+                        <div class="message-sender">أحمد محمد</div>
+                        <div>ahmed@email.com</div>
+                        <div class="message-preview">استفسار عن باقة الأسعار المتقدمة...</div>
+                        <div class="message-date">منذ 5 دقائق</div>
+                        <div><span class="badge new">جديد</span></div>
+                    </div>
+                    
+                    <div class="message-row">
+                        <div class="message-status"></div>
+                        <div class="message-sender">سارة عبدالله</div>
+                        <div>sara@email.com</div>
+                        <div class="message-preview">طلب عرض سعر لنظام متكامل...</div>
+                        <div class="message-date">منذ ساعتين</div>
+                        <div><span class="badge replied">تم الرد</span></div>
+                    </div>
+                    
+                    <div class="message-row">
+                        <div class="message-status unread"></div>
+                        <div class="message-sender">محمد علي</div>
+                        <div>mohamed@email.com</div>
+                        <div class="message-preview">استفسار عن إمكانية تكامل النظام...</div>
+                        <div class="message-date">منذ 5 ساعات</div>
+                        <div><span class="badge new">جديد</span></div>
+                    </div>
+                    
+                    <div class="message-row">
+                        <div class="message-status"></div>
+                        <div class="message-sender">نورة خالد</div>
+                        <div>noura@email.com</div>
+                        <div class="message-preview">شكراً على الخدمة الممتازة...</div>
+                        <div class="message-date">الأمس</div>
+                        <div><span class="badge replied">تم الرد</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- المهام اليومية -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>المهام اليومية</h3>
+                    <span class="view-all">+ إضافة مهمة</span>
+                </div>
+                
+                <div class="task-item">
+                    <div class="task-checkbox"></div>
+                    <div class="task-content">
+                        <div class="task-title">مراجعة طلبات الاتصال الجديدة</div>
+                        <div class="task-meta">
+                            <span>📅 قبل 1 ساعة</span>
+                            <span>👤 قسم المبيعات</span>
+                        </div>
+                    </div>
+                    <span class="task-priority priority-high">عالية</span>
+                </div>
+                
+                <div class="task-item">
+                    <div class="task-checkbox checked"></div>
+                    <div class="task-content">
+                        <div class="task-title">تحديث الأسعار في الموقع</div>
+                        <div class="task-meta">
+                            <span>📅 مكتمل</span>
+                            <span>✓ تم</span>
+                        </div>
+                    </div>
+                    <span class="task-priority priority-medium">متوسطة</span>
+                </div>
+                
+                <div class="task-item">
+                    <div class="task-checkbox"></div>
+                    <div class="task-content">
+                        <div class="task-title">إضافة مشروع جديد للمعرض</div>
+                        <div class="task-meta">
+                            <span>📅 غداً</span>
+                            <span>👤 قسم التسويق</span>
+                        </div>
+                    </div>
+                    <span class="task-priority priority-low">منخفضة</span>
+                </div>
+                
+                <div class="task-item">
+                    <div class="task-checkbox"></div>
+                    <div class="task-content">
+                        <div class="task-title">الرد على استفسار شركة أسمك</div>
+                        <div class="task-meta">
+                            <span>📅 باقي ساعتين</span>
+                            <span>👤 مهم</span>
+                        </div>
+                    </div>
+                    <span class="task-priority priority-high">عالية</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- روابط سريعة للتعديل -->
+        <div style="margin-top: 30px;">
+            <h3 style="margin-bottom: 20px;">روابط سريعة للتعديل</h3>
+            <div class="quick-links">
+                <a href="pages/features.html" class="quick-link">
+                    <i>✨</i>
+                    <span>تعديل المميزات</span>
+                </a>
+                <a href="pages/pricing.html" class="quick-link">
+                    <i>💰</i>
+                    <span>تعديل الأسعار</span>
+                </a>
+                <a href="pages/gallery.html" class="quick-link">
+                    <i>🖼️</i>
+                    <span>إدارة معرض الأعمال</span>
+                </a>
+                <a href="pages/contact.html" class="quick-link">
+                    <i>📞</i>
+                    <span>معلومات الاتصال</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- تحليلات سريعة -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 30px;">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>أكثر الصفحات زيارة</h3>
+                </div>
+                
+                <div class="analytics-item">
+                    <div class="analytics-label">
+                        <span>الصفحة الرئيسية</span>
+                        <span>5,423</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="analytics-item">
+                    <div class="analytics-label">
+                        <span>المميزات</span>
+                        <span>3,890</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 70%"></div>
+                    </div>
+                </div>
+                
+                <div class="analytics-item">
+                    <div class="anal
