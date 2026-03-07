@@ -3,523 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OdoNex | حلول ERP المتكاملة</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-            background: #ffffff;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            padding: 15px 0;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo img {
-            height: 50px;
-            width: auto;
-        }
-        
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-menu a {
-            text-decoration: none;
-            color: #333;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-        
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: #7B2CBF;
-        }
-        
-        .lang-en {
-            background: none;
-            border: 1px solid #ddd;
-            padding: 5px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(145deg, #f8f9fa, #ffffff);
-            padding: 60px 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 56px;
-            color: #7B2CBF;
-            margin-bottom: 15px;
-        }
-        
-        .hero .subtitle {
-            font-size: 24px;
-            color: #00B4D8;
-            margin-bottom: 40px;
-        }
-        
-        .hero-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 20px;
-            margin: 40px 0;
-        }
-        
-        .hero-item {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 14px;
-            color: #555;
-        }
-        
-        /* Stats Section */
-        .stats-section {
-            background: #f8f9fa;
-            padding: 60px 0;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 48px;
-            font-weight: bold;
-            color: #7B2CBF;
-            margin-bottom: 10px;
-        }
-        
-        .stat-label {
-            font-size: 16px;
-            color: #666;
-        }
-        
-        /* Testimonials Section */
-        .testimonials {
-            padding: 60px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            color: #333;
-            margin-bottom: 15px;
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 50px;
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-        
-        .testimonial-card {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            position: relative;
-        }
-        
-        .testimonial-card::before {
-            content: "❝";
-            font-size: 60px;
-            color: #7B2CBF;
-            opacity: 0.3;
-            position: absolute;
-            top: 10px;
-            right: 20px;
-        }
-        
-        .testimonial-text {
-            font-size: 16px;
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .testimonial-author {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        
-        .testimonial-title {
-            font-size: 14px;
-            color: #7B2CBF;
-        }
-        
-        .testimonial-rating {
-            color: #FFD700;
-            margin-bottom: 15px;
-        }
-        
-        /* FAQ Section */
-        .faq-section {
-            background: #f8f9fa;
-            padding: 60px 0;
-        }
-        
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 40px;
-        }
-        
-        .faq-item {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .faq-question {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .faq-answer {
-            color: #666;
-            font-size: 14px;
-        }
-        
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            padding: 40px 0 20px;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        
-        .footer-logo img {
-            height: 40px;
-            width: auto;
-            filter: brightness(0) invert(1);
-        }
-        
-        .footer-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 14px;
-            color: #999;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .stats-grid,
-            .testimonials-grid,
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-menu {
-                display: none;
-            }
-        }
-    </style>
+    <title>OdoNex | حلول ERP الموحدة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="assets/images/odonex-logo.png" alt="OdoNex">
-                </div>
-                <nav class="nav-menu">
-                    <a href="index.html" class="active">الرئيسية</a>
-                    <a href="features.html">المميزات</a>
-                    <a href="pricing.html">الأسعار</a>
-                    <a href="gallery.html">معرض الأعمال</a>
-                    <a href="contact.html">اتصل بنا</a>
-                </nav>
-                <button class="lang-en" onclick="window.location.href='index-en.html'">EN</button>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <button class="btn-cta">ابدأ الآن</button>
+                <div class="lang-switch">EN 🌐</div>
+                <div class="theme-icon">🌙</div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="#" class="active">الرئيسية</a></li>
+                <li><a href="#features">المميزات</a></li>
+                <li><a href="#pricing">الأسعار</a></li>
+                <li><a href="#gallery">معرض الأعمال</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+
+            <div class="logo">
+                <img src="odonex-logo.png" alt="OdoNex Logo">
             </div>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <h1>OdoNex</h1>
-                <div class="subtitle">حلول ERP المتكاملة</div>
-                
-                <div class="hero-grid">
-                    <div class="hero-item">ادا إدارة الأعمال</div>
-                    <div class="hero-item">ادا تحسينات</div>
-                    <div class="hero-item">ادا حلول ERP</div>
-                    <div class="hero-item">ادا نموذج</div>
-                    <div class="hero-item">ادا خدمة</div>
-                    <div class="hero-item">ادا رقابة</div>
-                    <div class="hero-item">ادا تكنولوجيا</div>
-                    <div class="hero-item">ادا الإنتاج</div>
-                    <div class="hero-item">ادا التطوير</div>
-                    <div class="hero-item">ادا التنمية المستدامة</div>
-                    <div class="hero-item">ادا الاستثمار</div>
-                    <div class="hero-item">ادا الحماية</div>
-                    <div class="hero-item">ادا البيئة</div>
-                    <div class="hero-item">ادا العملاء</div>
-                    <div class="hero-item">ادا الأعمال</div>
-                    <div class="hero-item">ادا تعاونك</div>
-                    <div class="hero-item">ادا تطويرك</div>
-                    <div class="hero-item">ادا تجربتك المجانية</div>
+    <section class="hero">
+        <div class="hero-image">
+            <img src="odonex-logo.png" alt="OdoNex Central Logo">
+        </div>
+        <h1 class="hero-title">OdoNex | حلول ERP الموحدة</h1>
+        <p class="hero-subtitle">تكامل. أمان. توسع.</p>
+        <p class="hero-desc">نظام محاسبي متكامل يجمع جميع عمليات أعمالك في منصة واحدة سهلة وآمنة وقابلة للتوسع.</p>
+        
+        <div class="hero-btns">
+            <button class="btn-primary">ابدأ تجربتك المجانية</button>
+            <button class="btn-outline">اطلب عرضاً توضيحياً</button>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-icon purple-blue-gradient">🎧</div>
+            <h2>99%</h2>
+            <p>رضا العملاء</p>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon purple-blue-gradient">🌐</div>
+            <h2>15</h2>
+            <p>دولة حول العالم</p>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon purple-blue-gradient">💼</div>
+            <h2>+320</h2>
+            <p>مشروع منجز</p>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon purple-blue-gradient">👥</div>
+            <h2>+1500</h2>
+            <p>عميل نشط</p>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2 class="section-title">ماذا يقول <span>عملاؤنا</span></h2>
+        <p class="section-subtitle">آراء حقيقية من عملاء يثقون بنا في إدارة أعمالهم</p>
+        
+        <div class="testimonial-grid">
+            <div class="test-card">
+                <div class="stars">★★★★★</div>
+                <p>"نظام OdoNex غير طريقة إدارتنا للأعمال بالكامل. أصبحت التقارير المالية جاهزة بضغطة زر والدقة في الحسابات لا مثيل لها."</p>
+                <div class="user-info">
+                    <strong>محمد الشمري</strong>
+                    <span>مدير عام - مجموعة الشمري التجارية</span>
                 </div>
             </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section class="stats-section">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">99%</div>
-                        <div class="stat-label">رضا العملاء</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">15</div>
-                        <div class="stat-label">دولة حول العالم</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">+320</div>
-                        <div class="stat-label">مشروع منجز</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">+1500</div>
-                        <div class="stat-label">عميل نشط</div>
-                    </div>
+            <div class="test-card">
+                <div class="stars">★★★★★</div>
+                <p>"بعد تطبيق OdoNex وفرنا أكثر من 60% من وقت الفريق المحاسبي. النظام سهل الاستخدام والدعم الفني ممتاز."</p>
+                <div class="user-info">
+                    <strong>سارة العتيبي</strong>
+                    <span>المديرة المالية - عيادات النخبة</span>
                 </div>
             </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="testimonials">
-            <div class="container">
-                <h2 class="section-title">ماذا يقول عملاؤنا</h2>
-                <p class="section-subtitle">آراء حقيقية من عملاء يثقون بنا في إدارة أعمالهم</p>
-                
-                <div class="testimonials-grid">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-rating">★★★★★</div>
-                        <div class="testimonial-text">
-                            "إدارة 12 فرعاً أصبحت أسهل بكتير مع OdoNex. تتبع المخزون والمبيعات في الوقت الحقيقي ميزة لا غنى عنها"
-                        </div>
-                        <div class="testimonial-author">سارة العتيبي</div>
-                        <div class="testimonial-title">المديرة المالية - شركة النخبة</div>
-                    </div>
-
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-rating">★★★★★</div>
-                        <div class="testimonial-text">
-                            "بعد تطبيق OdoNex وفرنا أكثر من 60% من وقت الفريق المحاسبي. النظام سهل الاستخدام والدعم الفني ممتاز"
-                        </div>
-                        <div class="testimonial-author">محمد الشمري</div>
-                        <div class="testimonial-title">مدير عام - مجموعة الشركة التجارية</div>
-                    </div>
-
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-rating">★★★★★</div>
-                        <div class="testimonial-text">
-                            "نظام OdoNex غير طريقة إدارة لـ 3 فروع بالكامل. أصبحت التقارير المالية جاهزة بضغطة زر والدقة في الحسابات لا مثيل لها"
-                        </div>
-                        <div class="testimonial-author">فاطمة الزهراني</div>
-                        <div class="testimonial-title">مدير عام - جامعة أم القرى</div>
-                    </div>
-
-                    <!-- Testimonial 4 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-rating">★★★★★</div>
-                        <div class="testimonial-text">
-                            "الربط بين الأقسام المختلفة في النظام وفر علينا الكثير من الجهد. نوصي به بشدة لأي مؤسسة تعليمية"
-                        </div>
-                        <div class="testimonial-author">أحمد الحربي</div>
-                        <div class="testimonial-title">مدير عام - جامعة أم القرى</div>
-                    </div>
-
-                    <!-- Testimonial 5 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-rating">★★★★★</div>
-                        <div class="testimonial-text">
-                            "المرونة جداً عالية وتمكنا من تخصيصه ليناسب طبيعة عملنا في قطاع المقاولات. استثمار ممتاز"
-                        </div>
-                        <div class="testimonial-author">خالد القحطاني</div>
-                        <div class="testimonial-title">مدير مشاريع - شركة الأساسات</div>
-                    </div>
+            <div class="test-card">
+                <div class="stars">★★★★☆</div>
+                <p>"إدارة 12 فرعاً أصبحت أسهل بكثير مع OdoNex. تتبع المخزون والمبيعات في الوقت الحقيقي ميزة لا غنى عنها."</p>
+                <div class="user-info">
+                    <strong>خالد الدوسري</strong>
+                    <span>صاحب سلسلة مطاعم الديوان</span>
                 </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="faq-section">
-            <div class="container">
-                <h2 class="section-title">الأسئلة الشائعة</h2>
-                <p class="section-subtitle">إجابات على أكثر الأسئلة التي يطرحها عملاؤنا</p>
-                
-                <div class="faq-grid">
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            ما هو نظام OdoNex؟
-                            <span>+</span>
-                        </div>
-                        <div class="faq-answer">
-                            نظام ERP متكامل لإدارة موارد المؤسسات يجمع بين القوة والمرونة
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            هل يمكنني تجربة النظام قبل الشراء؟
-                            <span>+</span>
-                        </div>
-                        <div class="faq-answer">
-                            نعم، نوفر فترة تجريبية مجانية لمدة 14 يوماً
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            هل النظام يدعم اللغة العربية بالكامل؟
-                            <span>+</span>
-                        </div>
-                        <div class="faq-answer">
-                            نعم، واجهة المستخدم بالكامل بالعربية مع دعم كامل للغة الإنجليزية
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            كيف يتم حماية بياناتي؟
-                            <span>+</span>
-                        </div>
-                        <div class="faq-answer">
-            ي                نستخدم أحدث تقنيات التشفير والحماية لضمان أمان بياناتك
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            هل يمكن ربط النظام مع أنظمة أخرى؟
-                            <span>+</span>
-                        </div>
-                        <div class="faq-answer">
-                            نعم، نوفر API متكامل لربط النظام مع أي تطبيقات أخرى
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            ما هي خيارات الدعم الفني المتاحة؟
-                            <span>+</span>
-                        </div>
-                        <div class="faq-answer">
-                            دعم فني عبر الهاتف والبريد الإلكتروني والدردشة المباشرة
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            هل يمكن تخصيص النظام حسب احتياجاتي؟
-                            <span>+</span>
-                        </div>
-                        <div class="faq-answer">
-                            نعم، نوفر خدمات تخصيص كاملة لتناسب متطلبات عملك
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="assets/images/odonex-logo.png" alt="OdoNex">
-                </div>
-                <div class="footer-links">
-                    <a href="index.html">الرئيسية</a>
-                    <a href="features.html">المميزات</a>
-                    <a href="pricing.html">الأسعار</a>
-                    <a href="gallery.html">معرض الأعمال</a>
-                    <a href="contact.html">اتصل بنا</a>
-                </div>
-            </div>
-            <div class="copyright">
-                © 2026 جميع الحقوق محفوظة لشركة OdoNex | حلول ERP المتكاملة
             </div>
         </div>
+    </section>
+
+    <section class="faq">
+        <h2 class="section-title">الأسئلة <span>الشائعة</span></h2>
+        <p class="section-subtitle">إجابات على أكثر الأسئلة التي يطرحها عملاؤنا</p>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <span>ما هو نظام OdoNex؟</span>
+                <span class="arrow">v</span>
+            </div>
+            <div class="faq-item">
+                <span>هل يمكنني تجربة النظام قبل الاشتراك؟</span>
+                <span class="arrow">v</span>
+            </div>
+            <div class="faq-item">
+                <span>هل النظام يدعم اللغة العربية بالكامل؟</span>
+                <span class="arrow">v</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="odonex-logo.png" alt="OdoNex footer">
+        </div>
+        <p>© 2026 جميع الحقوق محفوظة لشركة OdoNex | حلول ERP الموحدة</p>
     </footer>
+
 </body>
 </html>
