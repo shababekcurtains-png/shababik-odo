@@ -2,28 +2,101 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>OdoNex | الرئيسية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OdoNex | حلول ERP الموحدة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo"><img src="assets/images/odonex-logo.png" alt="OdoNex"></div>
-        <ul class="nav-links">
-            <li><a href="index.html">الرئيسية</a></li>
-            <li><a href="features.html">المميزات</a></li>
-            <li><a href="gallery.html">معرض الأعمال</a></li>
-            <li><a href="pricing.html">الأسعار</a></li>
-            <li><a href="contact.html">اتصل بنا</a></li>
-            <li><a href="index-en.html" class="lang-switch">English</a></li>
-        </ul>
-    </nav>
-    <section class="hero">
-        <h1 class="gradient-text">حلول محاسبية متكاملة</h1>
-        <p>تكامل. أمان. توسع. ابدأ رحلتك مع OdoNex اليوم.</p>
-        <div class="btns">
-            <a href="contact.html" class="btn-primary">ابدأ الآن</a>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="odonex-logo.png" alt="OdoNex Logo" class="main-logo">
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#" class="active">الرئيسية</a>
+                <a href="#features">المميزات</a>
+                <a href="#pricing">الأسعار</a>
+                <a href="#gallery">معرض الأعمال</a>
+                <a href="#contact">اتصل بنا</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="theme-toggle">🌙</button>
+                <div class="lang-switch">
+                    <span>🌐 EN</span>
+                </div>
+                <button class="btn-nav-primary">ابدأ الآن</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-image">
+            <img src="odonex-logo.png" alt="OdoNex Emblem">
+        </div>
+        <h1 class="hero-title">OdoNex | حلول ERP الموحدة</h1>
+        <h2 class="hero-subtitle">تكامل. أمان. توسع.</h2>
+        <p class="hero-description">
+            نظام محاسبي متكامل يجمع جميع عمليات أعمالك في منصة واحدة سهلة وآمنة وقابلة للتوسع.
+        </p>
+        <div class="hero-btns">
+            <button class="btn-primary">ابدأ تجربتك المجانية</button>
+            <button class="btn-outline">اطلب عرضاً توضيحياً</button>
         </div>
     </section>
+
+    <section class="stats-section">
+        <div class="stat-item">
+            <div class="stat-icon icon-user">👥</div>
+            <h3>+1500</h3>
+            <p>عميل نشط</p>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon icon-project">💼</div>
+            <h3>+320</h3>
+            <p>مشروع منجز</p>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon icon-world">🌐</div>
+            <h3>15</h3>
+            <p>دولة حول العالم</p>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon icon-smile">🎧</div>
+            <h3>99%</h3>
+            <p>رضا العملاء</p>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2 class="faq-title">الأسئلة <span>الشائعة</span></h2>
+        <p class="faq-subtitle">إجابات على أكثر الأسئلة التي يطرحها عملاؤنا</p>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">ما هو نظام OdoNex؟ <span class="arrow">▼</span></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">هل يمكنني تجربة النظام قبل الاشتراك؟ <span class="arrow">▼</span></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">هل النظام يدعم اللغة العربية بالكامل؟ <span class="arrow">▼</span></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">كيف يتم حماية بياناتي؟ <span class="arrow">▼</span></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="odonex-logo.png" alt="OdoNex Logo" class="footer-logo">
+            <p>© 2026 جميع الحقوق محفوظة لشركة OdoNex | حلول ERP الموحدة</p>
+        </div>
+    </footer>
+
 </body>
 </html>
