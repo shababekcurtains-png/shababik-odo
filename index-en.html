@@ -5,6 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OdoNex | Integrated ERP Solutions</title>
     <link rel="stylesheet" href="assets/style.css">
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #1A4E8B, #0f3a66);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+        
+        .hero .subtitle {
+            font-size: 24px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(26,78,139,0.1);
+        }
+        
+        .feature-card h3 {
+            color: #1A4E8B;
+            margin-bottom: 15px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #9C27B0, #29B6F6);
+            color: white;
+            padding: 60px;
+            border-radius: 32px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            font-size: 36px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #1A4E8B;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -18,9 +113,11 @@
             </a>
             <div style="display: flex; align-items: center;">
                 <nav>
-                    <a href="index-en.html">Home</a>
-                    <a href="gallery-en.html">Work Gallery</a>
-                    <a href="#contact">Contact</a>
+                    <a href="index-en.html" class="active">Home</a>
+                    <a href="features-en.html">Features</a>
+                    <a href="gallery-en.html">Gallery</a>
+                    <a href="pricing-en.html">Pricing</a>
+                    <a href="contact-en.html">Contact</a>
                 </nav>
                 <div class="lang-switcher">
                     <button class="lang-btn" data-lang="ar" onclick="switchLanguage('ar')">العربية</button>
@@ -35,141 +132,52 @@
         <section class="hero">
             <div class="container">
                 <h1>OdoNex</h1>
-                <div class="subtitle-ar" style="color: var(--text-dark);">Integrated ERP Solutions</div>
-                <div class="subtitle-en" style="color: var(--primary-gold);">Integration. Security. Scalability.</div>
+                <div class="subtitle">Integrated ERP Solutions</div>
+                <p style="font-size: 18px; max-width: 700px; margin: 0 auto;">
+                    A complete ERP system combining power and flexibility to grow your business
+                </p>
             </div>
         </section>
 
-        <!-- Features Grid (6 Cards) -->
-        <section class="container">
-            <h2 class="section-title">OdoNex Features</h2>
+        <!-- Features Section -->
+        <div class="container">
+            <h2 class="section-title">Why Choose OdoNex?</h2>
             <div class="features-grid">
-                <!-- Card 1: Data Security -->
                 <div class="feature-card">
-                    <img src="assets/images/icon-security.svg" alt="Data Security" class="feature-icon">
-                    <h3>Data Security</h3>
-                    <p>Advanced data protection with comprehensive encryption and multi-level user permissions</p>
-                </div>
-
-                <!-- Card 2: Integration -->
-                <div class="feature-card">
-                    <img src="assets/images/icon-integration.svg" alt="Integration" class="feature-icon">
                     <h3>Full Integration</h3>
-                    <p>Unified system connecting all departments: Accounting, Sales, Purchases, Inventory</p>
+                    <p>Unified system connecting all departments in one platform</p>
                 </div>
-
-                <!-- Card 3: Scalability -->
                 <div class="feature-card">
-                    <img src="assets/images/icon-scalability.svg" alt="Scalability" class="feature-icon">
+                    <h3>High Security</h3>
+                    <p>Advanced data protection with encryption and user permissions</p>
+                </div>
+                <div class="feature-card">
                     <h3>Scalability</h3>
-                    <p>Grows with your business from startup to enterprise, adding apps as needed</p>
+                    <p>Grows with your business from startup to enterprise</p>
                 </div>
-
-                <!-- Card 4: Technical Support -->
                 <div class="feature-card">
-                    <img src="assets/images/icon-support.svg" alt="Technical Support" class="feature-icon">
                     <h3>24/7 Support</h3>
-                    <p>Dedicated support team around the clock ensuring business continuity</p>
+                    <p>Dedicated support team ensuring business continuity</p>
                 </div>
-
-                <!-- Card 5: Global Reach -->
                 <div class="feature-card">
-                    <img src="assets/images/icon-global.svg" alt="Global Reach" class="feature-icon">
                     <h3>Global Reach</h3>
-                    <p>Global solutions with local compliance including ZATCA requirements</p>
+                    <p>Global solutions with local compliance</p>
                 </div>
-
-                <!-- Card 6: High Efficiency -->
                 <div class="feature-card">
-                    <img src="assets/images/icon-efficiency.svg" alt="High Efficiency" class="feature-icon">
                     <h3>High Efficiency</h3>
-                    <p>Boost operational efficiency and reduce costs by up to 30%</p>
+                    <p>Boost efficiency and reduce costs by up to 30%</p>
                 </div>
             </div>
-        </section>
 
-        <!-- Gallery Section -->
-        <section class="container">
-            <h2 class="section-title">Work Gallery</h2>
-            <div class="gallery-grid">
-                <!-- Project 1: Axiomify -->
-                <div class="gallery-card">
-                    <div class="gallery-header">
-                        <h3>Axiomify</h3>
-                        <div class="project-code">Unified OdoNex ERP</div>
-                    </div>
-                    <div class="gallery-content">
-                        <p><strong>via: Axiomify Generator</strong></p>
-                        <p>Summary of sector design and production resources in manufacturing, oil and gas assembly units</p>
-                        <a href="#" class="btn-case-study">Read Case Study</a>
-                    </div>
-                </div>
-
-                <!-- Project 2: Unloaded -->
-                <div class="gallery-card">
-                    <div class="gallery-header">
-                        <h3>"Unloaded" Project</h3>
-                        <div class="project-code">Existing Framework Implementation</div>
-                    </div>
-                    <div class="gallery-content">
-                        <p><strong>via: Unloaded Generator</strong></p>
-                        <p>Summary of sector design and production resources in manufacturing, oil and gas assembly units</p>
-                        <a href="#" class="btn-case-study">Read Case Study</a>
-                    </div>
-                </div>
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2>Ready to Transform Your Business?</h2>
+                <p style="font-size: 18px; max-width: 600px; margin: 20px auto;">
+                    Get a free consultation and OdoNex system customized for your company
+                </p>
+                <a href="contact-en.html" class="btn">Contact Us Now</a>
             </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="container" id="contact">
-            <div class="contact-section">
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>Contact Us</h3>
-                        <div class="contact-person">
-                            <h4>Dr. Ahmed Al-Farsi</h4>
-                            <div class="title">Chief Technology Officer</div>
-                            <div class="contact-detail">
-                                <img src="assets/images/icon-phone.svg" alt="phone" class="mini-icon">
-                                <span dir="ltr">+55 00 800 0505</span>
-                            </div>
-                            <div class="contact-detail">
-                                <img src="assets/images/icon-email.svg" alt="email" class="mini-icon">
-                                <span>info@odonex.com</span>
-                            </div>
-                            <div class="contact-detail">
-                                <img src="assets/images/icon-linkedin.svg" alt="linkedin" class="mini-icon">
-                                <span>/in/ahmed-alfarsi</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contact-form">
-                        <h3>Send a Message</h3>
-                        <form>
-                            <div class="form-group">
-                                <input type="text" placeholder="Your Name">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" placeholder="Email Address">
-                            </div>
-                            <div class="form-group">
-                                <textarea rows="5" placeholder="Your Message"></textarea>
-                            </div>
-                            <button type="submit" class="btn-submit">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Address Section -->
-        <section class="container">
-            <div style="background: white; padding: 40px; border-radius: 32px; text-align: center; margin: 40px 0;">
-                <h3 style="color: var(--primary-blue); margin-bottom: 20px;">Address</h3>
-                <p style="font-size: 18px;">Riyadh - Saudi Arabia</p>
-                <p style="color: var(--text-light);">P.O. Box 12345, Riyadh 11564</p>
-            </div>
-        </section>
+        </div>
     </main>
 
     <footer>
@@ -182,12 +190,15 @@
                 <div>
                     <h4>Quick Links</h4>
                     <a href="index-en.html">Home</a>
-                    <a href="gallery-en.html">Work Gallery</a>
-                    <a href="#contact">Contact</a>
+                    <a href="features-en.html">Features</a>
+                    <a href="gallery-en.html">Gallery</a>
+                    <a href="pricing-en.html">Pricing</a>
+                    <a href="contact-en.html">Contact</a>
                 </div>
                 <div>
-                    <h4>Follow Us</h4>
-                    <p>LinkedIn | Twitter | Instagram</p>
+                    <h4>Contact</h4>
+                    <p>Phone: +966 50 000 0000</p>
+                    <p>Email: info@odonex.com</p>
                 </div>
             </div>
             <div class="copyright">
@@ -196,6 +207,6 @@
         </div>
     </footer>
 
-    <script src="js/language.js"></script>
+    <script src="assets/js/language.js"></script>
 </body>
 </html>
