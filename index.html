@@ -1,91 +1,29 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" id="odonex-site">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OdoNex | حلول محاسبية متكاملة</title>
+    <title>OdoNex | الرئيسية</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <nav class="navbar">
-        <div class="logo">
-            <img src="assets/images/odonex-logo.png" alt="OdoNex">
-        </div>
+        <div class="logo"><img src="assets/images/odonex-logo.png" alt="OdoNex"></div>
         <ul class="nav-links">
-            <li><a href="#home" data-key="nav-home">الرئيسية</a></li>
-            <li><a href="#features" data-key="nav-features">المميزات</a></li>
-            <li><a href="#portfolio" data-key="nav-portfolio">معرض الأعمال</a></li>
-            <li><a href="#pricing" data-key="nav-pricing">الأسعار</a></li>
-            <li><a href="#contact" data-key="nav-contact">اتصل بنا</a></li>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="features.html">المميزات</a></li>
+            <li><a href="gallery.html">معرض الأعمال</a></li>
+            <li><a href="pricing.html">الأسعار</a></li>
+            <li><a href="contact.html">اتصل بنا</a></li>
+            <li><a href="index-en.html" class="lang-switch">English</a></li>
         </ul>
-        <button class="lang-btn" onclick="toggleLanguage()">English</button>
     </nav>
-
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 data-key="hero-title">أودونكس | حلول ERP الموحدة</h1>
-            <h2 class="gradient-text" data-key="hero-subtitle">تكامل. أمان. توسع.</h2>
-            <div class="hero-btns">
-                <button class="btn-primary" data-key="btn-trial">ابدأ تجربتك المجانية</button>
-                <button class="btn-secondary" data-key="btn-demo">طلب عرضاً توضيحياً</button>
-            </div>
+    <section class="hero">
+        <h1 class="gradient-text">حلول محاسبية متكاملة</h1>
+        <p>تكامل. أمان. توسع. ابدأ رحلتك مع OdoNex اليوم.</p>
+        <div class="btns">
+            <a href="contact.html" class="btn-primary">ابدأ الآن</a>
         </div>
     </section>
-
-    <section id="features" class="features-grid">
-        <h2 class="section-title" data-key="features-title">المميزات</h2>
-        <div class="grid-container">
-            <div class="feature-card">
-                <img src="assets/icons/integration.svg" alt="">
-                <h3 data-key="feat-1-t">تكامل</h3>
-                <p data-key="feat-1-p">دمج سلس لجميع أنظمتك ووظائفك التشغيلية.</p>
-            </div>
-            </div>
-    </section>
-
-    <section id="portfolio" class="portfolio">
-        <h2 class="section-title" data-key="portfolio-title">معرض الأعمال</h2>
-        <div class="portfolio-container">
-            <div class="work-item">
-                <img src="assets/images/work1.png" alt="">
-                <h3 data-key="work-1-t">تنفيذ حلول ERP الموحدة</h3>
-                <button class="read-more" data-key="read-case">Read Case Study</button>
-            </div>
-            </div>
-    </section>
-
-    <section id="pricing" class="pricing">
-        <h2 class="section-title" data-key="pricing-title">الأسعار</h2>
-        <div class="pricing-cards">
-            <div class="price-card">
-                <h3 data-key="price-starter">المبتدئ</h3>
-                <div class="price">$129<span>/mo</span></div>
-                <ul class="price-features">
-                    <li data-key="p-feat-1">ميزات رقمية متقدمة</li>
-                    <li data-key="p-feat-2">دعم أمن البيانات الشامل</li>
-                </ul>
-                <button class="btn-price" data-key="btn-choose">الخطة</button>
-            </div>
-            </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <h2 class="section-title" data-key="contact-title">اتصل بنا</h2>
-        <div class="contact-wrapper">
-            <form id="contact-form">
-                <input type="email" placeholder="البريد الإلكتروني">
-                <textarea placeholder="الرسالة"></textarea>
-                <button type="submit" class="btn-primary" data-key="btn-send">تقديم</button>
-            </form>
-            <div class="contact-info">
-                <p>DR. AHMED AL-FARSI</p>
-                <p>info@odonex.com</p>
-            </div>
-        </div>
-    </section>
-
-    <script src="main.js"></script>
 </body>
 </html>
