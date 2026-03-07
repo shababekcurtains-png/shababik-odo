@@ -1,1 +1,286 @@
-بببب
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OdoNex | Contact Us</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin: 50px 0;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 40px;
+            border-radius: 32px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .contact-info h2 {
+            color: #1A4E8B;
+            margin-bottom: 30px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f8faff;
+            border-radius: 16px;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #9C27B0, #29B6F6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .info-text h4 {
+            color: #1A4E8B;
+            margin-bottom: 5px;
+        }
+        
+        .info-text p {
+            color: #666;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 32px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1A4E8B;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eef2f6;
+            border-radius: 16px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #9C27B0;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #1A4E8B, #0f3a66);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #0f3a66, #1A4E8B);
+            transform: translateY(-2px);
+        }
+        
+        .map-container {
+            margin: 40px 0;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index-en.html" class="logo">
+                <img src="assets/images/odonex-symbol.svg" alt="OdoNex" class="logo-symbol">
+                <div>
+                    <div class="logo-text">Odo<span>Nex</span></div>
+                    <div class="tagline">Integrated ERP Solutions</div>
+                </div>
+            </a>
+            <div style="display: flex; align-items: center;">
+                <nav>
+                    <a href="index-en.html">Home</a>
+                    <a href="features-en.html">Features</a>
+                    <a href="gallery-en.html">Gallery</a>
+                    <a href="pricing-en.html">Pricing</a>
+                    <a href="contact-en.html" class="active">Contact</a>
+                </nav>
+                <div class="lang-switcher">
+                    <button class="lang-btn" data-lang="ar" onclick="switchLanguage('ar')">العربية</button>
+                    <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">English</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div style="text-align: center; padding: 40px 0;">
+                <h1>Contact Us</h1>
+                <p style="font-size: 18px; color: #666; max-width: 700px; margin: 20px auto;">
+                    We're here to answer your questions and help you choose the right solution for your business
+                </p>
+            </div>
+
+            <div class="contact-container">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div class="info-text">
+                            <h4>Address</h4>
+                            <p>Riyadh - Al Malqa District<br>Saudi Arabia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div class="info-text">
+                            <h4>Phone</h4>
+                            <p dir="ltr">+966 50 123 4567</p>
+                            <p dir="ltr">+966 11 234 5678</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">✉️</div>
+                        <div class="info-text">
+                            <h4>Email</h4>
+                            <p>info@odonex.com</p>
+                            <p>support@odonex.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">⏰</div>
+                        <div class="info-text">
+                            <h4>Working Hours</h4>
+                            <p>Sunday - Thursday: 9am - 6pm</p>
+                            <p>Friday - Saturday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h2 style="margin-bottom: 30px;">Send us a Message</h2>
+                    
+                    <form>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter your name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="Enter your email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="05xxxxxxxx">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Inquiry Type</label>
+                            <select>
+                                <option>General Inquiry</option>
+                                <option>Price Quote</option>
+                                <option>Technical Support</option>
+                                <option>Partnership</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea rows="5" placeholder="Write your message here..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3625.2925!2d46.6753!3d24.7136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDQyJzQ5LjAiTiA0NsKwNDAnMzEuMCJF!5e0!3m2!1sen!2ssa!4v1234567890" 
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>OdoNex</h4>
+                    <p>Integrated ERP Solutions for Enterprise Resource Planning</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="index-en.html">Home</a>
+                    <a href="features-en.html">Features</a>
+                    <a href="gallery-en.html">Gallery</a>
+                    <a href="pricing-en.html">Pricing</a>
+                    <a href="contact-en.html">Contact</a>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <p>Phone: +966 50 000 0000</p>
+                    <p>Email: info@odonex.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2026 OdoNex. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/language.js"></script>
+</body>
+</html>
