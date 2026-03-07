@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -824,4 +823,111 @@
                 </div>
                 
                 <div class="analytics-item">
-                    <div class="anal
+                    <div class="analytics-label">
+                        <span>الأسعار</span>
+                        <span>2,567</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 55%"></div>
+                    </div>
+                </div>
+                
+                <div class="analytics-item">
+                    <div class="analytics-label">
+                        <span>معرض الأعمال</span>
+                        <span>1,890</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>نشاط اليوم</h3>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="display: flex; gap: 15px; align-items: center;">
+                        <div style="width: 40px; height: 40px; background: #e3f2fd; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1976d2;">📧</div>
+                        <div>
+                            <div style="font-weight: 600;">3 رسائل جديدة</div>
+                            <div style="font-size: 12px; color: var(--text-light);">منذ 30 دقيقة</div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; align-items: center;">
+                        <div style="width: 40px; height: 40px; background: #e8f5e9; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #2e7d32;">✓</div>
+                        <div>
+                            <div style="font-weight: 600;">تم تحديث الأسعار</div>
+                            <div style="font-size: 12px; color: var(--text-light);">منذ ساعتين</div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; align-items: center;">
+                        <div style="width: 40px; height: 40px; background: #fff3e0; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ef6c00;">👤</div>
+                        <div>
+                            <div style="font-weight: 600;">مستخدم جديد مسجل</div>
+                            <div style="font-size: 12px; color: var(--text-light);">منذ 3 ساعات</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // عرض التاريخ والوقت الحالي
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('currentDateTime').textContent = now.toLocaleDateString('ar-SA', options);
+        }
+        updateDateTime();
+        
+        // التحقق من تسجيل الدخول
+        function checkAuth() {
+            if (localStorage.getItem('adminLoggedIn') !== 'true') {
+                window.location.href = 'login.html';
+            } else {
+                // عرض اسم المستخدم
+                const username = localStorage.getItem('adminUsername') || 'Admin';
+                document.getElementById('displayName').textContent = username;
+                document.getElementById('userAvatar').textContent = username.charAt(0).toUpperCase();
+            }
+        }
+        checkAuth();
+        
+        // تسجيل الخروج
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            localStorage.removeItem('adminUsername');
+            localStorage.removeItem('adminLoginTime');
+            window.location.href = 'login.html';
+        }
+        
+        // تفعيل/إلغاء المهام
+        document.querySelectorAll('.task-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('click', function() {
+                this.classList.toggle('checked');
+            });
+        });
+        
+        // قائمة المهام (بيانات تجريبية)
+        const tasks = [
+            { title: 'مراجعة طلبات الاتصال الجديدة', priority: 'high', completed: false },
+            { title: 'تحديث الأسعار في الموقع', priority: 'medium', completed: true },
+            { title: 'إضافة مشروع جديد للمعرض', priority: 'low', completed: false },
+            { title: 'الرد على استفسار شركة أسمك', priority: 'high', completed: false }
+        ];
+    </script>
+</body>
+</html>
