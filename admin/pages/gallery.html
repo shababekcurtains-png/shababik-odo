@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OdoNex | إدارة معرض الأعمال</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        }
+        
+        :root {
+            --odo-purple: #9C27B0;
+            --next-blue: #29B6F6;
+            --primary-dark: #1A4E8B;
+            --accent-gold: #FFD700;
+            --bg-light: #F8F9FA;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+        
+        body {
+            background: var(--bg-light);
+            display: flex;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, var(--primary-dark), var(--odo-purple));
+            color: white;
+            min-height: 100vh;
+            position: fixed;
+            right: 0;
+            top: 0;
+            overflow-y: auto;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        .sidebar-header {
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-header img {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+        
+        .sidebar-header h2 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-header span {
+            color: var(--accent-gold);
+        }
+        
+        .sidebar-header p {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .sidebar-menu {
+            padding: 20px;
+        }
+        
+        .menu-item {
+            padding: 15px 20px;
+            margin: 5px 0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+        
+        .menu-item:hover,
+        .menu-item.active {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .menu-item i {
+            width: 24px;
+            font-size: 20px;
+        }
+        
+        .menu-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+            margin: 20px 0;
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-right: 280px;
+            padding: 30px;
+        }
+        
+        .top-bar {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .page-title h1 {
+            color: var(--text-dark);
+            font-size: 24px;
+        }
+        
+        .page-title p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .user-details {
+            text-align: right;
+        }
+        
+        .user-name {
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+        
+        .user-role {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+        
+        .logout-btn {
+            background: none;
+            border: 2px solid #ff4444;
+            color: #ff4444;
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: #ff4444;
+            color: white;
+        }
+        
+        /* بطاقة التعديل */
+        .edit-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+        
+        .card-header h2 {
+            color: var(--primary-dark);
+            font-size: 20px;
+        }
+        
+        .btn-add {
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .btn-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(156,39,176,0.3);
+        }
+        
+        /* شبكة المشاريع */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f6;
+            transition: all 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(156,39,176,0.15);
+        }
+        
+        .project-header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--odo-purple));
+            color: white;
+            padding: 25px;
+            position: relative;
+        }
+        
+        .project-header h3 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        
+        .project-subtitle {
+            color: var(--accent-gold);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .project-code {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .project-actions {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .project-action {
+            width: 35px;
+            height: 35px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .project-action:hover {
+            background: rgba(255,255,255,0.4);
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .project-tag {
+            background: var(--bg-light);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            color: var(--primary-dark);
+        }
+        
+        .project-status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-published {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .status-draft {
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        /* نافذة منبثقة */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 32px;
+            padding: 40px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: modalSlide 0.3s;
+        }
+        
+        @keyframes modalSlide {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .modal-header h3 {
+            color: var(--primary-dark);
+            font-size: 24px;
+        }
+        
+        .close-modal {
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--bg-light);
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--odo-purple);
+            box-shadow: 0 0 0 3px rgba(156,39,176,0.1);
+        }
+        
+        .image-upload {
+            border: 2px dashed var(--odo-purple);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .image-upload:hover {
+            background: rgba(156,39,176,0.05);
+        }
+        
+        .image-upload i {
+            font-size: 40px;
+            color: var(--odo-purple);
+            margin-bottom: 10px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn-save {
+            flex: 1;
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-cancel {
+            flex: 1;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-save:hover,
+        .btn-cancel:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* إحصائيات */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--odo-purple);
+        }
+        
+        .stat-label {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 1200px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 80px;
+            }
+            
+            .sidebar .menu-item span {
+                display: none;
+            }
+            
+            .sidebar-header h2,
+            .sidebar-header p {
+                display: none;
+            }
+            
+            .main-content {
+                margin-right: 80px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط الجانبي -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="../../assets/images/odonex-symbol.svg" alt="OdoNex">
+            <h2>Odo<span>Nex</span></h2>
+            <p>لوحة التحكم</p>
+        </div>
+        
+        <div class="sidebar-menu">
+            <div class="menu-item" onclick="window.location.href='../index.html'">
+                <i>📊</i>
+                <span>الرئيسية</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='features.html'">
+                <i>✨</i>
+                <span>المميزات</span>
+            </div>
+            <div class="menu-item active">
+                <i>🖼️</i>
+                <span>معرض الأعمال</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='pricing.html'">
+                <i>💰</i>
+                <span>الأسعار</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='contact.html'">
+                <i>📞</i>
+                <span>جهات الاتصال</span>
+            </div>
+            
+            <div class="menu-divider"></div>
+            
+            <div class="menu-item" onclick="window.location.href='../login.html'">
+                <i>🚪</i>
+                <span>تسجيل الخروج</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="page-title">
+                <h1>إدارة معرض الأعمال</h1>
+                <p>إضافة وتعديل المشاريع في المعرض</p>
+            </div>
+            <div class="user-info">
+                <div>
+                    <div class="user-name">Admin</div>
+                    <div class="user-role">مدير النظام</div>
+                </div>
+                <div class="user-avatar">A</div>
+                <button class="logout-btn" onclick="window.location.href='../login.html'">تسجيل خروج</button>
+            </div>
+        </div>
+        
+        <!-- إحصائيات سريعة -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">24</div>
+                <div class="stat-label">إجمالي المشاريع</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">18</div>
+                <div class="stat-label">منشورة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">مسودة</div>
+            </div>
+        </div>
+        
+        <!-- قائمة المشاريع -->
+        <div class="edit-card">
+            <div class="card-header">
+                <h2>المشاريع الحالية</h2>
+                <button class="btn-add" onclick="openModal('add')">
+                    <span>+</span> إضافة مشروع جديد
+                </button>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- مشروع Axiomify -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-actions">
+                            <div class="project-action" onclick="openModal('edit', 1)">✏️</div>
+                            <div class="project-action" onclick="deleteProject(1)">🗑️</div>
+                        </div>
+                        <h3>Axiomify</h3>
+                        <div class="project-subtitle">OdoNex ERP الموحد</div>
+                        <div class="project-code">عبر: مولد Axiomify</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">ملخص تصميم القطاعات وموارديات إنتاجها في صناعة المنتجات وحدات تجميع النفط والغاز. تم تنفيذ المشروع باستخدام أحدث تقنيات OdoNex.</p>
+                        
+                        <div class="project-meta">
+                            <span>📅 2025</span>
+                            <span>🏭 قطاع النفط والغاز</span>
+                        </div>
+                        
+                        <div class="project-tags">
+                            <span class="project-tag">ERP</span>
+                            <span class="project-tag">محاسبة</span>
+                            <span class="project-tag">مخزون</span>
+                        </div>
+                        
+                        <div style="margin-top: 15px;">
+                            <span class="project-status status-published">منشور</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- مشروع Unloaded -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-actions">
+                            <div class="project-action" onclick="openModal('edit', 2)">✏️</div>
+                            <div class="project-action" onclick="deleteProject(2)">🗑️</div>
+                        </div>
+                        <h3>مشروع Unloaded</h3>
+                        <div class="project-subtitle">أستنتج الإطار الموجود</div>
+                        <div class="project-code">عبر: مولد Unloaded</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">ملخص تصميم القطاعات وموارديات إنتاجها في صناعة المنتجات وحدات تجميع النفط والغاز. تطبيق شامل لأنظمة ERP متكاملة.</p>
+                        
+                        <div class="project-meta">
+                            <span>📅 2024</span>
+                            <span>🏭 قطاع الخدمات</span>
+                        </div>
+                        
+                        <div class="project-tags">
+                            <span class="project-tag">لوجستيات</span>
+                            <span class="project-tag">مخزون</span>
+                        </div>
+                        
+                        <div style="margin-top: 15px;">
+                            <span class="project-status status-published">منشور</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- مشروع السعودية للصناعة -->
+                <div class="project-card">
+                    <div class="project-header" style="background: linear-gradient(135deg, #2c3e50, #1a2632);">
+                        <div class="project-actions">
+                            <div class="project-action" onclick="openModal('edit', 3)">✏️</div>
+                            <div class="project-action" onclick="deleteProject(3)">🗑️</div>
+                        </div>
+                        <h3>الشركة السعودية للصناعة</h3>
+                        <div class="project-subtitle">SMI</div>
+                        <div class="project-code">SMI-2025-001</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">تطبيق شامل لأنظمة المحاسبة والمخازن والإنتاج لشركة صناعية كبرى تضم 3 مصانع.</p>
+                        
+                        <div class="project-meta">
+                            <span>📅 2025</span>
+                            <span>🏭 قطاع التصنيع</span>
+                        </div>
+                        
+                        <div class="project-tags">
+                            <span class="project-tag">تصنيع</span>
+                            <span class="project-tag">MRP</span>
+                        </div>
+                        
+                        <div style="margin-top: 15px;">
+                            <span class="project-status status-draft">مسودة</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- مشروع الفتيم للتجارة -->
+                <div class="project-card">
+                    <div class="project-header" style="background: linear-gradient(135deg, #27ae60, #1e8449);">
+                        <div class="project-actions">
+                            <div class="project-action" onclick="openModal('edit', 4)">✏️</div>
+                            <div class="project-action" onclick="deleteProject(4)">🗑️</div>
+                        </div>
+                        <h3>الفتيم للتجارة</h3>
+                        <div class="project-subtitle">توزيع</div>
+                        <div class="project-code">FT-2025-02</div>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">نظام متكامل لإدارة سلسلة التوريد والتوزيع لأكثر من 10,000 منتج.</p>
+                        
+                        <div class="project-meta">
+                            <span>📅 2024</span>
+                            <span>🏭 قطاع التوزيع</span>
+                        </div>
+                        
+                        <div class="project-tags">
+                            <span class="project-tag">توزيع</span>
+                            <span class="project-tag">مبيعات</span>
+                        </div>
+                        
+                        <div style="margin-top: 15px;">
+                            <span class="project-status status-published">منشور</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- نافذة إضافة/تعديل مشروع -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">إضافة مشروع جديد</h3>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            </div>
+            
+            <form id="projectForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>عنوان المشروع (عربي)</label>
+                        <input type="text" id="projectTitleAr" placeholder="مثال: مشروع Axiomify" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>عنوان المشروع (إنجليزي)</label>
+                        <input type="text" id="projectTitleEn" placeholder="Example: Axiomify Project" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>العنوان الفرعي (عربي)</label>
+                        <input type="text" id="projectSubtitleAr" placeholder="مثال: OdoNex ERP الموحد">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>العنوان الفرعي (إنجليزي)</label>
+                        <input type="text" id="projectSubtitleEn" placeholder="Example: Unified OdoNex ERP">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>رمز المشروع</label>
+                        <input type="text" id="projectCode" placeholder="مثال: عبر: مولد Axiomify">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>تاريخ المشروع</label>
+                        <input type="text" id="projectDate" placeholder="2025">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>الوصف (عربي)</label>
+                    <textarea id="projectDescAr" rows="4" placeholder="وصف المشروع بالعربية..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>الوصف (إنجليزي)</label>
+                    <textarea id="projectDescEn" rows="4" placeholder="Description in English..." required></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>القطاع</label>
+                        <select id="projectSector">
+                            <option value="oil-gas">نفط وغاز</option>
+                            <option value="manufacturing">تصنيع</option>
+                            <option value="distribution">توزيع</option>
+                            <option value="services">خدمات</option>
+                            <option value="retail">تجارة</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>الحالة</label>
+                        <select id="projectStatus">
+                            <option value="published">منشور</option>
+                            <option value="draft">مسودة</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>صورة المشروع</label>
+                    <div class="image-upload" onclick="document.getElementById('projectImage').click()">
+                        <i>📸</i>
+                        <p>اضغط لرفع صورة المشروع</p>
+                        <input type="file" id="projectImage" style="display: none;" accept="image/*">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>الوسوم (افصل بينها بفاصلة)</label>
+                    <input type="text" id="projectTags" placeholder="ERP, محاسبة, مخزون">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-save">حفظ المشروع</button>
+                    <button type="button" class="btn-cancel" onclick="closeModal()">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        let currentProjectId = null;
+        
+        function openModal(action, projectId = null) {
+            const modal = document.getElementById('projectModal');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            if (action === 'add') {
+                modalTitle.textContent = 'إضافة مشروع جديد';
+                currentProjectId = null;
+                document.getElementById('projectForm').reset();
+            } else {
+                modalTitle.textContent = 'تعديل المشروع';
+                currentProjectId = projectId;
+                // هنا يمكن جلب بيانات المشروع من قاعدة البيانات
+            }
+            
+            modal.classList.add('active');
+        }
+        
+        function closeModal() {
+            document.getElementById('projectModal').classList.remove('active');
+        }
+        
+        function deleteProject(id) {
+            if (confirm('هل أنت متأكد من حذف هذا المشروع؟')) {
+                alert('تم حذف المشروع بنجاح');
+                // هنا يتم حذف المشروع فعلياً
+            }
+        }
+        
+        document.getElementById('projectForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // جمع البيانات
+            const projectData = {
+                id: currentProjectId || Date.now(),
+                titleAr: document.getElementById('projectTitleAr').value,
+                titleEn: document.getElementById('projectTitleEn').value,
+                subtitleAr: document.getElementById('projectSubtitleAr').value,
+                subtitleEn: document.getElementById('projectSubtitleEn').value,
+                code: document.getElementById('projectCode').value,
+                date: document.getElementById('projectDate').value,
+                descAr: document.getElementById('projectDescAr').value,
+                descEn: document.getElementById('projectDescEn').value,
+                sector: document.getElementById('projectSector').value,
+                status: document.getElementById('projectStatus').value,
+                tags: document.getElementById('projectTags').value.split(',').map(t => t.trim())
+            };
+            
+            console.log('تم حفظ المشروع:', projectData);
+            alert('تم حفظ المشروع بنجاح');
+            closeModal();
+        });
+        
+        // إغلاق النافذة عند الضغط خارجها
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
