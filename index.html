@@ -5,12 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OdoNex | حلول محاسبية متكاملة</title>
     <link rel="stylesheet" href="assets/style.css">
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #1A4E8B, #0f3a66);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+        
+        .hero .subtitle {
+            font-size: 24px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(26,78,139,0.1);
+        }
+        
+        .feature-card h3 {
+            color: #1A4E8B;
+            margin-bottom: 15px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #9C27B0, #29B6F6);
+            color: white;
+            padding: 60px;
+            border-radius: 32px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            font-size: 36px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #1A4E8B;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <a href="index.html" class="logo">
-                <!-- Primary Logo Symbol -->
                 <img src="assets/images/odonex-symbol.svg" alt="OdoNex" class="logo-symbol">
                 <div>
                     <div class="logo-text">Odo<span>Nex</span></div>
@@ -20,8 +114,10 @@
             <div style="display: flex; align-items: center;">
                 <nav>
                     <a href="index.html" class="active">الرئيسية</a>
+                    <a href="features.html">المميزات</a>
                     <a href="gallery.html">معرض الأعمال</a>
-                    <a href="#contact">اتصل بنا</a>
+                    <a href="pricing.html">الأسعار</a>
+                    <a href="contact.html">اتصل بنا</a>
                 </nav>
                 <div class="lang-switcher">
                     <button class="lang-btn active" data-lang="ar" onclick="switchLanguage('ar')">العربية</button>
@@ -32,162 +128,56 @@
     </header>
 
     <main>
-        <!-- Hero Section with Primary Symbol -->
+        <!-- Hero Section -->
         <section class="hero">
             <div class="container">
-                <div class="hero-main-logo">
-                    <img src="assets/images/odonex-symbol.svg" alt="OdoNex Primary Symbol" class="hero-primary-symbol">
-                </div>
                 <h1>OdoNex</h1>
-                <div class="subtitle-ar">حلول محاسبية متكاملة</div>
-                <div class="subtitle-en">Integrated ERP Solutions</div>
-                <div class="hero-tagline">
-                    أودونكس ERP | حلول OdoNex • تكامل. أمان. توسع.
-                </div>
+                <div class="subtitle">حلول محاسبية متكاملة</div>
+                <p style="font-size: 18px; max-width: 700px; margin: 0 auto;">
+                    نظام ERP متكامل يجمع بين القوة والمرونة لتنمية أعمالك
+                </p>
             </div>
         </section>
 
-        <!-- Core Features Grid (6 Cards) -->
-        <section class="container">
-            <h2 class="section-title">مميزات OdoNex الأساسية</h2>
+        <!-- Features Section -->
+        <div class="container">
+            <h2 class="section-title">لماذا تختار OdoNex؟</h2>
             <div class="features-grid">
-                <!-- Card 1: أمان البيانات -->
                 <div class="feature-card">
-                    <img src="assets/images/icon-security.svg" alt="أمان البيانات" class="feature-icon">
-                    <h3>أمان البيانات</h3>
-                    <p>حماية متقدمة للبيانات مع تشفير شامل وصلاحيات مستخدمين متعددة المستويات</p>
+                    <h3>تكامل كامل</h3>
+                    <p>نظام موحد يربط جميع أقسام شركتك في منصة واحدة</p>
                 </div>
-
-                <!-- Card 2: التكامل -->
                 <div class="feature-card">
-                    <img src="assets/images/icon-integration.svg" alt="التكامل" class="feature-icon">
-                    <h3>التكامل الكامل</h3>
-                    <p>نظام موحد يربط جميع أقسام شركتك: محاسبة، مبيعات، مشتريات، مخزون</p>
+                    <h3>أمان عالي</h3>
+                    <p>حماية متقدمة للبيانات مع تشفير شامل وصلاحيات مستخدمين</p>
                 </div>
-
-                <!-- Card 3: قابلة التوسع -->
                 <div class="feature-card">
-                    <img src="assets/images/icon-scalability.svg" alt="قابلة التوسع" class="feature-icon">
-                    <h3>قابلة التوسع</h3>
-                    <p>ينمو مع عملك من شركة ناشئة إلى مؤسسة كبرى مع إضافة التطبيقات حسب الحاجة</p>
+                    <h3>قابلية التوسع</h3>
+                    <p>ينمو مع عملك من شركة ناشئة إلى مؤسسة كبرى</p>
                 </div>
-
-                <!-- Card 4: الدعم الفني -->
                 <div class="feature-card">
-                    <img src="assets/images/icon-support.svg" alt="الدعم الفني" class="feature-icon">
-                    <h3>الدعم الفني</h3>
-                    <p>فريق دعم متخصص على مدار الساعة لضمان استمرارية أعمالك</p>
+                    <h3>دعم فني</h3>
+                    <p>فريق دعم متخصص على مدار الساعة لضمان استمرارية العمل</p>
                 </div>
-
-                <!-- Card 5: وصول عالمي -->
                 <div class="feature-card">
-                    <img src="assets/images/icon-global.svg" alt="وصول عالمي" class="feature-icon">
                     <h3>وصول عالمي</h3>
-                    <p>حلول عالمية مع مراعاة المتطلبات المحلية والامتثال لهيئة الزكاة والضريبة</p>
+                    <p>حلول عالمية مع مراعاة المتطلبات المحلية</p>
                 </div>
-
-                <!-- Card 6: كفاءة عالية -->
                 <div class="feature-card">
-                    <img src="assets/images/icon-efficiency.svg" alt="كفاءة عالية" class="feature-icon">
                     <h3>كفاءة عالية</h3>
                     <p>رفع كفاءة العمليات وتقليل التكاليف بنسبة تصل إلى 30%</p>
                 </div>
             </div>
-        </section>
 
-        <!-- Work Gallery Section -->
-        <section class="container">
-            <h2 class="section-title">معرض الأعمال</h2>
-            <div class="gallery-grid">
-                <!-- Project 1: Axiomify -->
-                <div class="gallery-card">
-                    <div class="gallery-header">
-                        <h3>Axiomify</h3>
-                        <div class="project-subtitle">OdoNex ERP الموحد</div>
-                        <div class="project-code">عبر: مولد Axiomify</div>
-                    </div>
-                    <div class="gallery-content">
-                        <p>ملخص تصميم القطاعات وموارديات إنتاجها في صناعة المنتجات وحدات تجميع النفط والغاز. تم تنفيذ المشروع باستخدام أحدث تقنيات OdoNex.</p>
-                        <a href="#" class="btn-case-study">Read Case Study</a>
-                    </div>
-                </div>
-
-                <!-- Project 2: Unloaded -->
-                <div class="gallery-card">
-                    <div class="gallery-header">
-                        <h3>مشروع "Unloaded"</h3>
-                        <div class="project-subtitle">أستنتج الإطار الموجود</div>
-                        <div class="project-code">عبر: مولد Unloaded</div>
-                    </div>
-                    <div class="gallery-content">
-                        <p>ملخص تصميم القطاعات وموارديات إنتاجها في صناعة المنتجات وحدات تجميع النفط والغاز. تطبيق شامل لأنظمة ERP متكاملة.</p>
-                        <a href="#" class="btn-case-study">Read Case Study</a>
-                    </div>
-                </div>
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2>جاهز لتطوير أعمالك؟</h2>
+                <p style="font-size: 18px; max-width: 600px; margin: 20px auto;">
+                    احصل على استشارة مجانية ونظام OdoNex مصمم خصيصاً لشركتك
+                </p>
+                <a href="contact.html" class="btn">تواصل معنا الآن</a>
             </div>
-        </section>
-
-        <!-- Contact Section with Mini Icons -->
-        <section class="container" id="contact">
-            <h2 class="section-title">اتصل بنا</h2>
-            <div class="contact-section">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
-                    <div>
-                        <div class="contact-person">
-                            <h4>د. أحمد الفارسي</h4>
-                            <div class="title">كبير مسؤولي التكنولوجيا</div>
-                            
-                            <!-- Contact details with mini icons -->
-                            <div class="contact-detail">
-                                <img src="assets/images/icon-phone.svg" alt="phone" class="mini-icon">
-                                <span dir="ltr">+55 00 800 0505</span>
-                            </div>
-                            <div class="contact-detail">
-                                <img src="assets/images/icon-email.svg" alt="email" class="mini-icon">
-                                <span>info@odonex.com</span>
-                            </div>
-                            <div class="contact-detail">
-                                <img src="assets/images/icon-linkedin.svg" alt="linkedin" class="mini-icon">
-                                <span>/in/ahmed-alfarsi</span>
-                            </div>
-                            <div class="contact-detail">
-                                <img src="assets/images/icon-whatsapp.svg" alt="whatsapp" class="mini-icon">
-                                <span dir="ltr">+55 20 003 0600</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Quick Contact Form -->
-                    <div>
-                        <h3 style="color: var(--primary-blue); margin-bottom: 20px;">أرسل رسالة</h3>
-                        <form>
-                            <div style="margin-bottom: 15px;">
-                                <input type="text" placeholder="الاسم" style="width: 100%; padding: 15px; border-radius: 12px; border: 2px solid var(--border-light);">
-                            </div>
-                            <div style="margin-bottom: 15px;">
-                                <input type="email" placeholder="البريد الإلكتروني" style="width: 100%; padding: 15px; border-radius: 12px; border: 2px solid var(--border-light);">
-                            </div>
-                            <div style="margin-bottom: 15px;">
-                                <textarea rows="4" placeholder="الرسالة" style="width: 100%; padding: 15px; border-radius: 12px; border: 2px solid var(--border-light);"></textarea>
-                            </div>
-                            <button type="submit" style="background: var(--primary-blue); color: white; border: none; padding: 15px; border-radius: 50px; width: 100%; font-size: 16px; font-weight: bold; cursor: pointer;">إرسال</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Address with Mini Icon -->
-        <section class="container">
-            <div style="background: white; padding: 30px; border-radius: 32px; text-align: center; margin: 40px 0;">
-                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px;">
-                    <img src="assets/images/icon-location.svg" alt="location" class="mini-icon" style="width: 24px; height: 24px;">
-                    <h3 style="color: var(--primary-blue);">العنوان</h3>
-                </div>
-                <p style="font-size: 18px;">الرياض - المملكة العربية السعودية</p>
-                <p style="color: var(--text-light);">ص.ب 12345، الرياض 11564</p>
-            </div>
-        </section>
+        </div>
     </main>
 
     <footer>
@@ -200,16 +190,15 @@
                 <div>
                     <h4>روابط سريعة</h4>
                     <a href="index.html">الرئيسية</a>
+                    <a href="features.html">المميزات</a>
                     <a href="gallery.html">معرض الأعمال</a>
-                    <a href="#contact">اتصل بنا</a>
+                    <a href="pricing.html">الأسعار</a>
+                    <a href="contact.html">اتصل بنا</a>
                 </div>
                 <div>
                     <h4>تواصل معنا</h4>
-                    <div style="display: flex; gap: 15px; margin-top: 10px;">
-                        <img src="assets/images/icon-linkedin.svg" alt="linkedin" style="width: 24px; height: 24px;">
-                        <img src="assets/images/icon-twitter.svg" alt="twitter" style="width: 24px; height: 24px;">
-                        <img src="assets/images/icon-instagram.svg" alt="instagram" style="width: 24px; height: 24px;">
-                    </div>
+                    <p>هاتف: +966 50 000 0000</p>
+                    <p>بريد: info@odonex.com</p>
                 </div>
             </div>
             <div class="copyright">
@@ -218,6 +207,6 @@
         </div>
     </footer>
 
-    <script src="js/language.js"></script>
+    <script src="assets/js/language.js"></script>
 </body>
 </html>
