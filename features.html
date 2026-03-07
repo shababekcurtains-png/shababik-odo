@@ -4,14 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OdoNex | المميزات</title>
-    <link rel="stylesheet" href="assets/style.css">
     <style>
-        .features-hero {
-            text-align: center;
-            padding: 60px 0 30px;
-            background: linear-gradient(145deg, #ffffff, #f8faff);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
         }
         
+        :root {
+            --odonex-purple: #7B2CBF;
+            --odonex-blue: #00B4D8;
+            --text-main: #333333;
+            --text-secondary: #777777;
+            --bg-white: #FFFFFF;
+            --bg-light: #F8F9FA;
+            --main-gradient: linear-gradient(135deg, #7B2CBF, #00B4D8);
+        }
+        
+        body {
+            background: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bg-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid transparent;
+            border-image: var(--main-gradient) 1;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--odonex-purple);
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--main-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        
+        nav a:hover:after,
+        nav a.active:after {
+            transform: scaleX(1);
+        }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .lang-btn {
+            background: var(--bg-light);
+            border: 1px solid #ddd;
+            color: var(--text-main);
+            padding: 5px 12px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover,
+        .lang-btn.active {
+            background: var(--main-gradient);
+            border-color: transparent;
+            color: white;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(145deg, var(--bg-white), var(--bg-light));
+            padding: 60px 0 40px;
+            text-align: center;
+            border-bottom: 1px solid #eef2f6;
+        }
+        
+        .page-header h1 {
+            font-size: 48px;
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Features Grid */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -20,53 +149,201 @@
         }
         
         .feature-card {
-            background: white;
-            border-radius: 24px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: all 0.3s;
+            background: var(--bg-white);
+            border-radius: 20px;
+            padding: 40px 25px;
+            box-shadow: 0 10px 30px rgba(123,44,191,0.05);
             text-align: center;
-            border: 1px solid #eef2f6;
+            transition: all 0.3s;
+            border: 1px solid rgba(123,44,191,0.1);
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(156,39,176,0.15);
+            box-shadow: 0 20px 40px rgba(123,44,191,0.1);
         }
         
         .feature-icon {
             width: 80px;
             height: 80px;
             margin: 0 auto 25px;
-            background: linear-gradient(135deg, #9C27B0, #29B6F6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 32px;
         }
         
         .feature-card h3 {
-            color: #1A4E8B;
-            font-size: 22px;
+            font-size: 24px;
+            color: var(--text-main);
             margin-bottom: 15px;
         }
         
         .feature-card p {
-            color: #666;
-            line-height: 1.7;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        /* Feature Details */
+        .feature-details {
+            margin: 60px 0;
+        }
+        
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+        
+        .feature-row.reverse {
+            direction: ltr;
+        }
+        
+        .feature-info h2 {
+            font-size: 32px;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+        
+        .feature-info h2 span {
+            color: var(--odonex-purple);
+        }
+        
+        .feature-info p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            color: var(--odonex-blue);
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .feature-image {
+            text-align: center;
+        }
+        
+        .feature-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--main-gradient);
+            color: white;
+            padding: 60px;
+            border-radius: 32px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            font-size: 36px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--odonex-purple);
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text-main);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-grid h4 {
+            color: var(--odonex-blue);
+            margin-bottom: 20px;
+        }
+        
+        .footer-grid a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-grid a:hover {
+            color: var(--odonex-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
         }
         
         @media (max-width: 992px) {
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .feature-row {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
         }
         
         @media (max-width: 768px) {
             .features-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 36px;
+            }
+            
+            header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
     </style>
@@ -75,11 +352,7 @@
     <header>
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="assets/images/odonex-symbol.svg" alt="OdoNex" class="logo-symbol">
-                <div>
-                    <div class="logo-text">Odo<span>Nex</span></div>
-                    <div class="tagline">حلول محاسبية متكاملة</div>
-                </div>
+                <img src="assets/images/odonex-logo.png" alt="OdoNex">
             </a>
             <div style="display: flex; align-items: center;">
                 <nav>
@@ -98,86 +371,106 @@
     </header>
 
     <main>
-        <section class="features-hero">
+        <section class="page-header">
             <div class="container">
                 <h1>مميزات OdoNex</h1>
-                <p style="font-size: 18px; color: #666; max-width: 700px; margin: 20px auto;">
-                    حلول ERP شاملة مصممة لتبسيط عمليات شركتك وزيادة كفاءتها
-                </p>
+                <p>نظام ERP متكامل يجمع بين القوة والمرونة لتنمية أعمالك</p>
             </div>
         </section>
 
         <div class="container">
             <div class="features-grid">
-                <!-- الميزة 1 -->
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>أمان البيانات</h3>
-                    <p>تشفير متقدم وصلاحيات مستخدمين متعددة المستويات لحماية بيانات عملك الحساسة.</p>
-                </div>
-
-                <!-- الميزة 2 -->
-                <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
+                    <img src="assets/images/icons/integration.svg" alt="Integration" class="feature-icon">
                     <h3>تكامل كامل</h3>
-                    <p>ربط سلس بين المحاسبة والمبيعات والمخزون والموارد البشرية في منصة واحدة موحدة.</p>
+                    <p>نظام موحد يربط جميع أقسام شركتك في منصة واحدة</p>
                 </div>
-
-                <!-- الميزة 3 -->
                 <div class="feature-card">
-                    <div class="feature-icon">📈</div>
+                    <img src="assets/images/icons/security.svg" alt="Security" class="feature-icon">
+                    <h3>أمان البيانات</h3>
+                    <p>حماية متقدمة للبيانات مع تشفير شامل وصلاحيات مستخدمين</p>
+                </div>
+                <div class="feature-card">
+                    <img src="assets/images/icons/scalability.svg" alt="Scalability" class="feature-icon">
                     <h3>قابلية التوسع</h3>
-                    <p>ينمو مع عملك من شركة ناشئة إلى مؤسسة كبرى، مع إضافة الميزات حسب الحاجة.</p>
+                    <p>ينمو مع عملك من شركة ناشئة إلى مؤسسة كبرى</p>
                 </div>
-
-                <!-- الميزة 4 -->
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>تقارير فورية</h3>
-                    <p>وصول فوري للتقارير المالية ولوحات المعلومات ومؤشرات الأداء الرئيسية.</p>
-                </div>
-
-                <!-- الميزة 5 -->
-                <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3>وصول عالمي</h3>
-                    <p>دعم العملات المتعددة واللغات مع الامتثال للوائح المحلية مثل هيئة الزكاة والضريبة.</p>
-                </div>
-
-                <!-- الميزة 6 -->
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>كفاءة عالية</h3>
-                    <p>أتمتة المهام الروتينية وتقليل التكاليف التشغيلية بنسبة تصل إلى 30%.</p>
-                </div>
-
-                <!-- الميزة 7 -->
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>تطبيق جوال</h3>
-                    <p>وصول لبيانات عملك في أي وقت ومن أي مكان من خلال تطبيق الجوال.</p>
-                </div>
-
-                <!-- الميزة 8 -->
-                <div class="feature-card">
-                    <div class="feature-icon">🤝</div>
+                    <img src="assets/images/icons/support.svg" alt="Support" class="feature-icon">
                     <h3>دعم فني 24/7</h3>
-                    <p>فريق دعم متخصص متاح على مدار الساعة لمساعدتك.</p>
+                    <p>فريق دعم متخصص على مدار الساعة لضمان استمرارية العمل</p>
                 </div>
-
-                <!-- الميزة 9 -->
                 <div class="feature-card">
-                    <div class="feature-icon">🔧</div>
-                    <h3>قابلية التخصيص</h3>
-                    <p>تخصيص النظام ليناسب احتياجات عملك الخاصة وسير العمل.</p>
+                    <img src="assets/images/icons/global.svg" alt="Global" class="feature-icon">
+                    <h3>وصول عالمي</h3>
+                    <p>حلول عالمية مع مراعاة المتطلبات المحلية</p>
+                </div>
+                <div class="feature-card">
+                    <img src="assets/images/icons/efficiency.svg" alt="Efficiency" class="feature-icon">
+                    <h3>كفاءة عالية</h3>
+                    <p>رفع كفاءة العمليات وتقليل التكاليف بنسبة تصل إلى 30%</p>
                 </div>
             </div>
 
-            <!-- قسم الدعوة للإجراء -->
-            <div style="background: linear-gradient(135deg, #9C27B0, #29B6F6); color: white; padding: 60px; border-radius: 32px; margin: 60px 0; text-align: center;">
-                <h2 style="color: white; font-size: 36px;">هل أنت مستعد لتطوير أعمالك؟</h2>
-                <p style="font-size: 18px; max-width: 600px; margin: 20px auto; opacity: 0.9;">ابدأ مع OdoNex اليوم واكتشف الفرق</p>
-                <a href="contact.html" style="display: inline-block; background: white; color: #9C27B0; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px; margin-top: 20px;">اتصل بنا</a>
+            <div class="feature-details">
+                <!-- Integration -->
+                <div class="feature-row">
+                    <div class="feature-info">
+                        <h2><span>التكامل</span> الكامل</h2>
+                        <p>نظام OdoNex يوفر تكاملاً كاملاً بين جميع أقسام شركتك. من المحاسبة إلى المبيعات، ومن المخزون إلى الموارد البشرية، كل شيء يعمل معاً بسلاسة.</p>
+                        <ul class="feature-list">
+                            <li>ربط المحاسبة مع المبيعات والمشتريات</li>
+                            <li>تكامل المخزون مع نقاط البيع</li>
+                            <li>مزامنة البيانات في الوقت الفعلي</li>
+                            <li>تقارير موحدة وشاملة</li>
+                        </ul>
+                    </div>
+                    <div class="feature-image">
+                        <img src="assets/images/icons/integration.svg" alt="Integration" style="width: 200px;">
+                    </div>
+                </div>
+
+                <!-- Security -->
+                <div class="feature-row reverse">
+                    <div class="feature-image">
+                        <img src="assets/images/icons/security.svg" alt="Security" style="width: 200px;">
+                    </div>
+                    <div class="feature-info">
+                        <h2><span>أمان</span> البيانات</h2>
+                        <p>نحن نضع أمان بياناتك في المقام الأول. نوفر أحدث تقنيات التشفير والحماية لضمان سلامة معلوماتك.</p>
+                        <ul class="feature-list">
+                            <li>تشفير البيانات المتقدم</li>
+                            <li>صلاحيات مستخدمين متعددة المستويات</li>
+                            <li>نسخ احتياطي تلقائي</li>
+                            <li>مراقبة و تسجيل جميع العمليات</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Scalability -->
+                <div class="feature-row">
+                    <div class="feature-info">
+                        <h2><span>قابلية</span> التوسع</h2>
+                        <p>ينمو OdoNex مع نمو عملك. سواء كنت شركة ناشئة أو مؤسسة كبرى، نظامنا يتكيف مع احتياجاتك.</p>
+                        <ul class="feature-list">
+                            <li>إضافة مستخدمين غير محدود</li>
+                            <li>توسيع قاعدة البيانات بسهولة</li>
+                            <li>دعم فروع ومواقع متعددة</li>
+                            <li>ترقية الباقات في أي وقت</li>
+                        </ul>
+                    </div>
+                    <div class="feature-image">
+                        <img src="assets/images/icons/scalability.svg" alt="Scalability" style="width: 200px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2>هل أنت مستعد لتجربة OdoNex؟</h2>
+                <p style="font-size: 18px; max-width: 600px; margin: 20px auto;">
+                    جرب نظامنا مجاناً لمدة 14 يوماً دون الحاجة لبطاقة ائتمان
+                </p>
+                <a href="contact.html" class="btn">اطلب عرضاً تجريبياً</a>
             </div>
         </div>
     </main>
@@ -187,7 +480,7 @@
             <div class="footer-grid">
                 <div>
                     <h4>OdoNex</h4>
-                    <p>حلول محاسبية متكاملة لإدارة موارد المؤسسات</p>
+                    <p>حلول محاسبة متكاملة لإدارة موارد المؤسسات</p>
                 </div>
                 <div>
                     <h4>روابط سريعة</h4>
