@@ -89,7 +89,7 @@
         /* Left side - Language and Dark Mode */
         .nav-left {
             display: flex;
-            gap: 12px;
+            gap: 8px; /* تقليل المسافة بين العناصر */
             align-items: center;
         }
 
@@ -97,35 +97,35 @@
         .lang-container {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px; /* تقليل المسافة */
             border: 2px solid #ddd;
             border-radius: 8px;
-            padding: 6px 12px;
+            padding: 6px 10px; /* تقليل الحشو */
             background: transparent;
         }
 
         .lang-text {
             font-family: 'Cairo', sans-serif;
-            font-size: 14px;
+            font-size: 13px; /* تصغير الخط */
             font-weight: 500;
             color: #555;
         }
 
         .globe-icon {
-            width: 18px;
-            height: 18px;
+            width: 16px; /* تصغير الأيقونة */
+            height: 16px;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23555" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>');
             background-size: contain;
         }
 
-        /* Dark Mode Toggle - Empty outline (no fill, no color) */
+        /* Dark Mode Toggle - Empty outline, متقارب */
         .dark-mode-container {
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid #ddd;
             border-radius: 8px;
-            padding: 6px 10px;
+            padding: 6px 8px; /* تقليل الحشو */
             background: transparent;
             cursor: pointer;
         }
@@ -133,11 +133,11 @@
         .dark-mode-toggle {
             background: transparent;
             border: none;
-            font-size: 18px;
+            font-size: 16px; /* تصغير الخط */
             cursor: pointer;
-            color: #555; /* لون رمادي محايد */
-            width: 20px;
-            height: 20px;
+            color: #555;
+            width: 18px;
+            height: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -150,21 +150,21 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            margin-top: 30px;
-            padding-bottom: 60px;
+            margin-top: 20px; /* تقليل المسافة */
+            padding-bottom: 50px;
         }
 
-        /* Logo with Bouncing Animation - مضاعفة الحجم */
+        /* Logo with Bouncing Animation - أصغر 10% من الحجم الحالي (384px - 10% = 346px) */
         @keyframes gentleBounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-10px); }
         }
 
         .hero-logo {
-            width: 480px; /* مضاعفة الحجم (كان 240px) */
+            width: 346px; /* 384px - 10% = 346px */
             height: auto;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 25px 30px rgba(122,90,248,0.3));
+            margin-bottom: 15px; /* تقليل المسافة */
+            filter: drop-shadow(0 15px 20px rgba(122,90,248,0.2));
             animation: gentleBounce 4s ease-in-out infinite;
         }
 
@@ -175,7 +175,7 @@
             font-weight: 700;
             line-height: 1.2;
             color: #333333;
-            margin-bottom: 8px;
+            margin-bottom: 5px; /* تقليل المسافة */
             letter-spacing: -0.5px;
         }
 
@@ -194,26 +194,25 @@
             font-size: 28px;
             font-weight: 700;
             color: #000000;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px; /* تقليل المسافة */
         }
 
-        /* Description - مع التنسيق المطلوب */
+        /* Description - بدون فواصل أسطر */
         .description {
             font-family: 'Cairo', sans-serif;
             font-size: 20px;
             font-weight: 400;
-            line-height: 1.8;
+            line-height: 1.6; /* تقليل المسافة بين الأسطر */
             color: #8A8A8A;
             max-width: 900px;
-            margin: 0 auto 25px;
-            white-space: pre-line; /* للحفاظ على التنسيق النصي */
+            margin: 0 auto 20px; /* تقليل المسافة */
         }
 
-        /* CTA Buttons */
+        /* CTA Buttons - متقاربة */
         .cta-buttons {
             display: flex;
-            gap: 20px;
+            gap: 15px; /* تقليل المسافة */
             justify-content: center;
             align-items: center;
         }
@@ -224,13 +223,13 @@
             font-family: 'Cairo', sans-serif;
             font-size: 18px;
             font-weight: 600;
-            padding: 14px 28px;
+            padding: 12px 26px; /* تقليل الحشو */
             border-radius: 12px;
             border: none;
             cursor: pointer;
             box-shadow: 0 8px 18px rgba(122,90,248,0.25);
             transition: transform 0.3s, box-shadow 0.3s;
-            min-width: 180px;
+            min-width: 170px; /* تقليل العرض */
         }
 
         .btn-primary:hover {
@@ -245,11 +244,11 @@
             font-family: 'Cairo', sans-serif;
             font-size: 18px;
             font-weight: 600;
-            padding: 14px 28px;
+            padding: 12px 26px; /* تقليل الحشو */
             border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s;
-            min-width: 180px;
+            min-width: 170px; /* تقليل العرض */
         }
 
         .btn-secondary:hover {
@@ -335,7 +334,7 @@
             }
             
             .hero-logo {
-                width: 360px; /* تصغير نسبي للشاشات المتوسطة */
+                width: 280px;
             }
         }
 
@@ -347,7 +346,7 @@
             }
             
             .hero {
-                margin-top: 20px;
+                margin-top: 15px;
             }
             
             h1 {
@@ -363,19 +362,19 @@
             }
             
             .hero-logo {
-                width: 280px; /* تصغير للشاشات الصغيرة */
+                width: 220px;
             }
             
             .cta-buttons {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
             }
             
             .btn-primary,
             .btn-secondary {
                 width: 100%;
-                max-width: 260px;
-                padding: 12px 24px;
+                max-width: 240px;
+                padding: 10px 20px;
                 font-size: 16px;
             }
         }
@@ -399,14 +398,14 @@
                 <a href="#">اتصل بنا</a>
             </div>
 
-            <!-- Left side - Language and Dark Mode -->
+            <!-- Left side - Language and Dark Mode (متقاربة) -->
             <div class="nav-left">
                 <div class="lang-container">
                     <span class="lang-text">EN</span>
                     <div class="globe-icon"></div>
                 </div>
                 <div class="dark-mode-container" onclick="toggleDarkMode()">
-                    <span class="dark-mode-toggle">🌙</span>
+                    <span class="dark-mode-toggle">☽</span> <!-- هلال مفرغ -->
                 </div>
             </div>
         </div>
@@ -414,7 +413,7 @@
 
     <main class="hero">
         <div class="container" style="display: flex; flex-direction: column; align-items: center;">
-            <!-- Logo Image - مضاعف الحجم -->
+            <!-- Logo Image - أصغر 10% -->
             <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="hero-logo">
 
             <!-- Main Headline -->
@@ -422,18 +421,17 @@
                 <span class="brand-gradient">OdoNex</span> | حلول ERP الموحدة
             </h1>
 
-            <!-- Subheadline -->
+            <!-- Subheadline - بدون مسافات زائدة -->
             <div class="subheadline">
-                تكامل . أمان . توسع
+                تكامل. أمان. توسع.
             </div>
 
-            <!-- Description - بالتنسيق المطلوب -->
+            <!-- Description - سطر واحد بدون فواصل -->
             <p class="description">
-                نظام محاسبي متكامل يجمع جميع عمليات أعمالك في منصة واحدة سهلة<br>
-                وآمنة وقابلة للتوسع.
+                نظام محاسبي متكامل يجمع جميع عمليات أعمالك في منصة واحدة سهلة وآمنة وقابلة للتوسع.
             </p>
 
-            <!-- CTA Buttons -->
+            <!-- CTA Buttons - متقاربة -->
             <div class="cta-buttons">
                 <button class="btn-primary">ابدأ تجربتك المجانية</button>
                 <button class="btn-secondary">اطلب عرضاً توضيحياً</button>
@@ -448,7 +446,7 @@
             if (document.body.classList.contains('dark-mode')) {
                 toggleBtn.textContent = '☀️';
             } else {
-                toggleBtn.textContent = '🌙';
+                toggleBtn.textContent = '☽';
             }
         }
     </script>
