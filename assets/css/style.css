@@ -1,0 +1,179 @@
+/* تعريف المتغيرات بناءً على الصور */
+:root {
+    --primary-gradient: linear-gradient(135deg, #7B2CBF, #00B4D8);
+    --purple: #7B2CBF;
+    --blue: #00B4D8;
+    --text-dark: #2D3436;
+    --text-gray: #636E72;
+    --bg-light: #F9F9FB;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    direction: rtl;
+}
+
+/* القائمة العلوية */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-logo { height: 40px; }
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-gray);
+    margin: 0 15px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.nav-links a.active { color: var(--purple); }
+
+.nav-actions { display: flex; align-items: center; gap: 15px; }
+
+.btn-nav-primary {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* القسم الرئيسي (Hero) */
+.hero-section {
+    text-align: center;
+    padding: 80px 10%;
+    background: radial-gradient(circle at top, #f0e6ff 0%, #f9f9fb 50%);
+}
+
+.hero-image img {
+    max-width: 280px;
+    margin-bottom: 30px;
+}
+
+.hero-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.hero-subtitle {
+    font-size: 28px;
+    color: var(--blue);
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+}
+
+.hero-btns { display: flex; justify-content: center; gap: 20px; }
+
+.btn-primary {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(123, 44, 191, 0.2);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--purple);
+    color: var(--purple);
+    padding: 15px 35px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* الإحصائيات */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 60px 10%;
+    text-align: center;
+    gap: 20px;
+}
+
+.stat-icon {
+    font-size: 30px;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    background: var(--primary-gradient);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}
+
+.stat-item h3 { font-size: 32px; color: var(--purple); }
+
+/* الأسئلة الشائعة */
+.faq-section { padding: 80px 10%; text-align: center; }
+
+.faq-title span { color: var(--blue); }
+
+.faq-container {
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.faq-item {
+    background: white;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: right;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    cursor: pointer;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+/* التذييل */
+.footer {
+    padding: 40px;
+    background: white;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+.footer-logo { height: 30px; margin-bottom: 10px; }
+.footer p { font-size: 14px; color: var(--text-gray); }
