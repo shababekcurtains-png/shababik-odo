@@ -3,92 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OdoNex | Integrated ERP Solutions</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <title>OdoNex | Integrated Accounting Solutions</title>
     <style>
-        :root {
-            --odo-purple: #9C27B0;
-            --next-blue: #29B6F6;
-            --primary-dark: #1A4E8B;
-            --accent-gold: #FFD700;
-            --bg-light: #F8F9FA;
-            --text-dark: #333333;
-            --text-light: #666666;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
         }
-
+        
+        :root {
+            --odonex-purple: #7B2CBF;
+            --odonex-blue: #00B4D8;
+            --text-main: #333333;
+            --text-secondary: #777777;
+            --bg-white: #FFFFFF;
+            --bg-light: #F8F9FA;
+            --main-gradient: linear-gradient(135deg, #7B2CBF, #00B4D8);
+        }
+        
         body {
             background: var(--bg-light);
-            color: var(--text-dark);
+            color: var(--text-main);
             line-height: 1.6;
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
+        
+        /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary-dark), var(--odo-purple));
-            color: white;
+            background: var(--bg-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             padding: 15px 0;
-            box-shadow: 0 4px 20px rgba(156,39,176,0.3);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 3px solid transparent;
+            border-image: var(--main-gradient) 1;
         }
-
+        
         header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
+        
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
             text-decoration: none;
         }
-
-        .logo-symbol {
-            width: 50px;
+        
+        .logo img {
             height: 50px;
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+            width: auto;
         }
-
-        .logo-text {
-            font-size: 28px;
-            font-weight: bold;
-            color: white;
-        }
-
-        .logo-text span {
-            color: var(--accent-gold);
-        }
-
-        .tagline {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-top: 5px;
-        }
-
+        
         nav a {
-            color: white;
+            color: var(--text-main);
             text-decoration: none;
             margin: 0 15px;
             font-weight: 500;
-            transition: all 0.3s;
+            transition: color 0.3s;
             position: relative;
         }
-
+        
+        nav a:hover {
+            color: var(--odonex-purple);
+        }
+        
         nav a:after {
             content: '';
             position: absolute;
@@ -96,26 +83,25 @@
             left: 0;
             right: 0;
             height: 2px;
-            background: var(--accent-gold);
+            background: var(--main-gradient);
             transform: scaleX(0);
             transition: transform 0.3s;
         }
-
+        
         nav a:hover:after,
         nav a.active:after {
             transform: scaleX(1);
         }
-
+        
         .lang-switcher {
             display: flex;
             gap: 5px;
-            margin-left: 20px;
         }
-
+        
         .lang-btn {
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.4);
-            color: white;
+            background: var(--bg-light);
+            border: 1px solid #ddd;
+            color: var(--text-main);
             padding: 5px 12px;
             border-radius: 50px;
             cursor: pointer;
@@ -123,84 +109,98 @@
             font-size: 14px;
             transition: all 0.3s;
         }
-
+        
         .lang-btn:hover,
         .lang-btn.active {
-            background: var(--accent-gold);
-            border-color: var(--accent-gold);
-            color: var(--primary-dark);
+            background: var(--main-gradient);
+            border-color: transparent;
+            color: white;
         }
-
+        
+        /* Hero Section */
         .hero {
-            background: linear-gradient(145deg, #ffffff, var(--bg-light));
-            padding: 80px 0;
+            background: linear-gradient(145deg, var(--bg-white), var(--bg-light));
+            padding: 60px 0 40px;
             text-align: center;
-            border-bottom: 3px solid transparent;
-            border-image: linear-gradient(135deg, var(--odo-purple), var(--next-blue)) 1;
+            border-bottom: 1px solid #eef2f6;
         }
-
+        
         .hero h1 {
             font-size: 56px;
-            background: linear-gradient(135deg, var(--primary-dark), var(--odo-purple));
+            background: var(--main-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
-
+        
         .hero .subtitle {
             font-size: 24px;
-            color: var(--text-light);
-            margin-bottom: 30px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
         }
-
+        
         .hero-tagline {
-            font-size: 20px;
-            color: var(--odo-purple);
-            font-weight: 600;
+            font-size: 18px;
+            color: var(--odonex-purple);
+            margin: 20px 0;
         }
-
+        
+        .hero-tagline span {
+            color: var(--odonex-blue);
+            margin: 0 10px;
+        }
+        
+        .logo-symbol {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            filter: drop-shadow(0 10px 20px rgba(123,44,191,0.2));
+        }
+        
+        /* Section Title */
         .section-title {
             text-align: center;
             font-size: 36px;
-            margin: 50px 0 30px;
-            color: var(--primary-dark);
+            margin: 60px 0 30px;
+            color: var(--text-main);
             position: relative;
         }
-
+        
         .section-title:after {
             content: '';
             display: block;
             width: 80px;
             height: 4px;
-            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            background: var(--main-gradient);
             margin: 15px auto 0;
             border-radius: 2px;
         }
-
+        
+        /* Features Grid */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin: 40px 0;
         }
-
+        
         .feature-card {
-            background: white;
+            background: var(--bg-white);
             border-radius: 20px;
-            padding: 35px 25px;
-            box-shadow: 0 10px 30px rgba(156,39,176,0.1);
+            padding: 30px 20px;
+            box-shadow: 0 10px 30px rgba(123,44,191,0.05);
             text-align: center;
             transition: all 0.3s;
-            border: 1px solid rgba(156,39,176,0.1);
+            border: 1px solid rgba(123,44,191,0.1);
             position: relative;
             overflow: hidden;
         }
-
+        
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(156,39,176,0.2);
+            box-shadow: 0 20px 40px rgba(123,44,191,0.1);
         }
-
+        
         .feature-card:before {
             content: '';
             position: absolute;
@@ -208,44 +208,46 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            background: var(--main-gradient);
         }
-
+        
         .feature-icon {
-            width: 70px;
-            height: 70px;
+            width: 64px;
+            height: 64px;
             margin: 0 auto 20px;
-            filter: drop-shadow(0 4px 6px rgba(156,39,176,0.3));
         }
-
+        
         .feature-card h3 {
-            color: var(--primary-dark);
-            font-size: 22px;
+            color: var(--text-main);
+            font-size: 20px;
             margin-bottom: 15px;
         }
-
+        
         .feature-card p {
-            color: var(--text-light);
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
         }
-
+        
+        /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, var(--primary-dark), var(--odo-purple));
+            background: var(--main-gradient);
             color: white;
             padding: 60px;
             border-radius: 32px;
             margin: 60px 0;
             text-align: center;
         }
-
+        
         .cta-section h2 {
             color: white;
             font-size: 36px;
         }
-
+        
         .btn {
             display: inline-block;
-            background: var(--accent-gold);
-            color: var(--primary-dark);
+            background: white;
+            color: var(--odonex-purple);
             padding: 16px 40px;
             border-radius: 50px;
             text-decoration: none;
@@ -254,31 +256,32 @@
             margin-top: 20px;
             transition: all 0.3s;
         }
-
+        
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-
+        
+        /* Footer */
         footer {
-            background: var(--primary-dark);
+            background: var(--text-main);
             color: white;
             padding: 50px 0 20px;
             margin-top: 60px;
         }
-
+        
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-bottom: 30px;
         }
-
+        
         .footer-grid h4 {
-            color: var(--accent-gold);
+            color: var(--odonex-blue);
             margin-bottom: 20px;
         }
-
+        
         .footer-grid a {
             color: #ccc;
             text-decoration: none;
@@ -286,24 +289,24 @@
             margin-bottom: 10px;
             transition: color 0.3s;
         }
-
+        
         .footer-grid a:hover {
-            color: var(--accent-gold);
+            color: var(--odonex-blue);
         }
-
+        
         .copyright {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
             color: #999;
         }
-
+        
         @media (max-width: 992px) {
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-
+        
         @media (max-width: 768px) {
             .features-grid {
                 grid-template-columns: 1fr;
@@ -317,6 +320,12 @@
                 flex-direction: column;
                 gap: 15px;
             }
+            
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -324,11 +333,7 @@
     <header>
         <div class="container">
             <a href="index-en.html" class="logo">
-                <img src="assets/images/odonex-symbol.svg" alt="OdoNex" class="logo-symbol">
-                <div>
-                    <div class="logo-text">Odo<span>Nex</span></div>
-                    <div class="tagline">Integrated ERP Solutions</div>
-                </div>
+                <img src="assets/images/odonex-logo.png" alt="OdoNex">
             </a>
             <div style="display: flex; align-items: center;">
                 <nav>
@@ -349,43 +354,46 @@
     <main>
         <section class="hero">
             <div class="container">
+                <img src="assets/images/odonex-logo.png" alt="OdoNex" class="logo-symbol">
                 <h1>OdoNex</h1>
-                <div class="subtitle">Integrated ERP Solutions</div>
-                <div class="hero-tagline">Integration • Security • Scalability</div>
+                <div class="subtitle">Integrated Accounting Solutions</div>
+                <div class="hero-tagline">
+                    <span>Integrate</span> • <span>Secure</span> • <span>Scale</span>
+                </div>
             </div>
         </section>
 
         <div class="container">
-            <h2 class="section-title">Why Choose OdoNex?</h2>
+            <h2 class="section-title">OdoNex Features</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
+                    <img src="assets/images/icons/integration.svg" alt="Integration" class="feature-icon">
+                    <h3>Integration</h3>
+                    <p>Fully integrated system connecting all business departments in one platform</p>
+                </div>
+                <div class="feature-card">
+                    <img src="assets/images/icons/security.svg" alt="Security" class="feature-icon">
                     <h3>Data Security</h3>
-                    <p>Advanced encryption and multi-level user permissions to protect your business data</p>
+                    <p>Advanced data protection with encryption and user permissions</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3>Full Integration</h3>
-                    <p>Unified system connecting all departments in one platform</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
+                    <img src="assets/images/icons/scalability.svg" alt="Scalability" class="feature-icon">
                     <h3>Scalability</h3>
                     <p>Grows with your business from startup to enterprise</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Real-time Reports</h3>
-                    <p>Instant access to financial reports and dashboards</p>
+                    <img src="assets/images/icons/support.svg" alt="Support" class="feature-icon">
+                    <h3>24/7 Support</h3>
+                    <p>Dedicated support team ensuring business continuity</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
+                    <img src="assets/images/icons/global.svg" alt="Global" class="feature-icon">
                     <h3>Global Reach</h3>
                     <p>Global solutions with local compliance</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>High Efficiency</h3>
+                    <img src="assets/images/icons/efficiency.svg" alt="Efficiency" class="feature-icon">
+                    <h3>Efficiency</h3>
                     <p>Boost efficiency and reduce costs by up to 30%</p>
                 </div>
             </div>
@@ -405,7 +413,7 @@
             <div class="footer-grid">
                 <div>
                     <h4>OdoNex</h4>
-                    <p>Integrated ERP Solutions for Enterprise Resource Planning</p>
+                    <p>Integrated Accounting Solutions for Enterprise Resource Planning</p>
                 </div>
                 <div>
                     <h4>Quick Links</h4>
