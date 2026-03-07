@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OdoNex | Features</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        .features-hero {
+            text-align: center;
+            padding: 60px 0 30px;
+            background: linear-gradient(145deg, #ffffff, #f8faff);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            text-align: center;
+            border: 1px solid #eef2f6;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(156,39,176,0.15);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #9C27B0, #29B6F6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+        }
+        
+        .feature-card h3 {
+            color: #1A4E8B;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index-en.html" class="logo">
+                <img src="assets/images/odonex-symbol.svg" alt="OdoNex" class="logo-symbol">
+                <div>
+                    <div class="logo-text">Odo<span>Nex</span></div>
+                    <div class="tagline">Integrated ERP Solutions</div>
+                </div>
+            </a>
+            <div style="display: flex; align-items: center;">
+                <nav>
+                    <a href="index-en.html">Home</a>
+                    <a href="features-en.html" class="active">Features</a>
+                    <a href="gallery-en.html">Gallery</a>
+                    <a href="pricing-en.html">Pricing</a>
+                    <a href="contact-en.html">Contact</a>
+                </nav>
+                <div class="lang-switcher">
+                    <button class="lang-btn" data-lang="ar" onclick="switchLanguage('ar')">العربية</button>
+                    <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">English</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="features-hero">
+            <div class="container">
+                <h1>OdoNex Features</h1>
+                <p style="font-size: 18px; color: #666; max-width: 700px; margin: 20px auto;">
+                    Comprehensive ERP solutions designed to streamline your business operations
+                </p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Data Security</h3>
+                    <p>Advanced encryption and multi-level user permissions to protect your sensitive business data.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Full Integration</h3>
+                    <p>Seamlessly connect accounting, sales, inventory, and HR in one unified platform.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Scalability</h3>
+                    <p>Grows with your business from startup to enterprise, adding features as you need them.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Real-time Reports</h3>
+                    <p>Instant access to financial reports, dashboards, and business intelligence.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Global Reach</h3>
+                    <p>Multi-currency, multi-language support with compliance to local regulations.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>High Efficiency</h3>
+                    <p>Automate routine tasks and reduce operational costs by up to 30%.</p>
+                </div>
+
+                <!-- Feature 7 -->
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Access</h3>
+                    <p>Access your business data anytime, anywhere with our mobile app.</p>
+                </div>
+
+                <!-- Feature 8 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>24/7 Support</h3>
+                    <p>Dedicated support team available around the clock to help you.</p>
+                </div>
+
+                <!-- Feature 9 -->
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Customizable</h3>
+                    <p>Tailor the system to your specific business needs and workflows.</p>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div style="background: linear-gradient(135deg, #9C27B0, #29B6F6); color: white; padding: 60px; border-radius: 32px; margin: 60px 0; text-align: center;">
+                <h2 style="color: white; font-size: 36px;">Ready to Transform Your Business?</h2>
+                <p style="font-size: 18px; max-width: 600px; margin: 20px auto; opacity: 0.9;">Get started with OdoNex today and see the difference</p>
+                <a href="contact-en.html" style="display: inline-block; background: white; color: #9C27B0; padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px; margin-top: 20px;">Contact Us</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>OdoNex</h4>
+                    <p>Integrated ERP Solutions for Enterprise Resource Planning</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="index-en.html">Home</a>
+                    <a href="features-en.html">Features</a>
+                    <a href="gallery-en.html">Gallery</a>
+                    <a href="pricing-en.html">Pricing</a>
+                    <a href="contact-en.html">Contact</a>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <p>Phone: +966 50 000 0000</p>
+                    <p>Email: info@odonex.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2026 OdoNex. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/language.js"></script>
+</body>
+</html>
