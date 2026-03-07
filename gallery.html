@@ -4,149 +4,343 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OdoNex | معرض الأعمال</title>
-    <link rel="stylesheet" href="assets/style.css">
     <style>
-        /* تنسيقات إضافية للمعرض */
-        .gallery-hero {
-            background: linear-gradient(145deg, #f0f4fe, #ffffff);
-            padding: 60px 0 30px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        }
+        
+        :root {
+            --odonex-purple: #7B2CBF;
+            --odonex-blue: #00B4D8;
+            --text-main: #333333;
+            --text-secondary: #777777;
+            --bg-white: #FFFFFF;
+            --bg-light: #F8F9FA;
+            --main-gradient: linear-gradient(135deg, #7B2CBF, #00B4D8);
+        }
+        
+        body {
+            background: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bg-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid transparent;
+            border-image: var(--main-gradient) 1;
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--odonex-purple);
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--main-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        
+        nav a:hover:after,
+        nav a.active:after {
+            transform: scaleX(1);
+        }
+        
+        .lang-switcher {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .lang-btn {
+            background: var(--bg-light);
+            border: 1px solid #ddd;
+            color: var(--text-main);
+            padding: 5px 12px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover,
+        .lang-btn.active {
+            background: var(--main-gradient);
+            border-color: transparent;
+            color: white;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(145deg, var(--bg-white), var(--bg-light));
+            padding: 60px 0 40px;
             text-align: center;
             border-bottom: 1px solid #eef2f6;
         }
         
-        .gallery-hero h1 {
+        .page-header h1 {
             font-size: 48px;
-            color: var(--primary-blue);
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
         }
         
-        .gallery-hero p {
+        .page-header p {
             font-size: 18px;
-            color: var(--text-light);
+            color: var(--text-secondary);
             max-width: 700px;
             margin: 0 auto;
         }
         
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 40px 0 20px;
-            flex-wrap: wrap;
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 50px 0;
         }
         
-        .filter-tab {
-            padding: 10px 25px;
-            border-radius: 50px;
-            background: white;
-            border: 2px solid #e0e7ef;
-            color: var(--text-dark);
-            font-weight: 600;
-            cursor: pointer;
+        .gallery-card {
+            background: var(--bg-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(123,44,191,0.05);
             transition: all 0.3s;
+            border: 1px solid rgba(123,44,191,0.1);
         }
         
-        .filter-tab:hover,
-        .filter-tab.active {
-            background: var(--primary-blue);
-            border-color: var(--primary-blue);
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(123,44,191,0.1);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            background: var(--main-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
+            font-size: 48px;
+        }
+        
+        .gallery-content {
+            padding: 25px;
+        }
+        
+        .gallery-content h3 {
+            font-size: 22px;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+        
+        .gallery-content .project-subtitle {
+            color: var(--odonex-purple);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .gallery-content .project-code {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        
+        .gallery-content p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
         
         .project-meta {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin: 15px 0;
-            padding: 10px 0;
-            border-top: 1px solid #eef2f6;
-            border-bottom: 1px solid #eef2f6;
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-bottom: 15px;
         }
         
         .project-tags {
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
         }
         
-        .project-tag {
-            background: var(--light-bg);
-            padding: 5px 15px;
+        .tag {
+            background: var(--bg-light);
+            color: var(--text-secondary);
+            padding: 5px 12px;
             border-radius: 50px;
             font-size: 12px;
-            color: var(--primary-blue);
         }
         
-        .project-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin: 20px 0;
-            text-align: center;
-        }
-        
-        .stat-item {
-            background: var(--light-bg);
-            padding: 10px;
-            border-radius: 12px;
-        }
-        
-        .stat-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary-blue);
-        }
-        
-        .stat-label {
-            font-size: 12px;
-            color: var(--text-light);
-        }
-        
-        .testimonial {
-            background: var(--light-bg);
-            padding: 25px;
-            border-radius: 24px;
-            margin: 20px 0;
-            position: relative;
-        }
-        
-        .testimonial::before {
-            content: '"';
-            font-size: 60px;
-            color: var(--primary-gold);
-            position: absolute;
-            top: -10px;
-            right: 20px;
-            opacity: 0.3;
-        }
-        
-        .client-logo {
-            width: 60px;
-            height: 60px;
-            background: #e0e7ef;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--text-light);
-        }
-        
-        .view-more-btn {
+        .btn-case-study {
             display: inline-block;
             background: transparent;
-            border: 2px solid var(--primary-blue);
-            color: var(--primary-blue);
-            padding: 15px 40px;
+            border: 2px solid var(--odonex-purple);
+            color: var(--odonex-purple);
+            padding: 10px 20px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            margin: 40px auto;
+            font-size: 14px;
             transition: all 0.3s;
         }
         
-        .view-more-btn:hover {
-            background: var(--primary-blue);
+        .btn-case-study:hover {
+            background: var(--main-gradient);
+            border-color: transparent;
             color: white;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--main-gradient);
+            color: white;
+            padding: 60px;
+            border-radius: 32px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            font-size: 36px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--odonex-purple);
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text-main);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-grid h4 {
+            color: var(--odonex-blue);
+            margin-bottom: 20px;
+        }
+        
+        .footer-grid a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-grid a:hover {
+            color: var(--odonex-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+        }
+        
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 36px;
+            }
+            
+            header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -154,17 +348,15 @@
     <header>
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="assets/images/odonex-symbol.svg" alt="OdoNex" class="logo-symbol">
-                <div>
-                    <div class="logo-text">Odo<span>Nex</span></div>
-                    <div class="tagline">حلول محاسبية متكاملة</div>
-                </div>
+                <img src="assets/images/odonex-logo.png" alt="OdoNex">
             </a>
             <div style="display: flex; align-items: center;">
                 <nav>
                     <a href="index.html">الرئيسية</a>
-                    <a href="gallery.html" style="color: #ffd700;">معرض الأعمال</a>
-                    <a href="index.html#contact">اتصل بنا</a>
+                    <a href="features.html">المميزات</a>
+                    <a href="gallery.html" class="active">معرض الأعمال</a>
+                    <a href="pricing.html">الأسعار</a>
+                    <a href="contact.html">اتصل بنا</a>
                 </nav>
                 <div class="lang-switcher">
                     <button class="lang-btn active" data-lang="ar" onclick="switchLanguage('ar')">العربية</button>
@@ -175,173 +367,143 @@
     </header>
 
     <main>
-        <!-- Gallery Hero -->
-        <section class="gallery-hero">
+        <section class="page-header">
             <div class="container">
                 <h1>معرض الأعمال</h1>
-                <p>استعرض أحدث مشاريعنا في تنفيذ أنظمة ERP للشركات في مختلف القطاعات</p>
+                <p>نفخر بتقديم مجموعة من مشاريعنا الناجحة في مختلف القطاعات</p>
             </div>
         </section>
 
         <div class="container">
-            <!-- Filter Tabs -->
-            <div class="filter-tabs">
-                <span class="filter-tab active">الكل</span>
-                <span class="filter-tab">نفط وغاز</span>
-                <span class="filter-tab">تصنيع</span>
-                <span class="filter-tab">تجارة وتوزيع</span>
-                <span class="filter-tab">خدمات</span>
-            </div>
-
-            <!-- Main Gallery Grid -->
             <div class="gallery-grid">
-                <!-- Project 1: Axiomify (مفصل) -->
-                <div class="gallery-card" style="grid-column: span 2;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
-                        <div class="gallery-header" style="border-radius: 32px 0 0 32px;">
-                            <h3 style="font-size: 32px;">Axiomify</h3>
-                            <div class="project-code" style="font-size: 18px;">OdoNex ERP الموحد</div>
-                            <div style="margin-top: 30px;">
-                                <div class="client-logo" style="margin: 0 auto;">Axiom</div>
-                            </div>
-                        </div>
-                        <div class="gallery-content">
-                            <p><strong>عبر: مولد Axiomify</strong></p>
-                            <p>ملخص تصميم القطاعات وموارديات إنتاجها في صناعة المنتجات وحدات تجميع النفط والغاز. تم تنفيذ المشروع باستخدام أحدث تقنيات OdoNex لتحقيق التكامل الكامل بين إدارات الشركة.</p>
-                            
-                            <div class="project-meta">
-                                <span>📅 2025</span>
-                                <span>🏭 قطاع النفط والغاز</span>
-                            </div>
-                            
-                            <div class="project-tags">
-                                <span class="project-tag">ERP</span>
-                                <span class="project-tag">محاسبة</span>
-                                <span class="project-tag">مخزون</span>
-                                <span class="project-tag">إنتاج</span>
-                            </div>
-                            
-                            <div class="project-stats">
-                                <div class="stat-item">
-                                    <div class="stat-number">+40%</div>
-                                    <div class="stat-label">كفاءة الإنتاج</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-number">25%</div>
-                                    <div class="stat-label">خفض التكاليف</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-number">5</div>
-                                    <div class="stat-label">مواقع مترابطة</div>
-                                </div>
-                            </div>
-                            
-                            <a href="#" class="btn-case-study" style="width: 100%; text-align: center;">عرض دراسة الحالة كاملة</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: Unloaded Project -->
+                <!-- Project 1: Axiomify -->
                 <div class="gallery-card">
-                    <div class="gallery-header">
-                        <h3>مشروع "Unloaded"</h3>
-                        <div class="project-code">أستنتج الإطار الموجود</div>
-                    </div>
+                    <div class="gallery-image">🏭</div>
                     <div class="gallery-content">
-                        <p><strong>عبر: مولد Unloaded</strong></p>
+                        <h3>Axiomify</h3>
+                        <div class="project-subtitle">OdoNex ERP الموحد</div>
+                        <div class="project-code">عبر: مولد Axiomify</div>
                         <p>ملخص تصميم القطاعات وموارديات إنتاجها في صناعة المنتجات وحدات تجميع النفط والغاز.</p>
-                        
-                        <div class="project-tags" style="margin: 15px 0;">
-                            <span class="project-tag">لوجستيات</span>
-                            <span class="project-tag">مخزون</span>
+                        <div class="project-meta">
+                            <span>📅 2025</span>
+                            <span>🏭 قطاع النفط والغاز</span>
                         </div>
-                        
-                        <a href="#" class="btn-case-study">دراسة الحالة</a>
+                        <div class="project-tags">
+                            <span class="tag">ERP</span>
+                            <span class="tag">محاسبة</span>
+                            <span class="tag">مخزون</span>
+                        </div>
+                        <a href="#" class="btn-case-study">قراءة دراسة الحالة</a>
                     </div>
                 </div>
 
-                <!-- Project 3: Saudi Manufacturing Co. -->
+                <!-- Project 2: Unloaded -->
                 <div class="gallery-card">
-                    <div class="gallery-header" style="background: linear-gradient(145deg, #2c3e50, #1a2632);">
+                    <div class="gallery-image">📦</div>
+                    <div class="gallery-content">
+                        <h3>مشروع Unloaded</h3>
+                        <div class="project-subtitle">أستنتج الإطار الموجود</div>
+                        <div class="project-code">عبر: مولد Unloaded</div>
+                        <p>ملخص تصميم القطاعات وموارديات إنتاجها في صناعة المنتجات وحدات تجميع النفط والغاز.</p>
+                        <div class="project-meta">
+                            <span>📅 2024</span>
+                            <span>🏭 قطاع الخدمات</span>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">لوجستيات</span>
+                            <span class="tag">مخزون</span>
+                        </div>
+                        <a href="#" class="btn-case-study">قراءة دراسة الحالة</a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Saudi Manufacturing -->
+                <div class="gallery-card">
+                    <div class="gallery-image">🏭</div>
+                    <div class="gallery-content">
                         <h3>الشركة السعودية للصناعة</h3>
-                        <div class="project-code">SMI</div>
-                    </div>
-                    <div class="gallery-content">
+                        <div class="project-subtitle">SMI</div>
+                        <div class="project-code">SMI-2025-001</div>
                         <p>تطبيق شامل لأنظمة المحاسبة والمخازن والإنتاج لشركة صناعية كبرى تضم 3 مصانع.</p>
-                        
-                        <div class="project-tags" style="margin: 15px 0;">
-                            <span class="project-tag">تصنيع</span>
-                            <span class="project-tag">MRP</span>
-                            <span class="project-tag">تكاليف</span>
+                        <div class="project-meta">
+                            <span>📅 2025</span>
+                            <span>🏭 قطاع التصنيع</span>
                         </div>
-                        
-                        <a href="#" class="btn-case-study">دراسة الحالة</a>
+                        <div class="project-tags">
+                            <span class="tag">تصنيع</span>
+                            <span class="tag">MRP</span>
+                        </div>
+                        <a href="#" class="btn-case-study">قراءة دراسة الحالة</a>
                     </div>
                 </div>
 
-                <!-- Project 4: Al-Futtaim Trading -->
+                <!-- Project 4: Al-Futtaim -->
                 <div class="gallery-card">
-                    <div class="gallery-header" style="background: linear-gradient(145deg, #27ae60, #1e8449);">
-                        <h3>الفتيم للتجارة</h3>
-                        <div class="project-code">توزيع</div>
-                    </div>
+                    <div class="gallery-image">🛒</div>
                     <div class="gallery-content">
+                        <h3>الفتيم للتجارة</h3>
+                        <div class="project-subtitle">توزيع</div>
+                        <div class="project-code">FT-2025-02</div>
                         <p>نظام متكامل لإدارة سلسلة التوريد والتوزيع لأكثر من 10,000 منتج.</p>
-                        
-                        <div class="project-tags" style="margin: 15px 0;">
-                            <span class="project-tag">توزيع</span>
-                            <span class="project-tag">مبيعات</span>
-                            <span class="project-tag">نقاط بيع</span>
+                        <div class="project-meta">
+                            <span>📅 2024</span>
+                            <span>🏭 قطاع التوزيع</span>
                         </div>
-                        
-                        <a href="#" class="btn-case-study">دراسة الحالة</a>
+                        <div class="project-tags">
+                            <span class="tag">توزيع</span>
+                            <span class="tag">مبيعات</span>
+                        </div>
+                        <a href="#" class="btn-case-study">قراءة دراسة الحالة</a>
                     </div>
                 </div>
 
-                <!-- Project 5: نفط الشرق - مع شهادة عميل -->
-                <div class="gallery-card" style="grid-column: span 2;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
-                        <div class="gallery-header" style="background: linear-gradient(145deg, #8e44ad, #6c3483); border-radius: 32px 0 0 32px;">
-                            <h3 style="font-size: 28px;">نفط الشرق</h3>
-                            <div class="project-code">Easter Oil</div>
+                <!-- Project 5: Eastern Oil -->
+                <div class="gallery-card">
+                    <div class="gallery-image">🛢️</div>
+                    <div class="gallery-content">
+                        <h3>نفط الشرق</h3>
+                        <div class="project-subtitle">Easter Oil</div>
+                        <div class="project-code">EO-2025-03</div>
+                        <p>نظام متكامل لإدارة عمليات التنقيب والإنتاج لشركة نفط كبرى.</p>
+                        <div class="project-meta">
+                            <span>📅 2025</span>
+                            <span>🏭 قطاع الطاقة</span>
                         </div>
-                        <div class="gallery-content">
-                            <div class="testimonial">
-                                <p style="position: relative; z-index: 2;">"منذ تطبيق نظام OdoNex، استطعنا توحيد عملياتنا في 5 مواقع مختلفة مع تقليل الأخطاء التشغيلية بنسبة 60%"</p>
-                                <p style="margin-top: 15px; font-weight: bold;">- م. خالد العتيبي، مدير نظم المعلومات</p>
-                            </div>
-                            
-                            <div class="project-stats">
-                                <div class="stat-item">
-                                    <div class="stat-number">5</div>
-                                    <div class="stat-label">مواقع</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-number">500+</div>
-                                    <div class="stat-label">مستخدم</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-number">99.9%</div>
-                                    <div class="stat-label">نظام متاح</div>
-                                </div>
-                            </div>
-                            
-                            <a href="#" class="btn-case-study">قراءة دراسة الحالة</a>
+                        <div class="project-tags">
+                            <span class="tag">نفط وغاز</span>
+                            <span class="tag">إنتاج</span>
                         </div>
+                        <a href="#" class="btn-case-study">قراءة دراسة الحالة</a>
+                    </div>
+                </div>
+
+                <!-- Project 6: Retail Pro -->
+                <div class="gallery-card">
+                    <div class="gallery-image">🏪</div>
+                    <div class="gallery-content">
+                        <h3>ريتيل برو</h3>
+                        <div class="project-subtitle">سلسلة متاجر</div>
+                        <div class="project-code">RP-2024-12</div>
+                        <p>حل متكامل لسلسلة متاجر تتضمن 50 فرعاً مع نقاط بيع ومخازن مركزية.</p>
+                        <div class="project-meta">
+                            <span>📅 2024</span>
+                            <span>🏭 قطاع التجزئة</span>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">تجزئة</span>
+                            <span class="tag">نقاط بيع</span>
+                        </div>
+                        <a href="#" class="btn-case-study">قراءة دراسة الحالة</a>
                     </div>
                 </div>
             </div>
 
-            <!-- View More Button -->
-            <div style="text-align: center;">
-                <a href="#" class="view-more-btn">عرض المزيد من المشاريع</a>
-            </div>
-
-            <!-- CTA Section -->
-            <div style="background: linear-gradient(145deg, var(--primary-blue), var(--dark-blue)); color: white; padding: 60px; border-radius: 48px; margin: 60px 0; text-align: center;">
-                <h2 style="color: white; font-size: 36px;">هل لديك مشروع مشابه؟</h2>
-                <p style="font-size: 18px; max-width: 600px; margin: 20px auto; opacity: 0.9;">نحن جاهزون لمساعدتك في تطبيق نظام ERP متكامل لشركتك</p>
-                <a href="index.html#contact" style="display: inline-block; background: var(--primary-gold); color: var(--primary-blue); padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px; margin-top: 20px;">تواصل مع فريقنا</a>
+            <div class="cta-section">
+                <h2>هل لديك مشروع مشابه؟</h2>
+                <p style="font-size: 18px; max-width: 600px; margin: 20px auto;">
+                    نحن جاهزون لمساعدتك في تطبيق نظام ERP متكامل لشركتك
+                </p>
+                <a href="contact.html" class="btn">تواصل مع فريقنا</a>
             </div>
         </div>
     </main>
@@ -351,17 +513,20 @@
             <div class="footer-grid">
                 <div>
                     <h4>OdoNex</h4>
-                    <p>حلول محاسبية متكاملة لإدارة موارد المؤسسات</p>
+                    <p>حلول محاسبة متكاملة لإدارة موارد المؤسسات</p>
                 </div>
                 <div>
                     <h4>روابط سريعة</h4>
                     <a href="index.html">الرئيسية</a>
+                    <a href="features.html">المميزات</a>
                     <a href="gallery.html">معرض الأعمال</a>
-                    <a href="index.html#contact">اتصل بنا</a>
+                    <a href="pricing.html">الأسعار</a>
+                    <a href="contact.html">اتصل بنا</a>
                 </div>
                 <div>
-                    <h4>تابعنا</h4>
-                    <p>لينكد إن | تويتر | إنستغرام</p>
+                    <h4>تواصل معنا</h4>
+                    <p>هاتف: +966 50 000 0000</p>
+                    <p>بريد: info@odonex.com</p>
                 </div>
             </div>
             <div class="copyright">
@@ -370,6 +535,6 @@
         </div>
     </footer>
 
-    <script src="js/language.js"></script>
+    <script src="assets/js/language.js"></script>
 </body>
 </html>
