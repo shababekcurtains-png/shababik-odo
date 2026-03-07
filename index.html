@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OdoNex | حلول ERP الموحدة</title>
-    <!-- Google Fonts - Tajawal -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts - Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,7 +14,7 @@
         }
 
         body {
-            font-family: 'Tajawal', 'Cairo', sans-serif;
+            font-family: 'Cairo', sans-serif;
             background: linear-gradient(135deg, #F1F3FD 0%, #E6FAFF 100%);
             min-height: 100vh;
             color: #333333;
@@ -30,7 +30,7 @@
         .navbar {
             background: white;
             box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            height: 70px;
+            height: 80px;
             display: flex;
             align-items: center;
             position: relative;
@@ -43,9 +43,67 @@
             width: 100%;
         }
 
+        /* Left side - Language and Dark Mode */
+        .nav-left {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        /* Language Button with Globe - Outlined */
+        .lang-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 8px 16px;
+            background: transparent;
+        }
+
+        .lang-text {
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .globe-icon {
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23555" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>');
+            background-size: contain;
+        }
+
+        /* Dark Mode Toggle - Outlined like language button */
+        .dark-mode-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 8px 12px;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .dark-mode-toggle {
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #333;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Centered Navigation Menu */
         .nav-menu {
             display: flex;
-            gap: 32px;
+            gap: 40px;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -53,7 +111,8 @@
 
         .nav-menu a {
             text-decoration: none;
-            font-size: 16px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 18px;
             font-weight: 500;
             color: #6B6B6B;
             transition: color 0.3s;
@@ -65,57 +124,15 @@
             font-weight: 600;
         }
 
+        /* Right side - Logo */
         .nav-right {
             display: flex;
-            gap: 12px;
             align-items: center;
         }
 
-        .btn-start-now {
-            background: linear-gradient(135deg, #7A5AF8, #2BB0ED);
-            color: white;
-            font-size: 14px;
-            font-weight: 600;
-            padding: 10px 18px;
-            border-radius: 12px;
-            border: none;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-
-        .btn-start-now:hover {
-            opacity: 0.9;
-        }
-
-        .lang-btn {
-            background: #F3F4F6;
-            border: none;
-            color: #555;
-            font-size: 14px;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .lang-btn:hover {
-            background: #e5e7eb;
-        }
-
-        /* ===== Dark Mode Toggle (Crescent) ===== */
-        .dark-mode-toggle {
-            background: transparent;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            margin-right: 15px;
-            color: #7A5AF8;
-            transition: transform 0.3s;
-        }
-
-        .dark-mode-toggle:hover {
-            transform: rotate(15deg);
+        .nav-logo-img {
+            height: 45px;
+            width: auto;
         }
 
         /* ===== Hero Section ===== */
@@ -125,91 +142,112 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            margin-top: 80px;
-            padding-bottom: 60px;
+            margin-top: 60px;
+            padding-bottom: 80px;
         }
 
-        /* Logo Area */
-        .logo-3d {
-            width: 220px;
+        /* Logo with Bouncing Animation */
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .hero-logo {
+            width: 280px;
             height: auto;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 10px 15px rgba(122,90,248,0.2));
+            margin-bottom: 25px;
+            filter: drop-shadow(0 20px 25px rgba(122,90,248,0.3));
+            animation: gentleBounce 3.5s ease-in-out infinite;
         }
 
-        /* Main Headline */
+        /* Main Headline - Very Large and Bold */
         h1 {
-            font-size: 44px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 58px;
             font-weight: 700;
-            line-height: 1.4;
+            line-height: 1.3;
             color: #333333;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
         }
 
-        .brand-highlight {
-            color: #4A7BFF;
+        .brand-gradient {
+            background: linear-gradient(135deg, #7A5AF8, #2BB0ED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-weight: 700;
+            display: inline-block;
         }
 
-        /* Subheadline */
+        /* Subheadline - Larger */
         .subheadline {
-            font-size: 20px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 28px;
             font-weight: 500;
             color: #6A6A6A;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
         }
 
-        /* Description */
+        /* Description - Larger */
         .description {
-            font-size: 16px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 20px;
             font-weight: 400;
             line-height: 1.8;
             color: #8A8A8A;
-            max-width: 620px;
-            margin: 0 auto 30px;
+            max-width: 800px;
+            margin: 0 auto 40px;
         }
 
-        /* CTA Buttons */
+        /* CTA Buttons - Side by side */
         .cta-buttons {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             justify-content: center;
+            align-items: center;
         }
 
         .btn-primary {
             background: linear-gradient(135deg, #7A5AF8 0%, #2BB0ED 100%);
             color: white;
-            font-size: 16px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 18px;
             font-weight: 600;
-            padding: 14px 28px;
-            border-radius: 12px;
+            padding: 16px 32px;
+            border-radius: 14px;
             border: none;
             cursor: pointer;
-            box-shadow: 0 8px 18px rgba(122,90,248,0.25);
+            box-shadow: 0 10px 22px rgba(122,90,248,0.3);
             transition: transform 0.3s, box-shadow 0.3s;
+            min-width: 200px;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(122,90,248,0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 28px rgba(122,90,248,0.4);
         }
 
         .btn-secondary {
             background: transparent;
             border: 2px solid #7A5AF8;
             color: #7A5AF8;
-            font-size: 16px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 18px;
             font-weight: 600;
-            padding: 14px 28px;
-            border-radius: 12px;
+            padding: 16px 32px;
+            border-radius: 14px;
             cursor: pointer;
             transition: all 0.3s;
+            min-width: 200px;
         }
 
         .btn-secondary:hover {
             background: #7A5AF8;
             color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(122,90,248,0.2);
         }
 
         /* ===== Dark Mode Styles ===== */
@@ -232,13 +270,24 @@
             color: #9B59FF;
         }
 
-        body.dark-mode .lang-btn {
-            background: #333;
+        body.dark-mode .lang-container {
+            border-color: #444;
+        }
+
+        body.dark-mode .lang-text {
             color: #ddd;
         }
 
-        body.dark-mode .btn-start-now {
-            background: linear-gradient(135deg, #9B59FF, #2BB0ED);
+        body.dark-mode .globe-icon {
+            filter: invert(0.8);
+        }
+
+        body.dark-mode .dark-mode-container {
+            border-color: #444;
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            color: #fff;
         }
 
         body.dark-mode h1 {
@@ -253,16 +302,13 @@
             color: #aaa;
         }
 
-        body.dark-mode .dark-mode-toggle {
-            color: #FFD700;
-        }
-
         /* ===== Responsive ===== */
         @media (max-width: 992px) {
             .nav-menu {
                 position: static;
                 transform: none;
                 margin: 0 auto;
+                gap: 25px;
             }
             
             .nav-container {
@@ -272,7 +318,7 @@
             }
             
             h1 {
-                font-size: 36px;
+                font-size: 48px;
             }
         }
 
@@ -287,15 +333,29 @@
                 margin-top: 40px;
             }
             
+            h1 {
+                font-size: 42px;
+            }
+            
+            .subheadline {
+                font-size: 24px;
+            }
+            
+            .description {
+                font-size: 18px;
+            }
+            
             .cta-buttons {
                 flex-direction: column;
-                align-items: center;
+                gap: 15px;
             }
             
             .btn-primary,
             .btn-secondary {
                 width: 100%;
-                max-width: 300px;
+                max-width: 280px;
+                padding: 14px 28px;
+                font-size: 16px;
             }
         }
     </style>
@@ -303,11 +363,15 @@
 <body>
     <nav class="navbar">
         <div class="container nav-container">
-            <!-- Right side (Left in RTL) - Start Now + Language + Dark Mode -->
-            <div class="nav-right">
-                <button class="btn-start-now">ابدأ الآن</button>
-                <button class="lang-btn">EN</button>
-                <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+            <!-- Left side - Language and Dark Mode -->
+            <div class="nav-left">
+                <div class="lang-container">
+                    <span class="lang-text">EN</span>
+                    <div class="globe-icon"></div>
+                </div>
+                <div class="dark-mode-container" onclick="toggleDarkMode()">
+                    <span class="dark-mode-toggle">🌙</span>
+                </div>
             </div>
 
             <!-- Centered Navigation Menu -->
@@ -319,52 +383,21 @@
                 <a href="#">اتصل بنا</a>
             </div>
 
-            <!-- Left side (Right in RTL) - Logo -->
-            <div>
-                <!-- شعار OdoNex - 3D Glossy -->
-                <img src="assets/images/odonex-logo.png.png" alt="OdoNex" style="height: 40px; width: auto;">
+            <!-- Right side - Logo Image -->
+            <div class="nav-right">
+                <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="nav-logo-img">
             </div>
         </div>
     </nav>
 
     <main class="hero">
         <div class="container" style="display: flex; flex-direction: column; align-items: center;">
-            <!-- 3D Logo -->
-            <svg class="logo-3d" viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#7A3FF2" />
-                        <stop offset="100%" stop-color="#9B59FF" />
-                    </linearGradient>
-                    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#3CA9E2" />
-                        <stop offset="100%" stop-color="#6ED0FF" />
-                    </linearGradient>
-                    <filter id="glossy" x="-20%" y="-20%" width="140%" height="140%">
-                        <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
-                        <feSpecularLighting result="specOut" in="SourceGraphic" specularConstant="0.8" specularExponent="20" lighting-color="white">
-                            <fePointLight x="50" y="20" z="50"/>
-                        </feSpecularLighting>
-                        <feComposite in="specOut" in2="SourceGraphic" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
-                    </filter>
-                </defs>
-                
-                <!-- رمز التكامل (Infinity-style) -->
-                <g filter="url(#glossy)">
-                    <path d="M30 30 C20 20, 10 20, 10 30 C10 40, 20 40, 30 30 C40 20, 50 20, 50 30 C50 40, 40 40, 30 30" 
-                          fill="url(#purpleGrad)" opacity="0.9"/>
-                    <circle cx="20" cy="30" r="6" fill="url(#blueGrad)"/>
-                    <circle cx="40" cy="30" r="6" fill="url(#blueGrad)"/>
-                </g>
-                
-                <!-- النص OdoNex -->
-                <text x="80" y="42" font-family="Tajawal, sans-serif" font-weight="700" font-size="32" fill="#333">Odo</text>
-                <text x="130" y="42" font-family="Tajawal, sans-serif" font-weight="700" font-size="32" fill="#4A7BFF">Nex</text>
-            </svg>
+            <!-- Logo Image from uploaded file -->
+            <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="hero-logo">
 
-            <!-- Main Headline -->
+            <!-- Main Headline with gradient on OdoNex -->
             <h1>
-                <span class="brand-highlight">OdoNex</span> | حلول ERP الموحدة
+                <span class="brand-gradient">OdoNex</span> | حلول ERP الموحدة
             </h1>
 
             <!-- Subheadline -->
