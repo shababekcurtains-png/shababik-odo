@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OdoNex | إدارة المميزات</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+        }
+        
+        :root {
+            --odo-purple: #9C27B0;
+            --next-blue: #29B6F6;
+            --primary-dark: #1A4E8B;
+            --accent-gold: #FFD700;
+            --bg-light: #F8F9FA;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+        
+        body {
+            background: var(--bg-light);
+            display: flex;
+        }
+        
+        /* الشريط الجانبي */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, var(--primary-dark), var(--odo-purple));
+            color: white;
+            min-height: 100vh;
+            position: fixed;
+            right: 0;
+            top: 0;
+            overflow-y: auto;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-header {
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .sidebar-header img {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+        
+        .sidebar-header h2 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-header span {
+            color: var(--accent-gold);
+        }
+        
+        .sidebar-menu {
+            padding: 20px;
+        }
+        
+        .menu-item {
+            padding: 15px 20px;
+            margin: 5px 0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .menu-item:hover,
+        .menu-item.active {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        /* المحتوى الرئيسي */
+        .main-content {
+            flex: 1;
+            margin-right: 280px;
+            padding: 30px;
+        }
+        
+        /* الشريط العلوي */
+        .top-bar {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .page-title h1 {
+            color: var(--text-dark);
+            font-size: 24px;
+        }
+        
+        .page-title p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .logout-btn {
+            background: none;
+            border: 2px solid #ff4444;
+            color: #ff4444;
+            padding: 8px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: #ff4444;
+            color: white;
+        }
+        
+        /* بطاقة التعديل */
+        .edit-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+        
+        .card-header h2 {
+            color: var(--primary-dark);
+            font-size: 20px;
+        }
+        
+        .btn-add {
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .btn-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(156,39,176,0.3);
+        }
+        
+        /* جدول المميزات */
+        .features-table {
+            width: 100%;
+        }
+        
+        .feature-row {
+            display: grid;
+            grid-template-columns: 80px 1.5fr 2fr 1fr 100px 100px;
+            gap: 15px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--bg-light);
+            align-items: center;
+        }
+        
+        .feature-row.header {
+            color: var(--text-light);
+            font-weight: bold;
+            font-size: 14px;
+            background: var(--bg-light);
+            padding: 15px 0;
+            border-radius: 12px;
+        }
+        
+        .feature-icon-preview {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .feature-title {
+            font-weight: 600;
+        }
+        
+        .feature-desc {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .status-active {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .status-inactive {
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-edit {
+            color: var(--next-blue);
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .btn-delete {
+            color: #ff4444;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        /* نافذة منبثقة للإضافة/التعديل */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 32px;
+            padding: 40px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: modalSlide 0.3s;
+        }
+        
+        @keyframes modalSlide {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .modal-header h3 {
+            color: var(--primary-dark);
+            font-size: 24px;
+        }
+        
+        .close-modal {
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--bg-light);
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--odo-purple);
+            box-shadow: 0 0 0 3px rgba(156,39,176,0.1);
+        }
+        
+        .icon-selector {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .icon-option {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .icon-option:hover,
+        .icon-option.selected {
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            color: white;
+            border-color: var(--accent-gold);
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn-save {
+            flex: 1;
+            background: linear-gradient(135deg, var(--odo-purple), var(--next-blue));
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-cancel {
+            flex: 1;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-save:hover,
+        .btn-cancel:hover {
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 1200px) {
+            .feature-row {
+                grid-template-columns: 80px 1.5fr 2fr 1fr 100px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 80px;
+            }
+            
+            .sidebar .menu-item span {
+                display: none;
+            }
+            
+            .main-content {
+                margin-right: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط الجانبي -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="../../assets/images/odonex-symbol.svg" alt="OdoNex">
+            <h2>Odo<span>Nex</span></h2>
+            <p>لوحة التحكم</p>
+        </div>
+        
+        <div class="sidebar-menu">
+            <div class="menu-item" onclick="window.location.href='../index.html'">
+                <i>📊</i>
+                <span>الرئيسية</span>
+            </div>
+            <div class="menu-item active">
+                <i>✨</i>
+                <span>المميزات</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='gallery.html'">
+                <i>🖼️</i>
+                <span>معرض الأعمال</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='pricing.html'">
+                <i>💰</i>
+                <span>الأسعار</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='contact.html'">
+                <i>📞</i>
+                <span>جهات الاتصال</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='messages.html'">
+                <i>✉️</i>
+                <span>الرسائل</span>
+            </div>
+            <div class="menu-item" onclick="window.location.href='../login.html'">
+                <i>🚪</i>
+                <span>تسجيل الخروج</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="page-title">
+                <h1>إدارة المميزات</h1>
+                <p>تعديل وإضافة مميزات النظام</p>
+            </div>
+            <div class="user-info">
+                <div>
+                    <div class="user-name">Admin</div>
+                    <div class="user-role">مدير النظام</div>
+                </div>
+                <div class="user-avatar">A</div>
+                <button class="logout-btn" onclick="window.location.href='../login.html'">تسجيل خروج</button>
+            </div>
+        </div>
+        
+        <!-- قائمة المميزات -->
+        <div class="edit-card">
+            <div class="card-header">
+                <h2>المميزات الحالية</h2>
+                <button class="btn-add" onclick="openModal('add')">
+                    <span>+</span> إضافة ميزة جديدة
+                </button>
+            </div>
+            
+            <div class="features-table">
+                <div class="feature-row header">
+                    <div>الأيقونة</div>
+                    <div>العنوان</div>
+                    <div>الوصف</div>
+                    <div>الحالة</div>
+                    <div>الإجراءات</div>
+                </div>
+                
+                <div class="feature-row">
+                    <div class="feature-icon-preview">🔒</div>
+                    <div class="feature-title">أمان البيانات</div>
+                    <div class="feature-desc">حماية متقدمة للبيانات مع تشفير شامل...</div>
+                    <div><span class="status-badge status-active">نشط</span></div>
+                    <div class="action-buttons">
+                        <span class="btn-edit" onclick="openModal('edit', 1)">تعديل</span>
+                        <span class="btn-delete" onclick="deleteFeature(1)">حذف</span>
+                    </div>
+                </div>
+                
+                <div class="feature-row">
+                    <div class="feature-icon-preview">🔄</div>
+                    <div class="feature-title">التكامل الكامل</div>
+                    <div class="feature-desc">ربط سلس بين المحاسبة والمبيعات والمخزون...</div>
+                    <div><span class="status-badge status-active">نشط</span></div>
+                    <div class="action-buttons">
+                        <span class="btn-edit" onclick="openModal('edit', 2)">تعديل</span>
+                        <span class="btn-delete" onclick="deleteFeature(2)">حذف</span>
+                    </div>
+                </div>
+                
+                <div class="feature-row">
+                    <div class="feature-icon-preview">📈</div>
+                    <div class="feature-title">قابلية التوسع</div>
+                    <div class="feature-desc">ينمو مع عملك من شركة ناشئة إلى مؤسسة كبرى...</div>
+                    <div><span class="status-badge status-active">نشط</span></div>
+                    <div class="action-buttons">
+                        <span class="btn-edit" onclick="openModal('edit', 3)">تعديل</span>
+                        <span class="btn-delete" onclick="deleteFeature(3)">حذف</span>
+                    </div>
+                </div>
+                
+                <div class="feature-row">
+                    <div class="feature-icon-preview">📊</div>
+                    <div class="feature-title">تقارير فورية</div>
+                    <div class="feature-desc">وصول فوري للتقارير المالية ولوحات المعلومات...</div>
+                    <div><span class="status-badge status-active">نشط</span></div>
+                    <div class="action-buttons">
+                        <span class="btn-edit" onclick="openModal('edit', 4)">تعديل</span>
+                        <span class="btn-delete" onclick="deleteFeature(4)">حذف</span>
+                    </div>
+                </div>
+                
+                <div class="feature-row">
+                    <div class="feature-icon-preview">🌐</div>
+                    <div class="feature-title">وصول عالمي</div>
+                    <div class="feature-desc">دعم العملات المتعددة واللغات مع الامتثال للوائح...</div>
+                    <div><span class="status-badge status-active">نشط</span></div>
+                    <div class="action-buttons">
+                        <span class="btn-edit" onclick="openModal('edit', 5)">تعديل</span>
+                        <span class="btn-delete" onclick="deleteFeature(5)">حذف</span>
+                    </div>
+                </div>
+                
+                <div class="feature-row">
+                    <div class="feature-icon-preview">⚡</div>
+                    <div class="feature-title">كفاءة عالية</div>
+                    <div class="feature-desc">أتمتة المهام الروتينية وتقليل التكاليف التشغيلية...</div>
+                    <div><span class="status-badge status-active">نشط</span></div>
+                    <div class="action-buttons">
+                        <span class="btn-edit" onclick="openModal('edit', 6)">تعديل</span>
+                        <span class="btn-delete" onclick="deleteFeature(6)">حذف</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- إحصائيات سريعة -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;">
+            <div class="edit-card" style="padding: 20px;">
+                <h3 style="color: var(--primary-dark); margin-bottom: 10px;">إجمالي المميزات</h3>
+                <p style="font-size: 36px; font-weight: bold; color: var(--odo-purple);">12</p>
+                <p style="color: var(--text-light);">6 مميزات رئيسية + 6 إضافية</p>
+            </div>
+            
+            <div class="edit-card" style="padding: 20px;">
+                <h3 style="color: var(--primary-dark); margin-bottom: 10px;">آخر تحديث</h3>
+                <p style="font-size: 24px; font-weight: bold;">منذ يومين</p>
+                <p style="color: var(--text-light);">تم تعديل ميزة الأمان</p>
+            </div>
+            
+            <div class="edit-card" style="padding: 20px;">
+                <h3 style="color: var(--primary-dark); margin-bottom: 10px;">الأكثر مشاهدة</h3>
+                <p style="font-size: 24px; font-weight: bold;">التكامل الكامل</p>
+                <p style="color: var(--text-light);">1,234 مشاهدة هذا الشهر</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- نافذة إضافة/تعديل ميزة -->
+    <div class="modal" id="featureModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">إضافة ميزة جديدة</h3>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            </div>
+            
+            <form id="featureForm">
+                <div class="form-group">
+                    <label>عنوان الميزة (عربي)</label>
+                    <input type="text" id="featureTitleAr" placeholder="مثال: أمان البيانات" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>عنوان الميزة (إنجليزي)</label>
+                    <input type="text" id="featureTitleEn" placeholder="Example: Data Security" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>الوصف (عربي)</label>
+                    <textarea id="featureDescAr" rows="3" placeholder="وصف الميزة بالعربية..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>الوصف (إنجليزي)</label>
+                    <textarea id="featureDescEn" rows="3" placeholder="Description in English..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>اختر الأيقونة</label>
+                    <div class="icon-selector">
+                        <div class="icon-option" onclick="selectIcon(this)">🔒</div>
+                        <div class="icon-option" onclick="selectIcon(this)">🔄</div>
+                        <div class="icon-option" onclick="selectIcon(this)">📈</div>
+                        <div class="icon-option" onclick="selectIcon(this)">📊</div>
+                        <div class="icon-option" onclick="selectIcon(this)">🌐</div>
+                        <div class="icon-option" onclick="selectIcon(this)">⚡</div>
+                        <div class="icon-option" onclick="selectIcon(this)">📱</div>
+                        <div class="icon-option" onclick="selectIcon(this)">🤝</div>
+                        <div class="icon-option" onclick="selectIcon(this)">🔧</div>
+                        <div class="icon-option" onclick="selectIcon(this)">🎯</div>
+                        <div class="icon-option" onclick="selectIcon(this)">💡</div>
+                        <div class="icon-option" onclick="selectIcon(this)">⭐</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>الحالة</label>
+                    <select id="featureStatus">
+                        <option value="active">نشط</option>
+                        <option value="inactive">غير نشط</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-save">حفظ التغييرات</button>
+                    <button type="button" class="btn-cancel" onclick="closeModal()">إلغاء</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        let currentFeatureId = null;
+        
+        function openModal(action, featureId = null) {
+            const modal = document.getElementById('featureModal');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            if (action === 'add') {
+                modalTitle.textContent = 'إضافة ميزة جديدة';
+                currentFeatureId = null;
+                document.getElementById('featureForm').reset();
+            } else {
+                modalTitle.textContent = 'تعديل الميزة';
+                currentFeatureId = featureId;
+                // هنا يمكن جلب بيانات الميزة من قاعدة البيانات
+            }
+            
+            modal.classList.add('active');
+        }
+        
+        function closeModal() {
+            document.getElementById('featureModal').classList.remove('active');
+        }
+        
+        function selectIcon(element) {
+            document.querySelectorAll('.icon-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            element.classList.add('selected');
+        }
+        
+        function deleteFeature(id) {
+            if (confirm('هل أنت متأكد من حذف هذه الميزة؟')) {
+                alert('تم حذف الميزة بنجاح');
+                // هنا يتم حذف الميزة فعلياً
+            }
+        }
+        
+        document.getElementById('featureForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // جمع البيانات
+            const featureData = {
+                id: currentFeatureId || Date.now(),
+                titleAr: document.getElementById('featureTitleAr').value,
+                titleEn: document.getElementById('featureTitleEn').value,
+                descAr: document.getElementById('featureDescAr').value,
+                descEn: document.getElementById('featureDescEn').value,
+                icon: document.querySelector('.icon-option.selected')?.textContent || '🔒',
+                status: document.getElementById('featureStatus').value
+            };
+            
+            console.log('تم حفظ الميزة:', featureData);
+            alert('تم حفظ الميزة بنجاح');
+            closeModal();
+        });
+        
+        // إغلاق النافذة عند الضغط خارجها
+        window.onclick = function(event) {
+            const modal = document.getElementById('featureModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
