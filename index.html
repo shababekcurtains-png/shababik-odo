@@ -30,7 +30,7 @@
         .navbar {
             background: white;
             box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            height: 70px; /* تصغير الارتفاع */
+            height: 70px;
             display: flex;
             align-items: center;
             position: relative;
@@ -51,7 +51,7 @@
         }
 
         .nav-logo-img {
-            height: 35px; /* تصغير الشعار */
+            height: 35px;
             width: auto;
         }
 
@@ -59,13 +59,13 @@
             font-family: 'Cairo', sans-serif;
             font-size: 18px;
             font-weight: 700;
-            color: #000000; /* أسود خالص */
+            color: #000000;
         }
 
         /* Centered Navigation Menu */
         .nav-menu {
             display: flex;
-            gap: 35px; /* تقليل المسافة قليلاً */
+            gap: 35px;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -74,7 +74,7 @@
         .nav-menu a {
             text-decoration: none;
             font-family: 'Cairo', sans-serif;
-            font-size: 16px; /* تصغير الخط */
+            font-size: 16px;
             font-weight: 500;
             color: #6B6B6B;
             transition: color 0.3s;
@@ -89,7 +89,7 @@
         /* Left side - Language and Dark Mode */
         .nav-left {
             display: flex;
-            gap: 12px; /* تقليل المسافة */
+            gap: 12px;
             align-items: center;
         }
 
@@ -99,33 +99,33 @@
             align-items: center;
             gap: 6px;
             border: 2px solid #ddd;
-            border-radius: 8px; /* تصغير الانحناء */
-            padding: 6px 12px; /* تصغير الحشو */
+            border-radius: 8px;
+            padding: 6px 12px;
             background: transparent;
         }
 
         .lang-text {
             font-family: 'Cairo', sans-serif;
-            font-size: 14px; /* تصغير الخط */
+            font-size: 14px;
             font-weight: 500;
             color: #555;
         }
 
         .globe-icon {
-            width: 18px; /* تصغير الأيقونة */
+            width: 18px;
             height: 18px;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23555" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>');
             background-size: contain;
         }
 
-        /* Dark Mode Toggle - Only outline, no yellow */
+        /* Dark Mode Toggle - Empty outline (no fill, no color) */
         .dark-mode-container {
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid #ddd;
-            border-radius: 8px; /* تصغير الانحناء */
-            padding: 6px 10px; /* تصغير الحشو */
+            border-radius: 8px;
+            padding: 6px 10px;
             background: transparent;
             cursor: pointer;
         }
@@ -133,9 +133,9 @@
         .dark-mode-toggle {
             background: transparent;
             border: none;
-            font-size: 16px; /* تصغير الخط */
+            font-size: 18px;
             cursor: pointer;
-            color: #333;
+            color: #555; /* لون رمادي محايد */
             width: 20px;
             height: 20px;
             display: flex;
@@ -150,32 +150,32 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            margin-top: 40px; /* تقليل المسافة العلوية */
+            margin-top: 30px;
             padding-bottom: 60px;
         }
 
-        /* Logo with Bouncing Animation */
+        /* Logo with Bouncing Animation - مضاعفة الحجم */
         @keyframes gentleBounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-15px); }
         }
 
         .hero-logo {
-            width: 240px; /* تصغير الشعار قليلاً */
+            width: 480px; /* مضاعفة الحجم (كان 240px) */
             height: auto;
-            margin-bottom: 15px; /* تقليل المسافة */
-            filter: drop-shadow(0 15px 20px rgba(122,90,248,0.25));
-            animation: gentleBounce 3.5s ease-in-out infinite;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 25px 30px rgba(122,90,248,0.3));
+            animation: gentleBounce 4s ease-in-out infinite;
         }
 
-        /* Main Headline - Very Large and Bold */
+        /* Main Headline */
         h1 {
             font-family: 'Cairo', sans-serif;
             font-size: 58px;
             font-weight: 700;
             line-height: 1.2;
             color: #333333;
-            margin-bottom: 8px; /* تقليل المسافة */
+            margin-bottom: 8px;
             letter-spacing: -0.5px;
         }
 
@@ -192,27 +192,28 @@
         .subheadline {
             font-family: 'Cairo', sans-serif;
             font-size: 28px;
-            font-weight: 700; /* بولد */
-            color: #000000; /* أسود */
+            font-weight: 700;
+            color: #000000;
             letter-spacing: 1px;
-            margin-bottom: 12px; /* تقليل المسافة */
+            margin-bottom: 15px;
         }
 
-        /* Description */
+        /* Description - مع التنسيق المطلوب */
         .description {
             font-family: 'Cairo', sans-serif;
             font-size: 20px;
             font-weight: 400;
-            line-height: 1.7;
+            line-height: 1.8;
             color: #8A8A8A;
-            max-width: 800px;
-            margin: 0 auto 25px; /* تقليل المسافة */
+            max-width: 900px;
+            margin: 0 auto 25px;
+            white-space: pre-line; /* للحفاظ على التنسيق النصي */
         }
 
-        /* CTA Buttons - Side by side */
+        /* CTA Buttons */
         .cta-buttons {
             display: flex;
-            gap: 20px; /* تقليل المسافة */
+            gap: 20px;
             justify-content: center;
             align-items: center;
         }
@@ -223,13 +224,13 @@
             font-family: 'Cairo', sans-serif;
             font-size: 18px;
             font-weight: 600;
-            padding: 14px 28px; /* تصغير الحشو */
-            border-radius: 12px; /* تصغير الانحناء */
+            padding: 14px 28px;
+            border-radius: 12px;
             border: none;
             cursor: pointer;
             box-shadow: 0 8px 18px rgba(122,90,248,0.25);
             transition: transform 0.3s, box-shadow 0.3s;
-            min-width: 180px; /* تصغير العرض الأدنى */
+            min-width: 180px;
         }
 
         .btn-primary:hover {
@@ -244,11 +245,11 @@
             font-family: 'Cairo', sans-serif;
             font-size: 18px;
             font-weight: 600;
-            padding: 14px 28px; /* تصغير الحشو */
-            border-radius: 12px; /* تصغير الانحناء */
+            padding: 14px 28px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s;
-            min-width: 180px; /* تصغير العرض الأدنى */
+            min-width: 180px;
         }
 
         .btn-secondary:hover {
@@ -299,7 +300,7 @@
         }
 
         body.dark-mode .nav-logo-text {
-            color: #ffffff; /* في الوضع الداكن يصبح أبيض */
+            color: #ffffff;
         }
 
         body.dark-mode h1 {
@@ -307,7 +308,7 @@
         }
 
         body.dark-mode .subheadline {
-            color: #ffffff; /* في الوضع الداكن يصبح أبيض */
+            color: #ffffff;
         }
 
         body.dark-mode .description {
@@ -332,6 +333,10 @@
             h1 {
                 font-size: 48px;
             }
+            
+            .hero-logo {
+                width: 360px; /* تصغير نسبي للشاشات المتوسطة */
+            }
         }
 
         @media (max-width: 768px) {
@@ -342,7 +347,7 @@
             }
             
             .hero {
-                margin-top: 30px;
+                margin-top: 20px;
             }
             
             h1 {
@@ -355,6 +360,10 @@
             
             .description {
                 font-size: 18px;
+            }
+            
+            .hero-logo {
+                width: 280px; /* تصغير للشاشات الصغيرة */
             }
             
             .cta-buttons {
@@ -405,22 +414,23 @@
 
     <main class="hero">
         <div class="container" style="display: flex; flex-direction: column; align-items: center;">
-            <!-- Logo Image from uploaded file -->
+            <!-- Logo Image - مضاعف الحجم -->
             <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="hero-logo">
 
-            <!-- Main Headline with gradient on OdoNex -->
+            <!-- Main Headline -->
             <h1>
                 <span class="brand-gradient">OdoNex</span> | حلول ERP الموحدة
             </h1>
 
-            <!-- Subheadline - Bold Black -->
+            <!-- Subheadline -->
             <div class="subheadline">
                 تكامل . أمان . توسع
             </div>
 
-            <!-- Description -->
+            <!-- Description - بالتنسيق المطلوب -->
             <p class="description">
-                نظام محاسبي متكامل يجمع جميع عمليات أعمالك في منصة واحدة سهلة وآمنة وقابلة للتوسع.
+                نظام محاسبي متكامل يجمع جميع عمليات أعمالك في منصة واحدة سهلة<br>
+                وآمنة وقابلة للتوسع.
             </p>
 
             <!-- CTA Buttons -->
