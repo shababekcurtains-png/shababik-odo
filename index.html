@@ -18,6 +18,7 @@
             background: linear-gradient(135deg, #F1F3FD 0%, #E6FAFF 100%);
             min-height: 100vh;
             color: #333333;
+            padding-top: 80px; /* تعويض مسافة الشريط الثابت */
         }
 
         .container {
@@ -26,14 +27,18 @@
             padding: 0 40px;
         }
 
-        /* ===== Navigation Bar ===== */
+        /* ===== Navigation Bar - ثابت لا يتحرك ===== */
         .navbar {
             background: white;
             box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            height: 70px;
+            height: 80px; /* ارتفاع الشريط حسب الصورة */
             display: flex;
             align-items: center;
-            position: relative;
+            position: fixed; /* ثابت */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
         }
 
         .nav-container {
@@ -51,14 +56,14 @@
         }
 
         .nav-logo-img {
-            height: 40px;
+            height: 45px; /* حجم مناسب للشعار */
             width: auto;
             object-fit: contain;
         }
 
         .nav-logo-text {
             font-family: 'Cairo', sans-serif;
-            font-size: 18px;
+            font-size: 20px; /* حجم الكتابة حسب الصورة */
             font-weight: 700;
             color: #000000;
         }
@@ -66,7 +71,7 @@
         /* Centered Navigation Menu */
         .nav-menu {
             display: flex;
-            gap: 35px;
+            gap: 40px; /* المسافة بين عناصر القائمة */
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -75,7 +80,7 @@
         .nav-menu a {
             text-decoration: none;
             font-family: 'Cairo', sans-serif;
-            font-size: 16px;
+            font-size: 18px; /* حجم الكتابة في القائمة */
             font-weight: 500;
             color: #6B6B6B;
             transition: color 0.3s;
@@ -90,7 +95,7 @@
         /* Left side - Language and Dark Mode */
         .nav-left {
             display: flex;
-            gap: 8px;
+            gap: 12px; /* المسافة بين الزر والهلال */
             align-items: center;
         }
 
@@ -98,10 +103,10 @@
         .lang-container {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
             border: 2px solid #ddd;
-            border-radius: 8px;
-            padding: 6px 10px;
+            border-radius: 10px;
+            padding: 8px 14px; /* حجم الزر */
             background: transparent;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -109,31 +114,30 @@
 
         .lang-container:hover {
             border-color: #7A5AF8;
-            transform: scale(1.02);
         }
 
         .lang-text {
             font-family: 'Cairo', sans-serif;
-            font-size: 13px;
+            font-size: 16px; /* حجم نص اللغة */
             font-weight: 500;
             color: #555;
         }
 
         .globe-icon {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23555" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>');
             background-size: contain;
         }
 
-        /* Dark Mode Toggle - هلال سميك جداً */
+        /* Dark Mode Toggle - هلال كما في الصورة */
         .dark-mode-container {
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid #ddd;
-            border-radius: 8px;
-            padding: 6px 12px;
+            border-radius: 10px;
+            padding: 8px 14px; /* نفس حجم زر اللغة */
             background: transparent;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -141,25 +145,20 @@
 
         .dark-mode-container:hover {
             border-color: #7A5AF8;
-            transform: scale(1.02);
         }
 
         .dark-mode-toggle {
             background: transparent;
             border: none;
-            font-size: 24px;
+            font-size: 20px; /* حجم الهلال */
             cursor: pointer;
             color: #555;
-            width: 32px;
-            height: 32px;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 900;
             font-family: 'Arial', sans-serif;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            transform: scale(1.2);
-            letter-spacing: 2px;
         }
 
         /* ===== Hero Section ===== */
@@ -169,34 +168,33 @@
             align-items: center;
             justify-content: flex-start;
             text-align: center;
-            margin-top: 90px;
-            padding-bottom: 40px;
-            min-height: calc(100vh - 70px);
+            margin-top: 40px; /* المسافة من الشريط العلوي */
+            padding-bottom: 60px;
         }
 
-        /* Logo with Bouncing Animation */
+        /* Logo with Bouncing Animation - أقل وضوحاً */
         @keyframes gentleBounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-5px); }
         }
 
         .hero-logo {
-            width: 305px;
+            width: 320px; /* حجم الشعار حسب الصورة */
             height: auto;
-            margin-bottom: 5px;
-            filter: drop-shadow(0 12px 18px rgba(122,90,248,0.2));
-            animation: gentleBounce 4s ease-in-out infinite;
+            margin-bottom: 30px; /* المسافة تحت الشعار */
+            filter: drop-shadow(0 10px 15px rgba(122,90,248,0.15));
+            animation: gentleBounce 5s ease-in-out infinite;
             object-fit: contain;
         }
 
         /* Main Headline */
         h1 {
             font-family: 'Cairo', sans-serif;
-            font-size: 58px;
+            font-size: 52px; /* حجم العنوان الرئيسي */
             font-weight: 700;
             line-height: 1.2;
             color: #333333;
-            margin-bottom: 10px; /* نفس المسافة في الإنجليزية */
+            margin-bottom: 15px; /* المسافة تحت العنوان */
             letter-spacing: -0.5px;
         }
 
@@ -212,43 +210,73 @@
         /* Subheadline - Bold Black */
         .subheadline {
             font-family: 'Cairo', sans-serif;
-            font-size: 28px;
+            font-size: 26px; /* حجم العنوان الفرعي */
             font-weight: 700;
             color: #000000;
             letter-spacing: 0.5px;
-            margin-bottom: 10px; /* نفس المسافة في الإنجليزية */
+            margin-bottom: 15px; /* المسافة تحت العنوان الفرعي */
         }
 
         /* Description */
         .description {
             font-family: 'Cairo', sans-serif;
-            font-size: 20px;
+            font-size: 18px; /* حجم النص الوصفي */
             font-weight: 400;
-            line-height: 1.5;
+            line-height: 1.6;
             color: #8A8A8A;
             max-width: 900px;
-            margin: 0 auto 15px; /* نفس المسافة في الإنجليزية */
-            white-space: pre-line;
+            margin: 0 auto 25px; /* المسافة تحت الوصف */
+        }
+
+        /* Keywords Section - الشبكة السداسية */
+        .keywords-section {
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .keywords-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .keyword-item {
+            background: #f8f9fa;
+            padding: 12px 8px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+            border: 1px solid #eee;
+            transition: transform 0.2s;
+            font-weight: 400;
+        }
+
+        .keyword-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
 
         /* CTA Buttons */
         .cta-buttons {
             display: flex;
-            gap: 16px;
+            gap: 20px;
             justify-content: center;
             align-items: center;
             width: 100%;
             max-width: 700px;
-            margin: 5px auto 0;
+            margin: 20px auto 0;
         }
 
         .btn-primary {
             background: linear-gradient(135deg, #7A5AF8 0%, #2BB0ED 100%);
             color: white;
             font-family: 'Cairo', sans-serif;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
-            padding: 11px 26px;
+            padding: 12px 28px;
             border-radius: 10px;
             border: none;
             cursor: pointer;
@@ -267,9 +295,9 @@
             border: 2px solid #7A5AF8;
             color: #7A5AF8;
             font-family: 'Cairo', sans-serif;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
-            padding: 11px 26px;
+            padding: 12px 28px;
             border-radius: 10px;
             cursor: pointer;
             transition: transform 0.3s ease;
@@ -279,62 +307,6 @@
 
         .btn-secondary:hover {
             transform: scale(1.05);
-        }
-
-        /* ===== Dark Mode Styles ===== */
-        body.dark-mode {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #f0f0f0;
-        }
-
-        body.dark-mode .navbar {
-            background: #222;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-        }
-
-        body.dark-mode .nav-menu a {
-            color: #ccc;
-        }
-
-        body.dark-mode .nav-menu a:hover,
-        body.dark-mode .nav-menu a.active {
-            color: #9B59FF;
-        }
-
-        body.dark-mode .lang-container {
-            border-color: #444;
-        }
-
-        body.dark-mode .lang-text {
-            color: #ddd;
-        }
-
-        body.dark-mode .globe-icon {
-            filter: invert(0.8);
-        }
-
-        body.dark-mode .dark-mode-container {
-            border-color: #444;
-        }
-
-        body.dark-mode .dark-mode-toggle {
-            color: #fff;
-        }
-
-        body.dark-mode .nav-logo-text {
-            color: #ffffff;
-        }
-
-        body.dark-mode h1 {
-            color: #f0f0f0;
-        }
-
-        body.dark-mode .subheadline {
-            color: #ffffff;
-        }
-
-        body.dark-mode .description {
-            color: #aaa;
         }
 
         /* ===== Responsive ===== */
@@ -353,19 +325,19 @@
             }
             
             h1 {
-                font-size: 48px;
+                font-size: 44px;
             }
             
             .hero-logo {
-                width: 250px;
+                width: 280px;
             }
             
-            .cta-buttons {
-                max-width: 90%;
+            .keywords-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
             
             .hero {
-                margin-top: 70px;
+                margin-top: 100px;
             }
         }
 
@@ -377,43 +349,50 @@
             }
             
             .hero {
-                margin-top: 60px;
+                margin-top: 120px;
             }
             
             h1 {
-                font-size: 42px;
+                font-size: 38px;
             }
             
             .subheadline {
-                font-size: 24px;
+                font-size: 22px;
             }
             
             .description {
-                font-size: 18px;
-                margin-bottom: 10px;
+                font-size: 16px;
             }
             
             .hero-logo {
-                width: 200px;
+                width: 240px;
+            }
+            
+            .keywords-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .cta-buttons {
                 flex-direction: column;
-                gap: 10px;
-                margin-top: 3px;
+                gap: 15px;
             }
             
             .btn-primary,
             .btn-secondary {
                 max-width: 100%;
                 width: 100%;
-                padding: 10px 20px;
-                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .keywords-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <!-- الشريط العلوي ثابت -->
     <nav class="navbar">
         <div class="container nav-container">
             <!-- Right side - Logo Image and OdoNex Text -->
@@ -438,7 +417,7 @@
                     <div class="globe-icon"></div>
                 </div>
                 <div class="dark-mode-container" onclick="toggleDarkMode()">
-                    <span class="dark-mode-toggle">🌙</span> <!-- هلال سميك جداً -->
+                    <span class="dark-mode-toggle">☾</span> <!-- هلال كما في الصورة -->
                 </div>
             </div>
         </div>
@@ -465,6 +444,30 @@
                 وآمنة وقابلة للتوسع.
             </p>
 
+            <!-- Keywords Section - كما في الصورة -->
+            <div class="keywords-section">
+                <div class="keywords-grid">
+                    <div class="keyword-item">ادا تجربتك المجانية</div>
+                    <div class="keyword-item">ادا تطويرك</div>
+                    <div class="keyword-item">ادا تعاونك</div>
+                    <div class="keyword-item">ادا إدارة الأعمال</div>
+                    <div class="keyword-item">ادا تحسينات</div>
+                    <div class="keyword-item">ادا حلول ERP</div>
+                    <div class="keyword-item">ادا نموذج</div>
+                    <div class="keyword-item">ادا خدمة</div>
+                    <div class="keyword-item">ادا رقابة</div>
+                    <div class="keyword-item">ادا تكنولوجيا</div>
+                    <div class="keyword-item">ادا الإنتاج</div>
+                    <div class="keyword-item">ادا التطوير</div>
+                    <div class="keyword-item">ادا التنمية المستدامة</div>
+                    <div class="keyword-item">ادا الاستثمار</div>
+                    <div class="keyword-item">ادا الحماية</div>
+                    <div class="keyword-item">ادا البيئة</div>
+                    <div class="keyword-item">ادا العملاء</div>
+                    <div class="keyword-item">ادا الأعمال</div>
+                </div>
+            </div>
+
             <!-- CTA Buttons -->
             <div class="cta-buttons">
                 <button class="btn-primary">ابدأ تجربتك المجانية</button>
@@ -480,7 +483,7 @@
             if (document.body.classList.contains('dark-mode')) {
                 toggleBtn.textContent = '☀️';
             } else {
-                toggleBtn.textContent = '🌙'; /* هلال سميك جداً */
+                toggleBtn.textContent = '☾';
             }
         }
 
