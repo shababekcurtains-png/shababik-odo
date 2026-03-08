@@ -171,11 +171,18 @@
             padding: 60px 0 40px;
         }
 
+        /* حركة الشعار السابقة */
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
         .hero-logo {
             width: 280px;
             height: auto;
-            margin: 0 auto 15px;
+            margin: 0 auto 10px;
             filter: drop-shadow(0 12px 18px rgba(122,90,248,0.2));
+            animation: gentleBounce 4s ease-in-out infinite;
         }
 
         h1 {
@@ -183,21 +190,21 @@
             background: var(--main-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .subheadline {
             font-size: 24px;
             font-weight: 700;
             color: #000000;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .description {
             font-size: 18px;
             color: var(--text-secondary);
             max-width: 700px;
-            margin: 0 auto 15px;
+            margin: 0 auto 10px;
         }
 
         /* CTA Buttons */
