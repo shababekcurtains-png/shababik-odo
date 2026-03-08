@@ -888,16 +888,16 @@
     <header>
         <div class="container">
             <div class="nav-left">
-                <img src="assets/images/odonex-logo.png" alt="OdoNex" class="nav-logo-img">
+                <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="nav-logo-img">
                 <span class="nav-logo-text">OdoNex</span>
             </div>
 
             <div class="nav-menu">
-                <a href="index.html" class="active">Home</a>
-                <a href="features.html">Features</a>
-                <a href="pricing.html">Pricing</a>
-                <a href="portfolio.html">Portfolio</a>
-                <a href="contact.html">Contact</a>
+                <a href="index-en.html" class="active">Home</a>
+                <a href="features-en.html">Features</a>
+                <a href="pricing-en.html">Pricing</a>
+                <a href="gallery-en.html">Portfolio</a>
+                <a href="contact-en.html">Contact</a>
             </div>
 
             <div class="nav-right">
@@ -915,7 +915,7 @@
     <main>
         <section class="hero">
             <div class="container">
-                <img src="assets/images/odonex-logo.png" alt="OdoNex" class="hero-logo">
+                <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="hero-logo">
                 <h1>
                     <span class="brand-gradient">OdoNex</span> <span class="black-text">| Unified ERP Solutions</span>
                 </h1>
@@ -926,8 +926,8 @@
                     <span style="display: inline-block;">business operations into one easy, secure, and scalable platform.</span>
                 </p>
                 <div class="cta-buttons" style="justify-content: center;">
-                    <button class="btn-primary" onclick="window.location.href='signup.html'">Start Free Trial</button>
-                    <button class="btn-secondary" onclick="window.location.href='demo.html'">Request a Demo</button>
+                    <button class="btn-primary" onclick="window.location.href='signup-en.html'">Start Free Trial</button>
+                    <button class="btn-secondary" onclick="window.location.href='demo-en.html'">Request a Demo</button>
                 </div>
             </div>
         </section>
@@ -1188,7 +1188,7 @@
                     <div class="footer-tagline">Unified ERP Solutions</div>
                 </div>
                 <div class="footer-logo">
-                    <img src="assets/images/odonex-logo.png" alt="OdoNex Logo">
+                    <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo">
                 </div>
             </div>
             <div class="footer-copyright">
@@ -1209,7 +1209,7 @@
         }
 
         function switchLanguage() {
-            window.location.href = 'index-ar.html';
+            window.location.href = 'index.html';
         }
 
         function toggleFAQ(element) {
@@ -1273,10 +1273,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             startCountersOnScroll();
             
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            // Set active class based on current page
+            const currentPage = window.location.pathname.split('/').pop() || 'index-en.html';
             const navLinks = document.querySelectorAll('.nav-menu a');
             navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentPage) {
+                const href = link.getAttribute('href');
+                if (href === currentPage) {
                     link.classList.add('active');
                 } else {
                     link.classList.remove('active');
