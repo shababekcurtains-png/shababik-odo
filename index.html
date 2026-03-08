@@ -11,230 +11,159 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        :root {
+            --odonex-purple: #7B2CBF;
+            --odonex-blue: #00B4D8;
+            --text-main: #333333;
+            --text-secondary: #777777;
+            --bg-white: #FFFFFF;
+            --bg-light: #F8F9FA;
+            --main-gradient: linear-gradient(135deg, #7B2CBF, #00B4D8);
         }
 
         body {
-            font-family: 'Cairo', sans-serif;
             background: linear-gradient(135deg, #F1F3FD 0%, #E6FAFF 100%);
-            min-height: 100vh;
-            color: #333333;
-            padding-top: 70px;
+            color: var(--text-main);
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 20px;
         }
 
-        /* ===== Navigation Bar - ثابت عند التمرير ===== */
-        .navbar {
-            background: white;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            height: 70px;
-            display: flex;
-            align-items: center;
-            position: fixed;
+        /* ===== Header ===== */
+        header {
+            background: var(--bg-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            width: 100%;
+            z-index: 100;
+            border-bottom: 3px solid transparent;
+            border-image: var(--main-gradient) 1;
         }
 
-        .nav-container {
+        header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%;
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 40px;
         }
 
-        /* Right side - Logo and OdoNex text */
-        .nav-right {
+        .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .nav-logo-img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .nav-logo-text {
-            font-family: 'Cairo', sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            color: #000000;
-        }
-
-        /* Centered Navigation Menu */
-        .nav-menu {
-            display: flex;
-            gap: 35px;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .nav-menu a {
             text-decoration: none;
-            font-family: 'Cairo', sans-serif;
-            font-size: 16px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin: 0 15px;
             font-weight: 500;
-            color: #6B6B6B;
             transition: color 0.3s;
+            position: relative;
         }
 
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: #7A5AF8;
+        nav a:hover {
+            color: var(--odonex-purple);
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--main-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        nav a:hover:after,
+        nav a.active:after {
+            transform: scaleX(1);
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 5px;
+        }
+
+        .lang-btn {
+            background: var(--bg-light);
+            border: 1px solid #ddd;
+            color: var(--text-main);
+            padding: 5px 12px;
+            border-radius: 50px;
+            cursor: pointer;
             font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
         }
 
-        /* Left side - Language and Dark Mode */
-        .nav-left {
-            display: flex;
-            gap: 8px;
-            align-items: center;
+        .lang-btn:hover,
+        .lang-btn.active {
+            background: var(--main-gradient);
+            border-color: transparent;
+            color: white;
         }
 
-        /* Language Button with Globe - Outlined */
-        .lang-container {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            padding: 6px 10px;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .lang-container:hover {
-            border-color: #7A5AF8;
-            transform: scale(1.02);
-        }
-
-        .lang-text {
-            font-family: 'Cairo', sans-serif;
-            font-size: 13px;
-            font-weight: 500;
-            color: #555;
-        }
-
-        .globe-icon {
-            width: 16px;
-            height: 16px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23555" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>');
-            background-size: contain;
-        }
-
-        /* Dark Mode Toggle - هلال مفرغ بدون لون */
-        .dark-mode-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            padding: 6px 12px;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dark-mode-container:hover {
-            border-color: #7A5AF8;
-            transform: scale(1.02);
-        }
-
-        .dark-mode-toggle {
-            background: transparent;
-            border: none;
-            font-size: 22px;
-            cursor: pointer;
-            color: #555;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 300;
-            font-family: 'Arial', sans-serif;
-            opacity: 0.8;
-        }
-
-        /* ===== Hero Section - نزول 3 سم (30px) إضافية ===== */
+        /* ===== Hero Section ===== */
         .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
             text-align: center;
-            margin-top: 100px; /* 70px + 30px = 100px (3 سم إضافية) */
-            padding-bottom: 40px;
-            min-height: calc(100vh - 70px);
-        }
-
-        /* Logo with Bouncing Animation */
-        @keyframes gentleBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            padding: 60px 0 40px;
+            border-bottom: 1px solid #eef2f6;
         }
 
         .hero-logo {
             width: 305px;
             height: auto;
-            margin-bottom: 3px;
+            margin: 0 auto 30px;
             filter: drop-shadow(0 12px 18px rgba(122,90,248,0.2));
             animation: gentleBounce 4s ease-in-out infinite;
-            object-fit: contain;
         }
 
-        /* Main Headline */
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
         h1 {
-            font-family: 'Cairo', sans-serif;
-            font-size: 58px;
-            font-weight: 700;
-            line-height: 1.2;
-            color: #333333;
-            margin-bottom: 2px; /* تقريب النص من العنوان الفرعي */
-            letter-spacing: -0.5px;
-        }
-
-        .brand-gradient {
-            background: linear-gradient(135deg, #7A5AF8, #2BB0ED);
+            font-size: 48px;
+            background: var(--main-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-            display: inline-block;
+            margin-bottom: 15px;
         }
 
-        /* Subheadline - Bold Black */
         .subheadline {
-            font-family: 'Cairo', sans-serif;
             font-size: 28px;
             font-weight: 700;
             color: #000000;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px; /* تقريب النص من الوصف */
+            margin-bottom: 15px;
         }
 
-        /* Description */
         .description {
-            font-family: 'Cairo', sans-serif;
-            font-size: 20px;
-            font-weight: 400;
-            line-height: 1.5;
-            color: #8A8A8A;
-            max-width: 900px;
-            margin: 0 auto 5px; /* تقليل المسافة */
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 25px;
             white-space: pre-line;
         }
 
@@ -244,25 +173,21 @@
             gap: 16px;
             justify-content: center;
             align-items: center;
-            width: 100%;
-            max-width: 700px;
-            margin: 3px auto 0;
+            margin: 20px auto 0;
         }
 
         .btn-primary {
             background: linear-gradient(135deg, #7A5AF8 0%, #2BB0ED 100%);
             color: white;
-            font-family: 'Cairo', sans-serif;
             font-size: 16px;
             font-weight: 600;
-            padding: 11px 26px;
+            padding: 12px 28px;
             border-radius: 10px;
             border: none;
             cursor: pointer;
             box-shadow: 0 6px 14px rgba(122,90,248,0.2);
             transition: transform 0.3s ease;
-            flex: 1;
-            max-width: 220px;
+            min-width: 180px;
         }
 
         .btn-primary:hover {
@@ -273,51 +198,111 @@
             background: transparent;
             border: 2px solid #7A5AF8;
             color: #7A5AF8;
-            font-family: 'Cairo', sans-serif;
             font-size: 16px;
             font-weight: 600;
-            padding: 11px 26px;
+            padding: 12px 28px;
             border-radius: 10px;
             cursor: pointer;
             transition: transform 0.3s ease;
-            flex: 1;
-            max-width: 220px;
+            min-width: 180px;
         }
 
         .btn-secondary:hover {
             transform: scale(1.05);
         }
 
-        /* ===== Dark Mode Styles ===== */
+        /* Dark Mode Toggle */
+        .dark-mode-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 5px 12px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .dark-mode-container:hover {
+            border-color: #7A5AF8;
+        }
+
+        .dark-mode-toggle {
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #555;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: var(--text-main);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-grid h4 {
+            color: var(--odonex-blue);
+            margin-bottom: 20px;
+        }
+
+        .footer-grid a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-grid a:hover {
+            color: var(--odonex-blue);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+        }
+
+        /* ===== Dark Mode ===== */
         body.dark-mode {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #f0f0f0;
         }
 
-        body.dark-mode .navbar {
+        body.dark-mode header {
             background: #222;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
         }
 
-        body.dark-mode .nav-menu a {
+        body.dark-mode nav a {
             color: #ccc;
         }
 
-        body.dark-mode .nav-menu a:hover,
-        body.dark-mode .nav-menu a.active {
+        body.dark-mode nav a:hover,
+        body.dark-mode nav a.active {
             color: #9B59FF;
         }
 
-        body.dark-mode .lang-container {
-            border-color: #444;
-        }
-
-        body.dark-mode .lang-text {
+        body.dark-mode .lang-btn {
+            background: #333;
             color: #ddd;
-        }
-
-        body.dark-mode .globe-icon {
-            filter: invert(0.8);
         }
 
         body.dark-mode .dark-mode-container {
@@ -326,161 +311,121 @@
 
         body.dark-mode .dark-mode-toggle {
             color: #fff;
-            opacity: 0.9;
-        }
-
-        body.dark-mode .nav-logo-text {
-            color: #ffffff;
-        }
-
-        body.dark-mode h1 {
-            color: #f0f0f0;
         }
 
         body.dark-mode .subheadline {
             color: #ffffff;
         }
 
-        body.dark-mode .description {
-            color: #aaa;
-        }
-
         /* ===== Responsive ===== */
         @media (max-width: 992px) {
-            .nav-menu {
-                position: static;
-                transform: none;
-                margin: 0 auto;
-                gap: 25px;
-            }
-            
-            .nav-container {
+            nav {
+                gap: 15px;
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 15px;
             }
             
             h1 {
-                font-size: 48px;
+                font-size: 36px;
             }
             
             .hero-logo {
                 width: 250px;
             }
-            
-            .cta-buttons {
-                max-width: 90%;
-            }
-            
-            .hero {
-                margin-top: 90px;
-            }
         }
 
         @media (max-width: 768px) {
-            .nav-menu {
-                gap: 20px;
-                flex-wrap: wrap;
+            header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav {
                 justify-content: center;
-            }
-            
-            .hero {
-                margin-top: 80px;
-            }
-            
-            h1 {
-                font-size: 42px;
-            }
-            
-            .subheadline {
-                font-size: 24px;
-            }
-            
-            .description {
-                font-size: 18px;
-                margin-bottom: 4px;
-            }
-            
-            .hero-logo {
-                width: 200px;
             }
             
             .cta-buttons {
                 flex-direction: column;
-                gap: 8px;
-                margin-top: 2px;
+                gap: 12px;
             }
             
             .btn-primary,
             .btn-secondary {
-                max-width: 100%;
                 width: 100%;
-                padding: 10px 20px;
-                font-size: 15px;
+                max-width: 280px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- الشريط العلوي ثابت عند التمرير -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <!-- Right side - Logo Image and OdoNex Text -->
-            <div class="nav-right">
-                <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo" class="nav-logo-img">
-                <span class="nav-logo-text">OdoNex</span>
-            </div>
-
-            <!-- Centered Navigation Menu -->
-            <div class="nav-menu">
-                <a href="#" class="active">الرئيسية</a>
-                <a href="#">المميزات</a>
-                <a href="#">الأسعار</a>
-                <a href="#">معرض الأعمال</a>
-                <a href="#">اتصل بنا</a>
-            </div>
-
-            <!-- Left side - Language and Dark Mode -->
-            <div class="nav-left">
-                <div class="lang-container" onclick="switchLanguage()">
-                    <span class="lang-text">EN</span>
-                    <div class="globe-icon"></div>
-                </div>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/odonex-logo.png.png" alt="OdoNex">
+            </a>
+            <div style="display: flex; align-items: center;">
+                <nav>
+                    <a href="index.html" class="active">الرئيسية</a>
+                    <a href="features.html">المميزات</a>
+                    <a href="pricing.html">الأسعار</a>
+                    <a href="gallery.html">معرض الأعمال</a>
+                    <a href="contact.html">اتصل بنا</a>
+                </nav>
                 <div class="dark-mode-container" onclick="toggleDarkMode()">
-                    <span class="dark-mode-toggle">☾</span> <!-- هلال مفرغ بدون لون -->
+                    <span class="dark-mode-toggle">☾</span>
+                </div>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" onclick="switchLanguage('ar')">العربية</button>
+                    <button class="lang-btn" onclick="switchLanguage('en')">English</button>
                 </div>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <main class="hero">
-        <div class="container" style="display: flex; flex-direction: column; align-items: center;">
-            <!-- الشعار الرئيسي -->
-            <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo" class="hero-logo">
-
-            <!-- Main Headline -->
-            <h1>
-                <span class="brand-gradient">OdoNex</span> | حلول ERP الموحدة
-            </h1>
-
-            <!-- Subheadline -->
-            <div class="subheadline">
-                تكامل. أمان. توسع.
+    <main>
+        <section class="hero">
+            <div class="container">
+                <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="hero-logo">
+                <h1>OdoNex | حلول ERP الموحدة</h1>
+                <div class="subheadline">تكامل. أمان. توسع.</div>
+                <p class="description">
+                    نظام محاسبي متكامل يجمع جميع عمليات أعمالك في منصة واحدة سهلة
+                    وآمنة وقابلة للتوسع.
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn-primary">ابدأ تجربتك المجانية</button>
+                    <button class="btn-secondary">اطلب عرضاً توضيحياً</button>
+                </div>
             </div>
+        </section>
+    </main>
 
-            <!-- Description - مقربة جداً من العنوان الفرعي -->
-            <p class="description">
-                نظام محاسبي متكامل يجمع جميع عمليات أعمالك في منصة واحدة سهلة
-                وآمنة وقابلة للتوسع.
-            </p>
-
-            <!-- CTA Buttons -->
-            <div class="cta-buttons">
-                <button class="btn-primary">ابدأ تجربتك المجانية</button>
-                <button class="btn-secondary">اطلب عرضاً توضيحياً</button>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>OdoNex</h4>
+                    <p>حلول محاسبة متكاملة لإدارة موارد المؤسسات</p>
+                </div>
+                <div>
+                    <h4>روابط سريعة</h4>
+                    <a href="index.html">الرئيسية</a>
+                    <a href="features.html">المميزات</a>
+                    <a href="gallery.html">معرض الأعمال</a>
+                    <a href="pricing.html">الأسعار</a>
+                    <a href="contact.html">اتصل بنا</a>
+                </div>
+                <div>
+                    <h4>تواصل معنا</h4>
+                    <p>هاتف: +966 50 000 0000</p>
+                    <p>بريد: info@odonex.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2026 جميع الحقوق محفوظة لشركة OdoNex | حلول ERP المتكاملة
             </div>
         </div>
-    </main>
+    </footer>
 
     <script>
         function toggleDarkMode() {
@@ -489,12 +434,14 @@
             if (document.body.classList.contains('dark-mode')) {
                 toggleBtn.textContent = '☀️';
             } else {
-                toggleBtn.textContent = '☾'; /* هلال مفرغ بدون لون */
+                toggleBtn.textContent = '☾';
             }
         }
 
-        function switchLanguage() {
-            window.location.href = 'index-en.html';
+        function switchLanguage(lang) {
+            if (lang === 'en') {
+                window.location.href = 'index-en.html';
+            }
         }
     </script>
 </body>
