@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OdoNex | حلول ERP الموحدة</title>
+    <title>OdoNex | آراء العملاء</title>
     <!-- Google Fonts - Tajawal -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -15,22 +15,21 @@
         }
 
         :root {
-            --primary-purple: #7A5AF8;
-            --primary-blue: #2BB0ED;
-            --accent-blue: #4A7BFF;
+            --primary-blue: #4A7BFF;
             --dark-text: #333333;
-            --secondary-text: #6B6B6B;
-            --light-text: #8A8A8A;
-            --section-bg: #F8F9FB;
-            --bg-white: #FFFFFF;
-            --main-gradient: linear-gradient(135deg, #7A5AF8, #2BB0ED);
+            --body-text: #444444;
+            --secondary-text: #8A8A8A;
+            --border-color: #E6E8EC;
+            --section-bg: #F7F8FB;
+            --card-bg: #FFFFFF;
+            --star-gold: #F5B301;
+            --star-empty: #D1D5DB;
         }
 
         body {
-            background: linear-gradient(135deg, #F1F3FD 0%, #E6FAFF 100%);
+            background-color: var(--section-bg);
             color: var(--dark-text);
             line-height: 1.6;
-            padding-top: 70px;
         }
 
         .container {
@@ -39,664 +38,280 @@
             padding: 0 20px;
         }
 
-        /* ===== Header - ثابت عند التمرير ===== */
-        header {
-            background: var(--bg-white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            padding: 15px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            width: 100%;
-            border-bottom: 3px solid transparent;
-            border-image: var(--main-gradient) 1;
-        }
-
-        header .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .nav-right {
-            position: absolute;
-            right: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .nav-logo-img {
-            height: 55px; /* تكبير الشعار */
-            width: auto;
-            object-fit: contain;
-        }
-
-        .nav-logo-text {
-            font-size: 22px; /* تكبير النص */
-            font-weight: 700;
-            color: #000000;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 35px;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            color: #6B6B6B;
-            transition: color 0.3s;
-        }
-
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: var(--primary-purple);
-            font-weight: 600;
-        }
-
-        .nav-left {
-            position: absolute;
-            left: 0;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .lang-container {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            padding: 6px 14px;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .lang-container:hover {
-            border-color: var(--primary-purple);
-        }
-
-        .lang-text {
-            font-size: 14px;
-            font-weight: 500;
-            color: #555;
-        }
-
-        .globe-icon {
-            width: 18px;
-            height: 18px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23555" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>');
-            background-size: contain;
-        }
-
-        .dark-mode-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            padding: 6px 12px;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dark-mode-container:hover {
-            border-color: var(--primary-purple);
-        }
-
-        .dark-mode-toggle {
-            background: transparent;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            color: #555;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* ===== Hero Section ===== */
-        .hero {
-            text-align: center;
-            padding: 60px 0 40px;
-        }
-
-        @keyframes gentleBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .hero-logo {
-            width: 320px; /* تكبير الشعار */
-            height: auto;
-            margin: 0 auto 10px;
-            filter: drop-shadow(0 12px 18px rgba(122,90,248,0.2));
-            animation: gentleBounce 4s ease-in-out infinite;
-        }
-
-        h1 {
-            font-size: 52px; /* زيادة حجم الخط */
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .brand-gradient {
-            background: var(--main-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .black-text {
-            color: #000000; /* النص باللون الأسود */
-        }
-
-        .subheadline {
-            font-size: 24px;
-            font-weight: 700;
-            color: #000000;
-            margin-bottom: 10px;
-        }
-
-        .description {
-            font-size: 18px;
-            color: var(--light-text);
-            max-width: 700px;
-            margin: 0 auto 10px;
-            white-space: pre-line;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            align-items: center;
-            margin: 10px auto 0;
-        }
-
-        .btn-primary {
-            background: var(--main-gradient);
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            padding: 12px 28px;
-            border-radius: 10px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 6px 14px rgba(122,90,248,0.2);
-            transition: transform 0.3s ease;
-            min-width: 180px;
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.05);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--primary-purple);
-            color: var(--primary-purple);
-            font-size: 16px;
-            font-weight: 600;
-            padding: 12px 28px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            min-width: 180px;
-        }
-
-        .btn-secondary:hover {
-            transform: scale(1.05);
-        }
-
-        /* ===== Statistics Section ===== */
-        .statistics-section {
+        /* ===== Testimonials Section ===== */
+        .testimonials-section {
             background-color: var(--section-bg);
-            padding: 90px 0;
-            margin-top: 40px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 80px;
-            align-items: center;
-            justify-items: center;
+            padding: 100px 0;
             text-align: center;
         }
 
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .stat-icon-box {
-            width: 64px;
-            height: 64px;
-            background: var(--main-gradient);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-            margin-bottom: 12px;
-        }
-
-        .stat-icon-box svg {
-            width: 28px;
-            height: 28px;
-            fill: none;
-            stroke: white;
-            stroke-width: 2;
-        }
-
-        .stat-number {
-            font-size: 48px;
-            font-weight: 700;
-            background: var(--main-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 6px;
-        }
-
-        .stat-label {
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--secondary-text);
-        }
-
-        /* ===== Testimonials Heading Section ===== */
-        .testimonials-heading {
-            background-color: var(--bg-white);
-            text-align: center;
-            padding: 60px 0;
-            margin-top: 0;
-        }
-
-        .testimonials-title {
+        /* Section Title */
+        .section-title {
             font-size: 40px;
             font-weight: 700;
             color: var(--dark-text);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
-        .testimonials-title span {
-            background: var(--main-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .section-title span {
+            color: var(--primary-blue);
         }
 
-        .testimonials-subtitle {
+        /* Section Subtitle */
+        .section-subtitle {
             font-size: 18px;
             font-weight: 400;
-            color: var(--light-text);
+            color: var(--secondary-text);
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto 60px;
             line-height: 1.7;
         }
 
-        /* ===== Dark Mode ===== */
-        body.dark-mode {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #f0f0f0;
+        /* Testimonials Grid */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
         }
 
-        body.dark-mode header {
-            background: #222;
+        /* Testimonial Card */
+        .testimonial-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            text-align: right;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        body.dark-mode .nav-menu a {
-            color: #ccc;
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
         }
 
-        body.dark-mode .nav-menu a:hover,
-        body.dark-mode .nav-menu a.active {
-            color: #9B59FF;
+        /* Star Rating */
+        .star-rating {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 15px;
         }
 
-        body.dark-mode .lang-container {
-            border-color: #444;
+        .star {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
         }
 
-        body.dark-mode .lang-text {
-            color: #ddd;
+        .star-filled {
+            color: var(--star-gold);
         }
 
-        body.dark-mode .globe-icon {
-            filter: invert(0.8);
+        .star-empty {
+            color: var(--star-empty);
         }
 
-        body.dark-mode .dark-mode-container {
-            border-color: #444;
+        /* Testimonial Text */
+        .testimonial-text {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--body-text);
+            line-height: 1.8;
+            margin-bottom: 25px;
         }
 
-        body.dark-mode .dark-mode-toggle {
-            color: #fff;
+        /* Divider */
+        .testimonial-divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 10px 0 20px;
         }
 
-        body.dark-mode .nav-logo-text {
-            color: #ffffff;
+        /* Client Name */
+        .client-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 4px;
         }
 
-        body.dark-mode .subheadline {
-            color: #ffffff;
-        }
-
-        body.dark-mode .black-text {
-            color: #ffffff; /* في الوضع الداكن يصبح أبيض */
-        }
-
-        body.dark-mode .statistics-section {
-            background-color: #222;
-        }
-
-        body.dark-mode .stat-label {
-            color: #aaa;
-        }
-
-        body.dark-mode .testimonials-heading {
-            background-color: #1a1a2e;
-        }
-
-        body.dark-mode .testimonials-title {
-            color: #f0f0f0;
-        }
-
-        body.dark-mode .testimonials-subtitle {
-            color: #aaa;
+        /* Client Role */
+        .client-role {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--secondary-text);
         }
 
         /* ===== Responsive ===== */
         @media (max-width: 992px) {
-            .nav-menu {
-                gap: 25px;
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            h1 {
-                font-size: 44px;
-            }
-            
-            .hero-logo {
-                width: 280px;
-            }
-            
-            .stats-grid {
-                gap: 40px;
-            }
-            
-            .stat-number {
-                font-size: 40px;
+            .section-title {
+                font-size: 36px;
             }
         }
 
         @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
-                gap: 15px;
-                padding-top: 50px;
-            }
-            
-            .nav-right,
-            .nav-left {
-                position: static;
-            }
-            
-            .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
+            .testimonials-grid {
+                grid-template-columns: 1fr;
                 gap: 20px;
             }
             
-            h1 {
-                font-size: 36px;
+            .testimonials-section {
+                padding: 60px 0;
             }
             
-            .subheadline {
-                font-size: 20px;
-            }
-            
-            .description {
-                font-size: 16px;
-            }
-            
-            .hero-logo {
-                width: 240px;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                gap: 12px;
-            }
-            
-            .btn-primary,
-            .btn-secondary {
-                width: 100%;
-                max-width: 280px;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
-            
-            .stat-number {
-                font-size: 36px;
-            }
-            
-            .testimonials-title {
+            .section-title {
                 font-size: 32px;
             }
             
-            .testimonials-subtitle {
+            .section-subtitle {
                 font-size: 16px;
+                margin-bottom: 40px;
             }
-        }
-
-        @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            
+            .testimonial-card {
+                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
+    <section class="testimonials-section">
         <div class="container">
-            <div class="nav-right">
-                <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="nav-logo-img">
-                <span class="nav-logo-text">OdoNex</span>
-            </div>
-
-            <div class="nav-menu">
-                <a href="#" class="active">الرئيسية</a>
-                <a href="#">المميزات</a>
-                <a href="#">الأسعار</a>
-                <a href="#">معرض الأعمال</a>
-                <a href="#">اتصل بنا</a>
-            </div>
-
-            <div class="nav-left">
-                <div class="lang-container" onclick="switchLanguage()">
-                    <span class="lang-text">EN</span>
-                    <div class="globe-icon"></div>
-                </div>
-                <div class="dark-mode-container" onclick="toggleDarkMode()">
-                    <span class="dark-mode-toggle">☾</span>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="hero-logo">
-                <h1>
-                    <span class="brand-gradient">OdoNex</span> <span class="black-text">| حلول ERP الموحدة</span>
-                </h1>
-                <div class="subheadline">تكامل. أمان. توسع.</div>
-                <p class="description">
-                    نظام محاسبي متكامل يجمع جميع عمليات أعمالك في منصة واحدة سهلة
-                    وآمنة وقابلة للتوسع.
-                </p>
-                <div class="cta-buttons">
-                    <button class="btn-primary">ابدأ تجربتك المجانية</button>
-                    <button class="btn-secondary">اطلب عرضاً توضيحياً</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Statistics Section -->
-        <section class="statistics-section">
-            <div class="container">
-                <div class="stats-grid">
-                    <!-- Stat 4 - Active Clients -->
-                    <div class="stat-item">
-                        <div class="stat-icon-box">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                                <circle cx="12" cy="7" r="4"/>
-                            </svg>
-                        </div>
-                        <div class="stat-number" data-target="1500">0</div>
-                        <div class="stat-label">عميل نشط</div>
-                    </div>
-
-                    <!-- Stat 3 - Projects -->
-                    <div class="stat-item">
-                        <div class="stat-icon-box">
-                            <svg viewBox="0 0 24 24">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                            </svg>
-                        </div>
-                        <div class="stat-number" data-target="320">0</div>
-                        <div class="stat-label">مشروع منجز</div>
-                    </div>
-
-                    <!-- Stat 2 - Countries -->
-                    <div class="stat-item">
-                        <div class="stat-icon-box">
-                            <svg viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10"/>
-                                <line x1="2" y1="12" x2="22" y2="12"/>
-                                <line x1="12" y1="2" x2="12" y2="22"/>
-                            </svg>
-                        </div>
-                        <div class="stat-number" data-target="15">0</div>
-                        <div class="stat-label">دولة حول العالم</div>
-                    </div>
-
-                    <!-- Stat 1 - Customer Satisfaction -->
-                    <div class="stat-item">
-                        <div class="stat-icon-box">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-                                <path d="M12 12c-2.21 0-4 1.79-4 4h8c0-2.21-1.79-4-4-4z"/>
-                                <circle cx="8" cy="10" r="2"/>
-                                <circle cx="16" cy="10" r="2"/>
-                            </svg>
-                        </div>
-                        <div class="stat-number" data-target="99">0</div>
-                        <div class="stat-label">رضا العملاء</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Heading Section -->
-        <section class="testimonials-heading">
-            <div class="container">
-                <h2 class="testimonials-title">
-                    ماذا يقول <span>عملاؤنا</span>
-                </h2>
-                <p class="testimonials-subtitle">
-                    آراء حقيقية من عملاء يثقون بنا في إدارة أعمالهم
-                </p>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            const toggleBtn = document.querySelector('.dark-mode-toggle');
-            if (document.body.classList.contains('dark-mode')) {
-                toggleBtn.textContent = '☀️';
-            } else {
-                toggleBtn.textContent = '☾';
-            }
-        }
-
-        function switchLanguage() {
-            window.location.href = 'index-en.html';
-        }
-
-        // Counter Animation - يعمل عند التمرير
-        function animateCounter(element, start, end, duration, prefix = '') {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const currentValue = Math.floor(progress * (end - start) + start);
-                element.innerText = prefix + currentValue + (end === 99 ? '%' : '');
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                } else {
-                    element.innerText = prefix + end + (end === 99 ? '%' : '');
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
-
-        // تفعيل العد عند التمرير
-        function startCountersOnScroll() {
-            const counters = document.querySelectorAll('.stat-number');
-            const targets = [1500, 320, 15, 99];
-            let animationStarted = false;
+            <!-- Section Title -->
+            <h2 class="section-title">
+                ماذا يقول <span>عملاؤنا</span>
+            </h2>
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !animationStarted) {
-                        animationStarted = true;
-                        
-                        counters.forEach((counter, index) => {
-                            const target = targets[index];
-                            if (target === 99) {
-                                animateCounter(counter, 1, target, 2000, '');
-                            } else if (target === 1500 || target === 320) {
-                                animateCounter(counter, 1, target, 2500, '+');
-                            } else {
-                                animateCounter(counter, 1, target, 2000, '');
-                            }
-                        });
-                        
-                        observer.disconnect(); // إيقاف المراقبة بعد بدء العد
-                    }
-                });
-            }, { threshold: 0.3 }); // يبدأ عندما يظهر 30% من القسم
+            <!-- Section Subtitle -->
+            <p class="section-subtitle">
+                آراء حقيقية من عملاء يثقون بنا في إدارة أعمالهم
+            </p>
             
-            const statsSection = document.querySelector('.statistics-section');
-            if (statsSection) {
-                observer.observe(statsSection);
-            }
-        }
-
-        // بدء المراقبة عند تحميل الصفحة
-        document.addEventListener('DOMContentLoaded', startCountersOnScroll);
-    </script>
-</body>
-</html>
+            <!-- Testimonials Grid -->
+            <div class="testimonials-grid">
+                <!-- Testimonial Card 1 - سارة العتيبي -->
+                <div class="testimonial-card">
+                    <div class="star-rating">
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">
+                        "إدارة 12 فرعاً أصبحت أسهل بكثير مع OdoNex. تتبع المخزون والمبيعات في الوقت الحقيقي ميزة لا غنى عنها."
+                    </p>
+                    <div class="testimonial-divider"></div>
+                    <div class="client-name">سارة العتيبي</div>
+                    <div class="client-role">المديرة المالية - شركة النخبة</div>
+                </div>
+                
+                <!-- Testimonial Card 2 - محمد الشمري -->
+                <div class="testimonial-card">
+                    <div class="star-rating">
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">
+                        "بعد تطبيق OdoNex وفرنا أكثر من 60% من وقت الفريق المحاسبي. النظام سهل الاستخدام والدعم الفني ممتاز."
+                    </p>
+                    <div class="testimonial-divider"></div>
+                    <div class="client-name">محمد الشمري</div>
+                    <div class="client-role">مدير عام - مجموعة الشركة التجارية</div>
+                </div>
+                
+                <!-- Testimonial Card 3 - فاطمة الزهراني -->
+                <div class="testimonial-card">
+                    <div class="star-rating">
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">
+                        "نظام OdoNex غير طريقة إدارة لـ 3 فروع بالكامل. أصبحت التقارير المالية جاهزة بضغطة زر والدقة في الحسابات لا مثيل لها."
+                    </p>
+                    <div class="testimonial-divider"></div>
+                    <div class="client-name">فاطمة الزهراني</div>
+                    <div class="client-role">مدير عام - جامعة أم القرى</div>
+                </div>
+                
+                <!-- Testimonial Card 4 - أحمد الحربي -->
+                <div class="testimonial-card">
+                    <div class="star-rating">
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">
+                        "الربط بين الأقسام المختلفة في النظام وفر علينا الكثير من الجهد. نوصي به بشدة لأي مؤسسة تعليمية."
+                    </p>
+                    <div class="testimonial-divider"></div>
+                    <div class="client-name">أحمد الحربي</div>
+                    <div class="client-role">مدير عام - جامعة أم القرى</div>
+                </div>
+                
+                <!-- Testimonial Card 5 - خالد القحطاني -->
+                <div class="testimonial-card">
+                    <div class="star-rating">
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                        <svg class="star star-filled" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00
