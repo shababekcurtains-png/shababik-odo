@@ -4,30 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OdoNex | Unified ERP Solutions</title>
-    <!-- Google Fonts - Cairo -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts - Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Tajawal', sans-serif;
         }
 
         :root {
-            --odonex-purple: #7B2CBF;
-            --odonex-blue: #00B4D8;
-            --text-main: #333333;
-            --text-secondary: #777777;
+            --primary-purple: #7A5AF8;
+            --primary-blue: #2BB0ED;
+            --accent-blue: #4A7BFF;
+            --dark-text: #333333;
+            --secondary-text: #6B6B6B;
+            --light-text: #8A8A8A;
+            --section-bg: #F8F9FB;
             --bg-white: #FFFFFF;
-            --bg-light: #F8F9FA;
-            --main-gradient: linear-gradient(135deg, #7B2CBF, #00B4D8);
+            --main-gradient: linear-gradient(135deg, #7A5AF8, #2BB0ED);
         }
 
         body {
             background: linear-gradient(135deg, #F1F3FD 0%, #E6FAFF 100%);
-            color: var(--text-main);
+            color: var(--dark-text);
             line-height: 1.6;
+            padding-top: 70px;
         }
 
         .container {
@@ -36,14 +39,17 @@
             padding: 0 20px;
         }
 
-        /* ===== Header ===== */
+        /* ===== Header - ثابت عند التمرير ===== */
         header {
             background: var(--bg-white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             padding: 15px 0;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            width: 100%;
             border-bottom: 3px solid transparent;
             border-image: var(--main-gradient) 1;
         }
@@ -55,7 +61,6 @@
             position: relative;
         }
 
-        /* Right side - Logo */
         .nav-right {
             position: absolute;
             right: 0;
@@ -76,7 +81,6 @@
             color: #000000;
         }
 
-        /* Centered Navigation Menu */
         .nav-menu {
             display: flex;
             gap: 35px;
@@ -92,11 +96,10 @@
 
         .nav-menu a:hover,
         .nav-menu a.active {
-            color: #7A5AF8;
+            color: var(--primary-purple);
             font-weight: 600;
         }
 
-        /* Left side - Language and Dark Mode */
         .nav-left {
             position: absolute;
             left: 0;
@@ -105,7 +108,6 @@
             align-items: center;
         }
 
-        /* Language Button with Globe */
         .lang-container {
             display: flex;
             align-items: center;
@@ -119,7 +121,7 @@
         }
 
         .lang-container:hover {
-            border-color: #7A5AF8;
+            border-color: var(--primary-purple);
         }
 
         .lang-text {
@@ -135,7 +137,6 @@
             background-size: contain;
         }
 
-        /* Dark Mode Toggle */
         .dark-mode-container {
             display: flex;
             align-items: center;
@@ -149,7 +150,7 @@
         }
 
         .dark-mode-container:hover {
-            border-color: #7A5AF8;
+            border-color: var(--primary-purple);
         }
 
         .dark-mode-toggle {
@@ -171,7 +172,6 @@
             padding: 60px 0 40px;
         }
 
-        /* حركة الشعار السابقة */
         @keyframes gentleBounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
@@ -202,12 +202,11 @@
 
         .description {
             font-size: 18px;
-            color: var(--text-secondary);
+            color: var(--light-text);
             max-width: 700px;
             margin: 0 auto 10px;
         }
 
-        /* CTA Buttons */
         .cta-buttons {
             display: flex;
             gap: 16px;
@@ -217,7 +216,7 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #7A5AF8 0%, #2BB0ED 100%);
+            background: var(--main-gradient);
             color: white;
             font-size: 16px;
             font-weight: 600;
@@ -236,8 +235,8 @@
 
         .btn-secondary {
             background: transparent;
-            border: 2px solid #7A5AF8;
-            color: #7A5AF8;
+            border: 2px solid var(--primary-purple);
+            color: var(--primary-purple);
             font-size: 16px;
             font-weight: 600;
             padding: 12px 28px;
@@ -249,6 +248,93 @@
 
         .btn-secondary:hover {
             transform: scale(1.05);
+        }
+
+        /* ===== Statistics Section ===== */
+        .statistics-section {
+            background-color: var(--section-bg);
+            padding: 90px 0;
+            margin-top: 40px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 80px;
+            align-items: center;
+            justify-items: center;
+            text-align: center;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-icon-box {
+            width: 64px;
+            height: 64px;
+            background: var(--main-gradient);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+            margin-bottom: 12px;
+        }
+
+        .stat-icon-box svg {
+            width: 28px;
+            height: 28px;
+            fill: none;
+            stroke: white;
+            stroke-width: 2;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--secondary-text);
+        }
+
+        /* ===== Testimonials Heading Section ===== */
+        .testimonials-heading {
+            background-color: var(--bg-white);
+            text-align: center;
+            padding: 60px 0;
+            margin-top: 0;
+        }
+
+        .testimonials-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 12px;
+        }
+
+        .testimonials-title span {
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .testimonials-subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
         }
 
         /* ===== Dark Mode ===== */
@@ -298,6 +384,26 @@
             color: #ffffff;
         }
 
+        body.dark-mode .statistics-section {
+            background-color: #222;
+        }
+
+        body.dark-mode .stat-label {
+            color: #aaa;
+        }
+
+        body.dark-mode .testimonials-heading {
+            background-color: #1a1a2e;
+        }
+
+        body.dark-mode .testimonials-title {
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .testimonials-subtitle {
+            color: #aaa;
+        }
+
         /* ===== Responsive ===== */
         @media (max-width: 992px) {
             .nav-menu {
@@ -310,6 +416,14 @@
             
             .hero-logo {
                 width: 240px;
+            }
+            
+            .stats-grid {
+                gap: 40px;
+            }
+            
+            .stat-number {
+                font-size: 40px;
             }
         }
 
@@ -353,19 +467,41 @@
                 width: 100%;
                 max-width: 280px;
             }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+            
+            .testimonials-title {
+                font-size: 32px;
+            }
+            
+            .testimonials-subtitle {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <!-- Right side - Logo -->
             <div class="nav-right">
                 <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="nav-logo-img">
                 <span class="nav-logo-text">OdoNex</span>
             </div>
 
-            <!-- Centered Navigation Menu -->
             <div class="nav-menu">
                 <a href="#" class="active">Home</a>
                 <a href="#">Features</a>
@@ -374,7 +510,6 @@
                 <a href="#">Contact</a>
             </div>
 
-            <!-- Left side - Language and Dark Mode -->
             <div class="nav-left">
                 <div class="lang-container" onclick="switchLanguage()">
                     <span class="lang-text">عربي</span>
@@ -388,6 +523,7 @@
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
             <div class="container">
                 <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="hero-logo">
@@ -400,6 +536,76 @@
                     <button class="btn-primary">Start Free Trial</button>
                     <button class="btn-secondary">Request a Demo</button>
                 </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section - Reversed (starts from right) -->
+        <section class="statistics-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <!-- Stat 4 - Active Clients (appears first from right) -->
+                    <div class="stat-item">
+                        <div class="stat-icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number" data-target="1500">0</div>
+                        <div class="stat-label">Active Clients</div>
+                    </div>
+
+                    <!-- Stat 3 - Projects -->
+                    <div class="stat-item">
+                        <div class="stat-icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number" data-target="320">0</div>
+                        <div class="stat-label">Completed Projects</div>
+                    </div>
+
+                    <!-- Stat 2 - Countries -->
+                    <div class="stat-item">
+                        <div class="stat-icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <line x1="12" y1="2" x2="12" y2="22"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number" data-target="15">0</div>
+                        <div class="stat-label">Countries Worldwide</div>
+                    </div>
+
+                    <!-- Stat 1 - Customer Satisfaction -->
+                    <div class="stat-item">
+                        <div class="stat-icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                                <path d="M12 12c-2.21 0-4 1.79-4 4h8c0-2.21-1.79-4-4-4z"/>
+                                <circle cx="8" cy="10" r="2"/>
+                                <circle cx="16" cy="10" r="2"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number" data-target="99">0</div>
+                        <div class="stat-label">Customer Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Heading Section -->
+        <section class="testimonials-heading">
+            <div class="container">
+                <h2 class="testimonials-title">
+                    What <span>Our Clients Say</span>
+                </h2>
+                <p class="testimonials-subtitle">
+                    Real opinions from clients who trust us in managing their business
+                </p>
             </div>
         </section>
     </main>
@@ -418,6 +624,42 @@
         function switchLanguage() {
             window.location.href = 'index.html';
         }
+
+        // Counter Animation
+        function animateCounter(element, start, end, duration, prefix = '') {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const currentValue = Math.floor(progress * (end - start) + start);
+                element.innerText = prefix + currentValue + (end === 99 ? '%' : '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    element.innerText = prefix + end + (end === 99 ? '%' : '');
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Start counters when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            // Reversed order: 1500, 320, 15, 99
+            const targets = [1500, 320, 15, 99];
+            
+            counters.forEach((counter, index) => {
+                const target = targets[index];
+                if (target === 99) {
+                    animateCounter(counter, 1, target, 2000, '');
+                } else if (target === 1500 || target === 320) {
+                    animateCounter(counter, 1, target, 2500, '+');
+                } else {
+                    animateCounter(counter, 1, target, 2000, '');
+                }
+            });
+        });
     </script>
 </body>
 </html>
