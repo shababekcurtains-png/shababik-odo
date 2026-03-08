@@ -87,28 +87,11 @@
             font-weight: 600;
         }
 
-        /* Right side - Get Started, Language and Dark Mode */
+        /* Right side - Language and Dark Mode */
         .nav-right {
             display: flex;
             gap: 8px;
             align-items: center;
-        }
-
-        .btn-get-started {
-            background: linear-gradient(135deg, #7A5AF8 0%, #2BB0ED 100%);
-            color: white;
-            font-family: 'Cairo', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            padding: 8px 18px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .btn-get-started:hover {
-            transform: scale(1.05);
         }
 
         /* Language Button */
@@ -136,7 +119,7 @@
             color: #555;
         }
 
-        /* Dark Mode Toggle */
+        /* Dark Mode Toggle - هلال جديد مفرغ (Crescent outline) */
         .dark-mode-container {
             display: flex;
             align-items: center;
@@ -157,7 +140,7 @@
         .dark-mode-toggle {
             background: transparent;
             border: none;
-            font-size: 20px;
+            font-size: 22px;
             cursor: pointer;
             color: #555;
             width: 30px;
@@ -165,8 +148,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 300;
             font-family: 'Arial', sans-serif;
+            transform: rotate(0deg);
+            text-shadow: 0 0 1px currentColor;
         }
 
         /* ===== Hero Section ===== */
@@ -327,10 +311,6 @@
             color: #ffffff;
         }
 
-        body.dark-mode .btn-get-started {
-            background: linear-gradient(135deg, #9B59FF, #2BB0ED);
-        }
-
         body.dark-mode h1 {
             color: #f0f0f0;
         }
@@ -410,8 +390,7 @@
             }
             
             .btn-primary,
-            .btn-secondary,
-            .btn-get-started {
+            .btn-secondary {
                 max-width: 100%;
                 width: 100%;
                 padding: 10px 20px;
@@ -429,7 +408,7 @@
                 <span class="nav-logo-text">OdoNex</span>
             </div>
 
-            <!-- Centered Navigation Menu - Exactly as in the image -->
+            <!-- Centered Navigation Menu -->
             <div class="nav-menu">
                 <a href="#" class="active">Home</a>
                 <a href="#">Features</a>
@@ -438,14 +417,13 @@
                 <a href="#">Contact</a>
             </div>
 
-            <!-- Right side - Get Started, Language and Dark Mode -->
+            <!-- Right side - Language and Dark Mode -->
             <div class="nav-right">
-                <button class="btn-get-started">Get Started</button>
                 <div class="lang-container" onclick="switchLanguage()">
                     <span class="lang-text">عربي</span>
                 </div>
                 <div class="dark-mode-container" onclick="toggleDarkMode()">
-                    <span class="dark-mode-toggle">☾</span>
+                    <span class="dark-mode-toggle">☽</span> <!-- هلال مفرغ جديد -->
                 </div>
             </div>
         </div>
@@ -456,22 +434,22 @@
             <!-- Main Logo -->
             <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo" class="hero-logo">
 
-            <!-- Main Headline - Exactly as in the image -->
+            <!-- Main Headline -->
             <h1>
                 <span class="brand-gradient">OdoNex</span> | Unified ERP Solutions
             </h1>
 
-            <!-- Subheadline - Exactly as in the image -->
+            <!-- Subheadline -->
             <div class="subheadline">
                 Integration. Security. Scalability.
             </div>
 
-            <!-- Description - Exactly as in the image with line break -->
+            <!-- Description -->
             <p class="description">
                 A comprehensive accounting system that brings all your business<br>operations into one easy, secure, and scalable platform.
             </p>
 
-            <!-- CTA Buttons - Exactly as in the image -->
+            <!-- CTA Buttons -->
             <div class="cta-buttons">
                 <button class="btn-primary">Start Free Trial</button>
                 <button class="btn-secondary">Request a Demo</button>
@@ -486,7 +464,7 @@
             if (document.body.classList.contains('dark-mode')) {
                 toggleBtn.textContent = '☀️';
             } else {
-                toggleBtn.textContent = '☾';
+                toggleBtn.textContent = '☽'; /* هلال مفرغ */
             }
         }
 
