@@ -514,7 +514,7 @@
             }
         }
 
-        /* ===== Page 5: Footer Section ===== */
+        /* ===== Page 5: Footer Section - مع استخدام صورة الشعار ===== */
         footer {
             background-color: var(--footer-bg);
             width: 100%;
@@ -563,9 +563,10 @@
             height: 60px;
         }
 
-        .footer-logo svg {
+        .footer-logo img {
             width: 100%;
             height: 100%;
+            object-fit: contain;
         }
 
         .footer-copyright {
@@ -1089,7 +1090,7 @@
         </section>
     </main>
 
-    <!-- Page 5: Footer Section - مطابقة للصورة -->
+    <!-- Page 5: Footer Section - مع استخدام صورة الشعار -->
     <footer>
         <div class="footer-container">
             <div class="footer-brand-row">
@@ -1098,21 +1099,7 @@
                     <div class="footer-tagline">حلول ERP الموحدة</div>
                 </div>
                 <div class="footer-logo">
-                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="footerPurpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#7A5AF8" />
-                                <stop offset="100%" stop-color="#9B59FF" />
-                            </linearGradient>
-                            <linearGradient id="footerBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#2BB0ED" />
-                                <stop offset="100%" stop-color="#00B4D8" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="24" cy="30" r="14" fill="url(#footerPurpleGrad)" opacity="0.9" />
-                        <circle cx="36" cy="30" r="14" fill="url(#footerBlueGrad)" opacity="0.9" />
-                        <circle cx="30" cy="30" r="5" fill="white" />
-                    </svg>
+                    <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo">
                 </div>
             </div>
             <div class="footer-copyright">
