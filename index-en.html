@@ -19,10 +19,14 @@
             --primary-blue: #2BB0ED;
             --accent-blue: #4A7BFF;
             --dark-text: #333333;
+            --body-text: #444444;
             --secondary-text: #6B6B6B;
             --light-text: #8A8A8A;
             --section-bg: #F8F9FB;
             --bg-white: #FFFFFF;
+            --border-color: #E6E8EC;
+            --star-gold: #F5B301;
+            --star-empty: #D1D5DB;
             --main-gradient: linear-gradient(135deg, #7A5AF8, #2BB0ED);
         }
 
@@ -39,7 +43,7 @@
             padding: 0 20px;
         }
 
-        /* ===== Header - ثابت عند التمرير ===== */
+        /* ===== Header - Fixed on scroll ===== */
         header {
             background: var(--bg-white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -70,13 +74,13 @@
         }
 
         .nav-logo-img {
-            height: 55px; /* تكبير الشعار */
+            height: 55px;
             width: auto;
             object-fit: contain;
         }
 
         .nav-logo-text {
-            font-size: 22px; /* تكبير النص */
+            font-size: 22px;
             font-weight: 700;
             color: #000000;
         }
@@ -166,7 +170,7 @@
             justify-content: center;
         }
 
-        /* ===== Hero Section ===== */
+        /* ===== Hero Section (Page 1) ===== */
         .hero {
             text-align: center;
             padding: 60px 0 40px;
@@ -178,7 +182,7 @@
         }
 
         .hero-logo {
-            width: 320px; /* تكبير الشعار */
+            width: 320px;
             height: auto;
             margin: 0 auto 10px;
             filter: drop-shadow(0 12px 18px rgba(122,90,248,0.2));
@@ -186,7 +190,7 @@
         }
 
         h1 {
-            font-size: 52px; /* زيادة حجم الخط */
+            font-size: 52px;
             font-weight: 700;
             margin-bottom: 10px;
         }
@@ -198,7 +202,7 @@
         }
 
         .black-text {
-            color: #000000; /* النص باللون الأسود */
+            color: #000000;
         }
 
         .subheadline {
@@ -258,7 +262,7 @@
             transform: scale(1.05);
         }
 
-        /* ===== Statistics Section ===== */
+        /* ===== Statistics Section (Page 2) ===== */
         .statistics-section {
             background-color: var(--section-bg);
             padding: 90px 0;
@@ -315,28 +319,22 @@
             color: var(--secondary-text);
         }
 
-        /* ===== Testimonials Heading Section ===== */
-        .testimonials-heading {
-            background-color: var(--bg-white);
+        /* ===== Testimonials Section (Page 3) ===== */
+        .testimonials-section {
+            background-color: var(--section-bg);
+            padding: 100px 0;
             text-align: center;
-            padding: 60px 0;
-            margin-top: 0;
         }
 
         .testimonials-title {
             font-size: 40px;
             font-weight: 700;
-            margin-bottom: 12px;
+            color: var(--dark-text);
+            margin-bottom: 10px;
         }
 
-        .testimonials-title .black-part {
-            color: #000000; /* What Our باللون الأسود */
-        }
-
-        .testimonials-title .gradient-part {
-            background: var(--main-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .testimonials-title span {
+            color: var(--accent-blue);
         }
 
         .testimonials-subtitle {
@@ -344,8 +342,76 @@
             font-weight: 400;
             color: var(--light-text);
             max-width: 600px;
-            margin: 0 auto;
+            margin: 0 auto 60px;
             line-height: 1.7;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 15px;
+        }
+
+        .star {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .star-filled {
+            color: var(--star-gold);
+        }
+
+        .star-empty {
+            color: var(--star-empty);
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--body-text);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .testimonial-divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 10px 0 20px;
+        }
+
+        .client-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 4px;
+        }
+
+        .client-role {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--light-text);
         }
 
         /* ===== Dark Mode ===== */
@@ -391,32 +457,28 @@
             color: #ffffff;
         }
 
-        body.dark-mode .subheadline {
-            color: #ffffff;
-        }
-
         body.dark-mode .black-text {
             color: #ffffff;
         }
 
-        body.dark-mode .testimonials-title .black-part {
-            color: #ffffff;
-        }
-
-        body.dark-mode .statistics-section {
+        body.dark-mode .statistics-section,
+        body.dark-mode .testimonials-section {
             background-color: #222;
         }
 
-        body.dark-mode .stat-label {
+        body.dark-mode .testimonial-card {
+            background-color: #2a2a2a;
+            border-color: #444;
+        }
+
+        body.dark-mode .stat-label,
+        body.dark-mode .testimonials-subtitle,
+        body.dark-mode .client-role {
             color: #aaa;
         }
 
-        body.dark-mode .testimonials-heading {
-            background-color: #1a1a2e;
-        }
-
-        body.dark-mode .testimonials-subtitle {
-            color: #aaa;
+        body.dark-mode .testimonials-title {
+            color: #f0f0f0;
         }
 
         /* ===== Responsive ===== */
@@ -439,6 +501,10 @@
             
             .stat-number {
                 font-size: 40px;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -464,27 +530,8 @@
                 font-size: 36px;
             }
             
-            .subheadline {
-                font-size: 20px;
-            }
-            
-            .description {
-                font-size: 16px;
-            }
-            
             .hero-logo {
                 width: 240px;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                gap: 12px;
-            }
-            
-            .btn-primary,
-            .btn-secondary {
-                width: 100%;
-                max-width: 280px;
             }
             
             .stats-grid {
@@ -496,12 +543,17 @@
                 font-size: 36px;
             }
             
-            .testimonials-title {
-                font-size: 32px;
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             
-            .testimonials-subtitle {
-                font-size: 16px;
+            .testimonials-section {
+                padding: 60px 0;
+            }
+            
+            .testimonials-title {
+                font-size: 32px;
             }
         }
 
@@ -542,7 +594,7 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
+        <!-- Page 1: Hero Section -->
         <section class="hero">
             <div class="container">
                 <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="hero-logo">
@@ -560,11 +612,10 @@
             </div>
         </section>
 
-        <!-- Statistics Section -->
+        <!-- Page 2: Statistics Section -->
         <section class="statistics-section">
             <div class="container">
                 <div class="stats-grid">
-                    <!-- Stat 4 - Active Clients -->
                     <div class="stat-item">
                         <div class="stat-icon-box">
                             <svg viewBox="0 0 24 24">
@@ -576,7 +627,6 @@
                         <div class="stat-label">Active Clients</div>
                     </div>
 
-                    <!-- Stat 3 - Projects -->
                     <div class="stat-item">
                         <div class="stat-icon-box">
                             <svg viewBox="0 0 24 24">
@@ -588,7 +638,6 @@
                         <div class="stat-label">Completed Projects</div>
                     </div>
 
-                    <!-- Stat 2 - Countries -->
                     <div class="stat-item">
                         <div class="stat-icon-box">
                             <svg viewBox="0 0 24 24">
@@ -601,7 +650,6 @@
                         <div class="stat-label">Countries Worldwide</div>
                     </div>
 
-                    <!-- Stat 1 - Customer Satisfaction -->
                     <div class="stat-item">
                         <div class="stat-icon-box">
                             <svg viewBox="0 0 24 24">
@@ -618,15 +666,107 @@
             </div>
         </section>
 
-        <!-- Testimonials Heading Section -->
-        <section class="testimonials-heading">
+        <!-- Page 3: Testimonials Section -->
+        <section class="testimonials-section">
             <div class="container">
                 <h2 class="testimonials-title">
-                    <span class="black-part">What</span> <span class="black-part">Our</span> <span class="gradient-part">Clients Say</span>
+                    What <span>Our Clients Say</span>
                 </h2>
                 <p class="testimonials-subtitle">
                     Real opinions from clients who trust us in managing their business
                 </p>
+
+                <div class="testimonials-grid">
+                    <!-- Testimonial 1 - Sarah Al-Otaibi -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"Managing 12 branches has become much easier with OdoNex. Real-time inventory and sales tracking is an indispensable feature."</p>
+                        <div class="testimonial-divider"></div>
+                        <div class="client-name">Sarah Al-Otaibi</div>
+                        <div class="client-role">Financial Manager - Elite Company</div>
+                    </div>
+
+                    <!-- Testimonial 2 - Mohammed Al-Shammari -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"After implementing OdoNex, we saved more than 60% of our accounting team's time. The system is easy to use and technical support is excellent."</p>
+                        <div class="testimonial-divider"></div>
+                        <div class="client-name">Mohammed Al-Shammari</div>
+                        <div class="client-role">General Manager - Commercial Group</div>
+                    </div>
+
+                    <!-- Testimonial 3 - Fatima Al-Zahrani -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"OdoNex completely transformed how we manage our 3 branches. Financial reports are now ready with one click, and the accuracy in calculations is unmatched."</p>
+                        <div class="testimonial-divider"></div>
+                        <div class="client-name">Fatima Al-Zahrani</div>
+                        <div class="client-role">General Manager - Umm Al-Qura University</div>
+                    </div>
+
+                    <!-- Testimonial 4 - Ahmed Al-Harbi -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"The integration between different departments in the system saved us a lot of effort. We highly recommend it for any educational institution."</p>
+                        <div class="testimonial-divider"></div>
+                        <div class="client-name">Ahmed Al-Harbi</div>
+                        <div class="client-role">General Manager - Umm Al-Qura University</div>
+                    </div>
+
+                    <!-- Testimonial 5 - Khaled Al-Qahtani -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-empty" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"Very flexible system. We were able to customize it to fit our work nature in the construction sector. Excellent investment."</p>
+                        <div class="testimonial-divider"></div>
+                        <div class="client-name">Khaled Al-Qahtani</div>
+                        <div class="client-role">Projects Manager - Foundations Company</div>
+                    </div>
+
+                    <!-- Testimonial 6 - Noura Al-Qahtani -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"Great experience with OdoNex. Easy to use and supports Arabic language excellently. The support team is very cooperative."</p>
+                        <div class="testimonial-divider"></div>
+                        <div class="client-name">Noura Al-Qahtani</div>
+                        <div class="client-role">Operations Manager - Future Company</div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -646,7 +786,7 @@
             window.location.href = 'index.html';
         }
 
-        // Counter Animation - يعمل عند التمرير
+        // Counter Animation on Scroll
         function animateCounter(element, start, end, duration, prefix = '') {
             let startTimestamp = null;
             const step = (timestamp) => {
@@ -663,7 +803,6 @@
             window.requestAnimationFrame(step);
         }
 
-        // تفعيل العد عند التمرير
         function startCountersOnScroll() {
             const counters = document.querySelectorAll('.stat-number');
             const targets = [1500, 320, 15, 99];
