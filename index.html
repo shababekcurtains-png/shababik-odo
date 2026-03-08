@@ -1291,5 +1291,133 @@
             startCountersOnScroll();
         });
     </script>
+        <!-- باقي محتوى الصفحة ... -->
+
+    <script>
+        // Dark mode toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const toggleBtn = document.querySelector('.dark-mode-toggle');
+            if (document.body.classList.contains('dark-mode')) {
+                toggleBtn.textContent = '☀️';
+            } else {
+                toggleBtn.textContent = '☾';
+            }
+        }
+
+        // Language switch
+        function switchLanguage() {
+            window.location.href = 'index-en.html';
+        }
+
+        // FAQ toggle
+        function toggleFAQ(element) {
+            const allItems = document.querySelectorAll('.faq-item');
+            allItems.forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                }
+            });
+            element.classList.toggle('active');
+        }
+
+        // Counter Animation
+        function animateCounter(element, start, end, duration, prefix = '') {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const currentValue = Math.floor(progress * (end - start) + start);
+                element.innerText = prefix + currentValue + (end === 99 ? '%' : '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    element.innerText = prefix + end + (end === 99 ? '%' : '');
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        function startCountersOnScroll() {
+            const counters = document.querySelectorAll('.stat-number');
+            const targets = [1500, 320, 15, 99];
+            let animationStarted = false;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !animationStarted) {
+                        animationStarted = true;
+                        
+                        counters.forEach((counter, index) => {
+                            const target = targets[index];
+                            if (target === 99) {
+                                animateCounter(counter, 1, target, 2000, '');
+                            } else if (target === 1500 || target === 320) {
+                                animateCounter(counter, 1, target, 2500, '+');
+                            } else {
+                                animateCounter(counter, 1, target, 2000, '');
+                            }
+                        });
+                        
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            const statsSection = document.querySelector('.statistics-section');
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            startCountersOnScroll();
+        });
+
+        // ===== هنا ضع الكود الجديد =====
+        // تحميل بيانات القسم الرئيسي من localStorage
+        window.addEventListener('load', function() {
+            const heroData = localStorage.getItem('heroData');
+            if (heroData) {
+                const data = JSON.parse(heroData);
+                document.querySelector('.hero h1').innerHTML = data.title;
+                document.querySelector('.subheadline').innerHTML = data.subheadline;
+                document.querySelector('.description').innerHTML = data.description;
+                document.querySelector('.btn-primary').innerHTML = data.btnPrimary;
+                document.querySelector('.btn-secondary').innerHTML = data.btnSecondary;
+                
+                // تعديل حجم الشعار
+                document.querySelector('.hero-logo').style.width = data.logoSize + 'px';
+                
+                // تعديل سرعة الحركة
+                document.querySelector('.hero-logo').style.animation = `gentleBounce ${data.bounceSpeed}s ease-in-out infinite`;
+            }
+            
+            // تحميل بيانات الإحصائيات
+            const statsData = localStorage.getItem('statsData');
+            if (statsData) {
+                const data = JSON.parse(statsData);
+                // تحديث الإحصائيات - مثال بسيط
+                const statNumbers = document.querySelectorAll('.stat-number');
+                if (statNumbers.length >= 4) {
+                    statNumbers[0].innerHTML = data.stat1.value;
+                    statNumbers[1].innerHTML = data.stat2.value;
+                    statNumbers[2].innerHTML = data.stat3.value;
+                    statNumbers[3].innerHTML = data.stat4.value;
+                }
+                
+                const statLabels = document.querySelectorAll('.stat-label');
+                if (statLabels.length >= 4) {
+                    statLabels[0].innerHTML = data.stat1.label;
+                    statLabels[1].innerHTML = data.stat2.label;
+                    statLabels[2].innerHTML = data.stat3.label;
+                    statLabels[3].innerHTML = data.stat4.label;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>
