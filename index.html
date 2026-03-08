@@ -1419,5 +1419,77 @@
     </script>
 </body>
 </html>
+    <!-- كل محتوى الصفحة هنا ... -->
+
+    <script>
+        // Dark mode toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const toggleBtn = document.querySelector('.dark-mode-toggle');
+            if (document.body.classList.contains('dark-mode')) {
+                toggleBtn.textContent = '☀️';
+            } else {
+                toggleBtn.textContent = '☾';
+            }
+        }
+
+        // FAQ toggle (إذا كانت الصفحة تحتوي على FAQ)
+        function toggleFAQ(element) {
+            const allItems = document.querySelectorAll('.faq-item');
+            allItems.forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                }
+            });
+            element.classList.toggle('active');
+        }
+
+        // Counter Animation (إذا كانت الصفحة تحتوي على إحصائيات)
+        function animateCounter(element, start, end, duration, prefix = '') {
+            // ... كود العداد ...
+        }
+
+        // ===== LANGUAGE SWITCH CODE - ضع هذا الكود هنا =====
+        function switchLanguage() {
+            let currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            let newPage = '';
+            
+            // قائمة الصفحات المدعومة
+            const pages = {
+                'ar': {
+                    'index.html': 'index-en.html',
+                    'features.html': 'features-en.html',
+                    'gallery.html': 'gallery-en.html',
+                    'pricing.html': 'pricing-en.html',
+                    'contact.html': 'contact-en.html'
+                },
+                'en': {
+                    'index-en.html': 'index.html',
+                    'features-en.html': 'features.html',
+                    'gallery-en.html': 'gallery.html',
+                    'pricing-en.html': 'pricing.html',
+                    'contact-en.html': 'contact.html'
+                }
+            };
+            
+            // تحديد اللغة الحالية
+            if (currentPage.includes('-en.html')) {
+                // من إنجليزي إلى عربي
+                newPage = pages.en[currentPage] || 'index.html';
+            } else {
+                // من عربي إلى إنجليزي
+                newPage = pages.ar[currentPage] || 'index-en.html';
+            }
+            
+            window.location.href = newPage;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // أي أكواد تهيئة أخرى
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>
