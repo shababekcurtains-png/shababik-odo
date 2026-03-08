@@ -2,16 +2,16 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>OdoNex | Unified ERP Solutions</title>
-    <!-- Google Fonts - Tajawal -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts - Cairo Bold -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Cairo', sans-serif;
         }
 
         :root {
@@ -28,6 +28,7 @@
             --star-gold: #F5B301;
             --star-empty: #D1D5DB;
             --icon-color: #666666;
+            --footer-bg: #F8F9FB;
             --main-gradient: linear-gradient(135deg, #7A5AF8, #2BB0ED);
         }
 
@@ -35,47 +36,70 @@
             background: linear-gradient(135deg, #F1F3FD 0%, #E6FAFF 100%);
             color: var(--dark-text);
             line-height: 1.6;
-            padding-top: 70px;
+            padding-top: 80px;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ffffff;
+        }
+
+        body.dark-mode .black-text,
+        body.dark-mode .testimonials-title .black-part,
+        body.dark-mode .faq-title .black-part,
+        body.dark-mode .subheadline,
+        body.dark-mode .client-name,
+        body.dark-mode .footer-brand-name,
+        body.dark-mode .nav-logo-text,
+        body.dark-mode .stat-number {
+            color: #ffffff !important;
+        }
+
+        body.dark-mode .stat-number {
+            background: none;
+            -webkit-text-fill-color: #ffffff;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
         }
 
-        /* ===== Header - Fixed on scroll ===== */
+        /* ===== Header ===== */
         header {
             background: var(--bg-white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            padding: 15px 0;
+            padding: 12px 0;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
             width: 100%;
-            border-bottom: 3px solid transparent;
-            border-image: var(--main-gradient) 1;
+        }
+
+        body.dark-mode header {
+            background: #222;
         }
 
         header .container {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            position: relative;
         }
 
-        .nav-right {
-            position: absolute;
-            right: 0;
+        .nav-left {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .nav-logo-img {
-            height: 55px;
+            height: 45px;
             width: auto;
             object-fit: contain;
         }
@@ -88,41 +112,57 @@
 
         .nav-menu {
             display: flex;
-            gap: 35px;
+            gap: 30px;
+            margin: 0;
+            overflow-x: auto;
+            padding: 5px 0;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .nav-menu::-webkit-scrollbar {
+            display: none;
         }
 
         .nav-menu a {
             text-decoration: none;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 600;
             color: #6B6B6B;
             transition: color 0.3s;
+            white-space: nowrap;
         }
 
         .nav-menu a:hover,
         .nav-menu a.active {
             color: var(--primary-purple);
-            font-weight: 600;
         }
 
-        .nav-left {
-            position: absolute;
-            left: 0;
+        .nav-right {
             display: flex;
-            gap: 12px;
+            gap: 8px;
             align-items: center;
         }
 
         .lang-container {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             border: 2px solid #ddd;
             border-radius: 8px;
-            padding: 6px 14px;
+            padding: 5px 10px;
             background: transparent;
             cursor: pointer;
             transition: all 0.3s ease;
+        }
+
+        body.dark-mode .lang-container {
+            border-color: #444;
+        }
+
+        body.dark-mode .lang-text {
+            color: #ddd;
         }
 
         .lang-container:hover {
@@ -131,15 +171,19 @@
 
         .lang-text {
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             color: #555;
         }
 
         .globe-icon {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23555" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>');
             background-size: contain;
+        }
+
+        body.dark-mode .globe-icon {
+            filter: invert(0.8);
         }
 
         .dark-mode-container {
@@ -148,10 +192,14 @@
             justify-content: center;
             border: 2px solid #ddd;
             border-radius: 8px;
-            padding: 6px 12px;
+            padding: 5px 10px;
             background: transparent;
             cursor: pointer;
             transition: all 0.3s ease;
+        }
+
+        body.dark-mode .dark-mode-container {
+            border-color: #444;
         }
 
         .dark-mode-container:hover {
@@ -161,63 +209,71 @@
         .dark-mode-toggle {
             background: transparent;
             border: none;
-            font-size: 20px;
+            font-size: 18px;
             cursor: pointer;
             color: #555;
-            width: 30px;
-            height: 30px;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* ===== Page 1: Hero Section ===== */
+        body.dark-mode .dark-mode-toggle {
+            color: #fff;
+        }
+
+        /* ===== Hero Section ===== */
         .hero {
             text-align: center;
-            padding: 60px 0 40px;
+            padding: 50px 0 40px;
         }
 
         @keyframes gentleBounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-5px); }
         }
 
         .hero-logo {
-            width: 320px;
+            width: 280px;
             height: auto;
-            margin: 0 auto 10px;
-            filter: drop-shadow(0 12px 18px rgba(122,90,248,0.2));
+            margin: 0 auto 15px;
+            filter: drop-shadow(0 10px 15px rgba(122,90,248,0.15));
             animation: gentleBounce 4s ease-in-out infinite;
         }
 
         h1 {
-            font-size: 52px;
+            font-size: 44px;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .brand-gradient {
             background: var(--main-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-weight: 700;
         }
 
         .black-text {
             color: #000000;
+            font-weight: 700;
         }
 
         .subheadline {
             font-size: 24px;
             font-weight: 700;
             color: #000000;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .description {
             font-size: 18px;
             color: var(--light-text);
             max-width: 700px;
-            margin: 0 auto 10px;
+            margin: 0 auto 15px;
+            padding: 0 15px;
+            font-weight: 500;
         }
 
         .cta-buttons {
@@ -225,7 +281,8 @@
             gap: 16px;
             justify-content: center;
             align-items: center;
-            margin: 10px auto 0;
+            margin: 20px auto 0;
+            flex-wrap: wrap;
         }
 
         .btn-primary {
@@ -234,7 +291,7 @@
             font-size: 16px;
             font-weight: 600;
             padding: 12px 28px;
-            border-radius: 10px;
+            border-radius: 8px;
             border: none;
             cursor: pointer;
             box-shadow: 0 6px 14px rgba(122,90,248,0.2);
@@ -253,27 +310,36 @@
             font-size: 16px;
             font-weight: 600;
             padding: 12px 28px;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
             transition: transform 0.3s ease;
             min-width: 180px;
+        }
+
+        body.dark-mode .btn-secondary {
+            color: #9B59FF;
+            border-color: #9B59FF;
         }
 
         .btn-secondary:hover {
             transform: scale(1.05);
         }
 
-        /* ===== Page 2: Statistics Section ===== */
+        /* ===== Statistics Section ===== */
         .statistics-section {
             background-color: var(--section-bg);
-            padding: 90px 0;
-            margin-top: 40px;
+            padding: 70px 0;
+            margin-top: 20px;
+        }
+
+        body.dark-mode .statistics-section {
+            background-color: #222;
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 80px;
+            gap: 60px;
             align-items: center;
             justify-items: center;
             text-align: center;
@@ -294,7 +360,7 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .stat-icon-box svg {
@@ -306,61 +372,79 @@
         }
 
         .stat-number {
-            font-size: 48px;
+            font-size: 44px;
             font-weight: 700;
             background: var(--main-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .stat-label {
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--secondary-text);
         }
 
-        /* ===== Page 3: Testimonials Section ===== */
+        body.dark-mode .stat-label {
+            color: #aaa;
+        }
+
+        /* ===== Testimonials Section ===== */
         .testimonials-section {
             background-color: var(--section-bg);
-            padding: 100px 0;
+            padding: 80px 0;
             text-align: center;
         }
 
-        .testimonials-title {
-            font-size: 40px;
-            font-weight: 700;
-            color: var(--dark-text);
-            margin-bottom: 10px;
+        body.dark-mode .testimonials-section {
+            background-color: #222;
         }
 
-        .testimonials-title span {
-            color: var(--accent-blue);
+        .testimonials-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .testimonials-title .black-part {
+            color: #000000;
+        }
+
+        .testimonials-title .gradient-part {
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .testimonials-subtitle {
             font-size: 18px;
-            font-weight: 400;
+            font-weight: 500;
             color: var(--light-text);
             max-width: 600px;
-            margin: 0 auto 60px;
+            margin: 0 auto 50px;
             line-height: 1.7;
         }
 
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 25px;
         }
 
         .testimonial-card {
             background-color: var(--bg-white);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 30px;
+            padding: 25px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.04);
             text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.dark-mode .testimonial-card {
+            background-color: #2a2a2a;
+            border-color: #444;
         }
 
         .testimonial-card:hover {
@@ -390,63 +474,84 @@
 
         .testimonial-text {
             font-size: 16px;
-            font-weight: 400;
+            font-weight: 500;
             color: var(--body-text);
             line-height: 1.8;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .testimonial-text {
+            color: #ddd;
         }
 
         .testimonial-divider {
             height: 1px;
             background-color: var(--border-color);
-            margin: 10px 0 20px;
+            margin: 15px 0 15px;
+        }
+
+        body.dark-mode .testimonial-divider {
+            background-color: #444;
         }
 
         .client-name {
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--dark-text);
             margin-bottom: 4px;
         }
 
         .client-role {
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 500;
             color: var(--light-text);
         }
 
-        /* ===== Page 4: FAQ Section ===== */
+        body.dark-mode .client-role {
+            color: #aaa;
+        }
+
+        /* ===== FAQ Section ===== */
         .faq-section {
             background-color: var(--section-bg);
-            padding: 100px 0;
+            padding: 80px 0 30px;
             text-align: center;
         }
 
-        .faq-title {
-            font-size: 40px;
-            font-weight: 700;
-            color: var(--dark-text);
-            margin-bottom: 10px;
+        body.dark-mode .faq-section {
+            background-color: #222;
         }
 
-        .faq-title span {
-            color: var(--accent-blue);
+        .faq-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .faq-title .black-part {
+            color: #000000;
+        }
+
+        .faq-title .gradient-part {
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .faq-subtitle {
             font-size: 18px;
-            font-weight: 400;
+            font-weight: 500;
             color: var(--light-text);
             max-width: 600px;
-            margin: 0 auto 60px;
+            margin: 0 auto 40px;
             line-height: 1.7;
         }
 
         .faq-container {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            max-width: 900px;
+            gap: 15px;
+            max-width: 800px;
             margin: 0 auto;
             text-align: left;
         }
@@ -454,11 +559,15 @@
         .faq-item {
             background-color: var(--bg-white);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 22px 28px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.04);
+            border-radius: 12px;
+            padding: 20px 25px;
             cursor: pointer;
             transition: all 0.3s ease;
+        }
+
+        body.dark-mode .faq-item {
+            background-color: #2a2a2a;
+            border-color: #444;
         }
 
         .faq-item:hover {
@@ -473,8 +582,12 @@
 
         .question-text {
             font-size: 18px;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--dark-text);
+        }
+
+        body.dark-mode .question-text {
+            color: #fff;
         }
 
         .chevron-icon {
@@ -490,12 +603,16 @@
 
         .answer-text {
             font-size: 16px;
-            font-weight: 400;
+            font-weight: 500;
             color: var(--secondary-text);
             line-height: 1.7;
-            margin-top: 12px;
+            margin-top: 15px;
             display: none;
             animation: fadeIn 0.3s ease;
+        }
+
+        body.dark-mode .answer-text {
+            color: #aaa;
         }
 
         .faq-item.active .answer-text {
@@ -513,98 +630,81 @@
             }
         }
 
-        /* ===== Dark Mode ===== */
-        body.dark-mode {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #f0f0f0;
+        /* ===== Footer Section ===== */
+        footer {
+            background-color: var(--footer-bg);
+            width: 100%;
+            padding: 35px 0 25px;
+            margin-top: 15px;
+            text-align: center;
         }
 
-        body.dark-mode header {
-            background: #222;
+        body.dark-mode footer {
+            background-color: #1a1a2e;
         }
 
-        body.dark-mode .nav-menu a {
-            color: #ccc;
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        body.dark-mode .nav-menu a:hover,
-        body.dark-mode .nav-menu a.active {
-            color: #9B59FF;
+        .footer-brand-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 12px;
         }
 
-        body.dark-mode .lang-container {
-            border-color: #444;
+        .footer-brand-text {
+            text-align: left;
         }
 
-        body.dark-mode .lang-text {
-            color: #ddd;
+        .footer-brand-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-text);
+            line-height: 1.2;
         }
 
-        body.dark-mode .globe-icon {
-            filter: invert(0.8);
+        .footer-tagline {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--secondary-text);
+            margin-top: 3px;
         }
 
-        body.dark-mode .dark-mode-container {
-            border-color: #444;
-        }
-
-        body.dark-mode .dark-mode-toggle {
-            color: #fff;
-        }
-
-        body.dark-mode .nav-logo-text {
-            color: #ffffff;
-        }
-
-        body.dark-mode .black-text {
-            color: #ffffff;
-        }
-
-        body.dark-mode .statistics-section,
-        body.dark-mode .testimonials-section,
-        body.dark-mode .faq-section {
-            background-color: #222;
-        }
-
-        body.dark-mode .testimonial-card,
-        body.dark-mode .faq-item {
-            background-color: #2a2a2a;
-            border-color: #444;
-        }
-
-        body.dark-mode .stat-label,
-        body.dark-mode .testimonials-subtitle,
-        body.dark-mode .client-role,
-        body.dark-mode .faq-subtitle,
-        body.dark-mode .answer-text {
+        body.dark-mode .footer-tagline {
             color: #aaa;
         }
 
-        body.dark-mode .testimonials-title,
-        body.dark-mode .faq-title {
-            color: #f0f0f0;
+        .footer-logo {
+            width: 55px;
+            height: 55px;
         }
 
-        /* ===== Responsive ===== */
+        .footer-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--light-text);
+            margin-top: 12px;
+        }
+
+        body.dark-mode .footer-copyright {
+            color: #aaa;
+        }
+
+        /* ===== Responsive Design ===== */
         @media (max-width: 992px) {
-            .nav-menu {
-                gap: 25px;
-            }
-            
-            h1 {
-                font-size: 44px;
-            }
-            
-            .hero-logo {
-                width: 280px;
-            }
-            
             .stats-grid {
                 gap: 40px;
-            }
-            
-            .stat-number {
-                font-size: 40px;
             }
             
             .testimonials-grid {
@@ -614,56 +714,144 @@
 
         @media (max-width: 768px) {
             header .container {
-                flex-direction: column;
-                gap: 15px;
-                padding-top: 50px;
-            }
-            
-            .nav-right,
-            .nav-left {
-                position: static;
-            }
-            
-            .nav-menu {
                 flex-wrap: wrap;
-                justify-content: center;
+                gap: 15px;
+            }
+
+            .nav-left, .nav-right {
+                width: auto;
+            }
+
+            .nav-menu {
+                order: 3;
+                width: 100%;
+                justify-content: flex-start;
                 gap: 20px;
             }
-            
+
+            .hero-logo {
+                width: 220px;
+            }
+
             h1 {
                 font-size: 36px;
             }
-            
-            .hero-logo {
-                width: 240px;
+
+            .subheadline {
+                font-size: 20px;
             }
-            
+
+            .description {
+                font-size: 16px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            /* Statistics Section - 2x2 on mobile */
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 30px;
             }
-            
-            .stat-number {
-                font-size: 36px;
-            }
-            
+
+            /* Testimonials Section - 2x2 on mobile */
             .testimonials-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
-            
-            .testimonials-section,
-            .faq-section {
-                padding: 60px 0;
-            }
-            
+
             .testimonials-title,
             .faq-title {
+                font-size: 34px;
+            }
+
+            .testimonials-subtitle,
+            .faq-subtitle {
+                font-size: 16px;
+                margin-bottom: 30px;
+            }
+
+            .footer-brand-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-brand-text {
+                text-align: center;
+            }
+
+            .description span {
+                margin-left: 40px !important;
+                margin-right: 0 !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .stat-icon-box {
+                width: 55px;
+                height: 55px;
+            }
+
+            .stat-icon-box svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .stat-number {
                 font-size: 32px;
             }
 
+            .stat-label {
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .hero-logo {
+                width: 180px;
+            }
+
+            .testimonials-title,
+            .faq-title {
+                font-size: 28px;
+            }
+
+            .testimonials-grid {
+                gap: 15px;
+            }
+
+            .testimonial-card {
+                padding: 20px;
+            }
+
+            .testimonial-text {
+                font-size: 14px;
+            }
+
+            .client-name {
+                font-size: 16px;
+            }
+
+            .client-role {
+                font-size: 12px;
+            }
+
             .faq-item {
-                padding: 18px 22px;
+                padding: 15px 20px;
             }
 
             .question-text {
@@ -673,20 +861,37 @@
             .answer-text {
                 font-size: 14px;
             }
+
+            .footer-brand-name {
+                font-size: 22px;
+            }
+
+            .footer-logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .footer-copyright {
+                font-size: 12px;
+            }
+
+            .description span {
+                margin-left: 20px !important;
+            }
         }
 
-        @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
+        /* LTR specific spacing for description */
+        .description span {
+            display: block;
+            margin-left: 40px;
         }
     </style>
 </head>
 <body>
+    <!-- Main Website Content -->
     <header>
         <div class="container">
-            <div class="nav-right">
+            <div class="nav-left">
                 <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="nav-logo-img">
                 <span class="nav-logo-text">OdoNex</span>
             </div>
@@ -695,11 +900,11 @@
                 <a href="#" class="active">Home</a>
                 <a href="#">Features</a>
                 <a href="#">Pricing</a>
-                <a href="#">Gallery</a>
+                <a href="#">Portfolio</a>
                 <a href="#">Contact</a>
             </div>
 
-            <div class="nav-left">
+            <div class="nav-right">
                 <div class="lang-container" onclick="switchLanguage()">
                     <span class="lang-text">عربي</span>
                     <div class="globe-icon"></div>
@@ -712,7 +917,7 @@
     </header>
 
     <main>
-        <!-- Page 1: Hero Section -->
+        <!-- Hero Section -->
         <section class="hero">
             <div class="container">
                 <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="hero-logo">
@@ -721,7 +926,9 @@
                 </h1>
                 <div class="subheadline">Integration. Security. Scalability.</div>
                 <p class="description">
-                    A comprehensive accounting system that brings all your business operations into one easy, secure, and scalable platform.
+                    A comprehensive accounting system that brings all your business operations into one easy,
+                    <br>
+                    <span>secure, and scalable platform.</span>
                 </p>
                 <div class="cta-buttons">
                     <button class="btn-primary">Start Free Trial</button>
@@ -730,7 +937,7 @@
             </div>
         </section>
 
-        <!-- Page 2: Statistics Section -->
+        <!-- Statistics Section -->
         <section class="statistics-section">
             <div class="container">
                 <div class="stats-grid">
@@ -741,7 +948,7 @@
                                 <circle cx="12" cy="7" r="4"/>
                             </svg>
                         </div>
-                        <div class="stat-number" data-target="1500">0</div>
+                        <div class="stat-number" data-target="1500">1500+</div>
                         <div class="stat-label">Active Clients</div>
                     </div>
 
@@ -752,8 +959,8 @@
                                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                             </svg>
                         </div>
-                        <div class="stat-number" data-target="320">0</div>
-                        <div class="stat-label">Completed Projects</div>
+                        <div class="stat-number" data-target="320">320+</div>
+                        <div class="stat-label">Projects Completed</div>
                     </div>
 
                     <div class="stat-item">
@@ -764,7 +971,7 @@
                                 <line x1="12" y1="2" x2="12" y2="22"/>
                             </svg>
                         </div>
-                        <div class="stat-number" data-target="15">0</div>
+                        <div class="stat-number" data-target="15">15</div>
                         <div class="stat-label">Countries Worldwide</div>
                     </div>
 
@@ -777,25 +984,25 @@
                                 <circle cx="16" cy="10" r="2"/>
                             </svg>
                         </div>
-                        <div class="stat-number" data-target="99">0</div>
-                        <div class="stat-label">Customer Satisfaction</div>
+                        <div class="stat-number" data-target="99">99%</div>
+                        <div class="stat-label">Client Satisfaction</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Page 3: Testimonials Section -->
+        <!-- Testimonials Section -->
         <section class="testimonials-section">
             <div class="container">
                 <h2 class="testimonials-title">
-                    What <span>Our Clients Say</span>
+                    <span class="black-part">What</span> <span class="gradient-part">Our Clients Say</span>
                 </h2>
                 <p class="testimonials-subtitle">
-                    Real opinions from clients who trust us in managing their business
+                    Real testimonials from clients who trust us to manage their business
                 </p>
 
                 <div class="testimonials-grid">
-                    <!-- Testimonial 1 - Sarah Al-Otaibi -->
+                    <!-- Testimonial 1 -->
                     <div class="testimonial-card">
                         <div class="star-rating">
                             <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -804,28 +1011,13 @@
                             <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                             <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         </div>
-                        <p class="testimonial-text">"Managing 12 branches has become much easier with OdoNex. Real-time inventory and sales tracking is an indispensable feature."</p>
-                        <div class="testimonial-divider"></div>
-                        <div class="client-name">Sarah Al-Otaibi</div>
-                        <div class="client-role">Financial Manager - Elite Company</div>
-                    </div>
-
-                    <!-- Testimonial 2 - Mohammed Al-Shammari -->
-                    <div class="testimonial-card">
-                        <div class="star-rating">
-                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        </div>
-                        <p class="testimonial-text">"After implementing OdoNex, we saved more than 60% of our accounting team's time. The system is easy to use and technical support is excellent."</p>
+                        <p class="testimonial-text">"OdoNex completely transformed how we manage our business. Financial reports are ready at the click of a button with unmatched accuracy."</p>
                         <div class="testimonial-divider"></div>
                         <div class="client-name">Mohammed Al-Shammari</div>
-                        <div class="client-role">General Manager - Commercial Group</div>
+                        <div class="client-role">GM - Al-Shammari Trading Group</div>
                     </div>
 
-                    <!-- Testimonial 3 - Fatima Al-Zahrani -->
+                    <!-- Testimonial 2 -->
                     <div class="testimonial-card">
                         <div class="star-rating">
                             <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -834,13 +1026,43 @@
                             <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                             <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         </div>
-                        <p class="testimonial-text">"OdoNex completely transformed how we manage our 3 branches. Financial reports are now ready with one click, and the accuracy in calculations is unmatched."</p>
+                        <p class="testimonial-text">"After implementing OdoNex, we saved over 60% of our accounting team's time. The system is user-friendly and the support is excellent."</p>
+                        <div class="testimonial-divider"></div>
+                        <div class="client-name">Sara Al-Otaibi</div>
+                        <div class="client-role">CFO - Elite Clinics</div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"Managing 12 branches became much easier with OdoNex. Real-time inventory and sales tracking is an indispensable feature."</p>
+                        <div class="testimonial-divider"></div>
+                        <div class="client-name">Khaled Al-Dosari</div>
+                        <div class="client-role">Owner - Al-Diwan Restaurant Chain</div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"The integration between different departments saved us a lot of effort. We highly recommend it for any educational institution."</p>
                         <div class="testimonial-divider"></div>
                         <div class="client-name">Fatima Al-Zahrani</div>
-                        <div class="client-role">General Manager - Umm Al-Qura University</div>
+                        <div class="client-role">Senior Accountant - Al-Andalus Group</div>
                     </div>
 
-                    <!-- Testimonial 4 - Ahmed Al-Harbi -->
+                    <!-- Testimonial 5 -->
                     <div class="testimonial-card">
                         <div class="star-rating">
                             <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -849,28 +1071,13 @@
                             <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                             <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         </div>
-                        <p class="testimonial-text">"The integration between different departments in the system saved us a lot of effort. We highly recommend it for any educational institution."</p>
+                        <p class="testimonial-text">"The system is very flexible and we were able to customize it to suit our construction business. An excellent investment."</p>
                         <div class="testimonial-divider"></div>
                         <div class="client-name">Ahmed Al-Harbi</div>
-                        <div class="client-role">General Manager - Umm Al-Qura University</div>
+                        <div class="client-role">CEO - Advanced Construction Co.</div>
                     </div>
 
-                    <!-- Testimonial 5 - Khaled Al-Qahtani -->
-                    <div class="testimonial-card">
-                        <div class="star-rating">
-                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="star star-empty" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        </div>
-                        <p class="testimonial-text">"Very flexible system. We were able to customize it to fit our work nature in the construction sector. Excellent investment."</p>
-                        <div class="testimonial-divider"></div>
-                        <div class="client-name">Khaled Al-Qahtani</div>
-                        <div class="client-role">Projects Manager - Foundations Company</div>
-                    </div>
-
-                    <!-- Testimonial 6 - Noura Al-Qahtani -->
+                    <!-- Testimonial 6 -->
                     <div class="testimonial-card">
                         <div class="star-rating">
                             <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -879,23 +1086,23 @@
                             <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                             <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                         </div>
-                        <p class="testimonial-text">"Great experience with OdoNex. Easy to use and supports Arabic language excellently. The support team is very cooperative."</p>
+                        <p class="testimonial-text">"An easy and intuitive interface. The detailed reports help us make accurate and quick financial decisions."</p>
                         <div class="testimonial-divider"></div>
                         <div class="client-name">Noura Al-Qahtani</div>
-                        <div class="client-role">Operations Manager - Future Company</div>
+                        <div class="client-role">IT Director - Future Academy</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Page 4: FAQ Section -->
+        <!-- FAQ Section - 7 Questions -->
         <section class="faq-section">
             <div class="container">
                 <h2 class="faq-title">
-                    Frequently Asked <span>Questions</span>
+                    <span class="black-part">Frequently Asked</span> <span class="gradient-part">Questions</span>
                 </h2>
                 <p class="faq-subtitle">
-                    Answers to the most common questions our clients ask
+                    Answers to the most common questions from our clients
                 </p>
 
                 <div class="faq-container">
@@ -954,7 +1161,7 @@
                     <!-- FAQ Item 5 -->
                     <div class="faq-item" onclick="toggleFAQ(this)">
                         <div class="faq-question">
-                            <span class="question-text">Can the system integrate with other systems?</span>
+                            <span class="question-text">Can the system integrate with other platforms?</span>
                             <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
@@ -994,7 +1201,26 @@
         </section>
     </main>
 
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand-row">
+                <div class="footer-brand-text">
+                    <div class="footer-brand-name">OdoNex</div>
+                    <div class="footer-tagline">Unified ERP Solutions</div>
+                </div>
+                <div class="footer-logo">
+                    <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo">
+                </div>
+            </div>
+            <div class="footer-copyright">
+                © 2026 All rights reserved to OdoNex | Unified ERP Solutions
+            </div>
+        </div>
+    </footer>
+
     <script>
+        // Dark mode toggle
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
             const toggleBtn = document.querySelector('.dark-mode-toggle');
@@ -1005,11 +1231,23 @@
             }
         }
 
+        // Language switch
         function switchLanguage() {
             window.location.href = 'index.html';
         }
 
-        // Counter Animation on Scroll
+        // FAQ toggle
+        function toggleFAQ(element) {
+            const allItems = document.querySelectorAll('.faq-item');
+            allItems.forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                }
+            });
+            element.classList.toggle('active');
+        }
+
+        // Counter Animation
         function animateCounter(element, start, end, duration, prefix = '') {
             let startTimestamp = null;
             const step = (timestamp) => {
@@ -1058,18 +1296,10 @@
             }
         }
 
-        // FAQ Toggle Function
-        function toggleFAQ(element) {
-            const allItems = document.querySelectorAll('.faq-item');
-            allItems.forEach(item => {
-                if (item !== element) {
-                    item.classList.remove('active');
-                }
-            });
-            element.classList.toggle('active');
-        }
-
-        document.addEventListener('DOMContentLoaded', startCountersOnScroll);
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            startCountersOnScroll();
+        });
     </script>
 </body>
 </html>
