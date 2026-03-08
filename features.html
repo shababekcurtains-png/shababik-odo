@@ -2,506 +2,610 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>OdoNex | المميزات</title>
+    <!-- Google Fonts - Cairo Bold -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+            font-family: 'Cairo', sans-serif;
         }
-        
+
         :root {
-            --odonex-purple: #7B2CBF;
-            --odonex-blue: #00B4D8;
-            --text-main: #333333;
-            --text-secondary: #777777;
+            --primary-purple: #7A5AF8;
+            --primary-blue: #2BB0ED;
+            --accent-blue: #4A7BFF;
+            --dark-text: #333333;
+            --body-text: #444444;
+            --secondary-text: #6B6B6B;
+            --light-text: #8A8A8A;
+            --section-bg: #F8F9FB;
             --bg-white: #FFFFFF;
-            --bg-light: #F8F9FA;
-            --main-gradient: linear-gradient(135deg, #7B2CBF, #00B4D8);
+            --border-color: #E6E8EC;
+            --icon-color: #666666;
+            --footer-bg: #F8F9FB;
+            --main-gradient: linear-gradient(135deg, #7A5AF8, #2BB0ED);
         }
-        
+
         body {
-            background: var(--bg-light);
-            color: var(--text-main);
+            background: linear-gradient(135deg, #F1F3FD 0%, #E6FAFF 100%);
+            color: var(--dark-text);
             line-height: 1.6;
+            padding-top: 80px;
+            overflow-x: hidden;
+            width: 100%;
         }
-        
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ffffff;
+        }
+
+        body.dark-mode .black-text,
+        body.dark-mode .footer-brand-name,
+        body.dark-mode .nav-logo-text,
+        body.dark-mode .feature-title {
+            color: #ffffff !important;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
         }
-        
-        /* Header */
+
+        /* ===== Header ===== */
         header {
             background: var(--bg-white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            padding: 15px 0;
-            position: sticky;
+            padding: 12px 0;
+            position: fixed;
             top: 0;
-            z-index: 100;
-            border-bottom: 3px solid transparent;
-            border-image: var(--main-gradient) 1;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            width: 100%;
         }
-        
+
+        body.dark-mode header {
+            background: #222;
+        }
+
         header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
-        .logo {
+
+        .nav-right {
             display: flex;
             align-items: center;
-            text-decoration: none;
+            gap: 12px;
         }
-        
-        .logo img {
-            height: 50px;
+
+        .nav-logo-img {
+            height: 45px;
             width: auto;
+            object-fit: contain;
         }
-        
-        nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
+
+        .nav-logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: #000000;
         }
-        
-        nav a:hover {
-            color: var(--odonex-purple);
-        }
-        
-        nav a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--main-gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-        
-        nav a:hover:after,
-        nav a.active:after {
-            transform: scaleX(1);
-        }
-        
-        .lang-switcher {
+
+        .nav-menu {
             display: flex;
-            gap: 5px;
+            gap: 30px;
+            margin: 0;
+            overflow-x: auto;
+            padding: 5px 0;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
-        
-        .lang-btn {
-            background: var(--bg-light);
-            border: 1px solid #ddd;
-            color: var(--text-main);
-            padding: 5px 12px;
-            border-radius: 50px;
-            cursor: pointer;
+
+        .nav-menu::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-size: 16px;
             font-weight: 600;
+            color: #6B6B6B;
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-purple);
+        }
+
+        .nav-left {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .lang-container {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 5px 10px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .lang-container {
+            border-color: #444;
+        }
+
+        body.dark-mode .lang-text {
+            color: #ddd;
+        }
+
+        .lang-container:hover {
+            border-color: var(--primary-purple);
+        }
+
+        .lang-text {
             font-size: 14px;
-            transition: all 0.3s;
+            font-weight: 600;
+            color: #555;
         }
-        
-        .lang-btn:hover,
-        .lang-btn.active {
-            background: var(--main-gradient);
-            border-color: transparent;
-            color: white;
+
+        .globe-icon {
+            width: 16px;
+            height: 16px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23555" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>');
+            background-size: contain;
         }
-        
-        /* Page Header */
+
+        body.dark-mode .globe-icon {
+            filter: invert(0.8);
+        }
+
+        .dark-mode-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 5px 10px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .dark-mode-container {
+            border-color: #444;
+        }
+
+        .dark-mode-container:hover {
+            border-color: var(--primary-purple);
+        }
+
+        .dark-mode-toggle {
+            background: transparent;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #555;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            color: #fff;
+        }
+
+        /* ===== Page Header ===== */
         .page-header {
-            background: linear-gradient(145deg, var(--bg-white), var(--bg-light));
-            padding: 60px 0 40px;
             text-align: center;
-            border-bottom: 1px solid #eef2f6;
+            padding: 50px 0 30px;
         }
-        
+
         .page-header h1 {
             font-size: 48px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 15px;
             background: var(--main-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
         }
-        
+
         .page-header p {
-            font-size: 18px;
-            color: var(--text-secondary);
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--secondary-text);
             max-width: 700px;
             margin: 0 auto;
         }
-        
-        /* Features Grid */
+
+        /* ===== Features Section ===== */
+        .features-section {
+            padding: 40px 0 70px;
+        }
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin: 50px 0;
         }
-        
+
         .feature-card {
-            background: var(--bg-white);
-            border-radius: 20px;
-            padding: 40px 25px;
-            box-shadow: 0 10px 30px rgba(123,44,191,0.05);
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 35px 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
             text-align: center;
-            transition: all 0.3s;
-            border: 1px solid rgba(123,44,191,0.1);
+            position: relative;
+            overflow: hidden;
         }
-        
+
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(123,44,191,0.1);
+            box-shadow: 0 20px 40px rgba(122,90,248,0.1);
+            border-color: var(--primary-purple);
         }
-        
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--main-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
         .feature-icon {
             width: 80px;
             height: 80px;
             margin: 0 auto 25px;
-        }
-        
-        .feature-card h3 {
-            font-size: 24px;
-            color: var(--text-main);
-            margin-bottom: 15px;
-        }
-        
-        .feature-card p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-        
-        /* Feature Details */
-        .feature-details {
-            margin: 60px 0;
-        }
-        
-        .feature-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            margin-bottom: 80px;
-        }
-        
-        .feature-row.reverse {
-            direction: ltr;
-        }
-        
-        .feature-info h2 {
-            font-size: 32px;
-            color: var(--text-main);
-            margin-bottom: 20px;
-        }
-        
-        .feature-info h2 span {
-            color: var(--odonex-purple);
-        }
-        
-        .feature-info p {
-            color: var(--text-secondary);
-            font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-        
-        .feature-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .feature-list li {
-            padding: 10px 0;
+            background: linear-gradient(135deg, rgba(122,90,248,0.1), rgba(43,176,237,0.1));
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: var(--text-secondary);
+            justify-content: center;
+            font-size: 36px;
+            color: var(--primary-purple);
+            transition: all 0.3s ease;
         }
-        
-        .feature-list li:before {
-            content: "✓";
-            color: var(--odonex-blue);
-            font-weight: bold;
-            font-size: 18px;
-        }
-        
-        .feature-image {
-            text-align: center;
-        }
-        
-        .feature-image img {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        /* CTA Section */
-        .cta-section {
+
+        .feature-card:hover .feature-icon {
             background: var(--main-gradient);
             color: white;
-            padding: 60px;
-            border-radius: 32px;
-            margin: 60px 0;
-            text-align: center;
         }
-        
-        .cta-section h2 {
-            color: white;
-            font-size: 36px;
+
+        .feature-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 15px;
         }
-        
-        .btn {
-            display: inline-block;
-            background: white;
-            color: var(--odonex-purple);
-            padding: 16px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            margin-top: 20px;
-            transition: all 0.3s;
+
+        .feature-description {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--secondary-text);
+            line-height: 1.7;
         }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        
-        /* Footer */
+
+        /* ===== Footer Section ===== */
         footer {
-            background: var(--text-main);
-            color: white;
-            padding: 50px 0 20px;
-            margin-top: 60px;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-grid h4 {
-            color: var(--odonex-blue);
-            margin-bottom: 20px;
-        }
-        
-        .footer-grid a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-            transition: color 0.3s;
-        }
-        
-        .footer-grid a:hover {
-            color: var(--odonex-blue);
-        }
-        
-        .copyright {
+            background-color: var(--footer-bg);
+            width: 100%;
+            padding: 35px 0 25px;
+            margin-top: 30px;
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #999;
         }
-        
+
+        body.dark-mode footer {
+            background-color: #1a1a2e;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-brand-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand-text {
+            text-align: right;
+        }
+
+        .footer-brand-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-text);
+            line-height: 1.2;
+        }
+
+        .footer-tagline {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--secondary-text);
+            margin-top: 3px;
+        }
+
+        body.dark-mode .footer-tagline {
+            color: #aaa;
+        }
+
+        .footer-logo {
+            width: 55px;
+            height: 55px;
+        }
+
+        .footer-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--light-text);
+            margin-top: 12px;
+        }
+
+        body.dark-mode .footer-copyright {
+            color: #aaa;
+        }
+
+        /* ===== Responsive Design ===== */
         @media (max-width: 992px) {
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .feature-row {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .features-grid {
-                grid-template-columns: 1fr;
+                gap: 25px;
             }
             
             .page-header h1 {
-                font-size: 36px;
+                font-size: 42px;
             }
-            
+        }
+
+        @media (max-width: 768px) {
             header .container {
-                flex-direction: column;
+                flex-wrap: wrap;
                 gap: 15px;
             }
-            
-            nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
+
+            .nav-right, .nav-left {
+                width: auto;
+            }
+
+            .nav-menu {
+                order: 3;
+                width: 100%;
+                justify-content: flex-start;
+                gap: 20px;
+            }
+
+            .page-header {
+                padding: 40px 0 20px;
+            }
+
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .page-header p {
+                font-size: 18px;
+                padding: 0 15px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .feature-card {
+                padding: 30px 20px;
+            }
+
+            .footer-brand-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-brand-text {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .page-header p {
+                font-size: 16px;
+            }
+
+            .feature-title {
+                font-size: 20px;
+            }
+
+            .feature-description {
+                font-size: 15px;
+            }
+
+            .feature-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 32px;
+            }
+
+            .footer-brand-name {
+                font-size: 22px;
+            }
+
+            .footer-logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .footer-copyright {
+                font-size: 12px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="container">
-            <a href="index.html" class="logo">
-                <img src="assets/images/odonex-logo.png" alt="OdoNex">
-            </a>
-            <div style="display: flex; align-items: center;">
-                <nav>
-                    <a href="index.html">الرئيسية</a>
-                    <a href="features.html" class="active">المميزات</a>
-                    <a href="gallery.html">معرض الأعمال</a>
-                    <a href="pricing.html">الأسعار</a>
-                    <a href="contact.html">اتصل بنا</a>
-                </nav>
-                <div class="lang-switcher">
-                    <button class="lang-btn active" data-lang="ar" onclick="switchLanguage('ar')">العربية</button>
-                    <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">English</button>
+            <div class="nav-right">
+                <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="nav-logo-img">
+                <span class="nav-logo-text">OdoNex</span>
+            </div>
+
+            <div class="nav-menu">
+                <a href="index.html">الرئيسية</a>
+                <a href="#" class="active">المميزات</a>
+                <a href="#">الأسعار</a>
+                <a href="#">معرض الأعمال</a>
+                <a href="#">اتصل بنا</a>
+            </div>
+
+            <div class="nav-left">
+                <div class="lang-container" onclick="switchLanguage()">
+                    <span class="lang-text">EN</span>
+                    <div class="globe-icon"></div>
+                </div>
+                <div class="dark-mode-container" onclick="toggleDarkMode()">
+                    <span class="dark-mode-toggle">☾</span>
                 </div>
             </div>
         </div>
     </header>
 
     <main>
+        <!-- Page Header -->
         <section class="page-header">
             <div class="container">
-                <h1>مميزات OdoNex</h1>
-                <p>نظام ERP متكامل يجمع بين القوة والمرونة لتنمية أعمالك</p>
+                <h1>المميزات</h1>
+                <p>كل ما تحتاجه لإدارة أعمالك بكفاءة وأمان في مكان واحد</p>
             </div>
         </section>
 
-        <div class="container">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <img src="assets/images/icons/integration.svg" alt="Integration" class="feature-icon">
-                    <h3>تكامل كامل</h3>
-                    <p>نظام موحد يربط جميع أقسام شركتك في منصة واحدة</p>
-                </div>
-                <div class="feature-card">
-                    <img src="assets/images/icons/security.svg" alt="Security" class="feature-icon">
-                    <h3>أمان البيانات</h3>
-                    <p>حماية متقدمة للبيانات مع تشفير شامل وصلاحيات مستخدمين</p>
-                </div>
-                <div class="feature-card">
-                    <img src="assets/images/icons/scalability.svg" alt="Scalability" class="feature-icon">
-                    <h3>قابلية التوسع</h3>
-                    <p>ينمو مع عملك من شركة ناشئة إلى مؤسسة كبرى</p>
-                </div>
-                <div class="feature-card">
-                    <img src="assets/images/icons/support.svg" alt="Support" class="feature-icon">
-                    <h3>دعم فني 24/7</h3>
-                    <p>فريق دعم متخصص على مدار الساعة لضمان استمرارية العمل</p>
-                </div>
-                <div class="feature-card">
-                    <img src="assets/images/icons/global.svg" alt="Global" class="feature-icon">
-                    <h3>وصول عالمي</h3>
-                    <p>حلول عالمية مع مراعاة المتطلبات المحلية</p>
-                </div>
-                <div class="feature-card">
-                    <img src="assets/images/icons/efficiency.svg" alt="Efficiency" class="feature-icon">
-                    <h3>كفاءة عالية</h3>
-                    <p>رفع كفاءة العمليات وتقليل التكاليف بنسبة تصل إلى 30%</p>
-                </div>
-            </div>
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="container">
+                <div class="features-grid">
+                    <!-- قابلية التوسع -->
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3 class="feature-title">قابلية التوسع</h3>
+                        <p class="feature-description">منصة مرنة وقابلة للتوسع تناسب نمو أعمالك.</p>
+                    </div>
 
-            <div class="feature-details">
-                <!-- Integration -->
-                <div class="feature-row">
-                    <div class="feature-info">
-                        <h2><span>التكامل</span> الكامل</h2>
-                        <p>نظام OdoNex يوفر تكاملاً كاملاً بين جميع أقسام شركتك. من المحاسبة إلى المبيعات، ومن المخزون إلى الموارد البشرية، كل شيء يعمل معاً بسلاسة.</p>
-                        <ul class="feature-list">
-                            <li>ربط المحاسبة مع المبيعات والمشتريات</li>
-                            <li>تكامل المخزون مع نقاط البيع</li>
-                            <li>مزامنة البيانات في الوقت الفعلي</li>
-                            <li>تقارير موحدة وشاملة</li>
-                        </ul>
+                    <!-- أمان البيانات -->
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3 class="feature-title">أمان البيانات</h3>
+                        <p class="feature-description">أمن بيانات شامل وحماية متقدمة على مدار الساعة.</p>
                     </div>
-                    <div class="feature-image">
-                        <img src="assets/images/icons/integration.svg" alt="Integration" style="width: 200px;">
-                    </div>
-                </div>
 
-                <!-- Security -->
-                <div class="feature-row reverse">
-                    <div class="feature-image">
-                        <img src="assets/images/icons/security.svg" alt="Security" style="width: 200px;">
+                    <!-- التكامل -->
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3 class="feature-title">تكامل</h3>
+                        <p class="feature-description">دمج سلس لجميع وظائف الأعمال في منصة واحدة متكاملة.</p>
                     </div>
-                    <div class="feature-info">
-                        <h2><span>أمان</span> البيانات</h2>
-                        <p>نحن نضع أمان بياناتك في المقام الأول. نوفر أحدث تقنيات التشفير والحماية لضمان سلامة معلوماتك.</p>
-                        <ul class="feature-list">
-                            <li>تشفير البيانات المتقدم</li>
-                            <li>صلاحيات مستخدمين متعددة المستويات</li>
-                            <li>نسخ احتياطي تلقائي</li>
-                            <li>مراقبة و تسجيل جميع العمليات</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <!-- Scalability -->
-                <div class="feature-row">
-                    <div class="feature-info">
-                        <h2><span>قابلية</span> التوسع</h2>
-                        <p>ينمو OdoNex مع نمو عملك. سواء كنت شركة ناشئة أو مؤسسة كبرى، نظامنا يتكيف مع احتياجاتك.</p>
-                        <ul class="feature-list">
-                            <li>إضافة مستخدمين غير محدود</li>
-                            <li>توسيع قاعدة البيانات بسهولة</li>
-                            <li>دعم فروع ومواقع متعددة</li>
-                            <li>ترقية الباقات في أي وقت</li>
-                        </ul>
+                    <!-- الكفاءة التشغيلية -->
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3 class="feature-title">الكفاءة التشغيلية</h3>
+                        <p class="feature-description">تحسين الكفاءة وتعظيم الإنتاجية التشغيلية.</p>
                     </div>
-                    <div class="feature-image">
-                        <img src="assets/images/icons/scalability.svg" alt="Scalability" style="width: 200px;">
+
+                    <!-- الوصول العالمي -->
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3 class="feature-title">الوصول العالمي</h3>
+                        <p class="feature-description">الوصول إلى أعمالك من أي مكان وفي أي وقت.</p>
+                    </div>
+
+                    <!-- الدعم الفني -->
+                    <div class="feature-card">
+                        <div class="feature-icon">🎧</div>
+                        <h3 class="feature-title">الدعم الفني</h3>
+                        <p class="feature-description">دعم فني متخصص على مدار الساعة لضمان استمرارية العمل.</p>
                     </div>
                 </div>
             </div>
-
-            <div class="cta-section">
-                <h2>هل أنت مستعد لتجربة OdoNex؟</h2>
-                <p style="font-size: 18px; max-width: 600px; margin: 20px auto;">
-                    جرب نظامنا مجاناً لمدة 14 يوماً دون الحاجة لبطاقة ائتمان
-                </p>
-                <a href="contact.html" class="btn">اطلب عرضاً تجريبياً</a>
-            </div>
-        </div>
+        </section>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h4>OdoNex</h4>
-                    <p>حلول محاسبة متكاملة لإدارة موارد المؤسسات</p>
+        <div class="footer-container">
+            <div class="footer-brand-row">
+                <div class="footer-brand-text">
+                    <div class="footer-brand-name">OdoNex</div>
+                    <div class="footer-tagline">حلول ERP الموحدة</div>
                 </div>
-                <div>
-                    <h4>روابط سريعة</h4>
-                    <a href="index.html">الرئيسية</a>
-                    <a href="features.html">المميزات</a>
-                    <a href="gallery.html">معرض الأعمال</a>
-                    <a href="pricing.html">الأسعار</a>
-                    <a href="contact.html">اتصل بنا</a>
-                </div>
-                <div>
-                    <h4>تواصل معنا</h4>
-                    <p>هاتف: +966 50 000 0000</p>
-                    <p>بريد: info@odonex.com</p>
+                <div class="footer-logo">
+                    <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo">
                 </div>
             </div>
-            <div class="copyright">
-                © 2026 OdoNex. جميع الحقوق محفوظة
+            <div class="footer-copyright">
+                © 2026 جميع الحقوق محفوظة لشركة OdoNex | حلول ERP الموحدة
             </div>
         </div>
     </footer>
 
-    <script src="assets/js/language.js"></script>
+    <script>
+        // Dark mode toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const toggleBtn = document.querySelector('.dark-mode-toggle');
+            if (document.body.classList.contains('dark-mode')) {
+                toggleBtn.textContent = '☀️';
+            } else {
+                toggleBtn.textContent = '☾';
+            }
+        }
+
+        // Language switch
+        function switchLanguage() {
+            window.location.href = 'features-en.html';
+        }
+    </script>
 </body>
 </html>
