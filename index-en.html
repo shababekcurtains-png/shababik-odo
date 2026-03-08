@@ -50,120 +50,154 @@
 
         header .container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .logo img {
-            height: 50px;
-            width: auto;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-        }
-
-        nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 500;
-            transition: color 0.3s;
             position: relative;
         }
 
-        nav a:hover {
-            color: var(--odonex-purple);
-        }
-
-        nav a:after {
-            content: '';
+        /* Right side - Logo */
+        .nav-right {
             position: absolute;
-            bottom: -5px;
-            left: 0;
             right: 0;
-            height: 2px;
-            background: var(--main-gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-
-        nav a:hover:after,
-        nav a.active:after {
-            transform: scaleX(1);
-        }
-
-        .lang-switcher {
             display: flex;
-            gap: 5px;
+            align-items: center;
+            gap: 10px;
         }
 
-        .lang-btn {
-            background: var(--bg-light);
-            border: 1px solid #ddd;
-            color: var(--text-main);
-            padding: 5px 12px;
-            border-radius: 50px;
-            cursor: pointer;
+        .nav-logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        /* Centered Navigation Menu */
+        .nav-menu {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: #6B6B6B;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #7A5AF8;
             font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s;
         }
 
-        .lang-btn:hover,
-        .lang-btn.active {
-            background: var(--main-gradient);
-            border-color: transparent;
-            color: white;
+        /* Left side - Language and Dark Mode */
+        .nav-left {
+            position: absolute;
+            left: 0;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* Language Button with Globe */
+        .lang-container {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 6px 14px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-container:hover {
+            border-color: #7A5AF8;
+        }
+
+        .lang-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .globe-icon {
+            width: 18px;
+            height: 18px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23555" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>');
+            background-size: contain;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 6px 12px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode-container:hover {
+            border-color: #7A5AF8;
+        }
+
+        .dark-mode-toggle {
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #555;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* ===== Hero Section ===== */
         .hero {
             text-align: center;
             padding: 60px 0 40px;
-            border-bottom: 1px solid #eef2f6;
         }
 
         .hero-logo {
-            width: 305px;
+            width: 280px;
             height: auto;
-            margin: 0 auto 30px;
+            margin: 0 auto 15px;
             filter: drop-shadow(0 12px 18px rgba(122,90,248,0.2));
-            animation: gentleBounce 4s ease-in-out infinite;
-        }
-
-        @keyframes gentleBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
         }
 
         h1 {
-            font-size: 48px;
+            font-size: 44px;
             background: var(--main-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
         }
 
         .subheadline {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
             color: #000000;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
         }
 
         .description {
             font-size: 18px;
             color: var(--text-secondary);
             max-width: 700px;
-            margin: 0 auto 25px;
+            margin: 0 auto 15px;
         }
 
         /* CTA Buttons */
@@ -172,7 +206,7 @@
             gap: 16px;
             justify-content: center;
             align-items: center;
-            margin: 20px auto 0;
+            margin: 10px auto 0;
         }
 
         .btn-primary {
@@ -210,76 +244,6 @@
             transform: scale(1.05);
         }
 
-        /* Dark Mode Toggle */
-        .dark-mode-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            padding: 5px 12px;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-left: 10px;
-        }
-
-        .dark-mode-container:hover {
-            border-color: #7A5AF8;
-        }
-
-        .dark-mode-toggle {
-            background: transparent;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            color: #555;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* ===== Footer ===== */
-        footer {
-            background: var(--text-main);
-            color: white;
-            padding: 50px 0 20px;
-            margin-top: 60px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .footer-grid h4 {
-            color: var(--odonex-blue);
-            margin-bottom: 20px;
-        }
-
-        .footer-grid a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-            transition: color 0.3s;
-        }
-
-        .footer-grid a:hover {
-            color: var(--odonex-blue);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #999;
-        }
-
         /* ===== Dark Mode ===== */
         body.dark-mode {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -290,18 +254,25 @@
             background: #222;
         }
 
-        body.dark-mode nav a {
+        body.dark-mode .nav-menu a {
             color: #ccc;
         }
 
-        body.dark-mode nav a:hover,
-        body.dark-mode nav a.active {
+        body.dark-mode .nav-menu a:hover,
+        body.dark-mode .nav-menu a.active {
             color: #9B59FF;
         }
 
-        body.dark-mode .lang-btn {
-            background: #333;
+        body.dark-mode .lang-container {
+            border-color: #444;
+        }
+
+        body.dark-mode .lang-text {
             color: #ddd;
+        }
+
+        body.dark-mode .globe-icon {
+            filter: invert(0.8);
         }
 
         body.dark-mode .dark-mode-container {
@@ -312,24 +283,26 @@
             color: #fff;
         }
 
+        body.dark-mode .nav-logo-text {
+            color: #ffffff;
+        }
+
         body.dark-mode .subheadline {
             color: #ffffff;
         }
 
         /* ===== Responsive ===== */
         @media (max-width: 992px) {
-            nav {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
+            .nav-menu {
+                gap: 25px;
             }
             
             h1 {
-                font-size: 36px;
+                font-size: 38px;
             }
             
             .hero-logo {
-                width: 250px;
+                width: 240px;
             }
         }
 
@@ -337,10 +310,30 @@
             header .container {
                 flex-direction: column;
                 gap: 15px;
+                padding-top: 50px;
             }
             
-            nav {
+            .nav-right,
+            .nav-left {
+                position: static;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
                 justify-content: center;
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .subheadline {
+                font-size: 20px;
+            }
+            
+            .description {
+                font-size: 16px;
             }
             
             .cta-buttons {
@@ -359,23 +352,29 @@
 <body>
     <header>
         <div class="container">
-            <a href="index-en.html" class="logo">
-                <img src="assets/images/odonex-logo.png.png" alt="OdoNex">
-            </a>
-            <div style="display: flex; align-items: center;">
-                <nav>
-                    <a href="index-en.html" class="active">Home</a>
-                    <a href="features-en.html">Features</a>
-                    <a href="pricing-en.html">Pricing</a>
-                    <a href="gallery-en.html">Gallery</a>
-                    <a href="contact-en.html">Contact</a>
-                </nav>
+            <!-- Right side - Logo -->
+            <div class="nav-right">
+                <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="nav-logo-img">
+                <span class="nav-logo-text">OdoNex</span>
+            </div>
+
+            <!-- Centered Navigation Menu -->
+            <div class="nav-menu">
+                <a href="#" class="active">Home</a>
+                <a href="#">Features</a>
+                <a href="#">Pricing</a>
+                <a href="#">Gallery</a>
+                <a href="#">Contact</a>
+            </div>
+
+            <!-- Left side - Language and Dark Mode -->
+            <div class="nav-left">
+                <div class="lang-container" onclick="switchLanguage()">
+                    <span class="lang-text">عربي</span>
+                    <div class="globe-icon"></div>
+                </div>
                 <div class="dark-mode-container" onclick="toggleDarkMode()">
                     <span class="dark-mode-toggle">☾</span>
-                </div>
-                <div class="lang-switcher">
-                    <button class="lang-btn" onclick="switchLanguage('ar')">العربية</button>
-                    <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
                 </div>
             </div>
         </div>
@@ -388,7 +387,7 @@
                 <h1>OdoNex | Unified ERP Solutions</h1>
                 <div class="subheadline">Integration. Security. Scalability.</div>
                 <p class="description">
-                    A comprehensive accounting system that brings all your business<br>operations into one easy, secure, and scalable platform.
+                    A comprehensive accounting system that brings all your business operations into one easy, secure, and scalable platform.
                 </p>
                 <div class="cta-buttons">
                     <button class="btn-primary">Start Free Trial</button>
@@ -397,33 +396,6 @@
             </div>
         </section>
     </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h4>OdoNex</h4>
-                    <p>Integrated Accounting Solutions for Enterprise Resource Planning</p>
-                </div>
-                <div>
-                    <h4>Quick Links</h4>
-                    <a href="index-en.html">Home</a>
-                    <a href="features-en.html">Features</a>
-                    <a href="gallery-en.html">Gallery</a>
-                    <a href="pricing-en.html">Pricing</a>
-                    <a href="contact-en.html">Contact</a>
-                </div>
-                <div>
-                    <h4>Contact</h4>
-                    <p>Phone: +966 50 000 0000</p>
-                    <p>Email: info@odonex.com</p>
-                </div>
-            </div>
-            <div class="copyright">
-                © 2026 OdoNex. All rights reserved.
-            </div>
-        </div>
-    </footer>
 
     <script>
         function toggleDarkMode() {
@@ -436,10 +408,8 @@
             }
         }
 
-        function switchLanguage(lang) {
-            if (lang === 'ar') {
-                window.location.href = 'index.html';
-            }
+        function switchLanguage() {
+            window.location.href = 'index.html';
         }
     </script>
 </body>
