@@ -303,4 +303,29 @@
                 const data = JSON.parse(savedData);
                 document.getElementById('stat1Value').value = data.stat1.value;
                 document.getElementById('stat1Label').value = data.stat1.label;
-                document.getElementById('stat2Value').value = data.stat
+                document.getElementById('stat2Value').value = data.stat2.value;
+                document.getElementById('stat2Label').value = data.stat2.label;
+                document.getElementById('stat3Value').value = data.stat3.value;
+                document.getElementById('stat3Label').value = data.stat3.label;
+                document.getElementById('stat4Value').value = data.stat4.value;
+                document.getElementById('stat4Label').value = data.stat4.label;
+                
+                document.getElementById('stat1Number').innerHTML = data.stat1.value;
+                document.getElementById('stat2Number').innerHTML = data.stat2.value;
+                document.getElementById('stat3Number').innerHTML = data.stat3.value;
+                document.getElementById('stat4Number').innerHTML = data.stat4.value;
+                
+                document.getElementById('stat1LabelPreview').innerHTML = data.stat1.label;
+                document.getElementById('stat2LabelPreview').innerHTML = data.stat2.label;
+                document.getElementById('stat3LabelPreview').innerHTML = data.stat3.label;
+                document.getElementById('stat4LabelPreview').innerHTML = data.stat4.label;
+                
+                document.getElementById('stat1Icon').innerHTML = data.stat1.icon || '👥';
+                document.getElementById('stat2Icon').innerHTML = data.stat2.icon || '📁';
+                document.getElementById('stat3Icon').innerHTML = data.stat3.icon || '🌍';
+                document.getElementById('stat4Icon').innerHTML = data.stat4.icon || '⭐';
+            }
+        });
+    </script>
+</body>
+</html>
