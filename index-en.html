@@ -70,13 +70,13 @@
         }
 
         .nav-logo-img {
-            height: 50px;
+            height: 55px; /* تكبير الشعار */
             width: auto;
             object-fit: contain;
         }
 
         .nav-logo-text {
-            font-size: 20px;
+            font-size: 22px; /* تكبير النص */
             font-weight: 700;
             color: #000000;
         }
@@ -178,7 +178,7 @@
         }
 
         .hero-logo {
-            width: 280px;
+            width: 320px; /* تكبير الشعار */
             height: auto;
             margin: 0 auto 10px;
             filter: drop-shadow(0 12px 18px rgba(122,90,248,0.2));
@@ -186,11 +186,19 @@
         }
 
         h1 {
-            font-size: 44px;
+            font-size: 52px; /* زيادة حجم الخط */
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .brand-gradient {
             background: var(--main-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+        }
+
+        .black-text {
+            color: #000000; /* النص باللون الأسود */
         }
 
         .subheadline {
@@ -318,11 +326,14 @@
         .testimonials-title {
             font-size: 40px;
             font-weight: 700;
-            color: var(--dark-text);
             margin-bottom: 12px;
         }
 
-        .testimonials-title span {
+        .testimonials-title .black-part {
+            color: #000000; /* What Our باللون الأسود */
+        }
+
+        .testimonials-title .gradient-part {
             background: var(--main-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -384,6 +395,14 @@
             color: #ffffff;
         }
 
+        body.dark-mode .black-text {
+            color: #ffffff;
+        }
+
+        body.dark-mode .testimonials-title .black-part {
+            color: #ffffff;
+        }
+
         body.dark-mode .statistics-section {
             background-color: #222;
         }
@@ -394,10 +413,6 @@
 
         body.dark-mode .testimonials-heading {
             background-color: #1a1a2e;
-        }
-
-        body.dark-mode .testimonials-title {
-            color: #f0f0f0;
         }
 
         body.dark-mode .testimonials-subtitle {
@@ -411,11 +426,11 @@
             }
             
             h1 {
-                font-size: 38px;
+                font-size: 44px;
             }
             
             .hero-logo {
-                width: 240px;
+                width: 280px;
             }
             
             .stats-grid {
@@ -446,7 +461,7 @@
             }
             
             h1 {
-                font-size: 32px;
+                font-size: 36px;
             }
             
             .subheadline {
@@ -455,6 +470,10 @@
             
             .description {
                 font-size: 16px;
+            }
+            
+            .hero-logo {
+                width: 240px;
             }
             
             .cta-buttons {
@@ -527,7 +546,9 @@
         <section class="hero">
             <div class="container">
                 <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="hero-logo">
-                <h1>OdoNex | Unified ERP Solutions</h1>
+                <h1>
+                    <span class="brand-gradient">OdoNex</span> <span class="black-text">| Unified ERP Solutions</span>
+                </h1>
                 <div class="subheadline">Integration. Security. Scalability.</div>
                 <p class="description">
                     A comprehensive accounting system that brings all your business operations into one easy, secure, and scalable platform.
@@ -539,11 +560,11 @@
             </div>
         </section>
 
-        <!-- Statistics Section - Reversed (starts from right) -->
+        <!-- Statistics Section -->
         <section class="statistics-section">
             <div class="container">
                 <div class="stats-grid">
-                    <!-- Stat 4 - Active Clients (appears first from right) -->
+                    <!-- Stat 4 - Active Clients -->
                     <div class="stat-item">
                         <div class="stat-icon-box">
                             <svg viewBox="0 0 24 24">
@@ -601,7 +622,7 @@
         <section class="testimonials-heading">
             <div class="container">
                 <h2 class="testimonials-title">
-                    What <span>Our Clients Say</span>
+                    <span class="black-part">What</span> <span class="black-part">Our</span> <span class="gradient-part">Clients Say</span>
                 </h2>
                 <p class="testimonials-subtitle">
                     Real opinions from clients who trust us in managing their business
@@ -625,7 +646,7 @@
             window.location.href = 'index.html';
         }
 
-        // Counter Animation
+        // Counter Animation - يعمل عند التمرير
         function animateCounter(element, start, end, duration, prefix = '') {
             let startTimestamp = null;
             const step = (timestamp) => {
@@ -642,24 +663,40 @@
             window.requestAnimationFrame(step);
         }
 
-        // Start counters when page loads
-        document.addEventListener('DOMContentLoaded', () => {
+        // تفعيل العد عند التمرير
+        function startCountersOnScroll() {
             const counters = document.querySelectorAll('.stat-number');
-            
-            // Reversed order: 1500, 320, 15, 99
             const targets = [1500, 320, 15, 99];
+            let animationStarted = false;
             
-            counters.forEach((counter, index) => {
-                const target = targets[index];
-                if (target === 99) {
-                    animateCounter(counter, 1, target, 2000, '');
-                } else if (target === 1500 || target === 320) {
-                    animateCounter(counter, 1, target, 2500, '+');
-                } else {
-                    animateCounter(counter, 1, target, 2000, '');
-                }
-            });
-        });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !animationStarted) {
+                        animationStarted = true;
+                        
+                        counters.forEach((counter, index) => {
+                            const target = targets[index];
+                            if (target === 99) {
+                                animateCounter(counter, 1, target, 2000, '');
+                            } else if (target === 1500 || target === 320) {
+                                animateCounter(counter, 1, target, 2500, '+');
+                            } else {
+                                animateCounter(counter, 1, target, 2000, '');
+                            }
+                        });
+                        
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            const statsSection = document.querySelector('.statistics-section');
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', startCountersOnScroll);
     </script>
 </body>
 </html>
