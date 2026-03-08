@@ -624,7 +624,7 @@
             }
         }
 
-        /* ===== Footer Section ===== */
+        /* ===== Footer Section - معدل ليكون في المنتصف تماماً ===== */
         footer {
             background-color: var(--footer-bg);
             width: 100%;
@@ -641,6 +641,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            text-align: center;
         }
 
         .footer-brand-row {
@@ -652,7 +653,7 @@
         }
 
         .footer-brand-text {
-            text-align: right;
+            text-align: center;
         }
 
         .footer-brand-name {
@@ -749,13 +750,11 @@
                 max-width: 280px;
             }
 
-            /* Statistics Section - 2x2 on mobile */
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 30px;
             }
 
-            /* Testimonials Section - 2x2 on mobile */
             .testimonials-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
@@ -779,6 +778,10 @@
 
             .footer-brand-text {
                 text-align: center;
+            }
+            
+            .description span {
+                margin-right: 20px !important;
             }
         }
 
@@ -863,18 +866,11 @@
             .footer-copyright {
                 font-size: 12px;
             }
+            
+            .description span {
+                margin-right: 15px !important;
+            }
         }
-        @media (max-width: 768px) {
-    .description span {
-        margin-right: 20px !important; /* مسافة أقل للهاتف */
-    }
-}
-
-@media (max-width: 480px) {
-    .description span {
-        margin-right: 15px !important; /* مسافة أقل للشاشات الصغيرة */
-    }
-}
     </style>
 </head>
 <body>
@@ -1191,7 +1187,7 @@
         </section>
     </main>
 
-    <!-- Footer Section -->
+    <!-- Footer Section - معدل ليكون في المنتصف -->
     <footer>
         <div class="footer-container">
             <div class="footer-brand-row">
@@ -1221,18 +1217,26 @@
             }
         }
 
-        // ===== دالة التنقل بين اللغات المحسنة =====
+        // ===== دالة التنقل بين اللغات المحسنة - تدعم جميع الصفحات =====
         function switchLanguage() {
             let currentPage = window.location.pathname.split('/').pop() || 'index.html';
             let newPage = '';
             
             // قائمة الصفحات المدعومة
             const pages = {
+                // صفحات عربية -> إنجليزية
                 'index.html': 'index-en.html',
                 'features.html': 'features-en.html',
-                'gallery.html': 'gallery-en.html',
                 'pricing.html': 'pricing-en.html',
-                'contact.html': 'contact-en.html'
+                'gallery.html': 'gallery-en.html',
+                'contact.html': 'contact-en.html',
+                
+                // صفحات إنجليزية -> عربية
+                'index-en.html': 'index.html',
+                'features-en.html': 'features.html',
+                'pricing-en.html': 'pricing.html',
+                'gallery-en.html': 'gallery.html',
+                'contact-en.html': 'contact.html'
             };
             
             newPage = pages[currentPage] || 'index-en.html';
