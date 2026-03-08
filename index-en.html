@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>OdoNex | Features</title>
+    <title>OdoNex | Unified ERP Solutions</title>
     <!-- Google Fonts - Cairo Bold -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -25,6 +25,8 @@
             --section-bg: #F8F9FB;
             --bg-white: #FFFFFF;
             --border-color: #E6E8EC;
+            --star-gold: #F5B301;
+            --star-empty: #D1D5DB;
             --icon-color: #666666;
             --footer-bg: #F8F9FB;
             --main-gradient: linear-gradient(135deg, #7A5AF8, #2BB0ED);
@@ -45,10 +47,19 @@
         }
 
         body.dark-mode .black-text,
+        body.dark-mode .testimonials-title .black-part,
+        body.dark-mode .faq-title .black-part,
+        body.dark-mode .subheadline,
+        body.dark-mode .client-name,
         body.dark-mode .footer-brand-name,
         body.dark-mode .nav-logo-text,
-        body.dark-mode .feature-title {
+        body.dark-mode .stat-number {
             color: #ffffff !important;
+        }
+
+        body.dark-mode .stat-number {
+            background: none;
+            -webkit-text-fill-color: #ffffff;
         }
 
         .container {
@@ -212,106 +223,411 @@
             color: #fff;
         }
 
-        /* ===== Page Header ===== */
-        .page-header {
+        /* ===== Hero Section ===== */
+        .hero {
             text-align: center;
-            padding: 50px 0 30px;
+            padding: 50px 0 40px;
         }
 
-        .page-header h1 {
-            font-size: 48px;
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .hero-logo {
+            width: 280px;
+            height: auto;
+            margin: 0 auto 15px;
+            filter: drop-shadow(0 10px 15px rgba(122,90,248,0.15));
+            animation: gentleBounce 4s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 44px;
             font-weight: 700;
-            color: var(--dark-text);
+            margin-bottom: 12px;
+        }
+
+        .brand-gradient {
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .black-text {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        .subheadline {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 12px;
+        }
+
+        .description {
+            font-size: 18px;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto 15px;
+            padding: 0 15px;
+            font-weight: 500;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--main-gradient);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 14px rgba(122,90,248,0.2);
+            transition: transform 0.3s ease;
+            min-width: 180px;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary-purple);
+            color: var(--primary-purple);
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            min-width: 180px;
+        }
+
+        body.dark-mode .btn-secondary {
+            color: #9B59FF;
+            border-color: #9B59FF;
+        }
+
+        .btn-secondary:hover {
+            transform: scale(1.05);
+        }
+
+        /* ===== Statistics Section ===== */
+        .statistics-section {
+            background-color: var(--section-bg);
+            padding: 70px 0;
+            margin-top: 20px;
+        }
+
+        body.dark-mode .statistics-section {
+            background-color: #222;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            align-items: center;
+            justify-items: center;
+            text-align: center;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-icon-box {
+            width: 64px;
+            height: 64px;
+            background: var(--main-gradient);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
             margin-bottom: 15px;
+        }
+
+        .stat-icon-box svg {
+            width: 28px;
+            height: 28px;
+            fill: none;
+            stroke: white;
+            stroke-width: 2;
+        }
+
+        .stat-number {
+            font-size: 44px;
+            font-weight: 700;
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--secondary-text);
+        }
+
+        body.dark-mode .stat-label {
+            color: #aaa;
+        }
+
+        /* ===== Testimonials Section ===== */
+        .testimonials-section {
+            background-color: var(--section-bg);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        body.dark-mode .testimonials-section {
+            background-color: #222;
+        }
+
+        .testimonials-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .testimonials-title .black-part {
+            color: #000000;
+        }
+
+        .testimonials-title .gradient-part {
             background: var(--main-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .page-header p {
-            font-size: 20px;
+        .testimonials-subtitle {
+            font-size: 18px;
             font-weight: 500;
-            color: var(--secondary-text);
-            max-width: 700px;
-            margin: 0 auto;
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
         }
 
-        /* ===== Features Section ===== */
-        .features-section {
-            padding: 40px 0 70px;
-        }
-
-        .features-grid {
+        .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 25px;
         }
 
-        .feature-card {
+        .testimonial-card {
             background-color: var(--bg-white);
             border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 35px 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .feature-card:hover {
+        body.dark-mode .testimonial-card {
+            background-color: #2a2a2a;
+            border-color: #444;
+        }
+
+        .testimonial-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(122,90,248,0.1);
-            border-color: var(--primary-purple);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--main-gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 25px;
-            background: linear-gradient(135deg, rgba(122,90,248,0.1), rgba(43,176,237,0.1));
-            border-radius: 50%;
+        .star-rating {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            color: var(--primary-purple);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover .feature-icon {
-            background: var(--main-gradient);
-            color: white;
-        }
-
-        .feature-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--dark-text);
+            gap: 4px;
             margin-bottom: 15px;
         }
 
-        .feature-description {
+        .star {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .star-filled {
+            color: var(--star-gold);
+        }
+
+        .star-empty {
+            color: var(--star-empty);
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--body-text);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .testimonial-text {
+            color: #ddd;
+        }
+
+        .testimonial-divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 15px 0 15px;
+        }
+
+        body.dark-mode .testimonial-divider {
+            background-color: #444;
+        }
+
+        .client-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 4px;
+        }
+
+        .client-role {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--light-text);
+        }
+
+        body.dark-mode .client-role {
+            color: #aaa;
+        }
+
+        /* ===== FAQ Section ===== */
+        .faq-section {
+            background-color: var(--section-bg);
+            padding: 80px 0 30px;
+            text-align: center;
+        }
+
+        body.dark-mode .faq-section {
+            background-color: #222;
+        }
+
+        .faq-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .faq-title .black-part {
+            color: #000000;
+        }
+
+        .faq-title .gradient-part {
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .faq-subtitle {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .faq-item {
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .faq-item {
+            background-color: #2a2a2a;
+            border-color: #444;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .question-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        body.dark-mode .question-text {
+            color: #fff;
+        }
+
+        .chevron-icon {
+            width: 18px;
+            height: 18px;
+            color: var(--icon-color);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        .answer-text {
             font-size: 16px;
             font-weight: 500;
             color: var(--secondary-text);
             line-height: 1.7;
+            margin-top: 15px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        body.dark-mode .answer-text {
+            color: #aaa;
+        }
+
+        .faq-item.active .answer-text {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ===== Footer Section ===== */
@@ -319,7 +635,7 @@
             background-color: var(--footer-bg);
             width: 100%;
             padding: 35px 0 25px;
-            margin-top: 30px;
+            margin-top: 15px;
             text-align: center;
         }
 
@@ -387,13 +703,12 @@
 
         /* ===== Responsive Design ===== */
         @media (max-width: 992px) {
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
+            .stats-grid {
+                gap: 40px;
             }
             
-            .page-header h1 {
-                font-size: 42px;
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -414,26 +729,53 @@
                 gap: 20px;
             }
 
-            .page-header {
-                padding: 40px 0 20px;
+            .hero-logo {
+                width: 220px;
             }
 
-            .page-header h1 {
+            h1 {
                 font-size: 36px;
             }
 
-            .page-header p {
-                font-size: 18px;
-                padding: 0 15px;
+            .subheadline {
+                font-size: 20px;
             }
 
-            .features-grid {
-                grid-template-columns: 1fr;
+            .description {
+                font-size: 16px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            /* Statistics Section - 2x2 on mobile */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            /* Testimonials Section - 2x2 on mobile */
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
 
-            .feature-card {
-                padding: 30px 20px;
+            .testimonials-title,
+            .faq-title {
+                font-size: 34px;
+            }
+
+            .testimonials-subtitle,
+            .faq-subtitle {
+                font-size: 16px;
+                margin-bottom: 30px;
             }
 
             .footer-brand-row {
@@ -444,29 +786,80 @@
             .footer-brand-text {
                 text-align: center;
             }
+
+            .description span {
+                margin-left: 40px !important;
+                margin-right: 0 !important;
+            }
         }
 
         @media (max-width: 480px) {
-            .page-header h1 {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .stat-icon-box {
+                width: 55px;
+                height: 55px;
+            }
+
+            .stat-icon-box svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .stat-number {
                 font-size: 32px;
             }
 
-            .page-header p {
+            .stat-label {
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .hero-logo {
+                width: 180px;
+            }
+
+            .testimonials-title,
+            .faq-title {
+                font-size: 28px;
+            }
+
+            .testimonials-grid {
+                gap: 15px;
+            }
+
+            .testimonial-card {
+                padding: 20px;
+            }
+
+            .testimonial-text {
+                font-size: 14px;
+            }
+
+            .client-name {
                 font-size: 16px;
             }
 
-            .feature-title {
-                font-size: 20px;
+            .client-role {
+                font-size: 12px;
             }
 
-            .feature-description {
-                font-size: 15px;
+            .faq-item {
+                padding: 15px 20px;
             }
 
-            .feature-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 32px;
+            .question-text {
+                font-size: 16px;
+            }
+
+            .answer-text {
+                font-size: 14px;
             }
 
             .footer-brand-name {
@@ -481,11 +874,21 @@
             .footer-copyright {
                 font-size: 12px;
             }
+
+            .description span {
+                margin-left: 20px !important;
+            }
+        }
+
+        /* LTR specific spacing for description */
+        .description span {
+            display: block;
+            margin-left: 40px;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Main Website Content -->
     <header>
         <div class="container">
             <div class="nav-left">
@@ -494,8 +897,8 @@
             </div>
 
             <div class="nav-menu">
-                <a href="index-en.html">Home</a>
-                <a href="#" class="active">Features</a>
+                <a href="#" class="active">Home</a>
+                <a href="#">Features</a>
                 <a href="#">Pricing</a>
                 <a href="#">Portfolio</a>
                 <a href="#">Contact</a>
@@ -514,65 +917,291 @@
     </header>
 
     <main>
-        <!-- Page Header -->
-        <section class="page-header">
+        <!-- Hero Section -->
+        <section class="hero">
             <div class="container">
-                <h1>Features</h1>
-                <p>Everything you need to manage your business efficiently and securely in one place</p>
+                <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="hero-logo">
+                <h1>
+                    <span class="brand-gradient">OdoNex</span> <span class="black-text">| Unified ERP Solutions</span>
+                </h1>
+                <div class="subheadline">Integration. Security. Scalability.</div>
+                <p class="description">
+                    A comprehensive accounting system that brings all your business operations into one easy,
+                    <br>
+                    <span>secure, and scalable platform.</span>
+                </p>
+                <div class="cta-buttons">
+                    <button class="btn-primary">Start Free Trial</button>
+                    <button class="btn-secondary">Request a Demo</button>
+                </div>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="features-section">
+        <!-- Statistics Section -->
+        <section class="statistics-section">
             <div class="container">
-                <div class="features-grid">
-                    <!-- Scalability -->
-                    <div class="feature-card">
-                        <div class="feature-icon">📈</div>
-                        <h3 class="feature-title">Scalability</h3>
-                        <p class="feature-description">A flexible and scalable platform that grows with your business.</p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number" data-target="1500">1500+</div>
+                        <div class="stat-label">Active Clients</div>
                     </div>
 
-                    <!-- Data Security -->
-                    <div class="feature-card">
-                        <div class="feature-icon">🔒</div>
-                        <h3 class="feature-title">Data Security</h3>
-                        <p class="feature-description">Comprehensive data security and advanced protection around the clock.</p>
+                    <div class="stat-item">
+                        <div class="stat-icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number" data-target="320">320+</div>
+                        <div class="stat-label">Projects Completed</div>
                     </div>
 
-                    <!-- Integration -->
-                    <div class="feature-card">
-                        <div class="feature-icon">🔄</div>
-                        <h3 class="feature-title">Integration</h3>
-                        <p class="feature-description">Seamless integration of all business functions in one unified platform.</p>
+                    <div class="stat-item">
+                        <div class="stat-icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <line x1="12" y1="2" x2="12" y2="22"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number" data-target="15">15</div>
+                        <div class="stat-label">Countries Worldwide</div>
                     </div>
 
-                    <!-- Operational Efficiency -->
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h3 class="feature-title">Operational Efficiency</h3>
-                        <p class="feature-description">Improve efficiency and maximize operational productivity.</p>
+                    <div class="stat-item">
+                        <div class="stat-icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                                <path d="M12 12c-2.21 0-4 1.79-4 4h8c0-2.21-1.79-4-4-4z"/>
+                                <circle cx="8" cy="10" r="2"/>
+                                <circle cx="16" cy="10" r="2"/>
+                            </svg>
+                        </div>
+                        <div class="stat-number" data-target="99">99%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="container">
+                <h2 class="testimonials-title">
+                    <span class="black-part">What</span> <span class="gradient-part">Our Clients Say</span>
+                </h2>
+                <p class="testimonials-subtitle">
+                    Real testimonials from clients who trust us to manage their business
+                </p>
+
+                <div class="testimonials-grid">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"OdoNex completely transformed how we manage our business. Financial reports are ready at the click of a button with unmatched accuracy."</p>
+                        <div class="testimonial-divider"></div>
+                        <div class="client-name">Mohammed Al-Shammari</div>
+                        <div class="client-role">GM - Al-Shammari Trading Group</div>
                     </div>
 
-                    <!-- Global Access -->
-                    <div class="feature-card">
-                        <div class="feature-icon">🌍</div>
-                        <h3 class="feature-title">Global Access</h3>
-                        <p class="feature-description">Access your business from anywhere, at any time.</p>
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"After implementing OdoNex, we saved over 60% of our accounting team's time. The system is user-friendly and the support is excellent."</p>
+                        <div class="testimonial-divider"></div>
+                        <div class="client-name">Sara Al-Otaibi</div>
+                        <div class="client-role">CFO - Elite Clinics</div>
                     </div>
 
-                    <!-- Technical Support -->
-                    <div class="feature-card">
-                        <div class="feature-icon">🎧</div>
-                        <h3 class="feature-title">Technical Support</h3>
-                        <p class="feature-description">24/7 specialized technical support to ensure business continuity.</p>
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"Managing 12 branches became much easier with OdoNex. Real-time inventory and sales tracking is an indispensable feature."</p>
+                        <div class="testimonial-divider"></div>
+                        <div class="client-name">Khaled Al-Dosari</div>
+                        <div class="client-role">Owner - Al-Diwan Restaurant Chain</div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"The integration between different departments saved us a lot of effort. We highly recommend it for any educational institution."</p>
+                        <div class="testimonial-divider"></div>
+                        <div class="client-name">Fatima Al-Zahrani</div>
+                        <div class="client-role">Senior Accountant - Al-Andalus Group</div>
+                    </div>
+
+                    <!-- Testimonial 5 -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"The system is very flexible and we were able to customize it to suit our construction business. An excellent investment."</p>
+                        <div class="testimonial-divider"></div>
+                        <div class="client-name">Ahmed Al-Harbi</div>
+                        <div class="client-role">CEO - Advanced Construction Co.</div>
+                    </div>
+
+                    <!-- Testimonial 6 -->
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="star star-filled" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"An easy and intuitive interface. The detailed reports help us make accurate and quick financial decisions."</p>
+                        <div class="testimonial-divider"></div>
+                        <div class="client-name">Noura Al-Qahtani</div>
+                        <div class="client-role">IT Director - Future Academy</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section - 7 Questions -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="faq-title">
+                    <span class="black-part">Frequently Asked</span> <span class="gradient-part">Questions</span>
+                </h2>
+                <p class="faq-subtitle">
+                    Answers to the most common questions from our clients
+                </p>
+
+                <div class="faq-container">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span class="question-text">What is OdoNex?</span>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="answer-text">
+                            OdoNex is an integrated ERP accounting system that brings all your business operations together — from accounting and inventory to HR and sales — in one easy-to-use, secure cloud platform.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span class="question-text">Can I try the system before subscribing?</span>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="answer-text">
+                            Yes, we offer a 14-day free trial with full features, no credit card required. You can start immediately and explore all functionalities.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span class="question-text">Does the system fully support Arabic?</span>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="answer-text">
+                            Absolutely! The system is fully designed to support Arabic with RTL interface, in addition to English support. All reports and invoices can be issued in either language.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span class="question-text">How is my data protected?</span>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="answer-text">
+                            We use 256-bit SSL encryption and automatic daily backups with protected servers in certified data centers. Your data is protected by the highest global security standards.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span class="question-text">Can the system integrate with other platforms?</span>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="answer-text">
+                            Yes, OdoNex supports integration with payment gateways, POS systems, e-commerce platforms, and shipping services through flexible APIs.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6 -->
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span class="question-text">What technical support options are available?</span>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="answer-text">
+                            We provide 24/7 technical support via phone, email, and live chat. We also offer free training upon subscription and a comprehensive library of tutorials.
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 7 -->
+                    <div class="faq-item" onclick="toggleFAQ(this)">
+                        <div class="faq-question">
+                            <span class="question-text">Can the system be customized to my needs?</span>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="answer-text">
+                            Yes, the system is flexible and fully customizable. You can add custom fields, modify workflows, and create custom reports to suit your business needs.
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer Section -->
     <footer>
         <div class="footer-container">
             <div class="footer-brand-row">
@@ -604,8 +1233,73 @@
 
         // Language switch
         function switchLanguage() {
-            window.location.href = 'features.html';
+            window.location.href = 'index.html';
         }
+
+        // FAQ toggle
+        function toggleFAQ(element) {
+            const allItems = document.querySelectorAll('.faq-item');
+            allItems.forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                }
+            });
+            element.classList.toggle('active');
+        }
+
+        // Counter Animation
+        function animateCounter(element, start, end, duration, prefix = '') {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const currentValue = Math.floor(progress * (end - start) + start);
+                element.innerText = prefix + currentValue + (end === 99 ? '%' : '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    element.innerText = prefix + end + (end === 99 ? '%' : '');
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        function startCountersOnScroll() {
+            const counters = document.querySelectorAll('.stat-number');
+            const targets = [1500, 320, 15, 99];
+            let animationStarted = false;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !animationStarted) {
+                        animationStarted = true;
+                        
+                        counters.forEach((counter, index) => {
+                            const target = targets[index];
+                            if (target === 99) {
+                                animateCounter(counter, 1, target, 2000, '');
+                            } else if (target === 1500 || target === 320) {
+                                animateCounter(counter, 1, target, 2500, '+');
+                            } else {
+                                animateCounter(counter, 1, target, 2000, '');
+                            }
+                        });
+                        
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            const statsSection = document.querySelector('.statistics-section');
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            startCountersOnScroll();
+        });
     </script>
 </body>
 </html>
