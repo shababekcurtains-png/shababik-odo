@@ -51,8 +51,9 @@
         }
 
         .nav-logo-img {
-            height: 35px;
+            height: 40px;
             width: auto;
+            object-fit: contain;
         }
 
         .nav-logo-text {
@@ -150,25 +151,26 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* تغيير إلى flex-start لرفع المحتوى */
+            justify-content: flex-start;
             text-align: center;
-            margin-top: 10px; /* تقليل المسافة العلوية */
+            margin-top: 5px;
             padding-bottom: 40px;
-            min-height: calc(100vh - 70px); /* ارتفاع أقل */
+            min-height: calc(100vh - 70px);
         }
 
-        /* Logo with Bouncing Animation - أكبر 10% من الحجم السابق */
+        /* Logo with Bouncing Animation */
         @keyframes gentleBounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
         }
 
         .hero-logo {
-            width: 305px; /* 277px + 10% = 305px */
+            width: 305px;
             height: auto;
-            margin-bottom: 8px; /* تقليل المسافة */
+            margin-bottom: 5px;
             filter: drop-shadow(0 12px 18px rgba(122,90,248,0.2));
             animation: gentleBounce 4s ease-in-out infinite;
+            object-fit: contain;
         }
 
         /* Main Headline */
@@ -178,7 +180,7 @@
             font-weight: 700;
             line-height: 1.2;
             color: #333333;
-            margin-bottom: 3px; /* تقليل المسافة */
+            margin-bottom: 3px;
             letter-spacing: -0.5px;
         }
 
@@ -198,10 +200,10 @@
             font-weight: 700;
             color: #000000;
             letter-spacing: 0.5px;
-            margin-bottom: 3px; /* تقليل المسافة */
+            margin-bottom: 3px;
         }
 
-        /* Description - مرفوعة للأعلى جداً */
+        /* Description - مرفوعة للأعلى */
         .description {
             font-family: 'Cairo', sans-serif;
             font-size: 20px;
@@ -209,35 +211,35 @@
             line-height: 1.5;
             color: #8A8A8A;
             max-width: 900px;
-            margin: 0 auto 8px; /* تقليل المسافة */
+            margin: 0 auto 8px;
             white-space: pre-line;
         }
 
-        /* CTA Buttons - أصغر 20% */
+        /* CTA Buttons */
         .cta-buttons {
             display: flex;
-            gap: 16px; /* تقليل المسافة */
+            gap: 16px;
             justify-content: center;
             align-items: center;
             width: 100%;
-            max-width: 700px; /* تقليل العرض */
-            margin: 5px auto 0; /* تقليل المسافة العلوية */
+            max-width: 700px;
+            margin: 5px auto 0;
         }
 
         .btn-primary {
             background: linear-gradient(135deg, #7A5AF8 0%, #2BB0ED 100%);
             color: white;
             font-family: 'Cairo', sans-serif;
-            font-size: 16px; /* تصغير الخط */
+            font-size: 16px;
             font-weight: 600;
-            padding: 11px 26px; /* 14px -20% = 11px, 32px -20% = 26px */
-            border-radius: 10px; /* تصغير الانحناء */
+            padding: 11px 26px;
+            border-radius: 10px;
             border: none;
             cursor: pointer;
-            box-shadow: 0 6px 14px rgba(122,90,248,0.2); /* تقليل الظل */
+            box-shadow: 0 6px 14px rgba(122,90,248,0.2);
             transition: transform 0.3s ease;
             flex: 1;
-            max-width: 220px; /* تقليل العرض */
+            max-width: 220px;
         }
 
         .btn-primary:hover {
@@ -249,14 +251,14 @@
             border: 2px solid #7A5AF8;
             color: #7A5AF8;
             font-family: 'Cairo', sans-serif;
-            font-size: 16px; /* تصغير الخط */
+            font-size: 16px;
             font-weight: 600;
-            padding: 11px 26px; /* 14px -20% = 11px, 32px -20% = 26px */
-            border-radius: 10px; /* تصغير الانحناء */
+            padding: 11px 26px;
+            border-radius: 10px;
             cursor: pointer;
             transition: transform 0.3s ease;
             flex: 1;
-            max-width: 220px; /* تقليل العرض */
+            max-width: 220px;
         }
 
         .btn-secondary:hover {
@@ -355,7 +357,7 @@
             }
             
             .hero {
-                margin-top: 10px;
+                margin-top: 5px;
             }
             
             h1 {
@@ -396,7 +398,7 @@
         <div class="container nav-container">
             <!-- Right side - Logo Image and OdoNex Text -->
             <div class="nav-right">
-                <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="nav-logo-img">
+                <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo" class="nav-logo-img">
                 <span class="nav-logo-text">OdoNex</span>
             </div>
 
@@ -409,14 +411,14 @@
                 <a href="#">اتصل بنا</a>
             </div>
 
-            <!-- Left side - Language and Dark Mode (هلال جديد) -->
+            <!-- Left side - Language and Dark Mode -->
             <div class="nav-left">
                 <div class="lang-container">
                     <span class="lang-text">EN</span>
                     <div class="globe-icon"></div>
                 </div>
                 <div class="dark-mode-container" onclick="toggleDarkMode()">
-                    <span class="dark-mode-toggle">☾</span> <!-- هلال جديد أكثر نحافة -->
+                    <span class="dark-mode-toggle">☾</span>
                 </div>
             </div>
         </div>
@@ -424,8 +426,8 @@
 
     <main class="hero">
         <div class="container" style="display: flex; flex-direction: column; align-items: center;">
-            <!-- Logo Image - أكبر 10% -->
-            <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="hero-logo">
+            <!-- الشعار الرئيسي - سيظهر في المتصفح -->
+            <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo" class="hero-logo">
 
             <!-- Main Headline -->
             <h1>
@@ -437,13 +439,13 @@
                 تكامل. أمان. توسع.
             </div>
 
-            <!-- Description - مرفوعة للأعلى -->
+            <!-- Description -->
             <p class="description">
                 نظام محاسبي متكامل يجمع جميع عمليات أعمالك في منصة واحدة سهلة
                 وآمنة وقابلة للتوسع.
             </p>
 
-            <!-- CTA Buttons - أصغر 20% ومرفوعة للأعلى -->
+            <!-- CTA Buttons -->
             <div class="cta-buttons">
                 <button class="btn-primary">ابدأ تجربتك المجانية</button>
                 <button class="btn-secondary">اطلب عرضاً توضيحياً</button>
@@ -458,7 +460,7 @@
             if (document.body.classList.contains('dark-mode')) {
                 toggleBtn.textContent = '☀️';
             } else {
-                toggleBtn.textContent = '☾'; /* هلال جديد أكثر نحافة */
+                toggleBtn.textContent = '☾';
             }
         }
     </script>
