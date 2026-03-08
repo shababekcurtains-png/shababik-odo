@@ -34,6 +34,7 @@
             display: flex;
             align-items: center;
             position: relative;
+            z-index: 10;
         }
 
         .nav-container {
@@ -54,6 +55,7 @@
             height: 40px;
             width: auto;
             object-fit: contain;
+            display: block; /* تأكيد ظهور الصورة */
         }
 
         .nav-logo-text {
@@ -119,7 +121,7 @@
             background-size: contain;
         }
 
-        /* Dark Mode Toggle - هلال جديد مناسب */
+        /* Dark Mode Toggle - هلال */
         .dark-mode-container {
             display: flex;
             align-items: center;
@@ -146,16 +148,16 @@
             font-family: 'Arial', sans-serif;
         }
 
-        /* ===== Hero Section ===== */
+        /* ===== Hero Section - مع نزول المحتوى 5 سم للأسفل ===== */
         .hero {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             text-align: center;
-            margin-top: 5px;
+            margin-top: 50px; /* 5 سم = 50px تقريباً */
             padding-bottom: 40px;
-            min-height: calc(100vh - 70px);
+            min-height: calc(100vh - 120px);
         }
 
         /* Logo with Bouncing Animation */
@@ -171,6 +173,10 @@
             filter: drop-shadow(0 12px 18px rgba(122,90,248,0.2));
             animation: gentleBounce 4s ease-in-out infinite;
             object-fit: contain;
+            display: block; /* تأكيد ظهور الصورة */
+            /* للتأكد من ظهور الشعار حتى لو المشكلة في المسار */
+            background-color: #f0f0f0; /* خلفية مؤقتة للتأكد من ظهور العنصر */
+            min-height: 100px; /* ارتفاع مؤقت */
         }
 
         /* Main Headline */
@@ -203,7 +209,7 @@
             margin-bottom: 3px;
         }
 
-        /* Description - مرفوعة للأعلى */
+        /* Description */
         .description {
             font-family: 'Cairo', sans-serif;
             font-size: 20px;
@@ -347,6 +353,10 @@
             .cta-buttons {
                 max-width: 90%;
             }
+            
+            .hero {
+                margin-top: 40px; /* تقليل المسافة قليلاً على الشاشات المتوسطة */
+            }
         }
 
         @media (max-width: 768px) {
@@ -357,7 +367,7 @@
             }
             
             .hero {
-                margin-top: 5px;
+                margin-top: 30px; /* تقليل المسافة على الشاشات الصغيرة */
             }
             
             h1 {
@@ -398,7 +408,8 @@
         <div class="container nav-container">
             <!-- Right side - Logo Image and OdoNex Text -->
             <div class="nav-right">
-                <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo" class="nav-logo-img">
+                <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo" class="nav-logo-img" 
+                     onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%237B2CBF\'/><text x=\'10\' y=\'65\' font-family=\'Arial\' font-size=\'50\' fill=\'white\'>O</text></svg>'; this.alt='Logo Placeholder';">
                 <span class="nav-logo-text">OdoNex</span>
             </div>
 
@@ -426,8 +437,9 @@
 
     <main class="hero">
         <div class="container" style="display: flex; flex-direction: column; align-items: center;">
-            <!-- الشعار الرئيسي - سيظهر في المتصفح -->
-            <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo" class="hero-logo">
+            <!-- الشعار الرئيسي - مع معالج للأخطاء -->
+            <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo" class="hero-logo"
+                 onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'100\' viewBox=\'0 0 300 100\'><rect width=\'300\' height=\'100\' fill=\'%237B2CBF\'/><text x=\'50\' y=\'65\' font-family=\'Arial\' font-size=\'50\' fill=\'white\'>OdoNex</text></svg>'; this.alt='OdoNex Logo Placeholder';">
 
             <!-- Main Headline -->
             <h1>
@@ -463,6 +475,15 @@
                 toggleBtn.textContent = '☾';
             }
         }
+        
+        // التحقق من وجود الشعار بعد تحميل الصفحة
+        window.addEventListener('load', function() {
+            const logo = document.querySelector('.hero-logo');
+            if (logo && logo.naturalWidth === 0) {
+                console.log('الشعار لم يتم تحميله، تأكد من المسار: assets/images/odonex-logo.png.png');
+                // يمكنك إضافة تنبيه للمستخدم هنا إذا أردت
+            }
+        });
     </script>
 </body>
 </html>
