@@ -1,1 +1,11 @@
 
+<script>
+    // التحقق من أن المستخدم دخل من خلال الرابط المباشر
+    if (document.referrer === '') {
+        // إذا دخل من رابط مباشر - مسموح
+        console.log('مباشر');
+    } else if (!document.referrer.includes('yourdomain.com/admin/')) {
+        // إذا حاول الدخول من موقع آخر - منع
+        window.location.href = '../public/index.html';
+    }
+</script>
