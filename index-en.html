@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OdoNex | Unified ERP Solutions</title>
-    <!-- Google Fonts - Cairo (for Arabic support) -->
+    <!-- Google Fonts - Cairo -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -43,8 +43,8 @@
             width: 100%;
         }
 
-        /* Right side - Logo and OdoNex text (moved to left in LTR) */
-        .nav-right {
+        /* Left side - Logo and OdoNex text */
+        .nav-left {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -87,44 +87,56 @@
             font-weight: 600;
         }
 
-        /* Left side - Language and Dark Mode (moved to right in LTR) */
-        .nav-left {
+        /* Right side - Get Started, Language and Dark Mode */
+        .nav-right {
             display: flex;
             gap: 8px;
             align-items: center;
         }
 
-        /* Language Button with Globe - Outlined */
+        .btn-get-started {
+            background: linear-gradient(135deg, #7A5AF8 0%, #2BB0ED 100%);
+            color: white;
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-get-started:hover {
+            transform: scale(1.05);
+        }
+
+        /* Language Button */
         .lang-container {
             display: flex;
             align-items: center;
-            gap: 4px;
+            justify-content: center;
             border: 2px solid #ddd;
             border-radius: 8px;
-            padding: 6px 10px;
+            padding: 6px 12px;
             background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-container:hover {
+            border-color: #7A5AF8;
+            transform: scale(1.02);
         }
 
         .lang-text {
             font-family: 'Cairo', sans-serif;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
             color: #555;
         }
 
-        .lang-text.ar {
-            font-weight: 600;
-            color: #7A5AF8;
-        }
-
-        .globe-icon {
-            width: 16px;
-            height: 16px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23555" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>');
-            background-size: contain;
-        }
-
-        /* Dark Mode Toggle - Crescent */
+        /* Dark Mode Toggle */
         .dark-mode-container {
             display: flex;
             align-items: center;
@@ -134,6 +146,12 @@
             padding: 6px 12px;
             background: transparent;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode-container:hover {
+            border-color: #7A5AF8;
+            transform: scale(1.02);
         }
 
         .dark-mode-toggle {
@@ -158,7 +176,7 @@
             align-items: center;
             justify-content: flex-start;
             text-align: center;
-            margin-top: 70px;
+            margin-top: 90px;
             padding-bottom: 40px;
             min-height: calc(100vh - 70px);
         }
@@ -198,7 +216,7 @@
             display: inline-block;
         }
 
-        /* Subheadline - Bold Black */
+        /* Subheadline */
         .subheadline {
             font-family: 'Cairo', sans-serif;
             font-size: 28px;
@@ -216,8 +234,7 @@
             line-height: 1.5;
             color: #8A8A8A;
             max-width: 900px;
-            margin: 0 auto 8px;
-            white-space: pre-line;
+            margin: 0 auto 5px;
         }
 
         /* CTA Buttons */
@@ -228,7 +245,7 @@
             align-items: center;
             width: 100%;
             max-width: 700px;
-            margin: 5px auto 0;
+            margin: 3px auto 0;
         }
 
         .btn-primary {
@@ -298,10 +315,6 @@
             color: #ddd;
         }
 
-        body.dark-mode .globe-icon {
-            filter: invert(0.8);
-        }
-
         body.dark-mode .dark-mode-container {
             border-color: #444;
         }
@@ -312,6 +325,10 @@
 
         body.dark-mode .nav-logo-text {
             color: #ffffff;
+        }
+
+        body.dark-mode .btn-get-started {
+            background: linear-gradient(135deg, #9B59FF, #2BB0ED);
         }
 
         body.dark-mode h1 {
@@ -354,7 +371,7 @@
             }
             
             .hero {
-                margin-top: 60px;
+                margin-top: 70px;
             }
         }
 
@@ -366,7 +383,7 @@
             }
             
             .hero {
-                margin-top: 50px;
+                margin-top: 60px;
             }
             
             h1 {
@@ -379,7 +396,7 @@
             
             .description {
                 font-size: 18px;
-                margin-bottom: 6px;
+                margin-bottom: 4px;
             }
             
             .hero-logo {
@@ -389,11 +406,12 @@
             .cta-buttons {
                 flex-direction: column;
                 gap: 10px;
-                margin-top: 3px;
+                margin-top: 2px;
             }
             
             .btn-primary,
-            .btn-secondary {
+            .btn-secondary,
+            .btn-get-started {
                 max-width: 100%;
                 width: 100%;
                 padding: 10px 20px;
@@ -405,26 +423,26 @@
 <body>
     <nav class="navbar">
         <div class="container nav-container">
-            <!-- Right side - Logo Image and OdoNex Text -->
-            <div class="nav-right">
+            <!-- Left side - Logo Image and OdoNex Text -->
+            <div class="nav-left">
                 <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo" class="nav-logo-img">
                 <span class="nav-logo-text">OdoNex</span>
             </div>
 
-            <!-- Centered Navigation Menu -->
+            <!-- Centered Navigation Menu - Exactly as in the image -->
             <div class="nav-menu">
                 <a href="#" class="active">Home</a>
                 <a href="#">Features</a>
                 <a href="#">Pricing</a>
-                <a href="#">Gallery</a>
+                <a href="#">Portfolio</a>
                 <a href="#">Contact</a>
             </div>
 
-            <!-- Left side - Language and Dark Mode -->
-            <div class="nav-left">
-                <div class="lang-container">
-                    <span class="lang-text ar">عربي</span>
-                    <div class="globe-icon"></div>
+            <!-- Right side - Get Started, Language and Dark Mode -->
+            <div class="nav-right">
+                <button class="btn-get-started">Get Started</button>
+                <div class="lang-container" onclick="switchLanguage()">
+                    <span class="lang-text">عربي</span>
                 </div>
                 <div class="dark-mode-container" onclick="toggleDarkMode()">
                     <span class="dark-mode-toggle">☾</span>
@@ -438,26 +456,25 @@
             <!-- Main Logo -->
             <img src="assets/images/odonex-logo.png.png" alt="OdoNex Logo" class="hero-logo">
 
-            <!-- Main Headline -->
+            <!-- Main Headline - Exactly as in the image -->
             <h1>
                 <span class="brand-gradient">OdoNex</span> | Unified ERP Solutions
             </h1>
 
-            <!-- Subheadline -->
+            <!-- Subheadline - Exactly as in the image -->
             <div class="subheadline">
                 Integration. Security. Scalability.
             </div>
 
-            <!-- Description -->
+            <!-- Description - Exactly as in the image with line break -->
             <p class="description">
-                An integrated accounting system that brings all your business operations together in one easy, 
-                secure, and scalable platform.
+                A comprehensive accounting system that brings all your business<br>operations into one easy, secure, and scalable platform.
             </p>
 
-            <!-- CTA Buttons -->
+            <!-- CTA Buttons - Exactly as in the image -->
             <div class="cta-buttons">
                 <button class="btn-primary">Start Free Trial</button>
-                <button class="btn-secondary">Request Demo</button>
+                <button class="btn-secondary">Request a Demo</button>
             </div>
         </div>
     </main>
@@ -471,6 +488,10 @@
             } else {
                 toggleBtn.textContent = '☾';
             }
+        }
+
+        function switchLanguage() {
+            window.location.href = 'index.html';
         }
     </script>
 </body>
