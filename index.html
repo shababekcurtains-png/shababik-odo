@@ -513,6 +513,48 @@
             }
         }
 
+        /* ===== Page 5: Footer Section ===== */
+        footer {
+            background-color: var(--section-bg);
+            width: 100%;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 15px;
+        }
+
+        .footer-logo svg {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .footer-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+
+        .footer-subtitle {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--secondary-text);
+            margin-bottom: 40px;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--light-text);
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
         /* ===== Dark Mode ===== */
         body.dark-mode {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -562,7 +604,8 @@
 
         body.dark-mode .statistics-section,
         body.dark-mode .testimonials-section,
-        body.dark-mode .faq-section {
+        body.dark-mode .faq-section,
+        body.dark-mode footer {
             background-color: #222;
         }
 
@@ -576,12 +619,15 @@
         body.dark-mode .testimonials-subtitle,
         body.dark-mode .client-role,
         body.dark-mode .faq-subtitle,
-        body.dark-mode .answer-text {
+        body.dark-mode .answer-text,
+        body.dark-mode .footer-subtitle,
+        body.dark-mode .footer-copyright {
             color: #aaa;
         }
 
         body.dark-mode .testimonials-title,
-        body.dark-mode .faq-title {
+        body.dark-mode .faq-title,
+        body.dark-mode .footer-title {
             color: #f0f0f0;
         }
 
@@ -653,12 +699,14 @@
             }
             
             .testimonials-section,
-            .faq-section {
+            .faq-section,
+            footer {
                 padding: 60px 0;
             }
             
             .testimonials-title,
-            .faq-title {
+            .faq-title,
+            .footer-title {
                 font-size: 32px;
             }
 
@@ -672,6 +720,14 @@
 
             .answer-text {
                 font-size: 14px;
+            }
+
+            .footer-subtitle {
+                font-size: 16px;
+            }
+
+            .footer-copyright {
+                font-size: 12px;
             }
         }
 
@@ -993,6 +1049,42 @@
             </div>
         </section>
     </main>
+
+    <!-- Page 5: Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <!-- Logo with Purple and Blue Colors -->
+            <div class="footer-logo">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#7A5AF8" />
+                            <stop offset="100%" stop-color="#9B59FF" />
+                        </linearGradient>
+                        <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#2BB0ED" />
+                            <stop offset="100%" stop-color="#00B4D8" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="30" cy="30" r="25" fill="url(#purpleGrad)" opacity="0.1" />
+                    <path d="M30 10 L40 30 L30 50 L20 30 L30 10" fill="url(#purpleGrad)" opacity="0.2" />
+                    <circle cx="30" cy="30" r="12" fill="url(#blueGrad)" opacity="0.3" />
+                    <circle cx="30" cy="30" r="6" fill="url(#purpleGrad)" />
+                </svg>
+            </div>
+            
+            <!-- Title -->
+            <div class="footer-title">OdoNex</div>
+            
+            <!-- Subtitle -->
+            <div class="footer-subtitle">حلول ERP الموحدة</div>
+            
+            <!-- Copyright -->
+            <div class="footer-copyright">
+                © 2026 جميع الحقوق محفوظة لشركة OdoNex | حلول ERP الموحدة
+            </div>
+        </div>
+    </footer>
 
     <script>
         function toggleDarkMode() {
