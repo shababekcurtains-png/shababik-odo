@@ -118,14 +118,14 @@
             background-size: contain;
         }
 
-        /* Dark Mode Toggle - هلال عريض */
+        /* Dark Mode Toggle - هلال جديد مناسب */
         .dark-mode-container {
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid #ddd;
             border-radius: 8px;
-            padding: 6px 10px;
+            padding: 6px 12px;
             background: transparent;
             cursor: pointer;
         }
@@ -133,18 +133,16 @@
         .dark-mode-toggle {
             background: transparent;
             border: none;
-            font-size: 22px; /* تكبير الحجم */
+            font-size: 20px;
             cursor: pointer;
             color: #555;
-            width: 28px;
-            height: 28px;
+            width: 30px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 400;
-            transform: scaleX(1.5); /* جعل الهلال أعرض (5 أضعاف العرض) */
-            display: inline-block;
-            letter-spacing: 5px; /* زيادة المسافة بين الخطين */
+            font-weight: 300;
+            font-family: 'Arial', sans-serif;
         }
 
         /* ===== Hero Section ===== */
@@ -152,22 +150,23 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start; /* تغيير إلى flex-start لرفع المحتوى */
             text-align: center;
-            margin-top: 20px;
-            padding-bottom: 50px;
+            margin-top: 10px; /* تقليل المسافة العلوية */
+            padding-bottom: 40px;
+            min-height: calc(100vh - 70px); /* ارتفاع أقل */
         }
 
-        /* Logo with Bouncing Animation - أصغر 20% من الحجم السابق (346px - 20% = 277px) */
+        /* Logo with Bouncing Animation - أكبر 10% من الحجم السابق */
         @keyframes gentleBounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
         }
 
         .hero-logo {
-            width: 277px; /* 346px - 20% = 277px */
+            width: 305px; /* 277px + 10% = 305px */
             height: auto;
-            margin-bottom: 10px; /* تقليل المسافة */
+            margin-bottom: 8px; /* تقليل المسافة */
             filter: drop-shadow(0 12px 18px rgba(122,90,248,0.2));
             animation: gentleBounce 4s ease-in-out infinite;
         }
@@ -179,7 +178,7 @@
             font-weight: 700;
             line-height: 1.2;
             color: #333333;
-            margin-bottom: 5px;
+            margin-bottom: 3px; /* تقليل المسافة */
             letter-spacing: -0.5px;
         }
 
@@ -199,10 +198,10 @@
             font-weight: 700;
             color: #000000;
             letter-spacing: 0.5px;
-            margin-bottom: 5px; /* تقليل المسافة */
+            margin-bottom: 3px; /* تقليل المسافة */
         }
 
-        /* Description - مرفوعة للأعلى */
+        /* Description - مرفوعة للأعلى جداً */
         .description {
             font-family: 'Cairo', sans-serif;
             font-size: 20px;
@@ -210,39 +209,39 @@
             line-height: 1.5;
             color: #8A8A8A;
             max-width: 900px;
-            margin: 0 auto 15px; /* تقليل المسافة السفلية */
+            margin: 0 auto 8px; /* تقليل المسافة */
             white-space: pre-line;
         }
 
-        /* CTA Buttons - الحجم السابق */
+        /* CTA Buttons - أصغر 20% */
         .cta-buttons {
             display: flex;
-            gap: 20px;
+            gap: 16px; /* تقليل المسافة */
             justify-content: center;
             align-items: center;
             width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 700px; /* تقليل العرض */
+            margin: 5px auto 0; /* تقليل المسافة العلوية */
         }
 
         .btn-primary {
             background: linear-gradient(135deg, #7A5AF8 0%, #2BB0ED 100%);
             color: white;
             font-family: 'Cairo', sans-serif;
-            font-size: 18px;
+            font-size: 16px; /* تصغير الخط */
             font-weight: 600;
-            padding: 14px 32px;
-            border-radius: 12px;
+            padding: 11px 26px; /* 14px -20% = 11px, 32px -20% = 26px */
+            border-radius: 10px; /* تصغير الانحناء */
             border: none;
             cursor: pointer;
-            box-shadow: 0 8px 18px rgba(122,90,248,0.25);
-            transition: transform 0.3s ease; /* فقط تأثير التكبير */
+            box-shadow: 0 6px 14px rgba(122,90,248,0.2); /* تقليل الظل */
+            transition: transform 0.3s ease;
             flex: 1;
-            max-width: 280px;
+            max-width: 220px; /* تقليل العرض */
         }
 
         .btn-primary:hover {
-            transform: scale(1.05); /* تكبير فقط بدون تغيير ألوان */
+            transform: scale(1.05);
         }
 
         .btn-secondary {
@@ -250,18 +249,18 @@
             border: 2px solid #7A5AF8;
             color: #7A5AF8;
             font-family: 'Cairo', sans-serif;
-            font-size: 18px;
+            font-size: 16px; /* تصغير الخط */
             font-weight: 600;
-            padding: 14px 32px;
-            border-radius: 12px;
+            padding: 11px 26px; /* 14px -20% = 11px, 32px -20% = 26px */
+            border-radius: 10px; /* تصغير الانحناء */
             cursor: pointer;
-            transition: transform 0.3s ease; /* فقط تأثير التكبير */
+            transition: transform 0.3s ease;
             flex: 1;
-            max-width: 280px;
+            max-width: 220px; /* تقليل العرض */
         }
 
         .btn-secondary:hover {
-            transform: scale(1.05); /* تكبير فقط بدون تغيير ألوان */
+            transform: scale(1.05);
         }
 
         /* ===== Dark Mode Styles ===== */
@@ -340,7 +339,7 @@
             }
             
             .hero-logo {
-                width: 220px;
+                width: 250px;
             }
             
             .cta-buttons {
@@ -356,7 +355,7 @@
             }
             
             .hero {
-                margin-top: 15px;
+                margin-top: 10px;
             }
             
             h1 {
@@ -369,24 +368,25 @@
             
             .description {
                 font-size: 18px;
-                margin-bottom: 12px;
+                margin-bottom: 6px;
             }
             
             .hero-logo {
-                width: 180px;
+                width: 200px;
             }
             
             .cta-buttons {
                 flex-direction: column;
-                gap: 12px;
+                gap: 10px;
+                margin-top: 3px;
             }
             
             .btn-primary,
             .btn-secondary {
                 max-width: 100%;
                 width: 100%;
-                padding: 12px 24px;
-                font-size: 16px;
+                padding: 10px 20px;
+                font-size: 15px;
             }
         }
     </style>
@@ -409,14 +409,14 @@
                 <a href="#">اتصل بنا</a>
             </div>
 
-            <!-- Left side - Language and Dark Mode (هلال عريض) -->
+            <!-- Left side - Language and Dark Mode (هلال جديد) -->
             <div class="nav-left">
                 <div class="lang-container">
                     <span class="lang-text">EN</span>
                     <div class="globe-icon"></div>
                 </div>
                 <div class="dark-mode-container" onclick="toggleDarkMode()">
-                    <span class="dark-mode-toggle">☽</span> <!-- هلال عريض -->
+                    <span class="dark-mode-toggle">☾</span> <!-- هلال جديد أكثر نحافة -->
                 </div>
             </div>
         </div>
@@ -424,7 +424,7 @@
 
     <main class="hero">
         <div class="container" style="display: flex; flex-direction: column; align-items: center;">
-            <!-- Logo Image - أصغر 20% -->
+            <!-- Logo Image - أكبر 10% -->
             <img src="assets/images/odonex-logo.png.png" alt="OdoNex" class="hero-logo">
 
             <!-- Main Headline -->
@@ -437,13 +437,13 @@
                 تكامل. أمان. توسع.
             </div>
 
-            <!-- Description - مرفوعة للأعلى (قريبة من العبارة) -->
+            <!-- Description - مرفوعة للأعلى -->
             <p class="description">
                 نظام محاسبي متكامل يجمع جميع عمليات أعمالك في منصة واحدة سهلة
                 وآمنة وقابلة للتوسع.
             </p>
 
-            <!-- CTA Buttons - حجم سابق مع تكبير فقط عند التمرير -->
+            <!-- CTA Buttons - أصغر 20% ومرفوعة للأعلى -->
             <div class="cta-buttons">
                 <button class="btn-primary">ابدأ تجربتك المجانية</button>
                 <button class="btn-secondary">اطلب عرضاً توضيحياً</button>
@@ -458,7 +458,7 @@
             if (document.body.classList.contains('dark-mode')) {
                 toggleBtn.textContent = '☀️';
             } else {
-                toggleBtn.textContent = '☽';
+                toggleBtn.textContent = '☾'; /* هلال جديد أكثر نحافة */
             }
         }
     </script>
