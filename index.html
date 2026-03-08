@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OdoNex | حلول ERP الموحدة</title>
-    <!-- Google Fonts - Tajawal -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts - Tajawal & Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Tajawal', 'Roboto', sans-serif;
         }
 
         :root {
@@ -517,42 +517,56 @@
         footer {
             background-color: var(--section-bg);
             width: 100%;
-            padding: 60px 0 30px;
+            padding: 50px 0 30px;
             margin-top: 60px;
             border-top: 1px solid var(--border-color);
             text-align: center;
         }
 
-        .footer-logo {
-            margin-bottom: 15px;
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .footer-logo svg {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 10px;
-        }
-
-        .footer-title {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--dark-text);
+        .brand-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             margin-bottom: 8px;
         }
 
-        .footer-subtitle {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--secondary-text);
-            margin-bottom: 40px;
+        .brand-name {
+            font-family: 'Roboto', 'Tajawal', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--dark-text);
         }
 
-        .footer-copyright {
+        .brand-logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        .brand-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .tagline {
+            font-family: 'Tajawal', 'Roboto', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--secondary-text);
+            margin-bottom: 12px;
+        }
+
+        .copyright {
+            font-family: 'Tajawal', 'Roboto', sans-serif;
             font-size: 14px;
             font-weight: 400;
             color: var(--light-text);
-            padding-top: 30px;
-            border-top: 1px solid var(--border-color);
         }
 
         /* ===== Dark Mode ===== */
@@ -620,14 +634,14 @@
         body.dark-mode .client-role,
         body.dark-mode .faq-subtitle,
         body.dark-mode .answer-text,
-        body.dark-mode .footer-subtitle,
-        body.dark-mode .footer-copyright {
+        body.dark-mode .tagline,
+        body.dark-mode .copyright {
             color: #aaa;
         }
 
         body.dark-mode .testimonials-title,
         body.dark-mode .faq-title,
-        body.dark-mode .footer-title {
+        body.dark-mode .brand-name {
             color: #f0f0f0;
         }
 
@@ -706,7 +720,7 @@
             
             .testimonials-title,
             .faq-title,
-            .footer-title {
+            .brand-name {
                 font-size: 32px;
             }
 
@@ -722,12 +736,12 @@
                 font-size: 14px;
             }
 
-            .footer-subtitle {
-                font-size: 16px;
+            .tagline {
+                font-size: 15px;
             }
 
-            .footer-copyright {
-                font-size: 12px;
+            .copyright {
+                font-size: 13px;
             }
         }
 
@@ -735,6 +749,15 @@
             .stats-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
+            }
+
+            .brand-area {
+                flex-wrap: wrap;
+            }
+            
+            .copyright {
+                font-size: 12px;
+                line-height: 1.6;
             }
         }
     </style>
@@ -1048,43 +1071,39 @@
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- Page 5: Footer Section -->
-    <footer>
-        <div class="footer-container">
-            <!-- Logo with Purple and Blue Colors -->
-            <div class="footer-logo">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#7A5AF8" />
-                            <stop offset="100%" stop-color="#9B59FF" />
-                        </linearGradient>
-                        <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#2BB0ED" />
-                            <stop offset="100%" stop-color="#00B4D8" />
-                        </linearGradient>
-                    </defs>
-                    <circle cx="30" cy="30" r="25" fill="url(#purpleGrad)" opacity="0.1" />
-                    <path d="M30 10 L40 30 L30 50 L20 30 L30 10" fill="url(#purpleGrad)" opacity="0.2" />
-                    <circle cx="30" cy="30" r="12" fill="url(#blueGrad)" opacity="0.3" />
-                    <circle cx="30" cy="30" r="6" fill="url(#purpleGrad)" />
-                </svg>
+        <!-- Page 5: Footer Section -->
+        <footer>
+            <div class="footer-container">
+                <div class="brand-area">
+                    <span class="brand-name">OdoNex</span>
+                    <div class="brand-logo">
+                        <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#7A5AF8" />
+                                    <stop offset="100%" stop-color="#9B59FF" />
+                                </linearGradient>
+                                <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#2BB0ED" />
+                                    <stop offset="100%" stop-color="#00B4D8" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="20" cy="25" r="12" fill="url(#purpleGrad)" opacity="0.9" />
+                            <circle cx="30" cy="25" r="12" fill="url(#blueGrad)" opacity="0.9" />
+                            <circle cx="25" cy="25" r="4" fill="white" />
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="tagline">حلول ERP الموحدة</div>
+                
+                <div class="copyright">
+                    © 2026 جميع الحقوق محفوظة لشركة OdoNex | حلول ERP الموحدة
+                </div>
             </div>
-            
-            <!-- Title -->
-            <div class="footer-title">OdoNex</div>
-            
-            <!-- Subtitle -->
-            <div class="footer-subtitle">حلول ERP الموحدة</div>
-            
-            <!-- Copyright -->
-            <div class="footer-copyright">
-                © 2026 جميع الحقوق محفوظة لشركة OdoNex | حلول ERP الموحدة
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </main>
 
     <script>
         function toggleDarkMode() {
