@@ -18,7 +18,6 @@
 
         /* ===== General Settings ===== */
         :root {
-            /* Color Palette */
             --primary-purple: #7B2CBF;
             --primary-blue: #00B4D8;
             --dark-gray: #2D3436;
@@ -247,7 +246,7 @@
         .gallery-card {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px 20px;  /* نفس الحجم في العربية */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             display: flex;
@@ -263,20 +262,20 @@
 
         /* Icon Box - Gradient */
         .icon-box {
-            width: 60px;
-            height: 60px;
+            width: 50px;  /* نفس الحجم في العربية */
+            height: 50px; /* نفس الحجم في العربية */
             background: var(--icon-gradient);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(123, 44, 191, 0.2);
         }
 
         .icon-box i {
-            font-size: 28px;
+            font-size: 24px; /* نفس الحجم في العربية */
             color: white;
             transition: all 0.3s ease;
         }
@@ -289,19 +288,19 @@
 
         /* Card Title */
         .card-title {
-            font-size: 20px;
+            font-size: 18px; /* نفس الحجم في العربية */
             font-weight: 700;
             color: var(--dark-gray);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             line-height: 1.4;
         }
 
         /* Card Description */
         .card-description {
-            font-size: 15px;
+            font-size: 13px; /* نفس الحجم في العربية */
             color: var(--medium-gray);
-            margin-bottom: 20px;
-            line-height: 1.6;
+            margin-bottom: 15px;
+            line-height: 1.5;
             font-weight: 400;
             flex: 1;
         }
@@ -310,7 +309,7 @@
         .tags-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px; /* نفس الحجم في العربية */
             margin-top: auto;
         }
 
@@ -318,19 +317,48 @@
         .tag {
             background: var(--tag-gradient);
             color: white;
-            font-size: 13px;
+            font-size: 11px; /* نفس الحجم في العربية */
             font-weight: 600;
-            padding: 6px 16px;
+            padding: 4px 10px; /* نفس الحجم في العربية */
             border-radius: 20px;
             transition: all 0.3s ease;
             display: inline-block;
             box-shadow: 0 3px 8px rgba(123, 44, 191, 0.2);
+            white-space: nowrap;
         }
 
         /* Combined Effect for Tag - Lift with Slight Zoom */
         .gallery-card:hover .tag {
-            transform: translateY(-3px) scale(1.05);
+            transform: translateY(-2px) scale(1.03); /* نفس الحجم في العربية */
             box-shadow: 0 5px 15px rgba(123, 44, 191, 0.4);
+        }
+
+        /* للشاشات المتوسطة */
+        @media (max-width: 1100px) {
+            .gallery-card {
+                padding: 20px 15px;
+            }
+            
+            .card-title {
+                font-size: 17px;
+            }
+            
+            .card-description {
+                font-size: 12px;
+            }
+            
+            .tag {
+                font-size: 10px;
+                padding: 3px 8px;
+            }
+        }
+
+        /* للشاشات الصغيرة */
+        @media (max-width: 900px) {
+            .tag {
+                font-size: 10px;
+                padding: 3px 6px;
+            }
         }
 
         /* ===== Footer ===== */
@@ -457,16 +485,16 @@
             }
 
             .card-title {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .card-description {
-                font-size: 14px;
+                font-size: 12px;
             }
 
             .tag {
-                font-size: 12px;
-                padding: 5px 14px;
+                font-size: 10px;
+                padding: 3px 8px;
             }
 
             .footer-brand-name {
@@ -558,13 +586,13 @@
                     <!-- 3. Medical Clinic System -->
                     <div class="gallery-card">
                         <div class="icon-box">
-                            <i class="fas fa-stethoscope"></i>
+                            <i class="fas fa-hospital"></i>
                         </div>
                         <h3 class="card-title">Medical Clinic System</h3>
                         <p class="card-description">A platform for managing appointments, medical records, and invoices for a group of specialized clinics.</p>
                         <div class="tags-container">
                             <span class="tag">Appointments</span>
-                            <span class="tag">Medical Records</span>
+                            <span class="tag">Records</span>
                             <span class="tag">Billing</span>
                         </div>
                     </div>
@@ -577,7 +605,7 @@
                         <h3 class="card-title">School Management System</h3>
                         <p class="card-description">A comprehensive system for managing student affairs, tuition fees, and financial reports.</p>
                         <div class="tags-container">
-                            <span class="tag">Student Affairs</span>
+                            <span class="tag">Students</span>
                             <span class="tag">Fees</span>
                             <span class="tag">Reports</span>
                         </div>
