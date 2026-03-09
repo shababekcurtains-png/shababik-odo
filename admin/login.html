@@ -50,15 +50,15 @@
 
         .background span:nth-child(1) {
             left: 25%;
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             animation-delay: 0s;
         }
 
         .background span:nth-child(2) {
             left: 10%;
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
             animation-delay: 2s;
             animation-duration: 12s;
         }
@@ -72,23 +72,23 @@
 
         .background span:nth-child(4) {
             left: 40%;
-            width: 60px;
-            height: 60px;
+            width: 45px;
+            height: 45px;
             animation-delay: 0s;
             animation-duration: 18s;
         }
 
         .background span:nth-child(5) {
             left: 65%;
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
             animation-delay: 0s;
         }
 
         .background span:nth-child(6) {
             left: 75%;
-            width: 110px;
-            height: 110px;
+            width: 80px;
+            height: 80px;
             animation-delay: 3s;
         }
 
@@ -107,25 +107,25 @@
 
         .login-container {
             width: 100%;
-            max-width: 450px;
+            max-width: 350px; /* 70% من الحجم الأصلي (كان 450px) */
             z-index: 1;
             position: relative;
         }
 
         .login-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.97);
             backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 50px 40px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            animation: slideUp 0.8s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 35px 25px; /* تصغير الحشو */
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.6s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         @keyframes slideUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -136,66 +136,66 @@
         /* الشعار */
         .logo-wrapper {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 25px; /* تقليل المسافة */
         }
 
         .logo-wrapper img {
-            width: 120px;
-            height: 120px;
+            width: 90px; /* تصغير الشعار */
+            height: 90px;
             object-fit: contain;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 10px 20px rgba(102, 126, 234, 0.3));
+            margin-bottom: 10px;
+            filter: drop-shadow(0 8px 15px rgba(102, 126, 234, 0.3));
         }
 
         .logo-wrapper h1 {
-            font-size: 32px;
+            font-size: 26px; /* تصغير الخط */
             font-weight: 700;
             background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
         .logo-wrapper p {
             color: #666;
-            font-size: 14px;
+            font-size: 12px; /* تصغير الخط */
             font-weight: 500;
         }
 
         /* حقول الإدخال */
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 18px; /* تقليل المسافة */
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px; /* تصغير الخط */
             color: #374151;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         .input-wrapper {
             position: relative;
             border: 2px solid #e5e7eb;
-            border-radius: 16px;
+            border-radius: 14px; /* تقليل الانحناء */
             transition: all 0.3s ease;
             background: white;
         }
 
         .input-wrapper:focus-within {
             border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
         .input-wrapper i {
             position: absolute;
-            right: 20px;
+            right: 15px; /* تقليل المسافة */
             top: 50%;
             transform: translateY(-50%);
             color: #9ca3af;
-            font-size: 18px;
+            font-size: 16px; /* تصغير الأيقونة */
             transition: color 0.3s;
         }
 
@@ -205,29 +205,35 @@
 
         .input-wrapper input {
             width: 100%;
-            padding: 18px 50px 18px 20px;
+            padding: 14px 45px 14px 15px; /* تقليل الحشو */
             border: none;
             background: transparent;
-            font-size: 16px;
+            font-size: 15px; /* تصغير الخط */
             color: #1f2937;
             outline: none;
         }
 
         .input-wrapper input::placeholder {
             color: #9ca3af;
-            font-size: 14px;
+            font-size: 13px; /* تصغير الخط */
+        }
+
+        /* إزالة التعبئة المسبقة */
+        .input-wrapper input:not(:focus) {
+            background: transparent;
         }
 
         /* زر إظهار/إخفاء كلمة المرور */
         .toggle-password {
             position: absolute;
-            left: 20px;
+            left: 15px; /* تقليل المسافة */
             top: 50%;
             transform: translateY(-50%);
             color: #9ca3af;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px; /* تصغير الأيقونة */
             transition: color 0.3s;
+            z-index: 2;
         }
 
         .toggle-password:hover {
@@ -239,32 +245,32 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px; /* تقليل المسافة */
         }
 
         .remember-me {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             cursor: pointer;
         }
 
         .remember-me input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
+            width: 16px; /* تصغير حجم checkbox */
+            height: 16px;
             cursor: pointer;
             accent-color: #667eea;
         }
 
         .remember-me span {
-            font-size: 14px;
+            font-size: 13px; /* تصغير الخط */
             color: #4b5563;
         }
 
         .forgot-link {
             color: #667eea;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 13px; /* تصغير الخط */
             font-weight: 600;
             transition: color 0.3s;
         }
@@ -276,48 +282,53 @@
         /* زر تسجيل الدخول */
         .btn-login {
             width: 100%;
-            padding: 18px;
+            padding: 14px; /* تقليل الحشو */
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             border: none;
-            border-radius: 16px;
-            font-size: 18px;
+            border-radius: 14px; /* تقليل الانحناء */
+            font-size: 16px; /* تصغير الخط */
             font-weight: 700;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 8px;
             transition: all 0.3s;
-            box-shadow: 0 10px 20px -5px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 15px -5px rgba(102, 126, 234, 0.4);
         }
 
-        .btn-login:hover {
+        .btn-login:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px -5px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 12px 20px -5px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn-login:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
         }
 
         .btn-login i {
-            font-size: 18px;
+            font-size: 16px;
         }
 
         /* رسالة الخطأ */
         .alert {
-            padding: 15px 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
+            padding: 12px 16px; /* تقليل الحشو */
+            border-radius: 10px;
+            margin-bottom: 18px; /* تقليل المسافة */
             display: none;
             align-items: center;
-            gap: 12px;
-            font-size: 14px;
+            gap: 8px;
+            font-size: 13px; /* تصغير الخط */
             font-weight: 500;
-            animation: shake 0.5s ease;
+            animation: shake 0.4s ease;
         }
 
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+            25% { transform: translateX(-4px); }
+            75% { transform: translateX(4px); }
         }
 
         .alert-error {
@@ -327,40 +338,30 @@
         }
 
         .alert i {
-            font-size: 18px;
+            font-size: 16px;
         }
 
         /* معلومات إضافية */
         .info-text {
             text-align: center;
-            margin-top: 25px;
-            padding-top: 20px;
+            margin-top: 18px; /* تقليل المسافة */
+            padding-top: 15px; /* تقليل المسافة */
             border-top: 1px solid #e5e7eb;
         }
 
         .info-text p {
             color: #6b7280;
-            font-size: 13px;
-        }
-
-        .info-text a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .info-text a:hover {
-            text-decoration: underline;
+            font-size: 12px; /* تصغير الخط */
         }
 
         /* أيقونة العودة */
         .back-link {
             position: absolute;
-            top: 30px;
-            right: 30px;
+            top: 25px;
+            right: 25px;
             color: white;
             text-decoration: none;
-            font-size: 24px;
+            font-size: 22px;
             opacity: 0.8;
             transition: opacity 0.3s;
             z-index: 2;
@@ -370,20 +371,34 @@
             opacity: 1;
         }
 
+        /* منع التعبئة التلقائية للمتصفح */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+            -webkit-text-fill-color: #1f2937 !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
         /* Responsive */
         @media (max-width: 480px) {
+            .login-container {
+                max-width: 300px; /* أصغر للشاشات الصغيرة */
+            }
+            
             .login-card {
-                padding: 40px 25px;
+                padding: 25px 20px;
             }
             
             .logo-wrapper img {
-                width: 100px;
-                height: 100px;
+                width: 80px;
+                height: 80px;
             }
             
             .options-row {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
                 align-items: flex-start;
             }
         }
@@ -409,7 +424,8 @@
         <div class="login-card">
             <!-- الشعار -->
             <div class="logo-wrapper">
-                <img src="../assets/images/odonex-logo.png.png" alt="OdoNex Logo">
+                <img src="../assets/images/odonex-logo.png.png" alt="OdoNex Logo" 
+                     onerror="this.src='https://via.placeholder.com/90x90?text=OdoNex'">
                 <h1>OdoNex</h1>
                 <p>لوحة التحكم الإدارية</p>
             </div>
@@ -421,11 +437,11 @@
             </div>
 
             <!-- نموذج تسجيل الدخول -->
-            <form id="loginForm" onsubmit="handleLogin(event)">
+            <form id="loginForm">
                 <!-- حقل اسم المستخدم -->
                 <div class="form-group">
                     <label for="username">
-                        <i class="fas fa-user" style="margin-left: 5px;"></i>
+                        <i class="fas fa-user" style="margin-left: 4px;"></i>
                         اسم المستخدم
                     </label>
                     <div class="input-wrapper">
@@ -435,14 +451,15 @@
                                name="username" 
                                placeholder="أدخل اسم المستخدم"
                                autocomplete="off"
-                               autofocus>
+                               spellcheck="false"
+                               value="">
                     </div>
                 </div>
 
                 <!-- حقل كلمة المرور -->
                 <div class="form-group">
                     <label for="password">
-                        <i class="fas fa-lock" style="margin-left: 5px;"></i>
+                        <i class="fas fa-lock" style="margin-left: 4px;"></i>
                         كلمة المرور
                     </label>
                     <div class="input-wrapper">
@@ -450,10 +467,11 @@
                         <input type="password" 
                                id="password" 
                                name="password" 
-                               placeholder="أدخل كلمة المرور">
+                               placeholder="أدخل كلمة المرور"
+                               autocomplete="off"
+                               value="">
                         <i class="fas fa-eye toggle-password" 
-                           id="togglePassword"
-                           onclick="togglePasswordVisibility()"></i>
+                           id="togglePassword"></i>
                     </div>
                 </div>
 
@@ -463,7 +481,7 @@
                         <input type="checkbox" id="rememberMe">
                         <span>تذكرني</span>
                     </label>
-                    <a href="#" class="forgot-link" onclick="showHelp(event)">
+                    <a href="#" class="forgot-link" id="forgotLink">
                         نسيت كلمة المرور؟
                     </a>
                 </div>
@@ -478,7 +496,7 @@
             <!-- نص إضافي (بدون ذكر البيانات) -->
             <div class="info-text">
                 <p>
-                    <i class="fas fa-shield-alt" style="margin-left: 5px;"></i>
+                    <i class="fas fa-shield-alt" style="margin-left: 4px;"></i>
                     هذه الصفحة مخصصة للمشرفين فقط
                 </p>
             </div>
@@ -486,128 +504,179 @@
     </div>
 
     <script>
-        // التحقق من أن الصفحة تعمل بشكل آمن
-        if (window.top !== window.self) {
-            window.top.location = window.self.location;
-        }
+        (function() {
+            'use strict';
 
-        // إظهار/إخفاء كلمة المرور
-        function togglePasswordVisibility() {
-            const passwordInput = document.getElementById('password');
-            const toggleIcon = document.getElementById('togglePassword');
-            
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                toggleIcon.classList.remove('fa-eye');
-                toggleIcon.classList.add('fa-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                toggleIcon.classList.remove('fa-eye-slash');
-                toggleIcon.classList.add('fa-eye');
+            // منع إعادة تحميل الصفحة عند أي حدث غير مرغوب
+            if (window.location.protocol === 'file:') {
+                // منع السلوك الغريب في الملفات المحلية
             }
-        }
 
-        // إظهار رسالة الخطأ
-        function showError(message) {
+            // عناصر الصفحة
+            const loginForm = document.getElementById('loginForm');
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const togglePasswordBtn = document.getElementById('togglePassword');
+            const loginBtn = document.getElementById('loginBtn');
             const errorAlert = document.getElementById('errorAlert');
             const errorMessage = document.getElementById('errorMessage');
-            
-            errorMessage.textContent = message;
-            errorAlert.style.display = 'flex';
-            
-            // إخفاء الرسالة بعد 3 ثوان
-            setTimeout(() => {
-                errorAlert.style.display = 'none';
-            }, 3000);
-        }
+            const forgotLink = document.getElementById('forgotLink');
+            const rememberMeCheck = document.getElementById('rememberMe');
 
-        // معالجة تسجيل الدخول
-        function handleLogin(event) {
-            event.preventDefault();
-            
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
-            const rememberMe = document.getElementById('rememberMe').checked;
-            
-            // التحقق من الحقول الفارغة
-            if (!username || !password) {
-                showError('الرجاء إدخال اسم المستخدم وكلمة المرور');
-                return;
-            }
-            
-            // التحقق من البيانات (هنا يتم التحقق بدون ذكرها في الواجهة)
-            if (username === 'admin' && password === 'OdoNex2026') {
-                // حفظ الجلسة
-                if (rememberMe) {
-                    localStorage.setItem('adminLoggedIn', 'true');
-                    localStorage.setItem('adminUsername', username);
+            // إفراغ الحقول تماماً
+            usernameInput.value = '';
+            passwordInput.value = '';
+
+            // منع أي تعبئة تلقائية من المتصفح
+            setTimeout(() => {
+                usernameInput.value = '';
+                passwordInput.value = '';
+            }, 50);
+
+            // إظهار/إخفاء كلمة المرور
+            togglePasswordBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    togglePasswordBtn.classList.remove('fa-eye');
+                    togglePasswordBtn.classList.add('fa-eye-slash');
                 } else {
-                    sessionStorage.setItem('adminLoggedIn', 'true');
-                    sessionStorage.setItem('adminUsername', username);
+                    passwordInput.type = 'password';
+                    togglePasswordBtn.classList.remove('fa-eye-slash');
+                    togglePasswordBtn.classList.add('fa-eye');
+                }
+            });
+
+            // إظهار رسالة الخطأ
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorAlert.style.display = 'flex';
+                
+                // إخفاء الرسالة بعد 3 ثوان
+                setTimeout(() => {
+                    errorAlert.style.display = 'none';
+                }, 3000);
+            }
+
+            // معالجة تسجيل الدخول
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const username = usernameInput.value.trim();
+                const password = passwordInput.value;
+                
+                // التحقق من الحقول الفارغة
+                if (!username) {
+                    showError('الرجاء إدخال اسم المستخدم');
+                    usernameInput.focus();
+                    return;
                 }
                 
-                // رسالة نجاح وتحويل
-                showSuccessAndRedirect();
-            } else {
-                showError('اسم المستخدم أو كلمة المرور غير صحيحة');
-            }
-        }
+                if (!password) {
+                    showError('الرجاء إدخال كلمة المرور');
+                    passwordInput.focus();
+                    return;
+                }
+                
+                // تعطيل الزر أثناء المعالجة
+                loginBtn.disabled = true;
+                loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جارِ التحقق...';
+                
+                // محاكاة تأخير بسيط
+                setTimeout(() => {
+                    // التحقق من البيانات (يتم التحقق هنا بدون ذكرها)
+                    if (username === 'admin' && password === 'OdoNex2026') {
+                        
+                        // حفظ الجلسة
+                        if (rememberMeCheck.checked) {
+                            localStorage.setItem('adminLoggedIn', 'true');
+                            localStorage.setItem('adminUsername', username);
+                        } else {
+                            sessionStorage.setItem('adminLoggedIn', 'true');
+                            sessionStorage.setItem('adminUsername', username);
+                        }
+                        
+                        // تغيير رسالة الزر
+                        loginBtn.innerHTML = '<i class="fas fa-check"></i> تم بنجاح! جارِ التحويل...';
+                        
+                        // تحويل بعد ثانية
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1000);
+                        
+                    } else {
+                        // فشل تسجيل الدخول
+                        showError('اسم المستخدم أو كلمة المرور غير صحيحة');
+                        
+                        // إعادة الزر لحالته الطبيعية
+                        loginBtn.disabled = false;
+                        loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> تسجيل الدخول';
+                        
+                        // تفريغ الحقول (اختياري)
+                        passwordInput.value = '';
+                        passwordInput.focus();
+                    }
+                }, 800);
+            });
 
-        // إظهار نجاح وتحويل
-        function showSuccessAndRedirect() {
-            // تغيير شكل الزر مؤقتاً
-            const loginBtn = document.getElementById('loginBtn');
-            const originalText = loginBtn.innerHTML;
-            
-            loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جارِ التحويل...';
-            loginBtn.disabled = true;
-            
-            // تحويل بعد ثانية
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 1000);
-        }
+            // دالة المساعدة (نسيت كلمة المرور)
+            forgotLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showError('للحصول على المساعدة، يرجى التواصل مع مدير النظام');
+            });
 
-        // دالة المساعدة (نسيت كلمة المرور)
-        function showHelp(event) {
-            event.preventDefault();
-            showError('للحصول على المساعدة، يرجى التواصل مع مدير النظام');
-        }
-
-        // التحقق من وجود جلسة سابقة
-        window.onload = function() {
+            // التحقق من وجود جلسة سابقة
             if (localStorage.getItem('adminLoggedIn') === 'true' || 
                 sessionStorage.getItem('adminLoggedIn') === 'true') {
+                // تحويل مباشر إلى لوحة التحكم
                 window.location.href = 'index.html';
             }
-            
-            // إضافة تأثيرات للخلفية
-            console.log('صفحة تسجيل الدخول جاهزة');
-        };
 
-        // منع إعادة تحميل الصفحة عند الضغط على Enter
-        document.getElementById('username').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
+            // منع إعادة تحميل الصفحة عند الضغط على Enter
+            usernameInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    passwordInput.focus();
+                }
+            });
+
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    loginForm.dispatchEvent(new Event('submit'));
+                }
+            });
+
+            // منع النسخ واللصق في حقل كلمة المرور (أمان إضافي)
+            passwordInput.addEventListener('copy', function(e) {
                 e.preventDefault();
-                document.getElementById('password').focus();
-            }
-        });
+            });
 
-        document.getElementById('password').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
+            passwordInput.addEventListener('paste', function(e) {
                 e.preventDefault();
-                handleLogin(e);
-            }
-        });
+            });
 
-        // منع النسخ واللصق في حقل كلمة المرور (أمان إضافي)
-        document.getElementById('password').addEventListener('copy', function(e) {
-            e.preventDefault();
-        });
+            passwordInput.addEventListener('cut', function(e) {
+                e.preventDefault();
+            });
 
-        document.getElementById('password').addEventListener('paste', function(e) {
-            e.preventDefault();
-        });
+            // مراقبة التغييرات لمنع التعبئة التلقائية
+            const observer = new MutationObserver(function() {
+                if (usernameInput.value !== '' && !usernameInput.value.startsWith('admin')) {
+                    // يمكن إضافة منطق إضافي هنا
+                }
+            });
+
+            observer.observe(usernameInput, { attributes: true, attributeFilter: ['value'] });
+
+            // تنظيف عند الخروج
+            window.addEventListener('beforeunload', function() {
+                // لا حاجة لتنظيف خاص
+            });
+
+            console.log('صفحة تسجيل الدخول جاهزة - الحقول فارغة');
+        })();
     </script>
 </body>
 </html>
