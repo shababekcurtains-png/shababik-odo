@@ -3,34 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول - لوحة تحكم OdoNex</title>
-    
-    <!-- ===== الكود الأمني ===== -->
-    <script>
-        // التحقق من أن المستخدم دخل من خلال الرابط المباشر
-        (function() {
-            // قائمة بالروابط المسموح بها (الرابط السري الخاص بك)
-            const allowedDirectAccess = true; // يمكنك تعديل هذا حسب احتياجك
-            
-            if (document.referrer === '') {
-                // إذا دخل من رابط مباشر - مسموح
-                console.log('✅ دخول مباشر مسموح به');
-            } else if (!document.referrer.includes('shababekcurtains-png.github.io/shababik-odo/')) {
-                // إذا حاول الدخول من موقع آخر - منع
-                console.log('⛔ محاولة دخول غير مصرح بها');
-                window.location.href = '../index.html';
-            }
-        })();
-    </script>
-    <!-- ===================== -->
-
-    <!-- Google Fonts - Cairo -->
+    <title>OdoNex | لوحة التحكم الإدارية</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
-        /* هنا أكواد CSS التي أرسلتها سابقاً */
         * {
             margin: 0;
             padding: 0;
@@ -38,241 +16,38 @@
             font-family: 'Cairo', sans-serif;
         }
 
-        :root {
-            --primary-purple: #7A5AF8;
-            --primary-blue: #2BB0ED;
-            --main-gradient: linear-gradient(135deg, #7A5AF8, #2BB0ED);
-            --dark-bg: #1a1a2e;
-            --card-bg: #ffffff;
-            --input-bg: #f5f5f5;
-            --text-dark: #333;
-            --text-light: #666;
-            --error-color: #e74c3c;
-            --success-color: #2ecc71;
-        }
-
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            position: relative;
-        }
-
-        /* باقي أكواد CSS من الرسالة السابقة */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            margin: 0;
+            /* منع التمرير غير المرغوب فيه */
             overflow: hidden;
-        }
-
-        .bg-animation span {
-            position: absolute;
-            display: block;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            animation: animate 25s linear infinite;
-            bottom: -150px;
-        }
-
-        @keyframes animate {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-                border-radius: 0;
-            }
-            100% {
-                transform: translateY(-1000px) rotate(720deg);
-                opacity: 0;
-                border-radius: 50%;
-            }
         }
 
         .login-container {
             width: 100%;
             max-width: 420px;
+            /* منع أي تأثيرات خارجية */
+            position: relative;
             z-index: 1;
         }
 
         .login-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            animation: slideUp 0.5s ease;
+            background: white;
+            border-radius: 24px;
+            padding: 40px 35px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: fadeIn 0.5s ease;
+            /* منع أي تغيير في الحجم */
+            transform: none !important;
+            transition: none !important;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .logo-section {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logo-section img {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 15px;
-        }
-
-        .logo-section h2 {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 5px;
-        }
-
-        .logo-section p {
-            font-size: 14px;
-            color: var(--text-light);
-        }
-
-        .admin-badge {
-            background: var(--main-gradient);
-            color: white;
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            color: var(--text-dark);
-        }
-
-        .input-icon {
-            position: relative;
-        }
-
-        .input-icon i {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #999;
-            font-size: 16px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 15px 45px 15px 15px;
-            border: 2px solid #e1e1e1;
-            border-radius: 12px;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            background: var(--input-bg);
-        }
-
-        .form-control:focus {
-            border-color: var(--primary-purple);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(122, 90, 248, 0.1);
-        }
-
-        .password-toggle {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #999;
-            z-index: 2;
-        }
-
-        .password-toggle:hover {
-            color: var(--primary-purple);
-        }
-
-        .remember-forgot {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-
-        .remember-me {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .remember-me input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-            accent-color: var(--primary-purple);
-        }
-
-        .forgot-password {
-            color: var(--primary-purple);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .btn-login {
-            width: 100%;
-            padding: 15px;
-            background: var(--main-gradient);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(122, 90, 248, 0.3);
-        }
-
-        .alert {
-            padding: 12px 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(-10px);
@@ -283,61 +58,272 @@
             }
         }
 
+        /* ===== قسم الشعار ===== */
+        .logo-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-section img {
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            /* منع أي تأثيرات حركية */
+            animation: none;
+            transform: none;
+        }
+
+        .logo-section h1 {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .logo-section .subtitle {
+            color: #666;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* ===== معلومات الدخول (حسب الصورة) ===== */
+        .login-info {
+            background: #f5f3ff;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #e0e7ff;
+        }
+
+        .info-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #4f46e5;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #c7d2fe;
+        }
+
+        .info-header i {
+            font-size: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e7ff;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #374151;
+            width: 110px;
+            font-size: 15px;
+        }
+
+        .info-value {
+            color: #4f46e5;
+            font-weight: 700;
+            font-size: 16px;
+            background: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: 1px solid #c7d2fe;
+            flex: 1;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .info-value.password {
+            direction: ltr;
+            font-family: monospace;
+            font-size: 18px;
+        }
+
+        /* ===== حقول الإدخال ===== */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .input-wrapper {
+            position: relative;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            background: #f9fafb;
+        }
+
+        .input-wrapper:focus-within {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            font-size: 18px;
+            transition: color 0.2s;
+        }
+
+        .input-wrapper:focus-within i {
+            color: #4f46e5;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 15px 45px 15px 15px;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            color: #1f2937;
+            outline: none;
+        }
+
+        .input-wrapper input::placeholder {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* ===== زر تسجيل الدخول ===== */
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 25px 0 15px;
+            /* منع أي تأثيرات حركية */
+            transition: none;
+            transform: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-login:active {
+            opacity: 0.9;
+        }
+
+        .btn-login i {
+            font-size: 18px;
+        }
+
+        /* ===== تنبيهات ===== */
+        .alert {
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
         .alert-error {
-            background: #fde8e8;
-            color: var(--error-color);
-            border: 1px solid #fbd5d5;
+            background: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
         }
 
         .alert-success {
-            background: #def7ec;
-            color: var(--success-color);
-            border: 1px solid #bcf0da;
+            background: #dcfce7;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
         }
 
-        .login-footer {
+        .alert i {
+            font-size: 18px;
+        }
+
+        /* ===== روابط إضافية ===== */
+        .additional-links {
             text-align: center;
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .demo-credentials {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px;
             margin-top: 20px;
-            font-size: 13px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
         }
 
-        .demo-credentials .cred {
-            color: var(--primary-purple);
-            font-weight: 600;
-            font-family: monospace;
+        .additional-links a {
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s;
         }
 
-        @media (max-width: 480px) {
-            .login-card {
-                padding: 30px 20px;
-            }
+        .additional-links a:hover {
+            color: #4f46e5;
+        }
+
+        /* منع أي تأثيرات JavaScript من تغيير الصفحة */
+        .no-click {
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-    </div>
-
     <div class="login-container">
         <div class="login-card">
+            <!-- الشعار -->
             <div class="logo-section">
-                <img src="../assets/images/odonex-logo.png" alt="OdoNex Logo" onerror="this.src='https://via.placeholder.com/80x80?text=OdoNex'">
-                <h2>لوحة تحكم OdoNex</h2>
-                <p>تسجيل الدخول للإدارة</p>
-                <span class="admin-badge">Admin Panel</span>
+                <img src="../assets/images/odonex-logo.png.png" alt="OdoNex Logo" 
+                     onerror="this.src='https://via.placeholder.com/110x110?text=OdoNex'">
+                <h1>OdoNex</h1>
+                <div class="subtitle">لوحة التحكم الإدارية</div>
             </div>
 
+            <!-- معلومات الدخول (كما في الصورة) -->
+            <div class="login-info">
+                <div class="info-header">
+                    <i class="fas fa-key"></i>
+                    <span>معلومات الدخول</span>
+                </div>
+                
+                <div class="info-row">
+                    <span class="info-label">اسم المستخدم</span>
+                    <span class="info-value">admin</span>
+                </div>
+                
+                <div class="info-row">
+                    <span class="info-label">كلمة المرور</span>
+                    <span class="info-value password">OdoNex2026</span>
+                </div>
+            </div>
+
+            <!-- رسائل التنبيه -->
             <div id="errorAlert" class="alert alert-error" style="display: none;">
                 <i class="fas fa-exclamation-circle"></i>
                 <span id="errorMessage"></span>
@@ -345,51 +331,73 @@
 
             <div id="successAlert" class="alert alert-success" style="display: none;">
                 <i class="fas fa-check-circle"></i>
-                <span>تم تسجيل الدخول بنجاح! جارِ التحويل...</span>
+                <span>تم تسجيل الدخول بنجاح!</span>
             </div>
 
+            <!-- نموذج تسجيل الدخول -->
             <form id="loginForm" onsubmit="handleLogin(event)">
+                <!-- حقل اسم المستخدم -->
                 <div class="form-group">
-                    <label for="username">اسم المستخدم</label>
-                    <div class="input-icon">
-                        <i class="fas fa-user"></i>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="أدخل اسم المستخدم" autocomplete="off">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">كلمة المرور</label>
-                    <div class="input-icon">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="أدخل كلمة المرور">
-                        <i class="fas fa-eye password-toggle" onclick="togglePassword()" id="togglePassword"></i>
-                    </div>
-                </div>
-
-                <div class="remember-forgot">
-                    <label class="remember-me">
-                        <input type="checkbox" id="rememberMe"> تذكرني
+                    <label for="username">
+                        <i class="fas fa-user" style="margin-left: 5px;"></i>
+                        اسم المستخدم
                     </label>
-                    <a href="#" class="forgot-password" onclick="showForgotPassword()">نسيت كلمة المرور؟</a>
+                    <div class="input-wrapper">
+                        <i class="fas fa-user"></i>
+                        <input type="text" 
+                               id="username" 
+                               name="username" 
+                               placeholder="أدخل اسم المستخدم"
+                               value="admin"
+                               autocomplete="off">
+                    </div>
                 </div>
 
+                <!-- حقل كلمة المرور -->
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock" style="margin-left: 5px;"></i>
+                        كلمة المرور
+                    </label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" 
+                               id="password" 
+                               name="password" 
+                               placeholder="أدخل كلمة المرور"
+                               value="OdoNex2026">
+                        <i class="fas fa-eye" 
+                           id="togglePassword"
+                           style="left: 15px; right: auto; cursor: pointer;"
+                           onclick="togglePasswordVisibility()"></i>
+                    </div>
+                </div>
+
+                <!-- زر تسجيل الدخول -->
                 <button type="submit" class="btn-login" id="loginBtn">
                     <i class="fas fa-sign-in-alt"></i>
                     <span>تسجيل الدخول</span>
                 </button>
             </form>
 
-            <div class="demo-credentials">
-                <p><i class="fas fa-info-circle"></i> بيانات تسجيل الدخول التجريبية:</p>
-                <p><span class="cred">admin</span> : <span class="cred">admin123</span></p>
-                <p><span class="cred">superadmin</span> : <span class="cred">super123</span></p>
+            <!-- روابط إضافية -->
+            <div class="additional-links">
+                <a href="#" onclick="showHelp(event)">
+                    <i class="fas fa-question-circle"></i>
+                    مساعدة
+                </a>
             </div>
         </div>
     </div>
 
     <script>
+        // منع إعادة تحميل الصفحة عند أي حدث غير مرغوب
+        window.addEventListener('beforeunload', function(e) {
+            // لا نفعل شيئاً، فقط نمنع إعادة التحميل التلقائي
+        });
+
         // دالة إظهار/إخفاء كلمة المرور
-        function togglePassword() {
+        function togglePasswordVisibility() {
             const passwordInput = document.getElementById('password');
             const toggleIcon = document.getElementById('togglePassword');
             
@@ -406,86 +414,84 @@
 
         // دالة معالجة تسجيل الدخول
         function handleLogin(event) {
+            // منع إعادة تحميل الصفحة نهائياً
             event.preventDefault();
+            event.stopPropagation();
             
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            const rememberMe = document.getElementById('rememberMe').checked;
             
-            // التحقق من البيانات (هنا يمكنك إضافة التحقق الحقيقي)
-            if (username === 'admin' && password === 'admin123') {
-                // تسجيل دخول ناجح
-                showSuccess('تم تسجيل الدخول بنجاح');
+            // التحقق من البيانات (admin / OdoNex2026)
+            if (username === 'admin' && password === 'OdoNex2026') {
+                // إظهار رسالة النجاح
+                document.getElementById('successAlert').style.display = 'flex';
+                document.getElementById('errorAlert').style.display = 'none';
                 
-                // حفظ حالة تسجيل الدخول في localStorage إذا تم اختيار "تذكرني"
-                if (rememberMe) {
-                    localStorage.setItem('adminLoggedIn', 'true');
-                    localStorage.setItem('adminUsername', username);
-                } else {
-                    sessionStorage.setItem('adminLoggedIn', 'true');
-                }
+                // تخزين حالة تسجيل الدخول
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                sessionStorage.setItem('adminUsername', username);
                 
                 // تحويل إلى لوحة التحكم بعد ثانية
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 1000);
-            } else if (username === 'superadmin' && password === 'super123') {
-                // تسجيل دخول ناجح للمشرف العام
-                showSuccess('مرحباً بك أيها المشرف العام');
-                
-                if (rememberMe) {
-                    localStorage.setItem('adminLoggedIn', 'true');
-                    localStorage.setItem('adminUsername', username);
-                    localStorage.setItem('adminRole', 'super');
-                }
-                
-                setTimeout(() => {
+                setTimeout(function() {
                     window.location.href = 'index.html';
                 }, 1000);
             } else {
-                // فشل تسجيل الدخول
-                showError('اسم المستخدم أو كلمة المرور غير صحيحة');
+                // إظهار رسالة الخطأ
+                document.getElementById('errorMessage').textContent = 'اسم المستخدم أو كلمة المرور غير صحيحة';
+                document.getElementById('errorAlert').style.display = 'flex';
+                document.getElementById('successAlert').style.display = 'none';
+                
+                // إخفاء الرسالة بعد 3 ثوان
+                setTimeout(function() {
+                    document.getElementById('errorAlert').style.display = 'none';
+                }, 3000);
             }
+            
+            // منع أي سلوك افتراضي آخر
+            return false;
         }
 
-        // دالة إظهار رسالة خطأ
-        function showError(message) {
-            const errorAlert = document.getElementById('errorAlert');
-            const errorMessage = document.getElementById('errorMessage');
-            
-            errorMessage.textContent = message;
-            errorAlert.style.display = 'flex';
-            
-            // إخفاء الرسالة بعد 3 ثوان
-            setTimeout(() => {
-                errorAlert.style.display = 'none';
-            }, 3000);
+        // دالة المساعدة
+        function showHelp(event) {
+            event.preventDefault();
+            alert('للحصول على المساعدة، يرجى التواصل مع مدير النظام');
         }
 
-        // دالة إظهار رسالة نجاح
-        function showSuccess(message) {
-            const successAlert = document.getElementById('successAlert');
-            const errorAlert = document.getElementById('errorAlert');
-            
-            // إخفاء رسالة الخطأ إذا كانت ظاهرة
-            errorAlert.style.display = 'none';
-            
-            // إظهار رسالة النجاح
-            successAlert.style.display = 'flex';
-        }
-
-        // دالة نسيت كلمة المرور
-        function showForgotPassword() {
-            alert('للحصول على كلمة المرور، يرجى التواصل مع مدير النظام');
-        }
-
-        // التحقق عند تحميل الصفحة إذا كان المستخدم مسجل دخوله مسبقاً
+        // التحقق عند تحميل الصفحة
         window.onload = function() {
-            if (localStorage.getItem('adminLoggedIn') === 'true' || sessionStorage.getItem('adminLoggedIn') === 'true') {
-                // إذا كان مسجل دخوله مسبقاً، حول إلى لوحة التحكم مباشرة
+            // التحقق من وجود جلسة سابقة
+            if (sessionStorage.getItem('adminLoggedIn') === 'true') {
                 window.location.href = 'index.html';
             }
+            
+            // تعيين القيم الافتراضية
+            document.getElementById('username').value = 'admin';
+            document.getElementById('password').value = 'OdoNex2026';
         };
+
+        // منع إعادة تحميل الصفحة عند الضغط على Enter في الحقول
+        document.getElementById('username').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('password').focus();
+            }
+        });
+
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleLogin(e);
+            }
+        });
+
+        // منع أي محاولة إعادة تحميل غير مقصودة
+        document.addEventListener('keydown', function(e) {
+            // منع F5 و Ctrl+R و Ctrl+Shift+R
+            if (e.key === 'F5' || (e.ctrlKey && e.key === 'r') || (e.ctrlKey && e.shiftKey && e.key === 'r')) {
+                e.preventDefault();
+                return false;
+            }
+        });
     </script>
 </body>
 </html>
