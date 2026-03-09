@@ -1,1 +1,918 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OdoNex | خطط الأسعار</title>
+    <!-- Google Fonts - Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
 
+        :root {
+            --primary-purple: #7A5AF8;
+            --primary-blue: #2BB0ED;
+            --main-gradient: linear-gradient(135deg, #7A5AF8, #2BB0ED);
+            --dark-text: #333333;
+            --light-text: #666666;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e0e0e0;
+            --footer-bg: #1a1a2e;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --popular-border: #FFD700;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7ff 0%, #f0f5ff 100%);
+            color: var(--dark-text);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== Header ===== */
+        header {
+            background: var(--bg-white);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-left img {
+            height: 45px;
+            width: auto;
+        }
+
+        .nav-left span {
+            font-size: 22px;
+            font-weight: 700;
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #555;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary-purple);
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .lang-toggle, .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: transparent;
+        }
+
+        .lang-toggle:hover, .theme-toggle:hover {
+            border-color: var(--primary-purple);
+        }
+
+        .lang-toggle span {
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .btn-start {
+            background: var(--main-gradient);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(122,90,248,0.2);
+        }
+
+        .btn-start:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            text-align: center;
+            padding: 40px 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== Features Section ===== */
+        .features-section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+
+        .section-title span {
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--main-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon i {
+            font-size: 28px;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            color: var(--light-text);
+            line-height: 1.7;
+        }
+
+        /* ===== Pricing Section ===== */
+        .pricing-section {
+            padding: 60px 0;
+            background: var(--bg-white);
+            border-radius: 50px 50px 0 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: var(--bg-white);
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: transform 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--popular-border);
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(255,215,0,0.15);
+            z-index: 2;
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--main-gradient);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .card-header h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .price span {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--light-text);
+            -webkit-text-fill-color: var(--light-text);
+        }
+
+        .yearly-price {
+            font-size: 20px;
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            font-size: 16px;
+            color: var(--light-text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li i {
+            color: var(--primary-purple);
+            font-size: 18px;
+        }
+
+        .btn-compare {
+            width: 100%;
+            padding: 15px;
+            background: var(--main-gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-compare:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* ===== Comparison Section ===== */
+        .comparison-section {
+            padding: 60px 0;
+            background: var(--bg-light);
+        }
+
+        .comparison-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--dark-text);
+        }
+
+        .comparison-table {
+            background: var(--bg-white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-row.header {
+            background: var(--main-gradient);
+            color: white;
+            font-weight: 700;
+        }
+
+        .comparison-cell {
+            padding: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .comparison-cell:first-child {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .comparison-cell i {
+            color: var(--primary-purple);
+            font-size: 20px;
+        }
+
+        .comparison-cell i.fa-check {
+            color: #10b981;
+        }
+
+        .comparison-cell i.fa-times {
+            color: #ef4444;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: var(--footer-bg);
+            padding: 60px 0 30px;
+            color: white;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-col p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-blue);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .footer-logo span {
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--main-gradient);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 992px) {
+            .features-grid,
+            .pricing-grid,
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .comparison-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .features-grid,
+            .pricing-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="nav-left">
+                <img src="assets/images/odonex-logo.png" alt="OdoNex">
+                <span>OdoNex</span>
+            </div>
+
+            <div class="nav-menu">
+                <a href="index.html">الرئيسية</a>
+                <a href="features.html">المميزات</a>
+                <a href="pricing.html" class="active">الأسعار</a>
+                <a href="gallery.html">معرض الأعمال</a>
+                <a href="contact.html">اتصل بنا</a>
+            </div>
+
+            <div class="nav-right">
+                <div class="lang-toggle" onclick="toggleLanguage()">
+                    <span>EN</span>
+                </div>
+                <div class="theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <a href="signup.html" class="btn-start">ابدأ الآن</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>خطط الأسعار</h1>
+            <p>اختر الخطة المناسبة لحجم أعمالك</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">المميزات</h2>
+            <p class="section-subtitle">كل ما تحتاجه لإدارة أعمالك بكفاءة وأمان في مكان واحد</p>
+
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>أمان متقدم</h3>
+                    <p>نظام أمان متكامل مع تشفير 256-bit لحماية بياناتك</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>تقارير لحظية</h3>
+                    <p>تقارير دقيقة وفورية عن أداء أعمالك ومبيعاتك</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>نسخ احتياطي</h3>
+                    <p>نسخ احتياطي يومي آمن لضمان عدم فقدان بياناتك</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>دعم فني 24/7</h3>
+                    <p>فريق دعم متاح على مدار الساعة لمساعدتك</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>تطبيق جوال</h3>
+                    <p>تطبيق جوال متكامل لمتابعة أعمالك أينما كنت</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>تكامل سهل</h3>
+                    <p>يتكامل بسهولة مع بوابات الدفع والمنصات المختلفة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">خطط <span>الأسعار</span></h2>
+            <p class="section-subtitle">اختر الخطة المناسبة لاحتياجات عملك</p>
+
+            <div class="pricing-grid">
+                <!-- Beginner Plan -->
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <h3>المبتدئ</h3>
+                        <div class="price">$10 <span>/ شهرًا</span></div>
+                        <div class="yearly-price">$200 سنويًا</div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> ميزات رقمية أساسية</li>
+                        <li><i class="fas fa-check"></i> ميزات الربح</li>
+                        <li><i class="fas fa-check"></i> ميزات التخزين</li>
+                        <li><i class="fas fa-check"></i> ميزات العمل الأساسية</li>
+                        <li><i class="fas fa-times" style="color: #ef4444;"></i> ميزات الأعمال المتقدمة</li>
+                        <li><i class="fas fa-times" style="color: #ef4444;"></i> ميزات سوان حساب</li>
+                    </ul>
+                    <button class="btn-compare" onclick="showComparison()">
+                        المقارنة <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+
+                <!-- Popular Plan -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">الأكثر شعبية</div>
+                    <div class="card-header">
+                        <h3>الاحترافي</h3>
+                        <div class="price">$79 <span>/ شهرًا</span></div>
+                        <div class="yearly-price">$250 سنويًا</div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> ميزات رقمية أساسية</li>
+                        <li><i class="fas fa-check"></i> ميزات الربح</li>
+                        <li><i class="fas fa-check"></i> ميزات التخزين</li>
+                        <li><i class="fas fa-check"></i> ميزات العمل الأساسية</li>
+                        <li><i class="fas fa-check"></i> ميزات الأعمال المتقدمة</li>
+                        <li><i class="fas fa-times" style="color: #ef4444;"></i> ميزات سوان حساب</li>
+                    </ul>
+                    <button class="btn-compare" onclick="showComparison()">
+                        المقارنة <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+
+                <!-- Institutional Plan -->
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <h3>المؤسسي</h3>
+                        <div class="price">$100 <span>/ شهرًا</span></div>
+                        <div class="yearly-price">$360 سنويًا</div>
+                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> ميزات رقمية أساسية</li>
+                        <li><i class="fas fa-check"></i> ميزات الربح</li>
+                        <li><i class="fas fa-check"></i> ميزات التخزين</li>
+                        <li><i class="fas fa-check"></i> ميزات العمل الأساسية</li>
+                        <li><i class="fas fa-check"></i> ميزات الأعمال المتقدمة</li>
+                        <li><i class="fas fa-check"></i> ميزات سوان حساب</li>
+                    </ul>
+                    <button class="btn-compare" onclick="showComparison()">
+                        المقارنة <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section" id="comparison">
+        <div class="container">
+            <h2 class="comparison-title">مقارنة الخطط</h2>
+            
+            <div class="comparison-table">
+                <!-- Header -->
+                <div class="comparison-row header">
+                    <div class="comparison-cell">الميزة</div>
+                    <div class="comparison-cell">المبتدئ</div>
+                    <div class="comparison-cell">الاحترافي</div>
+                    <div class="comparison-cell">المؤسسي</div>
+                </div>
+
+                <!-- Row 1 -->
+                <div class="comparison-row">
+                    <div class="comparison-cell">ميزات رقمية أساسية</div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="comparison-row">
+                    <div class="comparison-cell">ميزات الربح</div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="comparison-row">
+                    <div class="comparison-cell">ميزات التخزين</div>
+                    <div class="comparison-cell">5GB</div>
+                    <div class="comparison-cell">50GB</div>
+                    <div class="comparison-cell">غير محدود</div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="comparison-row">
+                    <div class="comparison-cell">ميزات العمل الأساسية</div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                </div>
+
+                <!-- Row 5 -->
+                <div class="comparison-row">
+                    <div class="comparison-cell">ميزات الأعمال المتقدمة</div>
+                    <div class="comparison-cell"><i class="fas fa-times"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                </div>
+
+                <!-- Row 6 -->
+                <div class="comparison-row">
+                    <div class="comparison-cell">ميزات سوان حساب</div>
+                    <div class="comparison-cell"><i class="fas fa-times"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-times"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="assets/images/odonex-logo.png" alt="OdoNex">
+                        <span>OdoNex</span>
+                    </div>
+                    <p>نظام ERP متكامل لإدارة أعمالك بكفاءة وأمان في منصة واحدة</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="features.html">المميزات</a></li>
+                        <li><a href="pricing.html">الأسعار</a></li>
+                        <li><a href="gallery.html">معرض الأعمال</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>الدعم</h4>
+                    <ul>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>اتصل بنا</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +966 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> info@odonex.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                © 2026 جميع الحقوق محفوظة لشركة OdoNex | حلول ERP المتكاملة
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // تبديل اللغة
+        function toggleLanguage() {
+            window.location.href = 'pricing-en.html';
+        }
+
+        // تبديل الثيم
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.querySelector('.theme-toggle i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // إظهار جدول المقارنة
+        function showComparison() {
+            document.getElementById('comparison').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // إضافة Dark Mode Styles
+        const style = document.createElement('style');
+        style.textContent = `
+            body.dark-mode {
+                background: #1a1a2e;
+                color: #fff;
+            }
+            body.dark-mode .pricing-card,
+            body.dark-mode .feature-card,
+            body.dark-mode .comparison-table {
+                background: #16213e;
+                border-color: #333;
+            }
+            body.dark-mode .pricing-card h3,
+            body.dark-mode .feature-card h3 {
+                color: #fff;
+            }
+            body.dark-mode .pricing-card p,
+            body.dark-mode .feature-card p {
+                color: #aaa;
+            }
+            body.dark-mode .section-title {
+                color: #fff;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
