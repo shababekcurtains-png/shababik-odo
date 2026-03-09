@@ -27,6 +27,7 @@
             --card-bg: #FFFFFF;
             --body-bg: #F8F9FA;
             --main-gradient: linear-gradient(135deg, #00B4D8, #7B2CBF);
+            --icon-gradient: linear-gradient(135deg, #7B2CBF, #00B4D8);
         }
 
         body {
@@ -55,6 +56,10 @@
         body.dark-mode .gallery-card {
             background: #2a2a2a;
             border-color: #444;
+        }
+
+        body.dark-mode .icon-box {
+            background: rgba(255,255,255,0.1);
         }
 
         .container {
@@ -246,28 +251,38 @@
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            border: 1px solid transparent;
         }
 
         .gallery-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(123, 44, 191, 0.08);
+            border-color: var(--primary-purple);
+            box-shadow: 0 20px 40px rgba(123, 44, 191, 0.15);
         }
 
-        /* حاوية الأيقونة */
+        /* حاوية الأيقونة - بتدرج لوني */
         .icon-box {
             width: 60px;
             height: 60px;
-            background: var(--light-purple-bg);
+            background: var(--icon-gradient);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(123, 44, 191, 0.2);
         }
 
         .icon-box i {
             font-size: 28px;
-            color: var(--primary-purple);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-card:hover .icon-box {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(123, 44, 191, 0.3);
         }
 
         /* عنوان المشروع */
@@ -508,10 +523,10 @@
         <section class="gallery-section">
             <div class="container">
                 <div class="gallery-grid">
-                    <!-- 1. نظام إدارة المطاعم (أعلى اليمين) -->
+                    <!-- 1. نظام إدارة المطاعم -->
                     <div class="gallery-card">
                         <div class="icon-box">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-utensils"></i>
                         </div>
                         <h3 class="card-title">نظام إدارة المطاعم</h3>
                         <p class="card-description">نظام متكامل لإدارة الطلبات والمخزون والفواتير لسلسلة مطاعم تضم 15 فرعاً.</p>
@@ -522,7 +537,7 @@
                         </div>
                     </div>
 
-                    <!-- 2. نظام محاسبة المصانع (أعلى الوسط) -->
+                    <!-- 2. نظام محاسبة المصانع -->
                     <div class="gallery-card">
                         <div class="icon-box">
                             <i class="fas fa-industry"></i>
@@ -536,7 +551,7 @@
                         </div>
                     </div>
 
-                    <!-- 3. نظام العيادات الطبية (أعلى اليسار) -->
+                    <!-- 3. نظام العيادات الطبية -->
                     <div class="gallery-card">
                         <div class="icon-box">
                             <i class="fas fa-stethoscope"></i>
@@ -550,7 +565,7 @@
                         </div>
                     </div>
 
-                    <!-- 4. نظام إدارة المدارس (أسفل اليمين) -->
+                    <!-- 4. نظام إدارة المدارس -->
                     <div class="gallery-card">
                         <div class="icon-box">
                             <i class="fas fa-graduation-cap"></i>
@@ -564,7 +579,7 @@
                         </div>
                     </div>
 
-                    <!-- 5. نظام الشركات العقارية (أسفل الوسط) -->
+                    <!-- 5. نظام الشركات العقارية -->
                     <div class="gallery-card">
                         <div class="icon-box">
                             <i class="fas fa-building"></i>
@@ -578,10 +593,10 @@
                         </div>
                     </div>
 
-                    <!-- 6. نظام التجارة الإلكترونية (أسفل اليسار) -->
+                    <!-- 6. نظام التجارة الإلكترونية -->
                     <div class="gallery-card">
                         <div class="icon-box">
-                            <i class="fas fa-desktop"></i>
+                            <i class="fas fa-shopping-cart"></i>
                         </div>
                         <h3 class="card-title">نظام التجارة الإلكترونية</h3>
                         <p class="card-description">ربط المتجر الإلكتروني بالنظام المحاسبي لتتبع المبيعات والمخزون آلياً.</p>
