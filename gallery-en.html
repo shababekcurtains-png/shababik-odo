@@ -1,13 +1,13 @@
-
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>OdoNex | الصفحة الرئيسية</title>
+    <title>OdoNex | معرض الأعمال</title>
     <!-- Google Fonts - Cairo Bold -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -30,6 +30,7 @@
             --icon-color: #666666;
             --footer-bg: #F8F9FB;
             --main-gradient: linear-gradient(135deg, #7A5AF8, #2BB0ED);
+            --tag-bg: #f0f2f5;
         }
 
         body {
@@ -51,8 +52,20 @@
 
         body.dark-mode .black-text,
         body.dark-mode .footer-brand-name,
-        body.dark-mode .nav-logo-text {
+        body.dark-mode .nav-logo-text,
+        body.dark-mode .section-title,
+        body.dark-mode .gallery-item-title {
             color: #ffffff !important;
+        }
+
+        body.dark-mode .gallery-card {
+            background: #2a2a2a;
+            border-color: #444;
+        }
+
+        body.dark-mode .tag {
+            background: #3a3a3a;
+            color: #ddd;
         }
 
         .container {
@@ -216,30 +229,130 @@
             color: #fff;
         }
 
-        /* ===== Main Content Area (فارغ - يمكن إضافة المحتوى هنا) ===== */
-        main {
-            flex: 1;
-            padding: 40px 0;
-        }
-
-        .content-placeholder {
+        /* ===== Page Header ===== */
+        .page-header {
             text-align: center;
-            padding: 60px 20px;
-            background: rgba(255,255,255,0.5);
-            border-radius: 20px;
-            margin: 20px 0;
-            backdrop-filter: blur(5px);
+            padding: 50px 0 30px;
         }
 
-        .content-placeholder h2 {
-            font-size: 32px;
-            color: var(--dark-text);
+        .page-header h1 {
+            font-size: 48px;
+            font-weight: 700;
             margin-bottom: 15px;
         }
 
-        .content-placeholder p {
-            font-size: 18px;
+        .page-header h1 span {
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            font-size: 20px;
             color: var(--secondary-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== Gallery Section ===== */
+        .gallery-section {
+            padding: 20px 0 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--dark-text);
+        }
+
+        .section-title span {
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .gallery-card {
+            background: var(--bg-white);
+            border-radius: 24px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            aspect-ratio: 3/4;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(122,90,248,0.1);
+            border-color: var(--primary-purple);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(122,90,248,0.1), rgba(43,176,237,0.1));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: var(--primary-purple);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-card:hover .card-icon {
+            background: var(--main-gradient);
+            color: white;
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .card-description {
+            font-size: 15px;
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            color: var(--secondary-text);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 6px 16px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .gallery-card:hover .tag {
+            background: var(--main-gradient);
+            color: white;
         }
 
         /* ===== Footer Section ===== */
@@ -314,6 +427,12 @@
         }
 
         /* ===== Responsive Design ===== */
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             header .container {
                 flex-wrap: wrap;
@@ -331,6 +450,18 @@
                 gap: 20px;
             }
 
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .page-header p {
+                font-size: 18px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
             .footer-brand-row {
                 flex-direction: column;
                 gap: 10px;
@@ -339,17 +470,34 @@
             .footer-brand-text {
                 text-align: center;
             }
-
-            .content-placeholder h2 {
-                font-size: 28px;
-            }
-
-            .content-placeholder p {
-                font-size: 16px;
-            }
         }
 
         @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .page-header p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .card-title {
+                font-size: 20px;
+            }
+
+            .card-description {
+                font-size: 14px;
+            }
+
+            .tag {
+                font-size: 12px;
+                padding: 5px 12px;
+            }
+
             .footer-brand-name {
                 font-size: 22px;
             }
@@ -361,10 +509,6 @@
 
             .footer-copyright {
                 font-size: 12px;
-            }
-
-            .content-placeholder h2 {
-                font-size: 24px;
             }
         }
     </style>
@@ -382,7 +526,7 @@
                 <a href="index.html">الرئيسية</a>
                 <a href="features.html">المميزات</a>
                 <a href="pricing.html">الأسعار</a>
-                <a href="gallery.html">معرض الأعمال</a>
+                <a href="gallery.html" class="active">معرض الأعمال</a>
                 <a href="contact.html">اتصل بنا</a>
             </div>
 
@@ -398,15 +542,106 @@
         </div>
     </header>
 
-    <!-- Main Content - فارغ تماماً -->
+    <!-- Main Content -->
     <main>
-        <div class="container">
-            <div class="content-placeholder">
-                <h2>مرحباً بك في OdoNex</h2>
-                <p>هذه مساحة فارغة - يمكنك إضافة المحتوى الذي تريده هنا</p>
-                <p style="margin-top: 20px; font-size: 14px; color: #999;">(الهيدر والفوتر فقط مع الاحتفاظ بجميع الوظائف)</p>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1><span>معرض</span> أعمالنا</h1>
+                <p>نفخر بتقديم مجموعة من مشاريعنا الناجحة في مختلف المجالات</p>
             </div>
-        </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <div class="container">
+                <div class="gallery-grid">
+                    <!-- 1. نظام العيادات الطبية -->
+                    <div class="gallery-card">
+                        <div class="card-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <h3 class="card-title">نظام العيادات الطبية</h3>
+                        <p class="card-description">يدير المواعيد، السجلات الطبية، والفواتير</p>
+                        <div class="tags-container">
+                            <span class="tag">المواعيد</span>
+                            <span class="tag">الملفات الطبية</span>
+                            <span class="tag">الفواتير</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. نظام محاسبة المصانع -->
+                    <div class="gallery-card">
+                        <div class="card-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3 class="card-title">نظام محاسبة المصانع</h3>
+                        <p class="card-description">ERP متكامل للإنتاج، التكاليف، والموارد البشرية</p>
+                        <div class="tags-container">
+                            <span class="tag">الإنتاج</span>
+                            <span class="tag">التكاليف</span>
+                            <span class="tag">الموارد البشرية</span>
+                        </div>
+                    </div>
+
+                    <!-- 3. نظام إدارة المطاعم -->
+                    <div class="gallery-card">
+                        <div class="card-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3 class="card-title">نظام إدارة المطاعم</h3>
+                        <p class="card-description">الطلبات، المخزون، الفواتير لـ 15 فرع</p>
+                        <div class="tags-container">
+                            <span class="tag">نقاط البيع</span>
+                            <span class="tag">المخزون</span>
+                            <span class="tag">التقارير</span>
+                        </div>
+                    </div>
+
+                    <!-- 4. نظام التجارة الإلكترونية -->
+                    <div class="gallery-card">
+                        <div class="card-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3 class="card-title">نظام التجارة الإلكترونية</h3>
+                        <p class="card-description">يربط المتجر الإلكتروني مع النظام المحاسبي</p>
+                        <div class="tags-container">
+                            <span class="tag">المتجر الإلكتروني</span>
+                            <span class="tag">المبيعات</span>
+                            <span class="tag">المخزون</span>
+                        </div>
+                    </div>
+
+                    <!-- 5. نظام الشركات العقارية -->
+                    <div class="gallery-card">
+                        <div class="card-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="card-title">نظام الشركات العقارية</h3>
+                        <p class="card-description">يدير العقارات، العقود، التحصيل، والصيانة</p>
+                        <div class="tags-container">
+                            <span class="tag">التحصيل</span>
+                            <span class="tag">العقود</span>
+                            <span class="tag">العقارات</span>
+                        </div>
+                    </div>
+
+                    <!-- 6. نظام إدارة المدارس -->
+                    <div class="gallery-card">
+                        <div class="card-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <h3 class="card-title">نظام إدارة المدارس</h3>
+                        <p class="card-description">يدير شؤون الطلاب، الرسوم الدراسية، التقارير</p>
+                        <div class="tags-container">
+                            <span class="tag">شؤون الطلاب</span>
+                            <span class="tag">الرسوم</span>
+                            <span class="tag">التقارير</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
