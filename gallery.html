@@ -28,6 +28,7 @@
             --body-bg: #F8F9FA;
             --main-gradient: linear-gradient(135deg, #00B4D8, #7B2CBF);
             --icon-gradient: linear-gradient(135deg, #7B2CBF, #00B4D8);
+            --tag-gradient: linear-gradient(135deg, #7B2CBF, #00B4D8);
         }
 
         body {
@@ -312,21 +313,22 @@
             margin-top: auto;
         }
 
-        /* العلامة الواحدة */
+        /* العلامة الواحدة - بتدرج لوني */
         .tag {
-            background: var(--light-purple-bg);
-            color: var(--primary-purple);
+            background: var(--tag-gradient);
+            color: white;
             font-size: 13px;
             font-weight: 600;
-            padding: 5px 14px;
+            padding: 6px 16px;
             border-radius: 20px;
             transition: all 0.3s ease;
             display: inline-block;
+            box-shadow: 0 3px 8px rgba(123, 44, 191, 0.2);
         }
 
         .gallery-card:hover .tag {
-            background: var(--primary-purple);
-            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(123, 44, 191, 0.3);
         }
 
         /* ===== Footer (من الكود السابق) ===== */
@@ -462,7 +464,7 @@
 
             .tag {
                 font-size: 12px;
-                padding: 4px 12px;
+                padding: 5px 14px;
             }
 
             .footer-brand-name {
