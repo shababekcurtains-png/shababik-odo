@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>OdoNex | الصفحة الرئيسية</title>
+    <title>OdoNex | الأسعار</title>
     <!-- Google Fonts - Cairo Bold -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -49,7 +49,10 @@
 
         body.dark-mode .black-text,
         body.dark-mode .footer-brand-name,
-        body.dark-mode .nav-logo-text {
+        body.dark-mode .nav-logo-text,
+        body.dark-mode .section-title,
+        body.dark-mode .card-title,
+        body.dark-mode .price-amount {
             color: #ffffff !important;
         }
 
@@ -214,30 +217,223 @@
             color: #fff;
         }
 
-        /* ===== Main Content Area (فارغ - يمكن إضافة المحتوى هنا) ===== */
-        main {
-            flex: 1;
-            padding: 40px 0;
-        }
-
-        .content-placeholder {
+        /* ===== Page Header ===== */
+        .page-header {
             text-align: center;
-            padding: 60px 20px;
-            background: rgba(255,255,255,0.5);
-            border-radius: 20px;
-            margin: 20px 0;
-            backdrop-filter: blur(5px);
+            padding: 40px 0 20px;
         }
 
-        .content-placeholder h2 {
-            font-size: 32px;
+        .page-header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .page-header h1 span {
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            font-size: 20px;
+            color: var(--secondary-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== Pricing Section ===== */
+        .pricing-section {
+            padding: 20px 0 50px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .pricing-card {
+            background: var(--bg-white);
+            border-radius: 24px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(122,90,248,0.1);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid #FFD700;
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(255,215,0,0.15);
+            z-index: 2;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--main-gradient);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .card-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
             color: var(--dark-text);
-            margin-bottom: 15px;
+            text-align: center;
         }
 
-        .content-placeholder p {
+        .price-box {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .price-monthly {
+            font-size: 36px;
+            font-weight: 700;
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .price-monthly small {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--light-text);
+            -webkit-text-fill-color: var(--light-text);
+        }
+
+        .price-yearly {
             font-size: 18px;
             color: var(--secondary-text);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features-list li {
+            padding: 12px 0;
+            font-size: 16px;
+            color: var(--secondary-text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li i {
+            color: var(--primary-purple);
+            font-size: 18px;
+        }
+
+        .btn-compare {
+            width: 100%;
+            padding: 15px;
+            background: var(--main-gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-compare:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        /* ===== Comparison Section ===== */
+        .comparison-section {
+            padding: 40px 0;
+            background: var(--section-bg);
+            border-radius: 30px;
+            margin: 20px 0;
+        }
+
+        .comparison-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .comparison-title span {
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .comparison-item {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .comparison-item h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .comparison-features {
+            list-style: none;
+        }
+
+        .comparison-features li {
+            padding: 10px 0;
+            font-size: 15px;
+            color: var(--secondary-text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .comparison-features li i {
+            color: var(--primary-purple);
+            font-size: 16px;
         }
 
         /* ===== Footer Section ===== */
@@ -312,6 +508,16 @@
         }
 
         /* ===== Responsive Design ===== */
+        @media (max-width: 992px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .comparison-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             header .container {
                 flex-wrap: wrap;
@@ -329,6 +535,22 @@
                 gap: 20px;
             }
 
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-header h1 {
+                font-size: 36px;
+            }
+
             .footer-brand-row {
                 flex-direction: column;
                 gap: 10px;
@@ -337,17 +559,25 @@
             .footer-brand-text {
                 text-align: center;
             }
-
-            .content-placeholder h2 {
-                font-size: 28px;
-            }
-
-            .content-placeholder p {
-                font-size: 16px;
-            }
         }
 
         @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 32px;
+            }
+            
+            .page-header p {
+                font-size: 16px;
+            }
+            
+            .card-title {
+                font-size: 24px;
+            }
+            
+            .price-monthly {
+                font-size: 30px;
+            }
+
             .footer-brand-name {
                 font-size: 22px;
             }
@@ -359,10 +589,6 @@
 
             .footer-copyright {
                 font-size: 12px;
-            }
-
-            .content-placeholder h2 {
-                font-size: 24px;
             }
         }
     </style>
@@ -379,7 +605,7 @@
             <div class="nav-menu">
                 <a href="index.html">الرئيسية</a>
                 <a href="features.html">المميزات</a>
-                <a href="pricing.html">الأسعار</a>
+                <a href="pricing.html" class="active">الأسعار</a>
                 <a href="gallery.html">معرض الأعمال</a>
                 <a href="contact.html">اتصل بنا</a>
             </div>
@@ -396,15 +622,116 @@
         </div>
     </header>
 
-    <!-- Main Content - فارغ تماماً -->
+    <!-- Main Content -->
     <main>
-        <div class="container">
-            <div class="content-placeholder">
-                <h2>مرحباً بك في OdoNex</h2>
-                <p>هذه مساحة فارغة - يمكنك إضافة المحتوى الذي تريده هنا</p>
-                <p style="margin-top: 20px; font-size: 14px; color: #999;">(الهيدر والفوتر فقط مع الاحتفاظ بجميع الوظائف)</p>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1><span>خطط</span> الأسعار</h1>
+                <p>اختر الخطة المناسبة لحجم أعمالك</p>
             </div>
-        </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section">
+            <div class="container">
+                <div class="pricing-grid">
+                    <!-- المؤسسي -->
+                    <div class="pricing-card">
+                        <h2 class="card-title">المؤسسي</h2>
+                        <div class="price-box">
+                            <div class="price-monthly">$100 <small>/ شهرياً</small></div>
+                            <div class="price-yearly">$360 سنوياً</div>
+                        </div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> ميزات رقمية أساسية</li>
+                            <li><i class="fas fa-check"></i> ميزات البريد</li>
+                            <li><i class="fas fa-check"></i> ميزات التركيز</li>
+                            <li><i class="fas fa-check"></i> ميزات العمل الأساسية</li>
+                            <li><i class="fas fa-check"></i> ميزات الأعمال المتقدمة</li>
+                        </ul>
+                        <button class="btn-compare" onclick="showComparison()">
+                            المقارنة
+                        </button>
+                    </div>
+
+                    <!-- الأكثر شعبية -->
+                    <div class="pricing-card popular">
+                        <div class="popular-badge">الأكثر شعبية</div>
+                        <h2 class="card-title">الاحترافي</h2>
+                        <div class="price-box">
+                            <div class="price-monthly">$79 <small>/ شهرياً</small></div>
+                            <div class="price-yearly">$250 سنوياً</div>
+                        </div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> ميزات رقمية أساسية</li>
+                            <li><i class="fas fa-check"></i> ميزات البريد</li>
+                            <li><i class="fas fa-check"></i> ميزات التركيز</li>
+                            <li><i class="fas fa-check"></i> ميزات العمل الأساسية</li>
+                            <li><i class="fas fa-check"></i> ميزات الأعمال المتقدمة</li>
+                        </ul>
+                        <button class="btn-compare" onclick="showComparison()">
+                            المقارنة
+                        </button>
+                    </div>
+
+                    <!-- المبتدئ -->
+                    <div class="pricing-card">
+                        <h2 class="card-title">المبتدئ</h2>
+                        <div class="price-box">
+                            <div class="price-monthly">$10 <small>/ شهرياً</small></div>
+                            <div class="price-yearly">$200 سنوياً</div>
+                        </div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> ميزات رقمية أساسية</li>
+                            <li><i class="fas fa-check"></i> ميزات البريد</li>
+                            <li><i class="fas fa-check"></i> ميزات التركيز</li>
+                            <li><i class="fas fa-check"></i> ميزات العمل الأساسية</li>
+                            <li><i class="fas fa-check"></i> ميزات الأعمال المتقدمة</li>
+                        </ul>
+                        <button class="btn-compare" onclick="showComparison()">
+                            المقارنة
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section class="comparison-section">
+            <div class="container">
+                <h2 class="comparison-title"><span>المقارنة</span></h2>
+                
+                <div class="comparison-grid">
+                    <!-- المؤسسي -->
+                    <div class="comparison-item">
+                        <h3>المؤسسي</h3>
+                        <ul class="comparison-features">
+                            <li><i class="fas fa-check"></i> ميزات الأعمال المتقدمة</li>
+                            <li><i class="fas fa-check"></i> ميزات سوال حساب</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- الاحترافي -->
+                    <div class="comparison-item">
+                        <h3>الاحترافي</h3>
+                        <ul class="comparison-features">
+                            <li><i class="fas fa-check"></i> ميزات الأعمال المتقدمة</li>
+                            <li><i class="fas fa-check"></i> ميزات سوال حساب</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- المبتدئ -->
+                    <div class="comparison-item">
+                        <h3>المبتدئ</h3>
+                        <ul class="comparison-features">
+                            <li><i class="fas fa-times" style="color: #ef4444;"></i> ميزات الأعمال المتقدمة</li>
+                            <li><i class="fas fa-times" style="color: #ef4444;"></i> ميزات سوال حساب</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -439,19 +766,14 @@
 
         // Language switch function
         function switchLanguage() {
-            // تحديد الصفحة الحالية والتحويل للإنجليزية
-            let currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            
-            // تحويل أسماء الصفحات
-            const pageMap = {
-                'index.html': 'index-en.html',
-                'features.html': 'features-en.html',
-                'pricing.html': 'pricing-en.html',
-                'gallery.html': 'gallery-en.html',
-                'contact.html': 'contact-en.html'
-            };
-            
-            window.location.href = pageMap[currentPage] || 'index-en.html';
+            window.location.href = 'pricing-en.html';
+        }
+
+        // Show comparison
+        function showComparison() {
+            document.querySelector('.comparison-section').scrollIntoView({
+                behavior: 'smooth'
+            });
         }
 
         // تحديث الرابط النشط
