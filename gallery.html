@@ -30,6 +30,7 @@
             --icon-color: #666666;
             --footer-bg: #F8F9FB;
             --main-gradient: linear-gradient(135deg, #7A5AF8, #2BB0ED);
+            --tag-bg: #f0f2f5;
         }
 
         body {
@@ -55,6 +56,16 @@
         body.dark-mode .section-title,
         body.dark-mode .gallery-item-title {
             color: #ffffff !important;
+        }
+
+        body.dark-mode .gallery-card {
+            background: #2a2a2a;
+            border-color: #444;
+        }
+
+        body.dark-mode .tag {
+            background: #3a3a3a;
+            color: #ddd;
         }
 
         .container {
@@ -248,100 +259,100 @@
             padding: 20px 0 60px;
         }
 
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--dark-text);
+        }
+
+        .section-title span {
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin-top: 30px;
         }
 
-        .gallery-item {
+        .gallery-card {
             background: var(--bg-white);
             border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            transition: all 0.4s ease;
-            position: relative;
+            padding: 30px 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            aspect-ratio: 3/4;
         }
 
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 45px rgba(122,90,248,0.15);
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(122,90,248,0.1);
+            border-color: var(--primary-purple);
         }
 
-        .gallery-image {
-            width: 100%;
-            height: 240px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .gallery-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .gallery-item:hover .gallery-image img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(122,90,248,0.9), rgba(43,176,237,0.9));
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(122,90,248,0.1), rgba(43,176,237,0.1));
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: var(--primary-purple);
+            transition: all 0.3s ease;
         }
 
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        .gallery-overlay i {
-            color: white;
-            font-size: 48px;
-            transform: scale(0.5);
-            transition: transform 0.4s ease;
-        }
-
-        .gallery-item:hover .gallery-overlay i {
-            transform: scale(1);
-        }
-
-        .gallery-content {
-            padding: 20px;
-        }
-
-        .gallery-category {
-            display: inline-block;
+        .gallery-card:hover .card-icon {
             background: var(--main-gradient);
             color: white;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 4px 12px;
-            border-radius: 50px;
-            margin-bottom: 10px;
         }
 
-        .gallery-item-title {
-            font-size: 20px;
+        .card-title {
+            font-size: 22px;
             font-weight: 700;
             color: var(--dark-text);
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            line-height: 1.4;
         }
 
-        .gallery-description {
-            font-size: 14px;
+        .card-description {
+            font-size: 15px;
             color: var(--secondary-text);
-            line-height: 1.6;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .tag {
+            background: var(--tag-bg);
+            color: var(--secondary-text);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 6px 16px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .gallery-card:hover .tag {
+            background: var(--main-gradient);
+            color: white;
         }
 
         /* ===== Footer Section ===== */
@@ -419,7 +430,6 @@
         @media (max-width: 992px) {
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
             }
         }
 
@@ -450,7 +460,6 @@
 
             .gallery-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
             }
 
             .footer-brand-row {
@@ -472,12 +481,21 @@
                 font-size: 16px;
             }
 
-            .gallery-image {
-                height: 200px;
+            .section-title {
+                font-size: 28px;
             }
 
-            .gallery-item-title {
-                font-size: 18px;
+            .card-title {
+                font-size: 20px;
+            }
+
+            .card-description {
+                font-size: 14px;
+            }
+
+            .tag {
+                font-size: 12px;
+                padding: 5px 12px;
             }
 
             .footer-brand-name {
@@ -529,8 +547,8 @@
         <!-- Page Header -->
         <section class="page-header">
             <div class="container">
-                <h1><span>معرض</span> الأعمال</h1>
-                <p>استعرض أحدث مشاريعنا وإنجازاتنا</p>
+                <h1><span>معرض</span> أعمالنا</h1>
+                <p>نفخر بتقديم مجموعة من مشاريعنا الناجحة في مختلف المجالات</p>
             </div>
         </section>
 
@@ -538,93 +556,87 @@
         <section class="gallery-section">
             <div class="container">
                 <div class="gallery-grid">
-                    <!-- مشروع 1 -->
-                    <div class="gallery-item">
-                        <div class="gallery-image">
-                            <img src="https://via.placeholder.com/400x300/7A5AF8/ffffff?text=مشروع+1" alt="مشروع 1">
-                            <div class="gallery-overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
+                    <!-- 1. نظام العيادات الطبية -->
+                    <div class="gallery-card">
+                        <div class="card-icon">
+                            <i class="fas fa-hospital"></i>
                         </div>
-                        <div class="gallery-content">
-                            <span class="gallery-category">تجارة إلكترونية</span>
-                            <h3 class="gallery-item-title">منصة متجر</h3>
-                            <p class="gallery-description">حل متكامل للتجارة الإلكترونية مع إدارة المخزون والمبيعات</p>
-                        </div>
-                    </div>
-
-                    <!-- مشروع 2 -->
-                    <div class="gallery-item">
-                        <div class="gallery-image">
-                            <img src="https://via.placeholder.com/400x300/2BB0ED/ffffff?text=مشروع+2" alt="مشروع 2">
-                            <div class="gallery-overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
-                        </div>
-                        <div class="gallery-content">
-                            <span class="gallery-category">نقاط بيع</span>
-                            <h3 class="gallery-item-title">نظام POS</h3>
-                            <p class="gallery-description">نظام نقاط بيع متكامل للمطاعم والمتاجر مع تقارير لحظية</p>
+                        <h3 class="card-title">نظام العيادات الطبية</h3>
+                        <p class="card-description">يدير المواعيد، السجلات الطبية، والفواتير</p>
+                        <div class="tags-container">
+                            <span class="tag">المواعيد</span>
+                            <span class="tag">الملفات الطبية</span>
+                            <span class="tag">الفواتير</span>
                         </div>
                     </div>
 
-                    <!-- مشروع 3 -->
-                    <div class="gallery-item">
-                        <div class="gallery-image">
-                            <img src="https://via.placeholder.com/400x300/7A5AF8/ffffff?text=مشروع+3" alt="مشروع 3">
-                            <div class="gallery-overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
+                    <!-- 2. نظام محاسبة المصانع -->
+                    <div class="gallery-card">
+                        <div class="card-icon">
+                            <i class="fas fa-industry"></i>
                         </div>
-                        <div class="gallery-content">
-                            <span class="gallery-category">محاسبة</span>
-                            <h3 class="gallery-item-title">نظام محاسبي</h3>
-                            <p class="gallery-description">نظام محاسبي متكامل مع إدارة الفواتير والضرائب</p>
-                        </div>
-                    </div>
-
-                    <!-- مشروع 4 -->
-                    <div class="gallery-item">
-                        <div class="gallery-image">
-                            <img src="https://via.placeholder.com/400x300/2BB0ED/ffffff?text=مشروع+4" alt="مشروع 4">
-                            <div class="gallery-overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
-                        </div>
-                        <div class="gallery-content">
-                            <span class="gallery-category">موارد بشرية</span>
-                            <h3 class="gallery-item-title">نظام HR</h3>
-                            <p class="gallery-description">إدارة الموظفين والحضور والرواتب والإجازات</p>
+                        <h3 class="card-title">نظام محاسبة المصانع</h3>
+                        <p class="card-description">ERP متكامل للإنتاج، التكاليف، والموارد البشرية</p>
+                        <div class="tags-container">
+                            <span class="tag">الإنتاج</span>
+                            <span class="tag">التكاليف</span>
+                            <span class="tag">الموارد البشرية</span>
                         </div>
                     </div>
 
-                    <!-- مشروع 5 -->
-                    <div class="gallery-item">
-                        <div class="gallery-image">
-                            <img src="https://via.placeholder.com/400x300/7A5AF8/ffffff?text=مشروع+5" alt="مشروع 5">
-                            <div class="gallery-overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
+                    <!-- 3. نظام إدارة المطاعم -->
+                    <div class="gallery-card">
+                        <div class="card-icon">
+                            <i class="fas fa-utensils"></i>
                         </div>
-                        <div class="gallery-content">
-                            <span class="gallery-category">مخازن</span>
-                            <h3 class="gallery-item-title">نظام مخازن</h3>
-                            <p class="gallery-description">إدارة المخزون والمستودعات مع تتبع الشحنات</p>
+                        <h3 class="card-title">نظام إدارة المطاعم</h3>
+                        <p class="card-description">الطلبات، المخزون، الفواتير لـ 15 فرع</p>
+                        <div class="tags-container">
+                            <span class="tag">نقاط البيع</span>
+                            <span class="tag">المخزون</span>
+                            <span class="tag">التقارير</span>
                         </div>
                     </div>
 
-                    <!-- مشروع 6 -->
-                    <div class="gallery-item">
-                        <div class="gallery-image">
-                            <img src="https://via.placeholder.com/400x300/2BB0ED/ffffff?text=مشروع+6" alt="مشروع 6">
-                            <div class="gallery-overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
+                    <!-- 4. نظام التجارة الإلكترونية -->
+                    <div class="gallery-card">
+                        <div class="card-icon">
+                            <i class="fas fa-shopping-cart"></i>
                         </div>
-                        <div class="gallery-content">
-                            <span class="gallery-category">تقارير</span>
-                            <h3 class="gallery-item-title">لوحة تحكم</h3>
-                            <p class="gallery-description">لوحة تحكم تفاعلية مع تقارير وإحصائيات متقدمة</p>
+                        <h3 class="card-title">نظام التجارة الإلكترونية</h3>
+                        <p class="card-description">يربط المتجر الإلكتروني مع النظام المحاسبي</p>
+                        <div class="tags-container">
+                            <span class="tag">المتجر الإلكتروني</span>
+                            <span class="tag">المبيعات</span>
+                            <span class="tag">المخزون</span>
+                        </div>
+                    </div>
+
+                    <!-- 5. نظام الشركات العقارية -->
+                    <div class="gallery-card">
+                        <div class="card-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="card-title">نظام الشركات العقارية</h3>
+                        <p class="card-description">يدير العقارات، العقود، التحصيل، والصيانة</p>
+                        <div class="tags-container">
+                            <span class="tag">التحصيل</span>
+                            <span class="tag">العقود</span>
+                            <span class="tag">العقارات</span>
+                        </div>
+                    </div>
+
+                    <!-- 6. نظام إدارة المدارس -->
+                    <div class="gallery-card">
+                        <div class="card-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <h3 class="card-title">نظام إدارة المدارس</h3>
+                        <p class="card-description">يدير شؤون الطلاب، الرسوم الدراسية، التقارير</p>
+                        <div class="tags-container">
+                            <span class="tag">شؤون الطلاب</span>
+                            <span class="tag">الرسوم</span>
+                            <span class="tag">التقارير</span>
                         </div>
                     </div>
                 </div>
