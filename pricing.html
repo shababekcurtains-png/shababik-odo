@@ -6,6 +6,8 @@
     <title>OdoNex | الأسعار</title>
     <!-- Google Fonts - Cairo Bold -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -28,6 +30,7 @@
             --icon-color: #666666;
             --footer-bg: #F8F9FB;
             --main-gradient: linear-gradient(135deg, #7A5AF8, #2BB0ED);
+            --popular-gradient: linear-gradient(135deg, rgba(122,90,248,0.05), rgba(43,176,237,0.05));
         }
 
         body {
@@ -220,13 +223,13 @@
         /* ===== Page Header ===== */
         .page-header {
             text-align: center;
-            padding: 40px 0 20px;
+            padding: 50px 0 30px;
         }
 
         .page-header h1 {
             font-size: 48px;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .page-header h1 span {
@@ -244,36 +247,45 @@
 
         /* ===== Pricing Section ===== */
         .pricing-section {
-            padding: 20px 0 50px;
+            padding: 20px 0 60px;
         }
 
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .pricing-card {
             background: var(--bg-white);
-            border-radius: 24px;
-            padding: 30px 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            border-radius: 28px;
+            padding: 35px 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             border: 2px solid transparent;
         }
 
         .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(122,90,248,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 25px 45px rgba(122,90,248,0.12);
         }
 
+        /* البطاقة الوسطى - الأكثر شعبية */
         .pricing-card.popular {
-            border: 2px solid #FFD700;
+            border: double 2px transparent;
+            background-image: linear-gradient(var(--bg-white), var(--bg-white)), 
+                              var(--main-gradient);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
             transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(255,215,0,0.15);
+            box-shadow: 0 20px 40px rgba(122,90,248,0.15);
             z-index: 2;
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-8px);
         }
 
         .popular-badge {
@@ -283,17 +295,18 @@
             transform: translateX(-50%);
             background: var(--main-gradient);
             color: white;
-            padding: 8px 25px;
+            padding: 8px 30px;
             border-radius: 50px;
             font-size: 14px;
             font-weight: 600;
             white-space: nowrap;
+            box-shadow: 0 5px 15px rgba(122,90,248,0.3);
         }
 
         .card-title {
             font-size: 28px;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: var(--dark-text);
             text-align: center;
         }
@@ -302,16 +315,17 @@
             text-align: center;
             margin-bottom: 25px;
             padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px dashed var(--border-color);
         }
 
         .price-monthly {
-            font-size: 36px;
+            font-size: 42px;
             font-weight: 700;
             background: var(--main-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 5px;
+            line-height: 1.2;
         }
 
         .price-monthly small {
@@ -324,6 +338,7 @@
         .price-yearly {
             font-size: 18px;
             color: var(--secondary-text);
+            font-weight: 500;
         }
 
         .features-list {
@@ -337,7 +352,7 @@
             color: var(--secondary-text);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -348,99 +363,73 @@
         .features-list li i {
             color: var(--primary-purple);
             font-size: 18px;
+            width: 22px;
         }
 
-        .btn-compare {
+        /* زر المقارنة المفرغ */
+        .btn-outline {
             width: 100%;
-            padding: 15px;
-            background: var(--main-gradient);
-            color: white;
-            border: none;
-            border-radius: 12px;
+            padding: 14px;
+            background: transparent;
+            border: 2px solid transparent;
+            border-radius: 50px;
             font-size: 18px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-        }
-
-        .btn-compare:hover {
-            opacity: 0.9;
-            transform: scale(1.02);
-        }
-
-        /* ===== Comparison Section ===== */
-        .comparison-section {
-            padding: 40px 0;
-            background: var(--section-bg);
-            border-radius: 30px;
-            margin: 20px 0;
-        }
-
-        .comparison-title {
-            text-align: center;
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 30px;
-        }
-
-        .comparison-title span {
-            background: var(--main-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .comparison-item {
-            background: var(--bg-white);
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-        }
-
-        .comparison-item h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--dark-text);
-            text-align: center;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        .comparison-features {
-            list-style: none;
-        }
-
-        .comparison-features li {
-            padding: 10px 0;
-            font-size: 15px;
-            color: var(--secondary-text);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .comparison-features li i {
+            position: relative;
+            background-image: var(--main-gradient);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            -webkit-background-clip: padding-box, border-box;
             color: var(--primary-purple);
+        }
+
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50px;
+            padding: 2px;
+            background: var(--main-gradient);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--main-gradient);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(122,90,248,0.2);
+        }
+
+        .btn-outline:hover::before {
+            opacity: 0;
+        }
+
+        .btn-outline i {
             font-size: 16px;
+            transition: transform 0.3s;
+        }
+
+        .btn-outline:hover i {
+            transform: translateX(-5px);
         }
 
         /* ===== Footer Section ===== */
         footer {
             background-color: var(--footer-bg);
             width: 100%;
-            padding: 35px 0 25px;
+            padding: 40px 0 25px;
             text-align: center;
             margin-top: auto;
         }
@@ -460,7 +449,7 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
 
         .footer-brand-text {
@@ -468,7 +457,7 @@
         }
 
         .footer-brand-name {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
             color: var(--dark-text);
             line-height: 1.2;
@@ -478,7 +467,7 @@
             font-size: 15px;
             font-weight: 600;
             color: var(--secondary-text);
-            margin-top: 3px;
+            margin-top: 5px;
         }
 
         body.dark-mode .footer-tagline {
@@ -486,8 +475,8 @@
         }
 
         .footer-logo {
-            width: 55px;
-            height: 55px;
+            width: 60px;
+            height: 60px;
         }
 
         .footer-logo img {
@@ -500,11 +489,14 @@
             font-size: 14px;
             font-weight: 500;
             color: var(--light-text);
-            margin-top: 12px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
         }
 
         body.dark-mode .footer-copyright {
             color: #aaa;
+            border-top-color: #333;
         }
 
         /* ===== Responsive Design ===== */
@@ -513,8 +505,12 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .comparison-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .pricing-card.popular:hover {
+                transform: translateY(-8px);
             }
         }
 
@@ -537,18 +533,15 @@
 
             .pricing-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .pricing-card.popular {
-                transform: scale(1);
-            }
-            
-            .comparison-grid {
-                grid-template-columns: 1fr;
+                gap: 25px;
             }
             
             .page-header h1 {
                 font-size: 36px;
+            }
+            
+            .page-header p {
+                font-size: 18px;
             }
 
             .footer-brand-row {
@@ -575,7 +568,11 @@
             }
             
             .price-monthly {
-                font-size: 30px;
+                font-size: 36px;
+            }
+            
+            .features-list li {
+                font-size: 15px;
             }
 
             .footer-brand-name {
@@ -644,14 +641,15 @@
                             <div class="price-yearly">$360 سنوياً</div>
                         </div>
                         <ul class="features-list">
-                            <li><i class="fas fa-check"></i> ميزات رقمية أساسية</li>
-                            <li><i class="fas fa-check"></i> ميزات البريد</li>
-                            <li><i class="fas fa-check"></i> ميزات التركيز</li>
-                            <li><i class="fas fa-check"></i> ميزات العمل الأساسية</li>
-                            <li><i class="fas fa-check"></i> ميزات الأعمال المتقدمة</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات رقمية أساسية</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات البريد</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات التركيز</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات العمل الأساسية</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات الأعمال المتقدمة</li>
                         </ul>
-                        <button class="btn-compare" onclick="showComparison()">
-                            المقارنة
+                        <button class="btn-outline">
+                            <span>المقارنة</span>
+                            <i class="fas fa-arrow-left"></i>
                         </button>
                     </div>
 
@@ -664,14 +662,15 @@
                             <div class="price-yearly">$250 سنوياً</div>
                         </div>
                         <ul class="features-list">
-                            <li><i class="fas fa-check"></i> ميزات رقمية أساسية</li>
-                            <li><i class="fas fa-check"></i> ميزات البريد</li>
-                            <li><i class="fas fa-check"></i> ميزات التركيز</li>
-                            <li><i class="fas fa-check"></i> ميزات العمل الأساسية</li>
-                            <li><i class="fas fa-check"></i> ميزات الأعمال المتقدمة</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات رقمية أساسية</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات البريد</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات التركيز</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات العمل الأساسية</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات الأعمال المتقدمة</li>
                         </ul>
-                        <button class="btn-compare" onclick="showComparison()">
-                            المقارنة
+                        <button class="btn-outline">
+                            <span>المقارنة</span>
+                            <i class="fas fa-arrow-left"></i>
                         </button>
                     </div>
 
@@ -683,51 +682,16 @@
                             <div class="price-yearly">$200 سنوياً</div>
                         </div>
                         <ul class="features-list">
-                            <li><i class="fas fa-check"></i> ميزات رقمية أساسية</li>
-                            <li><i class="fas fa-check"></i> ميزات البريد</li>
-                            <li><i class="fas fa-check"></i> ميزات التركيز</li>
-                            <li><i class="fas fa-check"></i> ميزات العمل الأساسية</li>
-                            <li><i class="fas fa-check"></i> ميزات الأعمال المتقدمة</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات رقمية أساسية</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات البريد</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات التركيز</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات العمل الأساسية</li>
+                            <li><i class="fas fa-check-circle"></i> ميزات الأعمال المتقدمة</li>
                         </ul>
-                        <button class="btn-compare" onclick="showComparison()">
-                            المقارنة
+                        <button class="btn-outline">
+                            <span>المقارنة</span>
+                            <i class="fas fa-arrow-left"></i>
                         </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Comparison Section -->
-        <section class="comparison-section">
-            <div class="container">
-                <h2 class="comparison-title"><span>المقارنة</span></h2>
-                
-                <div class="comparison-grid">
-                    <!-- المؤسسي -->
-                    <div class="comparison-item">
-                        <h3>المؤسسي</h3>
-                        <ul class="comparison-features">
-                            <li><i class="fas fa-check"></i> ميزات الأعمال المتقدمة</li>
-                            <li><i class="fas fa-check"></i> ميزات سوال حساب</li>
-                        </ul>
-                    </div>
-                    
-                    <!-- الاحترافي -->
-                    <div class="comparison-item">
-                        <h3>الاحترافي</h3>
-                        <ul class="comparison-features">
-                            <li><i class="fas fa-check"></i> ميزات الأعمال المتقدمة</li>
-                            <li><i class="fas fa-check"></i> ميزات سوال حساب</li>
-                        </ul>
-                    </div>
-                    
-                    <!-- المبتدئ -->
-                    <div class="comparison-item">
-                        <h3>المبتدئ</h3>
-                        <ul class="comparison-features">
-                            <li><i class="fas fa-times" style="color: #ef4444;"></i> ميزات الأعمال المتقدمة</li>
-                            <li><i class="fas fa-times" style="color: #ef4444;"></i> ميزات سوال حساب</li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -767,13 +731,6 @@
         // Language switch function
         function switchLanguage() {
             window.location.href = 'pricing-en.html';
-        }
-
-        // Show comparison
-        function showComparison() {
-            document.querySelector('.comparison-section').scrollIntoView({
-                behavior: 'smooth'
-            });
         }
 
         // تحديث الرابط النشط
