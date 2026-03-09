@@ -1,12 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>OdoNex | الصفحة الرئيسية</title>
+    <title>OdoNex | معرض الأعمال</title>
     <!-- Google Fonts - Cairo Bold -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -50,7 +51,9 @@
 
         body.dark-mode .black-text,
         body.dark-mode .footer-brand-name,
-        body.dark-mode .nav-logo-text {
+        body.dark-mode .nav-logo-text,
+        body.dark-mode .section-title,
+        body.dark-mode .gallery-item-title {
             color: #ffffff !important;
         }
 
@@ -215,30 +218,130 @@
             color: #fff;
         }
 
-        /* ===== Main Content Area (فارغ - يمكن إضافة المحتوى هنا) ===== */
-        main {
-            flex: 1;
-            padding: 40px 0;
-        }
-
-        .content-placeholder {
+        /* ===== Page Header ===== */
+        .page-header {
             text-align: center;
-            padding: 60px 20px;
-            background: rgba(255,255,255,0.5);
-            border-radius: 20px;
-            margin: 20px 0;
-            backdrop-filter: blur(5px);
+            padding: 50px 0 30px;
         }
 
-        .content-placeholder h2 {
-            font-size: 32px;
-            color: var(--dark-text);
+        .page-header h1 {
+            font-size: 48px;
+            font-weight: 700;
             margin-bottom: 15px;
         }
 
-        .content-placeholder p {
-            font-size: 18px;
+        .page-header h1 span {
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-header p {
+            font-size: 20px;
             color: var(--secondary-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== Gallery Section ===== */
+        .gallery-section {
+            padding: 20px 0 60px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            background: var(--bg-white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 45px rgba(122,90,248,0.15);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover .gallery-image img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(122,90,248,0.9), rgba(43,176,237,0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 48px;
+            transform: scale(0.5);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay i {
+            transform: scale(1);
+        }
+
+        .gallery-content {
+            padding: 20px;
+        }
+
+        .gallery-category {
+            display: inline-block;
+            background: var(--main-gradient);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+        }
+
+        .gallery-item-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+
+        .gallery-description {
+            font-size: 14px;
+            color: var(--secondary-text);
+            line-height: 1.6;
         }
 
         /* ===== Footer Section ===== */
@@ -313,6 +416,13 @@
         }
 
         /* ===== Responsive Design ===== */
+        @media (max-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
         @media (max-width: 768px) {
             header .container {
                 flex-wrap: wrap;
@@ -330,6 +440,19 @@
                 gap: 20px;
             }
 
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .page-header p {
+                font-size: 18px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
             .footer-brand-row {
                 flex-direction: column;
                 gap: 10px;
@@ -338,17 +461,25 @@
             .footer-brand-text {
                 text-align: center;
             }
-
-            .content-placeholder h2 {
-                font-size: 28px;
-            }
-
-            .content-placeholder p {
-                font-size: 16px;
-            }
         }
 
         @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .page-header p {
+                font-size: 16px;
+            }
+
+            .gallery-image {
+                height: 200px;
+            }
+
+            .gallery-item-title {
+                font-size: 18px;
+            }
+
             .footer-brand-name {
                 font-size: 22px;
             }
@@ -360,10 +491,6 @@
 
             .footer-copyright {
                 font-size: 12px;
-            }
-
-            .content-placeholder h2 {
-                font-size: 24px;
             }
         }
     </style>
@@ -381,7 +508,7 @@
                 <a href="index.html">الرئيسية</a>
                 <a href="features.html">المميزات</a>
                 <a href="pricing.html">الأسعار</a>
-                <a href="gallery.html">معرض الأعمال</a>
+                <a href="gallery.html" class="active">معرض الأعمال</a>
                 <a href="contact.html">اتصل بنا</a>
             </div>
 
@@ -397,15 +524,112 @@
         </div>
     </header>
 
-    <!-- Main Content - فارغ تماماً -->
+    <!-- Main Content -->
     <main>
-        <div class="container">
-            <div class="content-placeholder">
-                <h2>مرحباً بك في OdoNex</h2>
-                <p>هذه مساحة فارغة - يمكنك إضافة المحتوى الذي تريده هنا</p>
-                <p style="margin-top: 20px; font-size: 14px; color: #999;">(الهيدر والفوتر فقط مع الاحتفاظ بجميع الوظائف)</p>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1><span>معرض</span> الأعمال</h1>
+                <p>استعرض أحدث مشاريعنا وإنجازاتنا</p>
             </div>
-        </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <div class="container">
+                <div class="gallery-grid">
+                    <!-- مشروع 1 -->
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <img src="https://via.placeholder.com/400x300/7A5AF8/ffffff?text=مشروع+1" alt="مشروع 1">
+                            <div class="gallery-overlay">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <span class="gallery-category">تجارة إلكترونية</span>
+                            <h3 class="gallery-item-title">منصة متجر</h3>
+                            <p class="gallery-description">حل متكامل للتجارة الإلكترونية مع إدارة المخزون والمبيعات</p>
+                        </div>
+                    </div>
+
+                    <!-- مشروع 2 -->
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <img src="https://via.placeholder.com/400x300/2BB0ED/ffffff?text=مشروع+2" alt="مشروع 2">
+                            <div class="gallery-overlay">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <span class="gallery-category">نقاط بيع</span>
+                            <h3 class="gallery-item-title">نظام POS</h3>
+                            <p class="gallery-description">نظام نقاط بيع متكامل للمطاعم والمتاجر مع تقارير لحظية</p>
+                        </div>
+                    </div>
+
+                    <!-- مشروع 3 -->
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <img src="https://via.placeholder.com/400x300/7A5AF8/ffffff?text=مشروع+3" alt="مشروع 3">
+                            <div class="gallery-overlay">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <span class="gallery-category">محاسبة</span>
+                            <h3 class="gallery-item-title">نظام محاسبي</h3>
+                            <p class="gallery-description">نظام محاسبي متكامل مع إدارة الفواتير والضرائب</p>
+                        </div>
+                    </div>
+
+                    <!-- مشروع 4 -->
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <img src="https://via.placeholder.com/400x300/2BB0ED/ffffff?text=مشروع+4" alt="مشروع 4">
+                            <div class="gallery-overlay">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <span class="gallery-category">موارد بشرية</span>
+                            <h3 class="gallery-item-title">نظام HR</h3>
+                            <p class="gallery-description">إدارة الموظفين والحضور والرواتب والإجازات</p>
+                        </div>
+                    </div>
+
+                    <!-- مشروع 5 -->
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <img src="https://via.placeholder.com/400x300/7A5AF8/ffffff?text=مشروع+5" alt="مشروع 5">
+                            <div class="gallery-overlay">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <span class="gallery-category">مخازن</span>
+                            <h3 class="gallery-item-title">نظام مخازن</h3>
+                            <p class="gallery-description">إدارة المخزون والمستودعات مع تتبع الشحنات</p>
+                        </div>
+                    </div>
+
+                    <!-- مشروع 6 -->
+                    <div class="gallery-item">
+                        <div class="gallery-image">
+                            <img src="https://via.placeholder.com/400x300/2BB0ED/ffffff?text=مشروع+6" alt="مشروع 6">
+                            <div class="gallery-overlay">
+                                <i class="fas fa-search-plus"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-content">
+                            <span class="gallery-category">تقارير</span>
+                            <h3 class="gallery-item-title">لوحة تحكم</h3>
+                            <p class="gallery-description">لوحة تحكم تفاعلية مع تقارير وإحصائيات متقدمة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
