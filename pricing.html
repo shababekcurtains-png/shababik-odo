@@ -22,11 +22,11 @@
             --main-gradient: linear-gradient(135deg, #7A5AF8, #2BB0ED);
             --dark-text: #333333;
             --light-text: #666666;
-            --bg-light: #f8f9fa;
-            --bg-white: #ffffff;
-            --border-color: #e0e0e0;
+            --bg-light: #F8F9FB;
+            --bg-white: #FFFFFF;
+            --border-color: #E6E8EC;
             --footer-bg: #1a1a2e;
-            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
             --popular-border: #FFD700;
         }
 
@@ -70,6 +70,7 @@
         .nav-left img {
             height: 45px;
             width: auto;
+            object-fit: contain;
         }
 
         .nav-left span {
@@ -153,6 +154,10 @@
             font-size: 48px;
             font-weight: 700;
             margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+
+        .hero h1 span {
             background: var(--main-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -167,7 +172,7 @@
 
         /* ===== Features Section ===== */
         .features-section {
-            padding: 60px 0;
+            padding: 60px 0 40px;
         }
 
         .section-title {
@@ -176,12 +181,6 @@
             font-weight: 700;
             margin-bottom: 15px;
             color: var(--dark-text);
-        }
-
-        .section-title span {
-            background: var(--main-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .section-subtitle {
@@ -204,6 +203,7 @@
             border-radius: 16px;
             box-shadow: var(--shadow);
             transition: transform 0.3s;
+            border: 1px solid var(--border-color);
         }
 
         .feature-card:hover {
@@ -241,22 +241,20 @@
 
         /* ===== Pricing Section ===== */
         .pricing-section {
-            padding: 60px 0;
-            background: var(--bg-white);
-            border-radius: 50px 50px 0 0;
+            padding: 40px 0 60px;
         }
 
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
         .pricing-card {
             background: var(--bg-white);
             border-radius: 24px;
-            padding: 40px 30px;
+            padding: 35px 25px;
             box-shadow: var(--shadow);
             position: relative;
             transition: transform 0.3s;
@@ -310,7 +308,7 @@
             background: var(--main-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .price span {
@@ -323,7 +321,7 @@
         .yearly-price {
             font-size: 20px;
             color: var(--light-text);
-            margin-bottom: 20px;
+            margin-top: 5px;
         }
 
         .features-list {
@@ -348,6 +346,10 @@
         .features-list li i {
             color: var(--primary-purple);
             font-size: 18px;
+        }
+
+        .features-list li i.fa-times {
+            color: #ef4444;
         }
 
         .btn-compare {
@@ -391,6 +393,8 @@
             border-radius: 24px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .comparison-row {
@@ -418,114 +422,64 @@
         .comparison-cell:first-child {
             text-align: right;
             font-weight: 600;
-        }
-
-        .comparison-cell i {
-            color: var(--primary-purple);
-            font-size: 20px;
+            padding-right: 30px;
         }
 
         .comparison-cell i.fa-check {
             color: #10b981;
+            font-size: 20px;
         }
 
         .comparison-cell i.fa-times {
             color: #ef4444;
+            font-size: 20px;
         }
 
         /* ===== Footer ===== */
         footer {
             background: var(--footer-bg);
-            padding: 60px 0 30px;
+            padding: 40px 0 20px;
             color: white;
         }
 
         .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-col h4 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .footer-col p {
-            color: #aaa;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-col ul li a {
-            color: #aaa;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--primary-blue);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
         }
 
         .footer-logo {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 20px;
         }
 
         .footer-logo img {
             width: 50px;
             height: 50px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
         }
 
         .footer-logo span {
             font-size: 24px;
             font-weight: 700;
-            background: var(--main-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: white;
-            text-decoration: none;
-            transition: all 0.3s;
         }
 
-        .social-links a:hover {
-            background: var(--main-gradient);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
+        .footer-text {
+            font-size: 16px;
+            color: #aaa;
             text-align: center;
-            padding-top: 30px;
+            line-height: 1.8;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255,255,255,0.1);
             color: #aaa;
             font-size: 14px;
@@ -534,13 +488,18 @@
         /* ===== Responsive ===== */
         @media (max-width: 992px) {
             .features-grid,
-            .pricing-grid,
-            .footer-content {
+            .pricing-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
             .comparison-row {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .comparison-cell:first-child {
+                grid-column: span 2;
+                text-align: center;
+                background: #f8f9fa;
             }
         }
 
@@ -550,8 +509,7 @@
             }
             
             .features-grid,
-            .pricing-grid,
-            .footer-content {
+            .pricing-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -566,6 +524,11 @@
             .section-title {
                 font-size: 32px;
             }
+            
+            .footer-logo {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -574,7 +537,7 @@
     <header>
         <div class="container">
             <div class="nav-left">
-                <img src="assets/images/odonex-logo.png" alt="OdoNex">
+                <img src="assets/images/odonex-logo.png.png" alt="OdoNex">
                 <span>OdoNex</span>
             </div>
 
@@ -601,83 +564,80 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>خطط الأسعار</h1>
+            <h1><span>خطط</span> الأسعار</h1>
             <p>اختر الخطة المناسبة لحجم أعمالك</p>
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Features Section (من الصورة الأولى) -->
     <section class="features-section">
         <div class="container">
             <h2 class="section-title">المميزات</h2>
             <p class="section-subtitle">كل ما تحتاجه لإدارة أعمالك بكفاءة وأمان في مكان واحد</p>
 
             <div class="features-grid">
-                <!-- Feature 1 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>أمان متقدم</h3>
-                    <p>نظام أمان متكامل مع تشفير 256-bit لحماية بياناتك</p>
-                </div>
-
-                <!-- Feature 2 -->
+                <!-- Scalability -->
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>تقارير لحظية</h3>
-                    <p>تقارير دقيقة وفورية عن أداء أعمالك ومبيعاتك</p>
+                    <h3>قابلية التوسع</h3>
+                    <p>نظام ينمو مع نمو أعمالك ويدعم التوسع المستقبلي</p>
                 </div>
 
-                <!-- Feature 3 -->
+                <!-- Data Security -->
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-cloud-upload-alt"></i>
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>نسخ احتياطي</h3>
-                    <p>نسخ احتياطي يومي آمن لضمان عدم فقدان بياناتك</p>
+                    <h3>أمان البيانات</h3>
+                    <p>تشفير متقدم وحماية كاملة لبياناتك الحساسة</p>
                 </div>
 
-                <!-- Feature 4 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>دعم فني 24/7</h3>
-                    <p>فريق دعم متاح على مدار الساعة لمساعدتك</p>
-                </div>
-
-                <!-- Feature 5 -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>تطبيق جوال</h3>
-                    <p>تطبيق جوال متكامل لمتابعة أعمالك أينما كنت</p>
-                </div>
-
-                <!-- Feature 6 -->
+                <!-- Integration -->
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-link"></i>
                     </div>
-                    <h3>تكامل سهل</h3>
-                    <p>يتكامل بسهولة مع بوابات الدفع والمنصات المختلفة</p>
+                    <h3>تكامل سلس</h3>
+                    <p>يتكامل بسهولة مع جميع أنظمة الدفع والمنصات</p>
+                </div>
+
+                <!-- Operational Efficiency -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>كفاءة تشغيلية</h3>
+                    <p>أتمتة العمليات وتوفير الوقت والجهد</p>
+                </div>
+
+                <!-- Global Access -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>وصول عالمي</h3>
+                    <p>إدارة أعمالك من أي مكان في العالم</p>
+                </div>
+
+                <!-- Technical Support -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>دعم فني</h3>
+                    <p>فريق دعم متاح على مدار الساعة لمساعدتك</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
+    <!-- Pricing Section (من الصورة الثانية) -->
     <section class="pricing-section">
         <div class="container">
-            <h2 class="section-title">خطط <span>الأسعار</span></h2>
-            <p class="section-subtitle">اختر الخطة المناسبة لاحتياجات عملك</p>
-
             <div class="pricing-grid">
-                <!-- Beginner Plan -->
+                <!-- المبتدئ -->
                 <div class="pricing-card">
                     <div class="card-header">
                         <h3>المبتدئ</h3>
@@ -689,15 +649,14 @@
                         <li><i class="fas fa-check"></i> ميزات الربح</li>
                         <li><i class="fas fa-check"></i> ميزات التخزين</li>
                         <li><i class="fas fa-check"></i> ميزات العمل الأساسية</li>
-                        <li><i class="fas fa-times" style="color: #ef4444;"></i> ميزات الأعمال المتقدمة</li>
-                        <li><i class="fas fa-times" style="color: #ef4444;"></i> ميزات سوان حساب</li>
+                        <li><i class="fas fa-times"></i> ميزات الأعمال المتقدمة</li>
                     </ul>
                     <button class="btn-compare" onclick="showComparison()">
-                        المقارنة <i class="fas fa-arrow-left"></i>
+                        المقارنة
                     </button>
                 </div>
 
-                <!-- Popular Plan -->
+                <!-- الأكثر شعبية -->
                 <div class="pricing-card popular">
                     <div class="popular-badge">الأكثر شعبية</div>
                     <div class="card-header">
@@ -711,14 +670,14 @@
                         <li><i class="fas fa-check"></i> ميزات التخزين</li>
                         <li><i class="fas fa-check"></i> ميزات العمل الأساسية</li>
                         <li><i class="fas fa-check"></i> ميزات الأعمال المتقدمة</li>
-                        <li><i class="fas fa-times" style="color: #ef4444;"></i> ميزات سوان حساب</li>
+                        <li><i class="fas fa-check"></i> ميزات سوان حساب</li>
                     </ul>
                     <button class="btn-compare" onclick="showComparison()">
-                        المقارنة <i class="fas fa-arrow-left"></i>
+                        المقارنة
                     </button>
                 </div>
 
-                <!-- Institutional Plan -->
+                <!-- المؤسسي -->
                 <div class="pricing-card">
                     <div class="card-header">
                         <h3>المؤسسي</h3>
@@ -734,20 +693,19 @@
                         <li><i class="fas fa-check"></i> ميزات سوان حساب</li>
                     </ul>
                     <button class="btn-compare" onclick="showComparison()">
-                        المقارنة <i class="fas fa-arrow-left"></i>
+                        المقارنة
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Comparison Section -->
+    <!-- Comparison Table (مقارنة تفصيلية) -->
     <section class="comparison-section" id="comparison">
         <div class="container">
             <h2 class="comparison-title">مقارنة الخطط</h2>
             
             <div class="comparison-table">
-                <!-- Header -->
                 <div class="comparison-row header">
                     <div class="comparison-cell">الميزة</div>
                     <div class="comparison-cell">المبتدئ</div>
@@ -755,7 +713,6 @@
                     <div class="comparison-cell">المؤسسي</div>
                 </div>
 
-                <!-- Row 1 -->
                 <div class="comparison-row">
                     <div class="comparison-cell">ميزات رقمية أساسية</div>
                     <div class="comparison-cell"><i class="fas fa-check"></i></div>
@@ -763,7 +720,6 @@
                     <div class="comparison-cell"><i class="fas fa-check"></i></div>
                 </div>
 
-                <!-- Row 2 -->
                 <div class="comparison-row">
                     <div class="comparison-cell">ميزات الربح</div>
                     <div class="comparison-cell"><i class="fas fa-check"></i></div>
@@ -771,7 +727,6 @@
                     <div class="comparison-cell"><i class="fas fa-check"></i></div>
                 </div>
 
-                <!-- Row 3 -->
                 <div class="comparison-row">
                     <div class="comparison-cell">ميزات التخزين</div>
                     <div class="comparison-cell">5GB</div>
@@ -779,7 +734,6 @@
                     <div class="comparison-cell">غير محدود</div>
                 </div>
 
-                <!-- Row 4 -->
                 <div class="comparison-row">
                     <div class="comparison-cell">ميزات العمل الأساسية</div>
                     <div class="comparison-cell"><i class="fas fa-check"></i></div>
@@ -787,7 +741,6 @@
                     <div class="comparison-cell"><i class="fas fa-check"></i></div>
                 </div>
 
-                <!-- Row 5 -->
                 <div class="comparison-row">
                     <div class="comparison-cell">ميزات الأعمال المتقدمة</div>
                     <div class="comparison-cell"><i class="fas fa-times"></i></div>
@@ -795,11 +748,10 @@
                     <div class="comparison-cell"><i class="fas fa-check"></i></div>
                 </div>
 
-                <!-- Row 6 -->
                 <div class="comparison-row">
                     <div class="comparison-cell">ميزات سوان حساب</div>
                     <div class="comparison-cell"><i class="fas fa-times"></i></div>
-                    <div class="comparison-cell"><i class="fas fa-times"></i></div>
+                    <div class="comparison-cell"><i class="fas fa-check"></i></div>
                     <div class="comparison-cell"><i class="fas fa-check"></i></div>
                 </div>
             </div>
@@ -810,52 +762,15 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-col">
-                    <div class="footer-logo">
-                        <img src="assets/images/odonex-logo.png" alt="OdoNex">
-                        <span>OdoNex</span>
-                    </div>
-                    <p>نظام ERP متكامل لإدارة أعمالك بكفاءة وأمان في منصة واحدة</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    </div>
+                <div class="footer-logo">
+                    <img src="assets/images/odonex-logo.png.png" alt="OdoNex">
+                    <span>OdoNex</span>
                 </div>
-
-                <div class="footer-col">
-                    <h4>روابط سريعة</h4>
-                    <ul>
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="features.html">المميزات</a></li>
-                        <li><a href="pricing.html">الأسعار</a></li>
-                        <li><a href="gallery.html">معرض الأعمال</a></li>
-                        <li><a href="contact.html">اتصل بنا</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>الدعم</h4>
-                    <ul>
-                        <li><a href="#">الأسئلة الشائعة</a></li>
-                        <li><a href="#">سياسة الخصوصية</a></li>
-                        <li><a href="#">شروط الاستخدام</a></li>
-                        <li><a href="#">الدعم الفني</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>اتصل بنا</h4>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> +966 123 456 789</li>
-                        <li><i class="fas fa-envelope"></i> info@odonex.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
-                    </ul>
+                <div class="footer-text">
+                    حلول ERP المتكاملة لإدارة أعمالك بكفاءة وأمان
                 </div>
             </div>
-
-            <div class="footer-bottom">
+            <div class="footer-copyright">
                 © 2026 جميع الحقوق محفوظة لشركة OdoNex | حلول ERP المتكاملة
             </div>
         </div>
@@ -904,12 +819,17 @@
             body.dark-mode .feature-card h3 {
                 color: #fff;
             }
-            body.dark-mode .pricing-card p,
             body.dark-mode .feature-card p {
                 color: #aaa;
             }
             body.dark-mode .section-title {
                 color: #fff;
+            }
+            body.dark-mode .comparison-cell {
+                color: #fff;
+            }
+            body.dark-mode .comparison-row.header .comparison-cell {
+                color: white;
             }
         `;
         document.head.appendChild(style);
