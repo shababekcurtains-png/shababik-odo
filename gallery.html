@@ -18,7 +18,6 @@
 
         /* ===== الإعدادات العامة ===== */
         :root {
-            /* لوحة الألوان */
             --primary-purple: #7B2CBF;
             --primary-blue: #00B4D8;
             --dark-gray: #2D3436;
@@ -247,7 +246,7 @@
         .gallery-card {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px 20px;  /* تقليل الحشو الداخلي */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             display: flex;
@@ -263,20 +262,20 @@
 
         /* حاوية الأيقونة - بتدرج لوني */
         .icon-box {
-            width: 60px;
-            height: 60px;
+            width: 50px;  /* تصغير من 60px */
+            height: 50px; /* تصغير من 60px */
             background: var(--icon-gradient);
-            border-radius: 12px;
+            border-radius: 10px; /* تصغير من 12px */
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* تقليل من 20px */
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(123, 44, 191, 0.2);
         }
 
         .icon-box i {
-            font-size: 28px;
+            font-size: 24px; /* تصغير من 28px */
             color: white;
             transition: all 0.3s ease;
         }
@@ -289,19 +288,19 @@
 
         /* عنوان المشروع */
         .card-title {
-            font-size: 20px;
+            font-size: 18px; /* تصغير من 20px */
             font-weight: 700;
             color: var(--dark-gray);
-            margin-bottom: 10px;
+            margin-bottom: 8px; /* تقليل من 10px */
             line-height: 1.4;
         }
 
         /* وصف المشروع */
         .card-description {
-            font-size: 15px;
+            font-size: 13px; /* تصغير من 15px */
             color: var(--medium-gray);
-            margin-bottom: 20px;
-            line-height: 1.6;
+            margin-bottom: 15px; /* تقليل من 20px */
+            line-height: 1.5; /* تقليل من 1.6 */
             font-weight: 400;
             flex: 1;
         }
@@ -310,7 +309,7 @@
         .tags-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px; /* تقليل من 8px */
             margin-top: auto;
         }
 
@@ -318,19 +317,48 @@
         .tag {
             background: var(--tag-gradient);
             color: white;
-            font-size: 13px;
+            font-size: 11px; /* تصغير من 13px */
             font-weight: 600;
-            padding: 6px 16px;
+            padding: 4px 10px; /* تصغير من 6px 16px */
             border-radius: 20px;
             transition: all 0.3s ease;
             display: inline-block;
             box-shadow: 0 3px 8px rgba(123, 44, 191, 0.2);
+            white-space: nowrap;
         }
 
         /* التأثير الاندماجي للزر - رفع مع تكبير خفيف */
         .gallery-card:hover .tag {
-            transform: translateY(-3px) scale(1.05);
+            transform: translateY(-2px) scale(1.03); /* تقليل التأثير */
             box-shadow: 0 5px 15px rgba(123, 44, 191, 0.4);
+        }
+
+        /* للشاشات المتوسطة */
+        @media (max-width: 1100px) {
+            .gallery-card {
+                padding: 20px 15px;
+            }
+            
+            .card-title {
+                font-size: 17px;
+            }
+            
+            .card-description {
+                font-size: 12px;
+            }
+            
+            .tag {
+                font-size: 10px;
+                padding: 3px 8px;
+            }
+        }
+
+        /* للشاشات الصغيرة */
+        @media (max-width: 900px) {
+            .tag {
+                font-size: 10px;
+                padding: 3px 6px;
+            }
         }
 
         /* ===== Footer ===== */
@@ -457,16 +485,16 @@
             }
 
             .card-title {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .card-description {
-                font-size: 14px;
+                font-size: 12px;
             }
 
             .tag {
-                font-size: 12px;
-                padding: 5px 14px;
+                font-size: 10px;
+                padding: 3px 8px;
             }
 
             .footer-brand-name {
@@ -551,20 +579,20 @@
                         <div class="tags-container">
                             <span class="tag">الإنتاج</span>
                             <span class="tag">التكاليف</span>
-                            <span class="tag">الموارد البشرية</span>
+                            <span class="tag">موارد بشرية</span>
                         </div>
                     </div>
 
                     <!-- 3. نظام العيادات الطبية -->
                     <div class="gallery-card">
                         <div class="icon-box">
-                            <i class="fas fa-stethoscope"></i>
+                            <i class="fas fa-hospital"></i>
                         </div>
                         <h3 class="card-title">نظام العيادات الطبية</h3>
                         <p class="card-description">منصة لإدارة المواعيد والملفات الطبية والفواتير لمجموعة عيادات متخصصة.</p>
                         <div class="tags-container">
                             <span class="tag">المواعيد</span>
-                            <span class="tag">الملفات الطبية</span>
+                            <span class="tag">ملفات طبية</span>
                             <span class="tag">الفوترة</span>
                         </div>
                     </div>
@@ -577,7 +605,7 @@
                         <h3 class="card-title">نظام إدارة المدارس</h3>
                         <p class="card-description">نظام شامل لإدارة شؤون الطلاب والرسوم الدراسية والتقارير المالية.</p>
                         <div class="tags-container">
-                            <span class="tag">شؤون الطلاب</span>
+                            <span class="tag">شؤون طلاب</span>
                             <span class="tag">الرسوم</span>
                             <span class="tag">التقارير</span>
                         </div>
