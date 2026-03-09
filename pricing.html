@@ -400,7 +400,7 @@
             transform: translateX(-5px);
         }
 
-        /* الزر المفرغ للبطاقات الجانبية */
+        /* الزر المفرغ للبطاقات الجانبية - بدون خلفية */
         .btn-compare-outline {
             width: 100%;
             padding: 14px;
@@ -416,11 +416,11 @@
             justify-content: center;
             gap: 10px;
             position: relative;
-            background-image: var(--main-gradient);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-            -webkit-background-clip: padding-box, border-box;
             color: var(--primary-purple);
+            background-image: var(--main-gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .btn-compare-outline::before {
@@ -439,24 +439,34 @@
             pointer-events: none;
         }
 
+        .btn-compare-outline i {
+            font-size: 16px;
+            transition: transform 0.3s;
+            background: var(--main-gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         .btn-compare-outline:hover {
             background: var(--main-gradient);
-            color: white;
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(122,90,248,0.2);
+            color: white;
+            background-clip: unset;
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: white;
+        }
+
+        .btn-compare-outline:hover i {
+            background: white;
+            background-clip: unset;
+            -webkit-background-clip: unset;
+            -webkit-text-fill-color: white;
         }
 
         .btn-compare-outline:hover::before {
             opacity: 0;
-        }
-
-        .btn-compare-outline i {
-            font-size: 16px;
-            transition: transform 0.3s;
-        }
-
-        .btn-compare-outline:hover i {
-            transform: translateX(-5px);
         }
 
         /* ===== Footer Section ===== */
@@ -667,7 +677,7 @@
         <section class="pricing-section">
             <div class="container">
                 <div class="pricing-grid">
-                    <!-- المؤسسي - بطاقة جانبية (زر مفرغ) -->
+                    <!-- المؤسسي - بطاقة جانبية (زر مفرغ بدون خلفية) -->
                     <div class="pricing-card">
                         <h2 class="card-title">المؤسسي</h2>
                         <div class="price-box">
@@ -708,7 +718,7 @@
                         </button>
                     </div>
 
-                    <!-- المبتدئ - بطاقة جانبية (زر مفرغ) -->
+                    <!-- المبتدئ - بطاقة جانبية (زر مفرغ بدون خلفية) -->
                     <div class="pricing-card">
                         <h2 class="card-title">المبتدئ</h2>
                         <div class="price-box">
