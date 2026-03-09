@@ -366,8 +366,42 @@
             width: 22px;
         }
 
-        /* زر المقارنة المفرغ */
-        .btn-outline {
+        /* ===== أزرار المقارنة ===== */
+        /* الزر الملئ للبطاقة الوسطى */
+        .btn-compare-filled {
+            width: 100%;
+            padding: 14px;
+            background: var(--main-gradient);
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(122,90,248,0.2);
+        }
+
+        .btn-compare-filled:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(122,90,248,0.3);
+        }
+
+        .btn-compare-filled i {
+            font-size: 16px;
+            transition: transform 0.3s;
+        }
+
+        .btn-compare-filled:hover i {
+            transform: translateX(-5px);
+        }
+
+        /* الزر المفرغ للبطاقات الجانبية */
+        .btn-compare-outline {
             width: 100%;
             padding: 14px;
             background: transparent;
@@ -389,7 +423,7 @@
             color: var(--primary-purple);
         }
 
-        .btn-outline::before {
+        .btn-compare-outline::before {
             content: '';
             position: absolute;
             top: 0;
@@ -405,23 +439,23 @@
             pointer-events: none;
         }
 
-        .btn-outline:hover {
+        .btn-compare-outline:hover {
             background: var(--main-gradient);
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(122,90,248,0.2);
         }
 
-        .btn-outline:hover::before {
+        .btn-compare-outline:hover::before {
             opacity: 0;
         }
 
-        .btn-outline i {
+        .btn-compare-outline i {
             font-size: 16px;
             transition: transform 0.3s;
         }
 
-        .btn-outline:hover i {
+        .btn-compare-outline:hover i {
             transform: translateX(-5px);
         }
 
@@ -633,7 +667,7 @@
         <section class="pricing-section">
             <div class="container">
                 <div class="pricing-grid">
-                    <!-- المؤسسي -->
+                    <!-- المؤسسي - بطاقة جانبية (زر مفرغ) -->
                     <div class="pricing-card">
                         <h2 class="card-title">المؤسسي</h2>
                         <div class="price-box">
@@ -647,13 +681,13 @@
                             <li><i class="fas fa-check-circle"></i> ميزات العمل الأساسية</li>
                             <li><i class="fas fa-check-circle"></i> ميزات الأعمال المتقدمة</li>
                         </ul>
-                        <button class="btn-outline">
+                        <button class="btn-compare-outline">
                             <span>المقارنة</span>
                             <i class="fas fa-arrow-left"></i>
                         </button>
                     </div>
 
-                    <!-- الأكثر شعبية -->
+                    <!-- الأكثر شعبية - البطاقة الوسطى (زر ملون) -->
                     <div class="pricing-card popular">
                         <div class="popular-badge">الأكثر شعبية</div>
                         <h2 class="card-title">الاحترافي</h2>
@@ -668,13 +702,13 @@
                             <li><i class="fas fa-check-circle"></i> ميزات العمل الأساسية</li>
                             <li><i class="fas fa-check-circle"></i> ميزات الأعمال المتقدمة</li>
                         </ul>
-                        <button class="btn-outline">
+                        <button class="btn-compare-filled">
                             <span>المقارنة</span>
                             <i class="fas fa-arrow-left"></i>
                         </button>
                     </div>
 
-                    <!-- المبتدئ -->
+                    <!-- المبتدئ - بطاقة جانبية (زر مفرغ) -->
                     <div class="pricing-card">
                         <h2 class="card-title">المبتدئ</h2>
                         <div class="price-box">
@@ -688,7 +722,7 @@
                             <li><i class="fas fa-check-circle"></i> ميزات العمل الأساسية</li>
                             <li><i class="fas fa-check-circle"></i> ميزات الأعمال المتقدمة</li>
                         </ul>
-                        <button class="btn-outline">
+                        <button class="btn-compare-outline">
                             <span>المقارنة</span>
                             <i class="fas fa-arrow-left"></i>
                         </button>
