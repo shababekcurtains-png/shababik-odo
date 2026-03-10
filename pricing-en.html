@@ -359,7 +359,7 @@
 
         /* Vertical Pen Container - يملأ الفراغ بالكامل */
         .pen-vertical {
-            width: 100px;
+            width: 150px; /* تكبير عرض الحاوية */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -404,40 +404,41 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 20px 0 10px;
+            padding: 30px 0 15px;
         }
 
-        /* صورة القلم بالحجم الطبيعي - بدون قيود */
+        /* صورة القلم - تكبير 500% لتملأ الحاوية */
         .pen-vertical-img {
-            width: 100%;
+            width: 500%;
+            max-width: 300px;
             height: auto;
             object-fit: contain;
         }
 
-        /* حاوية النص - تملأ المساحة السفلية */
+        /* حاوية النص - تملأ المساحة السفلية مع كلمة "مخصص" */
         .pen-text-container {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 10px 0 20px;
+            padding: 15px 0 30px;
         }
 
         .pen-vertical-text {
             writing-mode: vertical-rl;
             text-orientation: mixed;
             transform: rotate(180deg);
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 800;
             color: var(--primary-purple);
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             white-space: nowrap;
             transition: all 0.3s ease;
         }
 
         .pen-vertical:hover .pen-vertical-text {
             color: var(--primary-blue);
-            transform: rotate(180deg) scale(1.05);
+            transform: rotate(180deg) scale(1.1);
         }
 
         /* Pricing Grid */
@@ -683,12 +684,12 @@
             -webkit-text-fill-color: transparent;
         }
 
+        /* جعل شبكة طرق الدفع تأخذ نفس عرض خطط التسعير */
         .payment-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
+            width: 100%;
         }
 
         .payment-card {
@@ -979,16 +980,15 @@
                 width: auto;
             }
 
-            /* تصغير حجم القلم في الموبايل */
             .pen-vertical-img {
-                width: 40px;
-                height: auto;
+                width: 60px;
+                max-width: 60px;
             }
 
             .pen-vertical-text {
                 writing-mode: horizontal-tb;
                 transform: none;
-                font-size: 16px;
+                font-size: 18px;
             }
 
             .pricing-grid {
@@ -1004,7 +1004,6 @@
             .payment-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
-                max-width: 400px;
             }
 
             .payment-title {
@@ -1063,9 +1062,9 @@
                 font-size: 14px;
             }
 
-            /* تصغير إضافي للقلم في الشاشات الصغيرة جداً */
             .pen-vertical-img {
-                width: 30px;
+                width: 50px;
+                max-width: 50px;
             }
 
             .footer-brand-name {
@@ -1134,13 +1133,13 @@
         <section class="pricing-section">
             <div class="container">
                 <div class="pricing-with-pen">
-                    <!-- Vertical Pen Container - يملأ الفراغ بالكامل -->
+                    <!-- Vertical Pen Container - مع صورة كبيرة وكلمة مخصص -->
                     <div class="pen-vertical" onclick="window.location.href='customize-plan.html'">
                         <div class="pen-image-container">
                             <img src="assets/images/Pen.png.png" alt="Pen" class="pen-vertical-img">
                         </div>
                         <div class="pen-text-container">
-                            <span class="pen-vertical-text">CUSTOMIZE</span>
+                            <span class="pen-vertical-text">مخصص</span>
                         </div>
                     </div>
 
@@ -1208,7 +1207,7 @@
             </div>
         </section>
 
-        <!-- Payment Methods Section -->
+        <!-- Payment Methods Section - نفس عرض خطط التسعير -->
         <section class="payment-section">
             <div class="container">
                 <h2 class="payment-title"><span>Payment</span> Methods</h2>
