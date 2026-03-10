@@ -32,14 +32,17 @@
             --main-gradient: linear-gradient(135deg, #7A5AF8, #2BB0ED);
             --input-bg: #f9f9f9;
             
-            /* Dark mode colors */
-            --dark-bg: #1a1a2e;
-            --dark-card: #16213e;
+            /* Dark mode colors - محسنة للتباين */
+            --dark-bg: #0a0a1a;
+            --dark-card: #14142b;
             --dark-border: #2a2a4a;
-            --dark-text-primary: #ffffff;
-            --dark-text-secondary: #b0b0b0;
-            --dark-input-bg: #2a2a3a;
-            --dark-hover: #4f46e5;
+            --dark-text-primary: #f0f0ff;
+            --dark-text-secondary: #b8b8d0;
+            --dark-text-muted: #9090b0;
+            --dark-input-bg: #1e1e36;
+            --dark-hover: #6d5cf3;
+            --dark-glow: rgba(122, 90, 248, 0.3);
+            --dark-card-glow: rgba(122, 90, 248, 0.15);
         }
 
         body {
@@ -54,7 +57,7 @@
             flex-direction: column;
         }
 
-        /* ===== Dark Mode Styles ===== */
+        /* ===== Dark Mode Styles - محسنة ===== */
         body.dark-mode {
             background: var(--dark-bg);
             color: var(--dark-text-primary);
@@ -75,6 +78,7 @@
         body.dark-mode .contact-form {
             background: var(--dark-card);
             border-color: var(--dark-border);
+            box-shadow: 0 10px 30px var(--dark-card-glow);
         }
 
         body.dark-mode .form-group input,
@@ -86,7 +90,7 @@
 
         body.dark-mode .form-group input::placeholder,
         body.dark-mode .form-group textarea::placeholder {
-            color: var(--dark-text-secondary);
+            color: var(--dark-text-muted);
         }
 
         body.dark-mode .form-group label {
@@ -101,18 +105,33 @@
             color: var(--primary-purple);
         }
 
-        body.dark-mode .social-icon {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--dark-text-primary);
+        body.dark-mode .social-icon-large {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--dark-text-secondary);
         }
 
-        body.dark-mode .social-icon:hover {
+        body.dark-mode .social-icon-large:hover {
             background: var(--main-gradient);
             color: white;
+            box-shadow: 0 0 25px var(--dark-glow);
         }
 
         body.dark-mode .page-header p {
             color: var(--dark-text-secondary);
+        }
+
+        body.dark-mode .info-item a,
+        body.dark-mode .info-item span {
+            color: var(--dark-text-secondary);
+        }
+
+        body.dark-mode .info-item a:hover {
+            color: var(--primary-purple);
+            text-shadow: 0 0 10px var(--dark-glow);
+        }
+
+        body.dark-mode .card-icon-large {
+            box-shadow: 0 5px 15px var(--dark-glow);
         }
 
         .container {
@@ -137,6 +156,7 @@
 
         body.dark-mode header {
             background: var(--dark-card);
+            border-bottom: 1px solid var(--dark-border);
         }
 
         header .container {
@@ -187,17 +207,28 @@
             font-size: 16px;
             font-weight: 600;
             color: #6B6B6B;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
             white-space: nowrap;
+            position: relative;
         }
 
         body.dark-mode .nav-menu a {
-            color: var(--dark-text-secondary);
+            color: var(--dark-text-muted);
         }
 
         .nav-menu a:hover,
         .nav-menu a.active {
             color: var(--primary-purple);
+        }
+
+        /* تأثير التكبير والتوهج على روابط القائمة */
+        .nav-menu a:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 10px rgba(122, 90, 248, 0.5);
+        }
+
+        .nav-menu a.active {
+            transform: scale(1.05);
         }
 
         .nav-left {
@@ -228,6 +259,8 @@
 
         .lang-container:hover {
             border-color: var(--primary-purple);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(122, 90, 248, 0.3);
         }
 
         .lang-text {
@@ -265,6 +298,8 @@
 
         .dark-mode-container:hover {
             border-color: var(--primary-purple);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(122, 90, 248, 0.3);
         }
 
         .dark-mode-toggle {
@@ -340,48 +375,65 @@
             justify-content: space-between;
             margin-bottom: 20px;
             position: relative;
+            flex-direction: row-reverse; /* لعكس الترتيب: الصورة على اليسار والنص على اليمين */
         }
 
         .envelope-container {
             position: relative;
-            width: 100px;
-            height: 100px;
-            margin-left: 20px;
+            width: 130px; /* تكبير حجم الصورة */
+            height: 130px; /* تكبير حجم الصورة */
+            margin-right: 20px;
         }
 
         .envelope-img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 10px 15px rgba(122,90,248,0.2));
-            animation: bounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 15px 20px rgba(122,90,248,0.3));
+            animation: bounceRotate 3s ease-in-out infinite;
             position: relative;
             z-index: 2;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes bounceRotate {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            25% { 
+                transform: translateY(-15px) rotate(5deg); 
+            }
+            50% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            75% { 
+                transform: translateY(-8px) rotate(-5deg); 
+            }
         }
 
-        /* خلفية الصورة - تطابق خلفية التصميم */
+        /* خلفية الصورة - متطابقة مع التصميم */
         .envelope-container::before {
             content: '';
             position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(135deg, rgba(122,90,248,0.1), rgba(43,176,237,0.1));
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            background: linear-gradient(135deg, rgba(122,90,248,0.15), rgba(43,176,237,0.15));
             border-radius: 50%;
-            filter: blur(15px);
+            filter: blur(20px);
             z-index: 1;
-            animation: pulse 3s ease-in-out infinite;
+            animation: pulseGlow 3s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.1); }
+        @keyframes pulseGlow {
+            0%, 100% { 
+                opacity: 0.4; 
+                transform: scale(1); 
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: scale(1.15); 
+            }
         }
 
         .form-header h2 {
@@ -497,6 +549,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover .card-icon-large {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(122,90,248,0.4);
         }
 
         .card-icon-large i {
@@ -534,6 +592,12 @@
             justify-content: center;
             color: var(--primary-purple);
             font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover i {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 8px rgba(122,90,248,0.4));
         }
 
         .info-item a,
@@ -541,12 +605,14 @@
             color: var(--secondary-text);
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
             flex: 1;
         }
 
         .info-item a:hover {
             color: var(--primary-purple);
+            transform: translateX(-5px);
+            text-shadow: 0 0 8px rgba(122,90,248,0.3);
         }
 
         /* ===== Social Media Section ===== */
@@ -590,8 +656,8 @@
         .social-icon-large:hover {
             background: var(--main-gradient);
             color: white;
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 12px 25px rgba(122,90,248,0.3);
+            transform: translateY(-5px) scale(1.15);
+            box-shadow: 0 0 30px rgba(122,90,248,0.5);
         }
 
         /* ===== Footer Section ===== */
@@ -663,7 +729,7 @@
         }
 
         body.dark-mode .footer-copyright {
-            color: var(--dark-text-secondary);
+            color: var(--dark-text-muted);
         }
 
         /* ===== Responsive Design ===== */
@@ -676,6 +742,15 @@
             
             .page-header h1 {
                 font-size: 38px;
+            }
+
+            .form-header {
+                flex-direction: column-reverse;
+            }
+
+            .envelope-container {
+                margin-right: 0;
+                margin-bottom: 15px;
             }
         }
 
@@ -708,14 +783,9 @@
                 padding: 25px;
             }
 
-            .form-header {
-                flex-direction: column;
-                text-align: center;
-            }
-
             .envelope-container {
-                margin-left: 0;
-                margin-bottom: 15px;
+                width: 110px;
+                height: 110px;
             }
 
             .form-header h2 {
@@ -759,13 +829,13 @@
                 padding: 20px;
             }
 
-            .form-header h2 {
-                font-size: 22px;
+            .envelope-container {
+                width: 90px;
+                height: 90px;
             }
 
-            .envelope-container {
-                width: 80px;
-                height: 80px;
+            .form-header h2 {
+                font-size: 22px;
             }
 
             .info-item a,
@@ -841,7 +911,7 @@
                     <div class="contact-form">
                         <div class="form-header">
                             <div class="envelope-container">
-                                <img src="assets/images/865676c9-ae81-42de-a97a-3ae6c1318712.png" alt="رسالة" class="envelope-img">
+                                <img src="assets/images/Envelop.png" alt="رسالة" class="envelope-img">
                             </div>
                             <h2>أرسل <span>رسالة</span></h2>
                         </div>
