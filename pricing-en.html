@@ -406,7 +406,7 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 25px 0 5px; /* زيادة padding-top لرفع الصورة */
+            padding: 30px 0 10px;
         }
 
         /* صورة القلم - 50% فقط */
@@ -416,14 +416,13 @@
             object-fit: contain;
         }
 
-        /* حاوية النص - مع كلمة CUSTOMIZE مرفوعة للأعلى */
+        /* حاوية النص */
         .pen-text-container {
             display: flex;
-            align-items: flex-start; /* محاذاة النص إلى الأعلى */
+            align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 0 0 20px;
-            margin-top: -10px; /* سحب النص للأعلى */
+            padding: 10px 0 20px;
         }
 
         .pen-vertical-text {
@@ -443,12 +442,13 @@
             transform: scale(1.1);
         }
 
-        /* Pricing Grid */
+        /* Pricing Grid - 100% */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             flex: 1;
+            width: 100%;
         }
 
         .pricing-card {
@@ -459,6 +459,7 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             border: 2px solid transparent;
+            width: 100%;
         }
 
         .pricing-card:hover {
@@ -977,8 +978,6 @@
                 flex: 1;
                 padding: 0;
                 width: auto;
-                margin-top: 0;
-                align-items: center;
             }
 
             .pen-vertical-img {
@@ -1131,7 +1130,7 @@
         <section class="pricing-section">
             <div class="container">
                 <div class="pricing-with-pen">
-                    <!-- Vertical Pen Container -->
+                    <!-- Vertical Pen Container - 50% صورة -->
                     <div class="pen-vertical" onclick="window.location.href='customize-plan.html'">
                         <div class="pen-image-container">
                             <img src="assets/images/Pen.png.png" alt="Pen" class="pen-vertical-img">
@@ -1141,7 +1140,7 @@
                         </div>
                     </div>
 
-                    <!-- Pricing Grid -->
+                    <!-- Pricing Grid - 100% -->
                     <div class="pricing-grid">
                         <div class="pricing-card">
                             <h2 class="card-title">Starter</h2>
