@@ -106,9 +106,14 @@
             color: var(--dark-text-secondary) !important;
         }
 
+        /* إصلاح لون الأيقونات في الوضع الليلي - نفس النسخة العربية */
         body.dark-mode .icon-box {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--icon-gradient);  /* استخدام التدرج اللوني نفسه */
             box-shadow: 0 5px 15px var(--dark-glow);
+        }
+
+        body.dark-mode .icon-box i {
+            color: white;  /* الأيقونة بيضاء كما في النسخة العربية */
         }
 
         body.dark-mode .tag {
