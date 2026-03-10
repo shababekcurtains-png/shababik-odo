@@ -359,15 +359,15 @@
             margin: 20px 0 40px;
         }
 
-        /* Vertical Pen Container - نصف الحجم السابق */
+        /* Vertical Pen Container - عرض مناسب لظهور كلمة CUSTOMIZE كاملة */
         .pen-vertical {
-            width: 75px; /* نصف 150px */
+            width: 120px; /* عرض كافي لظهور كلمة CUSTOMIZE */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             background: var(--bg-white);
-            border-radius: 40px; /* تصغير قليلاً */
+            border-radius: 60px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
@@ -409,10 +409,10 @@
             padding: 20px 0 10px;
         }
 
-        /* صورة القلم - تكبير 200% */
+        /* صورة القلم - بدون قيود - تكبير حر */
         .pen-vertical-img {
-            width: 200%;
-            max-width: 120px; /* 60px * 200% = 120px */
+            width: 100%; /* تأخذ عرض الحاوية بالكامل */
+            max-width: none; /* إزالة أي قيود على الحجم */
             height: auto;
             object-fit: contain;
         }
@@ -427,9 +427,9 @@
         }
 
         .pen-vertical-text {
-            writing-mode: horizontal-tb; /* النص بالعرض */
+            writing-mode: horizontal-tb;
             transform: none;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 800;
             letter-spacing: 2px;
             white-space: nowrap;
@@ -984,7 +984,7 @@
 
             .pen-vertical-img {
                 width: 50px;
-                max-width: 50px;
+                max-width: none;
             }
 
             .pen-vertical-text {
@@ -1064,7 +1064,6 @@
 
             .pen-vertical-img {
                 width: 40px;
-                max-width: 40px;
             }
 
             .footer-brand-name {
@@ -1133,7 +1132,7 @@
         <section class="pricing-section">
             <div class="container">
                 <div class="pricing-with-pen">
-                    <!-- Vertical Pen Container - نصف الحجم مع صورة 200% -->
+                    <!-- Vertical Pen Container - عرض كافي لظهور CUSTOMIZE كاملة -->
                     <div class="pen-vertical" onclick="window.location.href='customize-plan.html'">
                         <div class="pen-image-container">
                             <img src="assets/images/Pen.png.png" alt="Pen" class="pen-vertical-img">
