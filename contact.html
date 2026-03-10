@@ -32,7 +32,7 @@
             --main-gradient: linear-gradient(135deg, #7A5AF8, #2BB0ED);
             --input-bg: #f9f9f9;
             
-            /* Dark mode colors - محسنة */
+            /* Dark mode colors */
             --dark-bg: #0a0a1a;
             --dark-card: #14142b;
             --dark-border: #2a2a4a;
@@ -46,6 +46,7 @@
             --dark-glow: rgba(122, 90, 248, 0.3);
             --dark-card-glow: rgba(122, 90, 248, 0.15);
             --dark-card-bg: #1a1a35;
+            --dark-header-bg: #14142b;
         }
 
         body {
@@ -60,13 +61,46 @@
             flex-direction: column;
         }
 
-        /* ===== Dark Mode Styles - محسنة بالكامل ===== */
+        /* ===== Dark Mode Styles - شامل بالكامل ===== */
         body.dark-mode {
             background: var(--dark-bg);
             color: var(--dark-text-primary);
         }
 
-        /* تحويل جميع البطاقات للون الداكن */
+        /* الشريط الرئيسي (الهيدر) في الوضع الليلي */
+        body.dark-mode header {
+            background: var(--dark-header-bg);
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        body.dark-mode .nav-logo-text {
+            color: var(--dark-text-primary) !important;
+        }
+
+        body.dark-mode .nav-menu a {
+            color: var(--dark-text-secondary);
+        }
+
+        body.dark-mode .nav-menu a:hover,
+        body.dark-mode .nav-menu a.active {
+            color: var(--primary-purple);
+        }
+
+        body.dark-mode .lang-container,
+        body.dark-mode .dark-mode-container {
+            border-color: var(--dark-border);
+        }
+
+        body.dark-mode .lang-text,
+        body.dark-mode .dark-mode-toggle {
+            color: var(--dark-text-secondary);
+        }
+
+        body.dark-mode .globe-icon {
+            filter: invert(0.8);
+        }
+
+        /* البطاقات في الوضع الليلي */
         body.dark-mode .contact-form,
         body.dark-mode .info-card,
         body.dark-mode .social-card {
@@ -79,8 +113,7 @@
         body.dark-mode .contact-form h2,
         body.dark-mode .info-card h3,
         body.dark-mode .social-card h3,
-        body.dark-mode .footer-brand-name,
-        body.dark-mode .nav-logo-text {
+        body.dark-mode .footer-brand-name {
             color: var(--dark-text-primary) !important;
         }
 
@@ -91,16 +124,6 @@
         body.dark-mode .footer-copyright,
         body.dark-mode .page-header p {
             color: var(--dark-text-secondary) !important;
-        }
-
-        /* روابط الهيدر */
-        body.dark-mode .nav-menu a {
-            color: var(--dark-text-secondary);
-        }
-
-        body.dark-mode .nav-menu a:hover,
-        body.dark-mode .nav-menu a.active {
-            color: var(--primary-purple);
         }
 
         /* حقول الإدخال */
@@ -150,16 +173,6 @@
             border-top: 1px solid var(--dark-border);
         }
 
-        body.dark-mode .lang-container,
-        body.dark-mode .dark-mode-container {
-            border-color: var(--dark-border);
-        }
-
-        body.dark-mode .lang-text,
-        body.dark-mode .dark-mode-toggle {
-            color: var(--dark-text-secondary);
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -178,6 +191,7 @@
             right: 0;
             z-index: 1000;
             width: 100%;
+            transition: all 0.3s ease;
         }
 
         header .container {
@@ -202,6 +216,7 @@
             font-size: 22px;
             font-weight: 700;
             color: #000000;
+            transition: color 0.3s ease;
         }
 
         .nav-menu {
@@ -272,6 +287,7 @@
             font-size: 14px;
             font-weight: 600;
             color: #555;
+            transition: color 0.3s ease;
         }
 
         .globe-icon {
@@ -279,6 +295,7 @@
             height: 16px;
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23555" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>');
             background-size: contain;
+            transition: filter 0.3s ease;
         }
 
         .dark-mode-container {
@@ -310,6 +327,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: color 0.3s ease;
         }
 
         /* ===== Page Header ===== */
@@ -335,6 +353,7 @@
             color: var(--secondary-text);
             max-width: 600px;
             margin: 0 auto;
+            transition: color 0.3s ease;
         }
 
         /* ===== Contact Section ===== */
@@ -360,6 +379,7 @@
             border: 1px solid var(--border-color);
             position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
         }
 
         .form-header {
@@ -373,8 +393,8 @@
 
         .envelope-container {
             position: relative;
-            width: 156px; /* تكبير 20% من 130px */
-            height: 156px; /* تكبير 20% من 130px */
+            width: 187px; /* تكبير 20% إضافي (156px + 20% = 187px) */
+            height: 187px;
             margin-right: 20px;
         }
 
@@ -383,23 +403,17 @@
             height: 100%;
             object-fit: contain;
             filter: drop-shadow(0 15px 20px rgba(122,90,248,0.2));
-            animation: bounceRotate 3s ease-in-out infinite;
+            animation: bounce 2.5s ease-in-out infinite;
             position: relative;
             z-index: 2;
         }
 
-        @keyframes bounceRotate {
+        @keyframes bounce {
             0%, 100% { 
-                transform: translateY(0) rotate(0deg); 
-            }
-            25% { 
-                transform: translateY(-15px) rotate(5deg); 
+                transform: translateY(0); 
             }
             50% { 
-                transform: translateY(0) rotate(0deg) rotateY(180deg); /* دوران حول المحور الأفقي */
-            }
-            75% { 
-                transform: translateY(-8px) rotate(-5deg); 
+                transform: translateY(-20px); 
             }
         }
 
@@ -408,6 +422,7 @@
             font-weight: 700;
             color: var(--dark-text);
             margin: 0;
+            transition: color 0.3s ease;
         }
 
         .form-header h2 span {
@@ -426,6 +441,7 @@
             font-weight: 600;
             color: var(--dark-text);
             font-size: 14px;
+            transition: color 0.3s ease;
         }
 
         .form-group input,
@@ -533,6 +549,7 @@
             font-size: 20px;
             font-weight: 700;
             color: var(--dark-text);
+            transition: color 0.3s ease;
         }
 
         .info-content {
@@ -545,6 +562,7 @@
             gap: 12px;
             padding: 10px 0;
             border-bottom: 1px solid var(--border-color);
+            transition: border-color 0.3s ease;
         }
 
         .info-item:last-child {
@@ -589,6 +607,7 @@
             padding: 25px;
             box-shadow: 0 12px 30px rgba(0,0,0,0.05);
             border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
         }
 
         .social-card h3 {
@@ -597,6 +616,7 @@
             color: var(--dark-text);
             margin-bottom: 20px;
             text-align: center;
+            transition: color 0.3s ease;
         }
 
         .social-icons-grid {
@@ -634,6 +654,7 @@
             padding: 30px 0 20px;
             text-align: center;
             margin-top: auto;
+            transition: all 0.3s ease;
         }
 
         .footer-container {
@@ -659,6 +680,7 @@
             font-weight: 700;
             color: var(--dark-text);
             line-height: 1.2;
+            transition: color 0.3s ease;
         }
 
         .footer-tagline {
@@ -666,6 +688,7 @@
             font-weight: 600;
             color: var(--secondary-text);
             margin-top: 3px;
+            transition: color 0.3s ease;
         }
 
         .footer-logo {
@@ -684,9 +707,10 @@
             font-weight: 500;
             color: var(--light-text);
             margin-top: 12px;
+            transition: color 0.3s ease;
         }
 
-        /* ===== Responsive Design - محسن للهاتف ===== */
+        /* ===== Responsive Design ===== */
         @media (max-width: 992px) {
             .contact-grid {
                 grid-template-columns: 1fr;
@@ -726,7 +750,7 @@
             }
 
             .page-header {
-                padding: 50px 0 20px; /* تخفيض العنوان 10% للأسفل */
+                padding: 50px 0 20px;
             }
 
             .page-header h1 {
@@ -742,8 +766,8 @@
             }
 
             .envelope-container {
-                width: 140px;
-                height: 140px;
+                width: 160px;
+                height: 160px;
             }
 
             .form-header h2 {
@@ -776,7 +800,7 @@
 
         @media (max-width: 480px) {
             .page-header {
-                padding: 60px 0 20px; /* تخفيض إضافي للشاشات الصغيرة */
+                padding: 60px 0 20px;
             }
 
             .page-header h1 {
@@ -792,8 +816,8 @@
             }
 
             .envelope-container {
-                width: 120px;
-                height: 120px;
+                width: 140px;
+                height: 140px;
             }
 
             .form-header h2 {
