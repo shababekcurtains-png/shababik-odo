@@ -163,7 +163,9 @@
         }
 
         body.dark-mode .pen-vertical-text {
-            color: var(--dark-text-secondary);
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .container {
@@ -357,15 +359,15 @@
             margin: 20px 0 40px;
         }
 
-        /* Vertical Pen Container - يملأ الفراغ بالكامل */
+        /* Vertical Pen Container - نصف الحجم السابق */
         .pen-vertical {
-            width: 150px; /* تكبير عرض الحاوية */
+            width: 75px; /* نصف 150px */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             background: var(--bg-white);
-            border-radius: 50px;
+            border-radius: 40px; /* تصغير قليلاً */
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
@@ -404,41 +406,41 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 30px 0 15px;
+            padding: 20px 0 10px;
         }
 
-        /* صورة القلم - تكبير 500% لتملأ الحاوية */
+        /* صورة القلم - تكبير 200% */
         .pen-vertical-img {
-            width: 500%;
-            max-width: 300px;
+            width: 200%;
+            max-width: 120px; /* 60px * 200% = 120px */
             height: auto;
             object-fit: contain;
         }
 
-        /* حاوية النص - تملأ المساحة السفلية مع كلمة "مخصص" */
+        /* حاوية النص - تملأ المساحة السفلية مع كلمة CUSTOMIZE */
         .pen-text-container {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 15px 0 30px;
+            padding: 10px 0 20px;
         }
 
         .pen-vertical-text {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            transform: rotate(180deg);
-            font-size: 22px;
+            writing-mode: horizontal-tb; /* النص بالعرض */
+            transform: none;
+            font-size: 14px;
             font-weight: 800;
-            color: var(--primary-purple);
-            letter-spacing: 4px;
+            letter-spacing: 2px;
             white-space: nowrap;
             transition: all 0.3s ease;
+            background: var(--main-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .pen-vertical:hover .pen-vertical-text {
-            color: var(--primary-blue);
-            transform: rotate(180deg) scale(1.1);
+            transform: scale(1.1);
         }
 
         /* Pricing Grid */
@@ -964,7 +966,7 @@
                 width: 100%;
                 flex-direction: row;
                 height: auto;
-                padding: 15px 25px;
+                padding: 10px 20px;
                 margin-bottom: 20px;
             }
 
@@ -981,14 +983,12 @@
             }
 
             .pen-vertical-img {
-                width: 60px;
-                max-width: 60px;
+                width: 50px;
+                max-width: 50px;
             }
 
             .pen-vertical-text {
-                writing-mode: horizontal-tb;
-                transform: none;
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .pricing-grid {
@@ -1063,8 +1063,8 @@
             }
 
             .pen-vertical-img {
-                width: 50px;
-                max-width: 50px;
+                width: 40px;
+                max-width: 40px;
             }
 
             .footer-brand-name {
@@ -1133,13 +1133,13 @@
         <section class="pricing-section">
             <div class="container">
                 <div class="pricing-with-pen">
-                    <!-- Vertical Pen Container - مع صورة كبيرة وكلمة مخصص -->
+                    <!-- Vertical Pen Container - نصف الحجم مع صورة 200% -->
                     <div class="pen-vertical" onclick="window.location.href='customize-plan.html'">
                         <div class="pen-image-container">
                             <img src="assets/images/Pen.png.png" alt="Pen" class="pen-vertical-img">
                         </div>
                         <div class="pen-text-container">
-                            <span class="pen-vertical-text">مخصص</span>
+                            <span class="pen-vertical-text">CUSTOMIZE</span>
                         </div>
                     </div>
 
@@ -1207,7 +1207,7 @@
             </div>
         </section>
 
-        <!-- Payment Methods Section - نفس عرض خطط التسعير -->
+        <!-- Payment Methods Section -->
         <section class="payment-section">
             <div class="container">
                 <h2 class="payment-title"><span>Payment</span> Methods</h2>
