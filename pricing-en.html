@@ -359,9 +359,9 @@
             margin: 20px 0 40px;
         }
 
-        /* Vertical Pen Container - عرض مناسب لظهور كلمة CUSTOMIZE كاملة */
+        /* Vertical Pen Container */
         .pen-vertical {
-            width: 120px; /* عرض كافي لظهور كلمة CUSTOMIZE */
+            width: 120px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -406,30 +406,30 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 20px 0 10px;
+            padding: 20px 0 5px;
         }
 
-        /* صورة القلم - بدون قيود - تكبير حر */
+        /* صورة القلم - تملأ الحاوية بالكامل */
         .pen-vertical-img {
-            width: 100%; /* تأخذ عرض الحاوية بالكامل */
-            max-width: none; /* إزالة أي قيود على الحجم */
+            width: 100%;
             height: auto;
+            max-height: 180px; /* للتحكم في الارتفاع */
             object-fit: contain;
         }
 
-        /* حاوية النص - تملأ المساحة السفلية مع كلمة CUSTOMIZE */
+        /* حاوية النص - مع كلمة CUSTOMIZE */
         .pen-text-container {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 10px 0 20px;
+            padding: 5px 0 20px;
         }
 
         .pen-vertical-text {
             writing-mode: horizontal-tb;
             transform: none;
-            font-size: 16px;
+            font-size: 18px; /* نفس حجم "Compare" */
             font-weight: 800;
             letter-spacing: 2px;
             white-space: nowrap;
@@ -565,7 +565,6 @@
         }
 
         /* ===== Compare Buttons ===== */
-        /* Filled button for middle card */
         .btn-compare-filled {
             width: 100%;
             padding: 14px;
@@ -598,7 +597,6 @@
             transform: translateX(5px);
         }
 
-        /* Outline button for side cards */
         .btn-compare-outline {
             width: 100%;
             padding: 14px;
@@ -686,7 +684,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* جعل شبكة طرق الدفع تأخذ نفس عرض خطط التسعير */
         .payment-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -752,7 +749,6 @@
             transform: scale(1.05);
         }
 
-        /* حاوية العنوان المنفصلة تحت الصورة */
         .payment-title-container {
             width: 100%;
             margin-top: 20px;
@@ -984,7 +980,7 @@
 
             .pen-vertical-img {
                 width: 50px;
-                max-width: none;
+                max-height: 50px;
             }
 
             .pen-vertical-text {
@@ -1064,6 +1060,7 @@
 
             .pen-vertical-img {
                 width: 40px;
+                max-height: 40px;
             }
 
             .footer-brand-name {
@@ -1132,7 +1129,7 @@
         <section class="pricing-section">
             <div class="container">
                 <div class="pricing-with-pen">
-                    <!-- Vertical Pen Container - عرض كافي لظهور CUSTOMIZE كاملة -->
+                    <!-- Vertical Pen Container -->
                     <div class="pen-vertical" onclick="window.location.href='customize-plan.html'">
                         <div class="pen-image-container">
                             <img src="assets/images/Pen.png.png" alt="Pen" class="pen-vertical-img">
@@ -1144,7 +1141,6 @@
 
                     <!-- Pricing Grid -->
                     <div class="pricing-grid">
-                        <!-- Starter - Left Card (Outline Button) -->
                         <div class="pricing-card">
                             <h2 class="card-title">Starter</h2>
                             <div class="price-box">
@@ -1163,7 +1159,6 @@
                             </button>
                         </div>
 
-                        <!-- Most Popular - Middle Card (Filled Button) -->
                         <div class="pricing-card popular">
                             <div class="popular-badge">Most Popular</div>
                             <h2 class="card-title">Professional</h2>
@@ -1183,7 +1178,6 @@
                             </button>
                         </div>
 
-                        <!-- Enterprise - Right Card (Outline Button) -->
                         <div class="pricing-card">
                             <h2 class="card-title">Enterprise</h2>
                             <div class="price-box">
@@ -1212,7 +1206,6 @@
                 <h2 class="payment-title"><span>Payment</span> Methods</h2>
                 
                 <div class="payment-grid">
-                    <!-- Q Card -->
                     <div class="payment-card" onclick="openPaymentModal('qcard')">
                         <div class="qr-container">
                             <img src="assets/images/Q card.gif" alt="Q Card" class="qr-img">
@@ -1222,7 +1215,6 @@
                         </div>
                     </div>
 
-                    <!-- Zain Cash -->
                     <div class="payment-card" onclick="openPaymentModal('zain')">
                         <div class="qr-container">
                             <img src="assets/images/Zain.gif" alt="Zain Cash" class="qr-img">
@@ -1232,7 +1224,6 @@
                         </div>
                     </div>
 
-                    <!-- Fib -->
                     <div class="payment-card" onclick="openPaymentModal('fib')">
                         <div class="qr-container">
                             <img src="assets/images/FIB.gif" alt="Fib" class="qr-img">
@@ -1242,7 +1233,6 @@
                         </div>
                     </div>
 
-                    <!-- Al-Taif Islamic Bank -->
                     <div class="payment-card" onclick="openPaymentModal('altaeef')">
                         <div class="qr-container">
                             <img src="assets/images/al taeef.gif" alt="Al-Taif Islamic Bank" class="qr-img">
@@ -1252,7 +1242,6 @@
                         </div>
                     </div>
 
-                    <!-- Fast Pay -->
                     <div class="payment-card" onclick="openPaymentModal('fastpay')">
                         <div class="qr-container">
                             <img src="assets/images/Fast pay.gif" alt="Fast Pay" class="qr-img">
@@ -1262,7 +1251,6 @@
                         </div>
                     </div>
 
-                    <!-- Asia Pay -->
                     <div class="payment-card" onclick="openPaymentModal('asia')">
                         <div class="qr-container">
                             <img src="assets/images/Asia.gif" alt="Asia Pay" class="qr-img">
@@ -1309,7 +1297,6 @@
     <script>
         // ===== Dark/Light Mode Preservation System =====
         document.addEventListener('DOMContentLoaded', function() {
-            // Retrieve saved mode
             const savedMode = localStorage.getItem('darkMode');
             const toggleBtn = document.querySelector('.dark-mode-toggle');
             
@@ -1321,11 +1308,9 @@
                 if (toggleBtn) toggleBtn.textContent = '☾';
             }
             
-            // Update active link
             updateActiveLink();
         });
 
-        // Toggle dark mode function
         function toggleDarkMode() {
             const isDarkMode = document.body.classList.toggle('dark-mode');
             const toggleBtn = document.querySelector('.dark-mode-toggle');
@@ -1339,7 +1324,6 @@
             }
         }
 
-        // Update active link function
         function updateActiveLink() {
             const currentPage = window.location.pathname.split('/').pop() || 'index-en.html';
             const navLinks = document.querySelectorAll('.nav-menu a');
@@ -1352,19 +1336,16 @@
             });
         }
 
-        // Language switch function
         function switchLanguage() {
             window.location.href = 'pricing.html';
         }
 
-        // Payment Modal Functions
         function openPaymentModal(method) {
             const modal = document.getElementById('paymentModal');
             const modalImage = document.getElementById('modalImage');
             const modalTitle = document.getElementById('modalTitle');
             const modalDescription = document.getElementById('modalDescription');
             
-            // Set content based on payment method
             switch(method) {
                 case 'qcard':
                     modalImage.src = 'assets/images/Q card.gif';
@@ -1405,7 +1386,6 @@
             document.getElementById('paymentModal').style.display = 'none';
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             const modal = document.getElementById('paymentModal');
             if (event.target === modal) {
