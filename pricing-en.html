@@ -157,11 +157,6 @@
             color: var(--dark-text-secondary) !important;
         }
 
-        body.dark-mode .pen-vertical {
-            background: var(--dark-card-bg);
-            border-color: var(--dark-border);
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -354,6 +349,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
+            width: 100%;
         }
 
         .pricing-card {
@@ -589,12 +585,12 @@
             -webkit-text-fill-color: transparent;
         }
 
+        /* نفس عرض خطط التسعير */
         .payment-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
+            width: 100%;
         }
 
         .payment-card {
@@ -877,7 +873,6 @@
             .payment-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
-                max-width: 400px;
             }
 
             .payment-title {
@@ -1063,7 +1058,7 @@
             </div>
         </section>
 
-        <!-- Payment Methods Section -->
+        <!-- Payment Methods Section - بنفس عرض خطط التسعير -->
         <section class="payment-section">
             <div class="container">
                 <h2 class="payment-title"><span>Payment</span> Methods</h2>
