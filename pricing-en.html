@@ -399,7 +399,7 @@
             transform: scaleX(1);
         }
 
-        /* حاوية الصورة - تملأ المساحة العلوية */
+        /* حاوية الصورة */
         .pen-image-container {
             flex: 1;
             display: flex;
@@ -409,15 +409,14 @@
             padding: 20px 0 5px;
         }
 
-        /* صورة القلم - تملأ الحاوية بالكامل */
+        /* صورة القلم - بالكود الذي طلبته */
         .pen-vertical-img {
-            width: 100%;
-            height: auto;
-            max-height: 180px; /* للتحكم في الارتفاع */
+            height: 100%;
+            width: auto;
             object-fit: contain;
         }
 
-        /* حاوية النص - مع كلمة CUSTOMIZE */
+        /* حاوية النص */
         .pen-text-container {
             display: flex;
             align-items: center;
@@ -429,7 +428,7 @@
         .pen-vertical-text {
             writing-mode: horizontal-tb;
             transform: none;
-            font-size: 18px; /* نفس حجم "Compare" */
+            font-size: 18px;
             font-weight: 800;
             letter-spacing: 2px;
             white-space: nowrap;
@@ -970,6 +969,7 @@
                 flex: 0 0 auto;
                 padding: 0;
                 width: auto;
+                height: 50px;
             }
 
             .pen-text-container {
@@ -979,8 +979,8 @@
             }
 
             .pen-vertical-img {
-                width: 50px;
-                max-height: 50px;
+                height: 100%;
+                width: auto;
             }
 
             .pen-vertical-text {
@@ -1058,9 +1058,8 @@
                 font-size: 14px;
             }
 
-            .pen-vertical-img {
-                width: 40px;
-                max-height: 40px;
+            .pen-image-container {
+                height: 40px;
             }
 
             .footer-brand-name {
