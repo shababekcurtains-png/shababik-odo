@@ -162,12 +162,6 @@
             border-color: var(--dark-border);
         }
 
-        body.dark-mode .pen-vertical-text {
-            background: var(--main-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -351,103 +345,15 @@
             transition: color 0.3s ease;
         }
 
-        /* ===== Pricing Section with Pen ===== */
-        .pricing-with-pen {
-            display: flex;
-            align-items: stretch;
-            gap: 30px;
+        /* ===== Pricing Section ===== */
+        .pricing-section {
             margin: 20px 0 40px;
         }
 
-        /* Vertical Pen Container */
-        .pen-vertical {
-            width: 120px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg-white);
-            border-radius: 60px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            padding: 0;
-        }
-
-        .pen-vertical:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(122,90,248,0.15);
-            border-color: var(--primary-purple);
-        }
-
-        .pen-vertical::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--main-gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .pen-vertical:hover::before {
-            transform: scaleX(1);
-        }
-
-        /* حاوية الصورة */
-        .pen-image-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 20px 0 5px;
-        }
-
-        /* صورة القلم - بالكود الجديد 60% */
-        .pen-vertical-img {
-            height: 60%;
-            width: auto;
-            object-fit: contain;
-        }
-
-        /* حاوية النص */
-        .pen-text-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 5px 0 20px;
-        }
-
-        .pen-vertical-text {
-            writing-mode: horizontal-tb;
-            transform: none;
-            font-size: 18px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            white-space: nowrap;
-            transition: all 0.3s ease;
-            background: var(--main-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .pen-vertical:hover .pen-vertical-text {
-            transform: scale(1.1);
-        }
-
-        /* Pricing Grid */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            flex: 1;
         }
 
         .pricing-card {
@@ -687,7 +593,8 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .payment-card {
@@ -953,40 +860,6 @@
                 font-size: 18px;
             }
 
-            .pricing-with-pen {
-                flex-direction: column;
-            }
-
-            .pen-vertical {
-                width: 100%;
-                flex-direction: row;
-                height: auto;
-                padding: 10px 20px;
-                margin-bottom: 20px;
-            }
-
-            .pen-image-container {
-                flex: 0 0 auto;
-                padding: 0;
-                width: auto;
-                height: 60px;
-            }
-
-            .pen-text-container {
-                flex: 1;
-                padding: 0;
-                width: auto;
-            }
-
-            .pen-vertical-img {
-                height: 100%;
-                width: auto;
-            }
-
-            .pen-vertical-text {
-                font-size: 16px;
-            }
-
             .pricing-grid {
                 display: flex;
                 flex-direction: column;
@@ -997,9 +870,14 @@
                 width: 100%;
             }
 
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+
             .payment-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
+                max-width: 400px;
             }
 
             .payment-title {
@@ -1056,10 +934,6 @@
 
             .payment-card h3 {
                 font-size: 14px;
-            }
-
-            .pen-image-container {
-                height: 50px;
             }
 
             .footer-brand-name {
@@ -1124,76 +998,66 @@
             </div>
         </section>
 
-        <!-- Pricing Section with Vertical Pen -->
+        <!-- Pricing Section -->
         <section class="pricing-section">
             <div class="container">
-                <div class="pricing-with-pen">
-                    <!-- Vertical Pen Container -->
-                    <div class="pen-vertical" onclick="window.location.href='customize-plan.html'">
-                        <div class="pen-image-container">
-                            <img src="assets/images/Pen.png.png" alt="Pen" class="pen-vertical-img">
+                <div class="pricing-grid">
+                    <!-- Starter -->
+                    <div class="pricing-card">
+                        <h2 class="card-title">Starter</h2>
+                        <div class="price-box">
+                            <div class="price-monthly">$10 <small>/month</small></div>
+                            <div class="price-yearly">$200 / yearly</div>
                         </div>
-                        <div class="pen-text-container">
-                            <span class="pen-vertical-text">CUSTOMIZE</span>
-                        </div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Basic digital features</li>
+                            <li><i class="fas fa-check-circle"></i> Email features</li>
+                            <li><i class="fas fa-check-circle"></i> Focus features</li>
+                            <li><i class="fas fa-check-circle"></i> Basic work features</li>
+                        </ul>
+                        <button class="btn-compare-outline">
+                            <span>Compare</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
 
-                    <!-- Pricing Grid -->
-                    <div class="pricing-grid">
-                        <div class="pricing-card">
-                            <h2 class="card-title">Starter</h2>
-                            <div class="price-box">
-                                <div class="price-monthly">$10 <small>/month</small></div>
-                                <div class="price-yearly">$200 / yearly</div>
-                            </div>
-                            <ul class="features-list">
-                                <li><i class="fas fa-check-circle"></i> Basic digital features</li>
-                                <li><i class="fas fa-check-circle"></i> Email features</li>
-                                <li><i class="fas fa-check-circle"></i> Focus features</li>
-                                <li><i class="fas fa-check-circle"></i> Basic work features</li>
-                            </ul>
-                            <button class="btn-compare-outline">
-                                <span>Compare</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
+                    <!-- Professional (Most Popular) -->
+                    <div class="pricing-card popular">
+                        <div class="popular-badge">Most Popular</div>
+                        <h2 class="card-title">Professional</h2>
+                        <div class="price-box">
+                            <div class="price-monthly">$79 <small>/month</small></div>
+                            <div class="price-yearly">$250 / yearly</div>
                         </div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Basic digital features</li>
+                            <li><i class="fas fa-check-circle"></i> Email features</li>
+                            <li><i class="fas fa-check-circle"></i> Focus features</li>
+                            <li><i class="fas fa-check-circle"></i> Basic work features</li>
+                        </ul>
+                        <button class="btn-compare-filled">
+                            <span>Compare</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
 
-                        <div class="pricing-card popular">
-                            <div class="popular-badge">Most Popular</div>
-                            <h2 class="card-title">Professional</h2>
-                            <div class="price-box">
-                                <div class="price-monthly">$79 <small>/month</small></div>
-                                <div class="price-yearly">$250 / yearly</div>
-                            </div>
-                            <ul class="features-list">
-                                <li><i class="fas fa-check-circle"></i> Basic digital features</li>
-                                <li><i class="fas fa-check-circle"></i> Email features</li>
-                                <li><i class="fas fa-check-circle"></i> Focus features</li>
-                                <li><i class="fas fa-check-circle"></i> Basic work features</li>
-                            </ul>
-                            <button class="btn-compare-filled">
-                                <span>Compare</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
+                    <!-- Enterprise -->
+                    <div class="pricing-card">
+                        <h2 class="card-title">Enterprise</h2>
+                        <div class="price-box">
+                            <div class="price-monthly">$100 <small>/month</small></div>
+                            <div class="price-yearly">$360 / yearly</div>
                         </div>
-
-                        <div class="pricing-card">
-                            <h2 class="card-title">Enterprise</h2>
-                            <div class="price-box">
-                                <div class="price-monthly">$100 <small>/month</small></div>
-                                <div class="price-yearly">$360 / yearly</div>
-                            </div>
-                            <ul class="features-list">
-                                <li><i class="fas fa-check-circle"></i> Basic digital features</li>
-                                <li><i class="fas fa-check-circle"></i> Email features</li>
-                                <li><i class="fas fa-check-circle"></i> Focus features</li>
-                                <li><i class="fas fa-check-circle"></i> Basic work features</li>
-                            </ul>
-                            <button class="btn-compare-outline">
-                                <span>Compare</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check-circle"></i> Basic digital features</li>
+                            <li><i class="fas fa-check-circle"></i> Email features</li>
+                            <li><i class="fas fa-check-circle"></i> Focus features</li>
+                            <li><i class="fas fa-check-circle"></i> Basic work features</li>
+                        </ul>
+                        <button class="btn-compare-outline">
+                            <span>Compare</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1205,6 +1069,7 @@
                 <h2 class="payment-title"><span>Payment</span> Methods</h2>
                 
                 <div class="payment-grid">
+                    <!-- Q Card -->
                     <div class="payment-card" onclick="openPaymentModal('qcard')">
                         <div class="qr-container">
                             <img src="assets/images/Q card.gif" alt="Q Card" class="qr-img">
@@ -1214,6 +1079,7 @@
                         </div>
                     </div>
 
+                    <!-- Zain Cash -->
                     <div class="payment-card" onclick="openPaymentModal('zain')">
                         <div class="qr-container">
                             <img src="assets/images/Zain.gif" alt="Zain Cash" class="qr-img">
@@ -1223,6 +1089,7 @@
                         </div>
                     </div>
 
+                    <!-- Fib -->
                     <div class="payment-card" onclick="openPaymentModal('fib')">
                         <div class="qr-container">
                             <img src="assets/images/FIB.gif" alt="Fib" class="qr-img">
@@ -1232,6 +1099,7 @@
                         </div>
                     </div>
 
+                    <!-- Al-Taif Islamic Bank -->
                     <div class="payment-card" onclick="openPaymentModal('altaeef')">
                         <div class="qr-container">
                             <img src="assets/images/al taeef.gif" alt="Al-Taif Islamic Bank" class="qr-img">
@@ -1241,6 +1109,7 @@
                         </div>
                     </div>
 
+                    <!-- Fast Pay -->
                     <div class="payment-card" onclick="openPaymentModal('fastpay')">
                         <div class="qr-container">
                             <img src="assets/images/Fast pay.gif" alt="Fast Pay" class="qr-img">
@@ -1250,6 +1119,7 @@
                         </div>
                     </div>
 
+                    <!-- Asia Pay -->
                     <div class="payment-card" onclick="openPaymentModal('asia')">
                         <div class="qr-container">
                             <img src="assets/images/Asia.gif" alt="Asia Pay" class="qr-img">
