@@ -407,12 +407,10 @@
             padding: 20px 0 10px;
         }
 
-        /* صورة القلم بالحجم الحقيقي دون تغيير */
+        /* صورة القلم بالحجم الطبيعي - بدون قيود */
         .pen-vertical-img {
-            width: auto;
+            width: 100%;
             height: auto;
-            max-width: 60px;
-            max-height: 60px;
             object-fit: contain;
         }
 
@@ -981,9 +979,10 @@
                 width: auto;
             }
 
+            /* تصغير حجم القلم في الموبايل */
             .pen-vertical-img {
-                max-width: 40px;
-                max-height: 40px;
+                width: 40px;
+                height: auto;
             }
 
             .pen-vertical-text {
@@ -1064,9 +1063,9 @@
                 font-size: 14px;
             }
 
+            /* تصغير إضافي للقلم في الشاشات الصغيرة جداً */
             .pen-vertical-img {
-                max-width: 30px;
-                max-height: 30px;
+                width: 30px;
             }
 
             .footer-brand-name {
