@@ -406,23 +406,24 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 20px 0 5px;
+            padding: 25px 0 5px; /* زيادة padding-top لرفع الصورة */
         }
 
-        /* صورة القلم - بالكود الجديد 60% */
+        /* صورة القلم - 50% فقط */
         .pen-vertical-img {
-            height: 60%;
+            height: 50%;
             width: auto;
             object-fit: contain;
         }
 
-        /* حاوية النص */
+        /* حاوية النص - مع كلمة CUSTOMIZE مرفوعة للأعلى */
         .pen-text-container {
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* محاذاة النص إلى الأعلى */
             justify-content: center;
             width: 100%;
-            padding: 5px 0 20px;
+            padding: 0 0 20px;
+            margin-top: -10px; /* سحب النص للأعلى */
         }
 
         .pen-vertical-text {
@@ -976,6 +977,8 @@
                 flex: 1;
                 padding: 0;
                 width: auto;
+                margin-top: 0;
+                align-items: center;
             }
 
             .pen-vertical-img {
